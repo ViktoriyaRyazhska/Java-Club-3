@@ -1,2 +1,7 @@
-package com.club3.java;public class Loops {
+package com.club3.java;
+
+import java.util.Scanner;
+
+public class Loops {
+    public Scanner scanner = new Scanner(System.in);
 }

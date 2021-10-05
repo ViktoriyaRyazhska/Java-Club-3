@@ -1,2 +1,7 @@
-package com.club3.java;public class Collections {
+package com.club3.java;
+
+import java.util.Scanner;
+
+public class Collections {
+    public Scanner scanner = new Scanner(System.in);
 }

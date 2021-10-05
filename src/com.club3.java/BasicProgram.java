@@ -1,4 +1,7 @@
 package com.club3.java;
 
-public class Basicprogram {
+import java.util.Scanner;
+
+public class BasicProgram {
+    public Scanner scanner = new Scanner(System.in);
 }
