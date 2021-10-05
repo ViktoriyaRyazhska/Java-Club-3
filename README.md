@@ -1,7 +1,7 @@
 # Java-Club-3
 
 ## Team 1
-1. Bilzkh Oleh  
+1. Bilykh Oleh  
 2. Busyhin Oleh  
 3. Fesenko Sergii  
 4. Horodchuk Taras  
