@@ -22,8 +22,8 @@ public class SimpleDrawingBoard {
     }
 
     private void drawHorizonLine(int x1, int x2, int y) {
-        int begin = x1 <= x2 ? x1 : x2;
-        int end = x1 > x2 ? x1 : x2;
+        int begin = Math.min(x1, x2);
+        int end = Math.max(x1, x2);
 
         for (int i = begin; i < end + 1; i++) {
             cav[y][i] = 'x';
@@ -31,8 +31,8 @@ public class SimpleDrawingBoard {
     }
 
     private void drawVerticalLine(int y1, int y2, int x) {
-        int begin = y1 <= y2 ? y1 : y2;
-        int end = y1 > y2 ? y1 : y2;
+        int begin = Math.min(y1, y2);
+        int end = Math.max(y1, y2);
 
         for (int i = begin; i < end + 1; i++) {
             cav[i][x] = 'x';
@@ -86,9 +86,7 @@ public class SimpleDrawingBoard {
     public String drawCanvas() {
         StringBuilder res = new StringBuilder();
 
-        for (int i = 0; i < width + 2; i++) {
-            res.append('-');
-        }
+        res.append("-".repeat(Math.max(0, width + 2)));
 
         res.append('\n');
 
@@ -99,9 +97,7 @@ public class SimpleDrawingBoard {
             }
             res.append('|').append('\n');
         }
-        for (int i = 0; i < width + 2; i++) {
-            res.append('-');
-        }
+        res.append("-".repeat(Math.max(0, width + 2)));
 
         return res.toString();
     }
