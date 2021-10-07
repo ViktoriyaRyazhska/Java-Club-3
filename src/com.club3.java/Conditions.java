@@ -6,7 +6,7 @@ public class Conditions {
 
     public Scanner scanner = new Scanner(System.in);
 
-    public void getVolumeOfCuboid() {
+    public void getVolumeOfCuboid3() {
         System.out.println("Enter length,width,height ");
         Scanner leng = new Scanner(System.in);
         Scanner wid = new Scanner(System.in);
@@ -17,7 +17,7 @@ public class Conditions {
         System.out.println(lengs*width*height + " m^3");
 
     }
-    public void Past()
+    public void Past7()
     {
         System.out.println("Enter h,m,s ");
         Scanner H = new Scanner(System.in);
@@ -43,7 +43,7 @@ public class Conditions {
 
     }
 
-    public String weatherInfo() {
+    public String weatherInfo11() {
         System.out.println("Enter farenheit");
         Scanner F = new Scanner(System.in);
         int far = F.nextInt();
@@ -62,6 +62,26 @@ public class Conditions {
 
             return cels +" is freezing temperature";
         }
+
+    }
+
+    public String divinity19()
+    {
+        int na=0;
+        Scanner justn = new Scanner(System.in);
+        Scanner justx = new Scanner(System.in);
+        Scanner justy = new Scanner(System.in);
+        int n = justn.nextInt();
+        int x = justx.nextInt();
+        int y = justy.nextInt();
+
+
+        if (n%x == 0 && n%y == 0)
+        {
+
+        }
+        return na+"";
+
 
     }
 
