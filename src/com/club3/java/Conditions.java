@@ -182,7 +182,7 @@ public class Conditions {
                 "\n 4. Traffic Light" +
                 "\n 5. Is n divisible" +
                 "\n 6. Rock Paper Scissors" +
-                "\n 7. Is enought space" +
+                "\n 7. Is enough space" +
                 "\n 8. Rental car cost" +
                 "\n 9. Return to main menu");
     }

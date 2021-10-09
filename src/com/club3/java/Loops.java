@@ -102,14 +102,45 @@ public class Loops {
         return Math.abs((sonYears * 2) - dadYears);
     }
 
-    //don`t finished
-
-    private int twentyOneStick() {
+    private String twentyOneStick() {
         System.out.println("\n In this game, there are 21 sticks lying in a pile. Players take turns taking 1, 2, or 3 sticks. The last person to take a stick wins.");
         Scanner scanner = new Scanner(System.in);
-        int sticks = scanner.nextInt();
-        int result = sticks % 4;
-        return result;
+        int sticks = 21;
+        int firstPlayer;
+        int secondPlayer;
+        do {
+            System.out.println("First Player move:");
+            firstPlayer = scanner.nextInt();
+
+            if (firstPlayer < 0 || firstPlayer > 3) {
+                System.out.println("Invalid input");
+            } else {
+                sticks -= firstPlayer;
+            }
+
+            System.out.println("There are only " + sticks + " sticks!");
+
+            System.out.println("Second Player move: ");
+            secondPlayer = scanner.nextInt();
+
+            if (secondPlayer < 0 || secondPlayer > 3) {
+                System.out.println("Invalid input");
+            } else {
+                sticks -= secondPlayer;
+            }
+
+            System.out.println("There are only " + sticks + " sticks!");
+
+            if (sticks == 0) {
+                System.out.println("Game End");
+            }
+        } while (sticks != 0);
+
+        if (firstPlayer > 0) {
+            return "Second Player win";
+        } else {
+            return "First Player win";
+        }
     }
 
     private void displayMenu() {
@@ -159,6 +190,5 @@ public class Loops {
                     break;
             }
         } while (choice != 7);
-
     }
 }
