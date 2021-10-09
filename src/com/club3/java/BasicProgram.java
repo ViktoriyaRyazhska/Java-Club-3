@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class BasicProgram {
 
 
-    public double getVolumeOfCuboid3() {
+    private double getVolumeOfCuboid3() {
         System.out.println(" Volume of a Cuboid");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter length,width,height ");
@@ -15,7 +15,7 @@ public class BasicProgram {
         return lengs * width * height ;
     }
 
-    public int past7() {
+    private int past7() {
         System.out.println(" write a function which returns the time since midnight in milliseconds.");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter h,m,s ");
@@ -33,7 +33,7 @@ public class BasicProgram {
         return res;
     }
 
-    public String weatherInfo11() {
+    private String weatherInfo11() {
         System.out.println(" convert fahrenheit to celsius");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter farenheit");

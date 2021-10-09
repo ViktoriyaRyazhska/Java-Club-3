@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Conditions {
 
-    public String divinity19() {
+    private String divinity19() {
         System.out.println(" Is n divisible by x and y?");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter n,x,y");
@@ -25,7 +25,7 @@ public class Conditions {
 
     }
 
-    public String rps23() {
+    private String rps23() {
         System.out.println(" Rock Paper Scissors!");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter for 1 player paper or scissors or rock");
@@ -47,7 +47,7 @@ public class Conditions {
         return "Ups!";
     }
 
-    public int enough27() {
+    private int enough27() {
         System.out.println(" cap is the amount of people the bus can hold excluding the driver.\n" +
                 "on is the number of people on the bus excluding the driver.\n" +
                 "wait is the number of people waiting to get on to the bus excluding the driver.\n" +
@@ -72,7 +72,7 @@ public class Conditions {
         return 000;
     }
 
-    public int rentalCarCost31() {
+    private int rentalCarCost31() {
         System.out.println(" Every day you rent the car costs $40. If you rent the car for 7 or more days, you get $50 off your total. \n" +
                 "Alternatively, if you rent the car for 3 or more days, you get $20 off your total.");
         Scanner scanner = new Scanner(System.in);
@@ -182,7 +182,7 @@ public class Conditions {
                 "\n 4. Traffic Light" +
                 "\n 5. Is n divisible" +
                 "\n 6. Rock Paper Scissors" +
-                "\n 7. Is enought space" +
+                "\n 7. Is enough space" +
                 "\n 8. Rental car cost" +
                 "\n 9. Return to main menu");
     }

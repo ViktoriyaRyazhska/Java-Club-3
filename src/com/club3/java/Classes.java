@@ -1,5 +1,7 @@
 package com.club3.java;
 
+import com.club3.java.utils.classes.Fraction;
+
 import java.util.Scanner;
 
 public class Classes {
