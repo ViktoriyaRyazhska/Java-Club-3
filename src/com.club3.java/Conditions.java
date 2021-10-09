@@ -1,89 +1,140 @@
 package com.club3.java;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Conditions {
 
-    public Scanner scanner = new Scanner(System.in);
 
-    public void getVolumeOfCuboid3() {
-        System.out.println("Enter length,width,height ");
-        Scanner leng = new Scanner(System.in);
-        Scanner wid = new Scanner(System.in);
-        Scanner heig = new Scanner(System.in);
-        double lengs = leng.nextDouble();
-        double width = wid.nextDouble();
-        double height = heig.nextDouble();
-        System.out.println(lengs*width*height + " m^3");
+    public String divinity19() {
 
-    }
-    public void Past7()
-    {
-        System.out.println("Enter h,m,s ");
-        Scanner H = new Scanner(System.in);
-        Scanner M = new Scanner(System.in);
-        Scanner S = new Scanner(System.in);
-        int hours = H.nextInt();
-        int min = M.nextInt();
-        int sec = S.nextInt();
-        int res = 0;
-        if(hours<=23 && hours >=0)
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter n,x,y");
+        int n = scanner.nextInt();
+        int x = scanner.nextInt();
+        int y = scanner.nextInt();
+
+        if (n % x == 0 && n % y == 0)
         {
-            if(min<=59 && min>=0)
-            {
-                if(sec>=0)
-                {
-                    res = ((hours*3600)+(min*60)+(sec))*1000;
-                }
-            }
-
-        }
-        System.out.println(res + " ms");
-
-
-    }
-
-    public String weatherInfo11() {
-        System.out.println("Enter farenheit");
-        Scanner F = new Scanner(System.in);
-        int far = F.nextInt();
-
-        double cels = 0;
-
-        cels = ((far - 32)*(5.0/9.0) );
-
-        if (cels>0)
+            return "n = " + n + " is divisible on " + "x = " + x + " y = " + y;
+        }else
+        if (n % x == 0 && n % y != 0)
         {
-
-            return cels +" is above freezing temperature";
+            return "n = " + n + " is divisible on " + "x = " + x + " but not on y = " + y;
+        }else
+        if (n % x != 0 && n % y == 0)
+        {
+            return "n = " + n + " not divisible on " + "x = " + x + " but divisible on y = " + y;
         }
         else
+        if (n % x != 0 && n % y != 0)
         {
-
-            return cels +" is freezing temperature";
+            return "n = " + n + " not divisible on " + "x = " + x + " y = " + y;
         }
+        return "Some problems";
 
     }
 
-    public String divinity19()
-    {
-        int na=0;
-        Scanner justn = new Scanner(System.in);
-        Scanner justx = new Scanner(System.in);
-        Scanner justy = new Scanner(System.in);
-        int n = justn.nextInt();
-        int x = justx.nextInt();
-        int y = justy.nextInt();
+    public String rps23() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter for 1 player paper or scissors or rock");
+        String p1 = scanner.nextLine();
+        System.out.println("Enter for 2 player paper or scissors or rock");
+        String p2 = scanner.nextLine();
+        String p = "paper";
+        String s = "scissors";
+        String r = "rock";
 
 
-        if (n%x == 0 && n%y == 0)
+        if(p1.equals(s) && p2.equals(p)  || p1.equals(r) && p2.equals(s) || p1.equals(p) && p2.equals(r))
         {
-
+            return "Player 1 won!";
+        }else
+        if (p2.equals(s) && p1.equals(p) || p2.equals(r) && p1.equals(s) || p2.equals(p) && p1.equals(r))
+        {
+            return "Player 2 won!";
+        }else
+        if (p1.equals(p2))
+        {
+            return "Draw!";
         }
-        return na+"";
-
-
+        return "Ups!";
     }
+
+    public int enough27(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter cap,on,wait");
+
+        int cap = scanner.nextInt();
+        int on = scanner.nextInt();
+        int wait = scanner.nextInt();
+
+        int sum = 0;
+        sum = on + wait;
+
+        if (cap >= sum)
+        {
+            System.out.print("Enoughth plase empty : ");
+            return cap - sum;
+        }else
+        if(cap - sum < 0)
+        {
+            System.out.print("Not enoughth plase on : ");
+            return Math.abs(cap - sum);
+        }
+        return 000;
+    }
+
+    public void rentalCarCost31() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter for how many days ");
+        int d = scanner.nextInt();
+
+        int coast = 0;
+        int days = 1;
+        if (d<3 && d>0)
+        {
+            for (int i = 0; i<d ; i++)
+            {
+                coast += 40;
+                System.out.println("day: "+ days +" prise :"+coast);
+                days++;
+            }
+        }else
+        if (d<7 && d>=3)
+        {
+            for (int i = 0; i<d ; i++)
+            {
+                coast += 40;
+                if (i == 2)
+                {
+                    coast -=20;
+                }
+                System.out.println("day: "+ days +" prise :"+coast);
+                days++;
+            }
+        }
+        if (d>=7)
+        {
+            for (int i = 0; i<d ; i++)
+            {
+                coast += 40;
+                if (i == 2)
+                {
+                    coast -=20;
+                }
+                if (i == 6)
+                {
+                    coast -=30;
+                }
+                System.out.println("day: "+ days +" prise :"+coast);
+                days++;
+            }
+        }
+    }
+
+
+
 
 
 }
