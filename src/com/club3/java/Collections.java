@@ -6,22 +6,18 @@ import java.util.Scanner;
 
 public class Collections {
 
-    private List<Integer> filterOddNumber71()
-    {
+    private List<Integer> filterOddNumber71() {
         List<Integer> listOfNumbers = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Fill the ArrayList after press any char");
-        while (scanner.hasNextInt())
-        {
+        while (scanner.hasNextInt()) {
             listOfNumbers.add(scanner.nextInt());
         }
         System.out.println(listOfNumbers);
 
         List<Integer> odds = new ArrayList<>();
-        for (int i = 0; i < listOfNumbers.size(); i++)
-        {
-            if (listOfNumbers.get(i)%2 != 0)
-            {
+        for (int i = 0; i < listOfNumbers.size(); i++) {
+            if (listOfNumbers.get(i) % 2 != 0) {
                 odds.add(listOfNumbers.get(i));
             }
         }

@@ -10,7 +10,7 @@ public class Strings {
 
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
-        String s=String.valueOf(num);
+        String s = String.valueOf(num);
 
         return s;
     }
@@ -19,22 +19,19 @@ public class Strings {
         System.out.println("Enter some String with .");
         Scanner scanner = new Scanner(System.in);
         String s1 = scanner.nextLine();
-        String replaceString=s1.replaceAll("\\.","-");
+        String replaceString = s1.replaceAll("\\.", "-");
         return replaceString;
     }
 
-    private String position59()
-    {
+    private String position59() {
         System.out.println("Enter some char");
         Scanner scanner = new Scanner(System.in);
         char alphabet = scanner.next().charAt(0);
-        int position = 0 ;
-        char [] abc_arr = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-        for (int i = 0; i < abc_arr.length; i++)
-        {
-            position ++;
-            if (alphabet == abc_arr[i])
-            {
+        int position = 0;
+        char[] abc_arr = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+        for (int i = 0; i < abc_arr.length; i++) {
+            position++;
+            if (alphabet == abc_arr[i]) {
                 return "Position of alphabet: " + String.valueOf(position);
             }
 
@@ -49,9 +46,8 @@ public class Strings {
         String name = scanner.nextLine();
         String upper = name.toUpperCase();
 
-        if (name.contains(" "))
-        {
-            return String.valueOf(upper.charAt(0)) + "."+ String.valueOf(upper.charAt(upper.indexOf(' ')+1)) ;
+        if (name.contains(" ")) {
+            return String.valueOf(upper.charAt(0)) + "." + String.valueOf(upper.charAt(upper.indexOf(' ') + 1));
         }
 
         return "";
@@ -65,12 +61,12 @@ public class Strings {
         Scanner scanner = new Scanner(System.in);
         String string = scanner.nextLine();
 
-        String string2 = "" ;
+        String string2 = "";
         System.out.println(string);
 
-        for(int i = 0; i< string.length(); i++){
+        for (int i = 0; i < string.length(); i++) {
 
-            if (Character.toUpperCase(string.charAt(i)) == string.charAt(i)){
+            if (Character.toUpperCase(string.charAt(i)) == string.charAt(i)) {
                 string2 += Character.toLowerCase(string.charAt(i));
             } else {
                 string2 += Character.toUpperCase(string.charAt(i));
@@ -80,6 +76,7 @@ public class Strings {
 
 
     }
+
     private String grasshopperDebug() {
         System.out.println("\nYour friend is traveling abroad to the United States so he wrote a program to convert fahrenheit to celsius. Unfortunately his code has some bugs." +
                 "\n Find the errors in the code to get the celsius converter working properly.");
@@ -120,60 +117,60 @@ public class Strings {
     }
 
 
-        private void displayMenu () {
-            System.out.println("\n Please, choose a task:" +
-                    "\n " +
-                    "\n 1. Grasshopper Debug" +
-                    "\n 2. Correct mistakes of character" +
-                    "\n 3. Triple Trouble" +
-                    "\n 4. Int to String" +
-                    "\n 5. Dots to -" +
-                    "\n 6. Plase in alphabet" +
-                    "\n 7. Name.Subname" +
-                    "\n 8. Upper Lower" +
-                    "\n 9. Return to main menu");
-        }
-
-        public void runStings () {
-            displayMenu();
-            Scanner scanner = new Scanner(System.in);
-            int choice;
-            do {
-                choice = scanner.nextInt();
-                switch (choice) {
-                    case 1:
-                        System.out.println(grasshopperDebug());
-                        break;
-                    case 2:
-                        System.out.println(correctMistakesOfCharacter());
-                        break;
-                    case 3:
-                        System.out.println(tripleTrouble());
-                        break;
-                    case 4:
-                        System.out.println(numberToString51());
-                        break;
-                    case 5:
-                        System.out.println(replaceDots55());
-                        break;
-                    case 6:
-                        System.out.println(position59());
-                        break;
-                    case 7:
-                        System.out.println(abbrevName63());
-                        break;
-                    case 8:
-                        System.out.println(toAlternativeString67());
-                        break;
-                    case 9:
-                        System.out.println("\n Welcome to main menu \n __________________________");
-                        Menu menu = new Menu();
-                        menu.runApplication();
-                        break;
-                    default:
-                        System.out.println("There are not number like this");
-                        break;
-                }
-            } while (choice != 9);
-        }
+    private void displayMenu() {
+        System.out.println("\n Please, choose a task:" +
+                "\n " +
+                "\n 1. Grasshopper Debug" +
+                "\n 2. Correct mistakes of character" +
+                "\n 3. Triple Trouble" +
+                "\n 4. Int to String" +
+                "\n 5. Dots to -" +
+                "\n 6. Plase in alphabet" +
+                "\n 7. Name.Subname" +
+                "\n 8. Upper Lower" +
+                "\n 9. Return to main menu");
     }
+
+    public void runStings() {
+        displayMenu();
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        do {
+            choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println(grasshopperDebug());
+                    break;
+                case 2:
+                    System.out.println(correctMistakesOfCharacter());
+                    break;
+                case 3:
+                    System.out.println(tripleTrouble());
+                    break;
+                case 4:
+                    System.out.println(numberToString51());
+                    break;
+                case 5:
+                    System.out.println(replaceDots55());
+                    break;
+                case 6:
+                    System.out.println(position59());
+                    break;
+                case 7:
+                    System.out.println(abbrevName63());
+                    break;
+                case 8:
+                    System.out.println(toAlternativeString67());
+                    break;
+                case 9:
+                    System.out.println("\n Welcome to main menu \n __________________________");
+                    Menu menu = new Menu();
+                    menu.runApplication();
+                    break;
+                default:
+                    System.out.println("There are not number like this");
+                    break;
+            }
+        } while (choice != 9);
+    }
+}

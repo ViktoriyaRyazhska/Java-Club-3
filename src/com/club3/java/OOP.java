@@ -86,10 +86,9 @@ public class OOP {
     }
 
 
-
     public class God {
 
-        public Human[] create(){
+        public Human[] create() {
 
             Human[] people = new Human[2];
             people[0] = new Man();
@@ -98,9 +97,11 @@ public class OOP {
             return people;
         }
     }
-    class Human{
+
+    class Human {
     }
-    class Man extends Human{
+
+    class Man extends Human {
 
         @Override
         public String toString() {
@@ -108,7 +109,7 @@ public class OOP {
         }
     }
 
-    class Woman extends Human{
+    class Woman extends Human {
         @Override
         public String toString() {
             return "Eva is woman";
