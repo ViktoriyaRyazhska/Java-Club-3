@@ -45,6 +45,16 @@ public class Loops {
 
     }
 
+    private int findNearestSquare43() {
+
+        System.out.println(" Find the nearest square number, nearest_sq(n), of a positive integer n.");
+        System.out.println("Enter number");
+        Scanner scanner = new Scanner(System.in);
+        int num = scanner.nextInt();
+        return (int) Math.pow(Math.round(Math.sqrt(num)), 2);
+
+    }
+
     private int getTheMeanOfAnArray() {
         System.out.println("\n It's the academic year's end, fateful moment of your school report. " +
                 "\n The averages must be calculated. All the students come to you and entreat you to calculate their average for them.");
@@ -152,7 +162,8 @@ public class Loops {
                 "\n 4. Twenty-one stick" +
                 "\n 5. Each value doubled" +
                 "\n 6. Multiplying the values together" +
-                "\n 7. Return to main menu");
+                "\n 7. Nearest square" +
+                "\n 8. Return to main menu");
     }
 
     public void runLoops() {
@@ -181,6 +192,9 @@ public class Loops {
                     System.out.println(grow39());
                     break;
                 case 7:
+                    System.out.println(findNearestSquare43());
+                    break;
+                case 8:
                     System.out.println("\n Welcome to main menu \n __________________________");
                     Menu menu = new Menu();
                     menu.runApplication();
@@ -189,6 +203,6 @@ public class Loops {
                     System.out.println("There are not number like this");
                     break;
             }
-        } while (choice != 7);
+        } while (choice != 8);
     }
 }

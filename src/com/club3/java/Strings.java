@@ -57,6 +57,29 @@ public class Strings {
         return "";
     }
 
+    private String toAlternativeString67() {
+
+        System.out.println(" Define String.prototype.toAlternatingCase (or a similar function/method such as to_alternating_case/ \n" +
+                " toAlternatingCase/ToAlternatingCase in your selected language; see the initial solution for details)");
+        System.out.println("Enter any string with Upper and Lower");
+        Scanner scanner = new Scanner(System.in);
+        String string = scanner.nextLine();
+
+        String string2 = "" ;
+        System.out.println(string);
+
+        for(int i = 0; i< string.length(); i++){
+
+            if (Character.toUpperCase(string.charAt(i)) == string.charAt(i)){
+                string2 += Character.toLowerCase(string.charAt(i));
+            } else {
+                string2 += Character.toUpperCase(string.charAt(i));
+            }
+        }
+        return string2;
+
+
+    }
     private String grasshopperDebug() {
         System.out.println("\nYour friend is traveling abroad to the United States so he wrote a program to convert fahrenheit to celsius. Unfortunately his code has some bugs." +
                 "\n Find the errors in the code to get the celsius converter working properly.");
@@ -107,7 +130,8 @@ public class Strings {
                     "\n 5. Dots to -" +
                     "\n 6. Plase in alphabet" +
                     "\n 7. Name.Subname" +
-                    "\n 8. Return to main menu");
+                    "\n 8. Upper Lower" +
+                    "\n 9. Return to main menu");
         }
 
         public void runStings () {
@@ -139,6 +163,9 @@ public class Strings {
                         System.out.println(abbrevName63());
                         break;
                     case 8:
+                        System.out.println(toAlternativeString67());
+                        break;
+                    case 9:
                         System.out.println("\n Welcome to main menu \n __________________________");
                         Menu menu = new Menu();
                         menu.runApplication();
@@ -147,6 +174,6 @@ public class Strings {
                         System.out.println("There are not number like this");
                         break;
                 }
-            } while (choice != 4);
+            } while (choice != 9);
         }
     }
