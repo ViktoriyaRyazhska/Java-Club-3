@@ -8,7 +8,9 @@ public class Divisible {
     }
 
     public static void main(String[] args) {
-        System.out.println(isDivisible(10,2,5));
-        System.out.println(isDivisible(10,3,5));
+        //System.out.println(isDivisible(10,2,5));
+        //System.out.println(isDivisible(10,3,5));
+
     }
+
 }
