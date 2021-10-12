@@ -1,8 +1,11 @@
 package com.club3.java;
 
+import com.club3.java.impl.ConditionsImpl;
+
 import java.util.Scanner;
 
 public class Conditions {
+    private ConditionsImpl conditionsImpl = new ConditionsImpl();
 
     private String divinity19() {
         System.out.println(" Is n divisible by x and y?");
@@ -118,11 +121,7 @@ public class Conditions {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter number:");
         int number = scanner.nextInt();
-        int oppositeNumber = 0;
-        if (number > 0) {
-            oppositeNumber = -number;
-        }
-        return oppositeNumber;
+        return conditionsImpl.oppositeNumber(number);
     }
 
     private String howOldWillIBeIn2099() {
@@ -133,14 +132,7 @@ public class Conditions {
         int birth = scanner.nextInt();
         System.out.println("Enter year to count years:");
         int yearIn = scanner.nextInt();
-
-        if (birth < yearIn) {
-            return "You are " + (yearIn - birth) + " years old.";
-        } else if (birth > yearIn) {
-            return "You will be born in " + (birth - yearIn) + " years.";
-        } else {
-            return "You were born this very year!";
-        }
+        return conditionsImpl.howOldWillIBeIn2099(birth, yearIn);
     }
 
     private String convertBooleanValuesToStrings() {
@@ -148,13 +140,7 @@ public class Conditions {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your string:");
         String s = scanner.nextLine();
-        if (s.equals("false")) {
-            return "No";
-        } else if (s.equals("true")) {
-            return "Yes";
-        } else {
-            return "Please, write 'true' or 'false'";
-        }
+        return conditionsImpl.convertBooleanValuesToStrings(s);
     }
 
     private String trafficLight() {
@@ -163,14 +149,7 @@ public class Conditions {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter 'green', 'red' or 'yellow':");
         String s = scanner.nextLine();
-        if (s.equals("green")) {
-            return "yellow";
-        } else if (s.equals("yellow")) {
-            return "red";
-        } else {
-            return "green";
-        }
-
+        return conditionsImpl.trafficLight(s);
     }
 
     private void displayMenu() {

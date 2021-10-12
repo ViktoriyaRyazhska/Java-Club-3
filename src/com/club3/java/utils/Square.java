@@ -1,4 +1,4 @@
-package com.club3.java.utils.classes;
+package com.club3.java.utils;
 
 public class Square {
     public double side;

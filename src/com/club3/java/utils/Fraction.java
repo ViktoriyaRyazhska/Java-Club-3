@@ -1,4 +1,4 @@
-package com.club3.java.utils.classes;
+package com.club3.java.utils;
 
 public class Fraction implements Comparable<Fraction> {
     private final long top;

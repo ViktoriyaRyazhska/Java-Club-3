@@ -1,9 +1,12 @@
 package com.club3.java;
 
+import com.club3.java.impl.LoopsImpl;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Loops {
+    private LoopsImpl loopsImp = new LoopsImpl();
 
     private String map35() {
         System.out.println(" Given an array of integers, return a new array with each value doubled.");
@@ -61,16 +64,7 @@ public class Loops {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the size of array:");
         int size = scanner.nextInt();
-        int[] marks = new int[size];
-        int averageMark = 0;
-        int sum = 0;
-        for (int i = 0; i < size; i++) {
-            System.out.println("Enter the element: " + i);
-            marks[i] = scanner.nextInt();
-            sum += marks[i];
-            averageMark = sum / size;
-        }
-        return averageMark;
+        return loopsImp.getTheMeanOfAnArray(size, scanner);
     }
 
     private String howGoodAreYouReally() {
@@ -83,20 +77,7 @@ public class Loops {
         int yourMark = scanner.nextInt();
         System.out.println("Enter the size of array:");
         int arraySize = scanner.nextInt();
-        int[] classPoints = new int[arraySize];
-        int averageClassPoint = 0;
-        int sum = 0;
-        for (int i = 0; i < arraySize; i++) {
-            System.out.println("Enter the element: " + i);
-            classPoints[i] = scanner.nextInt();
-            sum += classPoints[i];
-            averageClassPoint = sum / arraySize;
-        }
-        if (averageClassPoint < yourMark) {
-            return "True";
-        } else {
-            return "False";
-        }
+        return loopsImp.howGoodAreYouReally(yourMark, arraySize, scanner);
     }
 
     private int twiceAsOld() {
@@ -109,48 +90,13 @@ public class Loops {
         int dadYears = scanner.nextInt();
         System.out.println("Enter son`s age:");
         int sonYears = scanner.nextInt();
-        return Math.abs((sonYears * 2) - dadYears);
+        return loopsImp.twiceAsOld(dadYears, sonYears);
     }
 
     private String twentyOneStick() {
         System.out.println("\n In this game, there are 21 sticks lying in a pile. Players take turns taking 1, 2, or 3 sticks. The last person to take a stick wins.");
         Scanner scanner = new Scanner(System.in);
-        int sticks = 21;
-        int firstPlayer;
-        int secondPlayer;
-        do {
-            System.out.println("First Player move:");
-            firstPlayer = scanner.nextInt();
-
-            if (firstPlayer < 0 || firstPlayer > 3) {
-                System.out.println("Invalid input");
-            } else {
-                sticks -= firstPlayer;
-            }
-
-            System.out.println("There are only " + sticks + " sticks!");
-
-            System.out.println("Second Player move: ");
-            secondPlayer = scanner.nextInt();
-
-            if (secondPlayer < 0 || secondPlayer > 3) {
-                System.out.println("Invalid input");
-            } else {
-                sticks -= secondPlayer;
-            }
-
-            System.out.println("There are only " + sticks + " sticks!");
-
-            if (sticks == 0) {
-                System.out.println("Game End");
-            }
-        } while (sticks != 0);
-
-        if (firstPlayer > 0) {
-            return "Second Player win";
-        } else {
-            return "First Player win";
-        }
+        return loopsImp.twentyOneStick(scanner);
     }
 
     private void displayMenu() {

@@ -1,10 +1,13 @@
 package com.club3.java;
 
-import com.club3.java.utils.classes.GrassHopper;
+import com.club3.java.impl.StringsImpl;
+import com.club3.java.utils.GrassHopper;
 
 import java.util.Scanner;
 
 public class Strings {
+    private StringsImpl stringsImpl = new StringsImpl();
+
     private String numberToString51() {
         System.out.println("Int to String \nEnter Int");
 
@@ -95,7 +98,7 @@ public class Strings {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the string replacing 'S' as '5', 'O' as '0' and 'I' as '1': ");
         String string = scanner.nextLine();
-        return string.replace("5", "S").replace("0", "O").replace("1", "I");
+        return stringsImpl.correctMistakesOfCharacter(string);
     }
 
     private String tripleTrouble() {
@@ -108,12 +111,7 @@ public class Strings {
         String two = scanner.nextLine();
         System.out.println("Enter string three:");
         String three = scanner.nextLine();
-
-        StringBuilder s = new StringBuilder();
-        for (int i = 0; i < one.length(); i++) {
-            s.append("").append(one.charAt(i)).append(two.charAt(i)).append(three.charAt(i));
-        }
-        return s.toString();
+        return stringsImpl.tripleTrouble(one, two, three);
     }
 
 

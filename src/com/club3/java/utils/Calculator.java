@@ -1,4 +1,4 @@
-package com.club3.java.utils.classes;
+package com.club3.java.utils;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;

@@ -1,8 +1,11 @@
 package com.club3.java;
 
+import com.club3.java.impl.BasicProgramImpl;
+
 import java.util.Scanner;
 
 public class BasicProgram {
+    private BasicProgramImpl basicProgramImpl = new BasicProgramImpl();
 
 
     private double getVolumeOfCuboid3() {
@@ -55,7 +58,7 @@ public class BasicProgram {
         int one = scanner.nextInt();
         System.out.println("Enter second number");
         int two = scanner.nextInt();
-        return one * two;
+        return basicProgramImpl.multiplyTwoNumbers(one, two);
     }
 
     private int integerToBinary() {
@@ -63,8 +66,7 @@ public class BasicProgram {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter integer number: ");
         int n = scanner.nextInt();
-        String m = Integer.toBinaryString(n);
-        return Integer.parseInt(m);
+        return basicProgramImpl.integerToBinary(n);
     }
 
     private String ageRangeCompatibilityEquation() {
@@ -73,16 +75,7 @@ public class BasicProgram {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your age:");
         int age = scanner.nextInt();
-        int min;
-        int max;
-        if (age <= 14) {
-            min = (int) (age - (0.10 * age));
-            max = (int) (age + (0.10 * age));
-        } else {
-            min = age / 2 + 7;
-            max = (age - 7) * 2;
-        }
-        return min + "-" + max;
+        return basicProgramImpl.ageRangeCompatibilityEquation(age);
     }
 
     private void displayMenu() {

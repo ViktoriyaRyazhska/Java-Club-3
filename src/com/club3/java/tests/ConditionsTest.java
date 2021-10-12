@@ -1,4 +1,4 @@
 package com.club3.java.tests;
 
-public class Conditions {
+public class ConditionsTest {
 }

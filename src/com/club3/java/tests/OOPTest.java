@@ -1,11 +1,11 @@
 package com.club3.java.tests;
 
-import com.club3.java.utils.classes.*;
+import com.club3.java.utils.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class OOP {
+public class OOPTest {
     private Calculator sut = new Calculator();
     @Test
     public void areaOfATriangleIsBaseMultipliedByHeight() {

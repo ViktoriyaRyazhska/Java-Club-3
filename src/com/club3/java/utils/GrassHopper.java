@@ -1,4 +1,4 @@
-package com.club3.java.utils.classes;
+package com.club3.java.utils;
 
 public class GrassHopper {
     public static String weatherInfo(double temp) {

@@ -1,6 +1,6 @@
 package com.club3.java;
 
-import com.club3.java.utils.classes.*;
+import com.club3.java.utils.*;
 
 import java.util.Scanner;
 

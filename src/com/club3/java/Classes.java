@@ -1,6 +1,6 @@
 package com.club3.java;
 
-import com.club3.java.utils.classes.Fraction;
+import com.club3.java.utils.Fraction;
 
 import java.util.Scanner;
 
