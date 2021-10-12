@@ -14,7 +14,6 @@ public class Collections {
             listOfNumbers.add(scanner.nextInt());
         }
         System.out.println(listOfNumbers);
-
         List<Integer> odds = new ArrayList<>();
         for (int i = 0; i < listOfNumbers.size(); i++) {
             if (listOfNumbers.get(i) % 2 != 0) {
@@ -66,6 +65,6 @@ public class Collections {
                     System.out.println("There are not number like this");
                     break;
             }
-        } while (choice != 2);
+        } while (choice != 3);
     }
 }
