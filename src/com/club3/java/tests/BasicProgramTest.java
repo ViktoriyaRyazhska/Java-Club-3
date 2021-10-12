@@ -27,5 +27,26 @@ public class BasicProgramTest {
     public void multiplyTwoNumbers() {
 
         assertEquals(12, basicProgram.multiplyTwoNumbers(3, 4));
+        assertEquals(24, basicProgram.multiplyTwoNumbers(12,2));
+        assertEquals(50, basicProgram.multiplyTwoNumbers(10,5));
+    }
+
+    @Test
+    public void integerToBinary(){
+        assertEquals(1100100, basicProgram.integerToBinary(100));
+        assertEquals(1, basicProgram.integerToBinary(1));
+        assertEquals(10, basicProgram.integerToBinary(2));
+        assertEquals(11, basicProgram.integerToBinary(3));
+        assertEquals(101, basicProgram.integerToBinary(5));
+
+    }
+
+    @Test
+    public void ageRangeCompatibilityEquation() {
+        assertEquals("15-20", basicProgram.ageRangeCompatibilityEquation(17));
+        assertEquals("27-66", basicProgram.ageRangeCompatibilityEquation(40));
+        assertEquals("14-16", basicProgram.ageRangeCompatibilityEquation(15));
+        assertEquals("24-56", basicProgram.ageRangeCompatibilityEquation(35));
+        assertEquals("9-11", basicProgram.ageRangeCompatibilityEquation(10));
     }
 }

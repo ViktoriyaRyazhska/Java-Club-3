@@ -1,14 +1,12 @@
 package com.club3.java.impl;
 
-import java.util.Scanner;
-
 public class BasicProgramImpl {
 
-    public double getVolumeOfCuboid3(double lengs,double width,double height) {
-        return lengs * width * height ;
+    public double getVolumeOfCuboid3(double lengs, double width, double height) {
+        return lengs * width * height;
     }
 
-    public int past7(int hours,int min,int sec) {
+    public int past7(int hours, int min, int sec) {
 
         int res = 0;
         if (hours <= 23 && hours >= 0) {
