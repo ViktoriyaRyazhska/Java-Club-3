@@ -1,8 +1,35 @@
 package com.club3.java.impl;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class LoopsImpl {
+
+
+    public int[] map35(int[] arr) {
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] *= 2;
+        }
+        return arr;
+    }
+
+    public int grow39(int[] x) {
+
+        int mult = 1;
+        for (int i = 0; i < x.length; i++) {
+            mult *= x[i];
+        }
+
+        return mult;
+
+    }
+
+    public int findNearestSquare43(int num) {
+
+        return (int) Math.pow(Math.round(Math.sqrt(num)), 2);
+
+    }
     public int getTheMeanOfAnArray(int size, Scanner scanner) {
         int[] marks = new int[size];
         int averageMark = 0;

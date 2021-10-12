@@ -27,8 +27,6 @@ public class ConditionsTest {
     }
 
 
-
-
         @Test
         public void rentalCarCost31() {
             assertEquals(40, conditions.rentalCarCost31(1));
