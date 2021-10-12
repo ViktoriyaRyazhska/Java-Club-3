@@ -28,7 +28,6 @@ public class Loops {
     }
 
     private int grow39() {
-
         System.out.println(" Given a non-empty array of integers, return the result of multiplying the values together in order. Example:");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter length of array ");
@@ -45,7 +44,6 @@ public class Loops {
         }
 
         return mult;
-
     }
 
     private int findNearestSquare43() {

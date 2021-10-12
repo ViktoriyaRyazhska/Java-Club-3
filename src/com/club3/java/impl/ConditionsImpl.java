@@ -1,7 +1,5 @@
 package com.club3.java.impl;
 
-import java.util.Scanner;
-
 public class ConditionsImpl {
 
     public String divinity19(int n, int x, int y) {
@@ -19,7 +17,7 @@ public class ConditionsImpl {
 
     }
 
-    public String rps23( String p1,String p2) {
+    public String rps23(String p1, String p2) {
         String p = "paper";
         String s = "scissors";
         String r = "rock";
@@ -33,7 +31,7 @@ public class ConditionsImpl {
         return "Ups!";
     }
 
-    public int enough27(int cap,int on,int wait) {
+    public int enough27(int cap, int on, int wait) {
 
         int sum = 0;
         sum = on + wait;
@@ -47,6 +45,7 @@ public class ConditionsImpl {
         }
         return 000;
     }
+
     public int oppositeNumber(int number) {
         int oppositeNumber = 0;
         if (number > 0) {
@@ -118,5 +117,17 @@ public class ConditionsImpl {
         } else {
             return "green";
         }
+    }
+
+    public String bonusTime(final int salary, final boolean bonus) {
+        return "\u00A3" + (bonus ? salary * 10 : salary);
+    }
+
+    public boolean isLove(final int flower1, final int flower2) {
+        return ((flower1 % 2 != 0) && (flower2 % 2 == 0)) || ((flower1 % 2 == 0) && (flower2 % 2 != 0));
+    }
+
+    public String switchItUp(int number) {
+        return new String[] {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"}[number];
     }
 }

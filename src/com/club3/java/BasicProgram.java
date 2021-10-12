@@ -5,8 +5,8 @@ import com.club3.java.impl.BasicProgramImpl;
 import java.util.Scanner;
 
 public class BasicProgram {
-    private BasicProgramImpl basicProgramImpl = new BasicProgramImpl();
 
+    private BasicProgramImpl basicProgramImpl = new BasicProgramImpl();
 
     private double getVolumeOfCuboid3() {
         System.out.println(" Volume of a Cuboid");
@@ -15,7 +15,7 @@ public class BasicProgram {
         double lengs = scanner.nextDouble();
         double width = scanner.nextDouble();
         double height = scanner.nextDouble();
-        return lengs * width * height ;
+        return lengs * width * height;
     }
 
     private int past7() {
@@ -73,9 +73,36 @@ public class BasicProgram {
         System.out.println("\n Given an integer (1 <= n <= 100) representing a person's age, return their minimum and maximum age range." +
                 "\n Return your answer in the form [min]-[max]");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter your age:");
+        System.out.println("Enter your age: ");
         int age = scanner.nextInt();
         return basicProgramImpl.ageRangeCompatibilityEquation(age);
+    }
+
+    private int doubleInteger() {
+        System.out.println("You need to double the integer and return it.");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Integer number: ");
+        int i = scanner.nextInt();
+        return basicProgramImpl.doubleInteger(i);
+    }
+
+    public String greet() {
+        System.out.println("Jenny has written a function that returns a greeting for a user. +" +
+                "\n However, she's in love with Johnny, and would like to greet him slightly different. +" +
+                "\n She added a special case to her function, but she made a mistake.");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter name of a boy: ");
+        String name = scanner.next();
+        return basicProgramImpl.greet(name);
+    }
+
+    public int makeNegative() {
+        System.out.println("In this simple assignment you are given a number and have to make it negative. " +
+                "\nBut maybe the number is already negative?");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Integer number: ");
+        int x = scanner.nextInt();
+        return basicProgramImpl.makeNegative(x);
     }
 
     private void displayMenu() {
@@ -87,7 +114,10 @@ public class BasicProgram {
                 "\n 4. Volume of a Cuboid" +
                 "\n 5. Time since midnight in milliseconds" +
                 "\n 6. Fahrenheit to celsius" +
-                "\n 7. Return to main menu");
+                "\n 7. Double Integer" +
+                "\n 8. Jenny's secret message" +
+                "\n 9. Return Negative" +
+                "\n 10. Return to main menu");
     }
 
     public void runBasicProgram() {
@@ -116,6 +146,15 @@ public class BasicProgram {
                     System.out.println(weatherInfo11());
                     break;
                 case 7:
+                    System.out.println(doubleInteger());
+                    break;
+                case 8:
+                    System.out.println(greet());
+                    break;
+                case 9:
+                    System.out.println(makeNegative());
+                    break;
+                case 10:
                     System.out.println("\n Welcome to main menu \n __________________________");
                     Menu menu = new Menu();
                     menu.runApplication();
@@ -129,5 +168,3 @@ public class BasicProgram {
     }
 
 }
-
-

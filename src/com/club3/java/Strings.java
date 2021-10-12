@@ -10,20 +10,16 @@ public class Strings {
 
     private String numberToString51() {
         System.out.println("Int to String \nEnter Int");
-
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
-        String s = String.valueOf(num);
-
-        return s;
+        return String.valueOf(num);
     }
 
     private String replaceDots55() {
         System.out.println("Enter some String with .");
         Scanner scanner = new Scanner(System.in);
         String s1 = scanner.nextLine();
-        String replaceString = s1.replaceAll("\\.", "-");
-        return replaceString;
+        return s1.replaceAll("\\.", "-");
     }
 
     private String position59() {
@@ -43,7 +39,6 @@ public class Strings {
     }
 
     private String abbrevName63() {
-
         System.out.println("Enter name and subname");
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
@@ -57,7 +52,6 @@ public class Strings {
     }
 
     private String toAlternativeString67() {
-
         System.out.println(" Define String.prototype.toAlternatingCase (or a similar function/method such as to_alternating_case/ \n" +
                 " toAlternatingCase/ToAlternatingCase in your selected language; see the initial solution for details)");
         System.out.println("Enter any string with Upper and Lower");
@@ -114,6 +108,32 @@ public class Strings {
         return stringsImpl.tripleTrouble(one, two, three);
     }
 
+    private String numberToString() {
+        System.out.println("We need a function that can transform a number into a string.");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter number: ");
+        int num = scanner.nextInt();
+        return String.valueOf(num);
+    }
+
+    public String toAlternativeString() {
+        System.out.println("Define String.prototype.toAlternatingCase (or a similar function/method such as +" +
+                "\n to_alternating_case/toAlternatingCase/ToAlternatingCase in your selected language; +" +
+                "\n see the initial solution for details) such that each lowercase letter becomes uppercase and each uppercase letter becomes lowercase.");
+        System.out.println("Enter some string: ");
+        Scanner scanner = new Scanner(System.in);
+        String string = scanner.next();
+        String result = "";
+        for (char c : string.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                result += Character.toLowerCase(c);
+            } else {
+                result += Character.toUpperCase(c);
+            }
+        }
+        return result;
+    }
+
 
     private void displayMenu() {
         System.out.println("\n Please, choose a task:" +
@@ -126,7 +146,9 @@ public class Strings {
                 "\n 6. Plase in alphabet" +
                 "\n 7. Name.Subname" +
                 "\n 8. Upper Lower" +
-                "\n 9. Return to main menu");
+                "\n 9. Convert a Number to a String" +
+                "\n 10. altERnaTIng cAsE <=> ALTerNAtiNG CaSe" +
+                "\n 11. Return to main menu");
     }
 
     public void runStings() {
@@ -161,6 +183,10 @@ public class Strings {
                     System.out.println(toAlternativeString67());
                     break;
                 case 9:
+                    System.out.println(numberToString());
+                case 10:
+                    System.out.println(toAlternativeString());
+                case 11:
                     System.out.println("\n Welcome to main menu \n __________________________");
                     Menu menu = new Menu();
                     menu.runApplication();
