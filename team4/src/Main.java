@@ -5,6 +5,19 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Menu :");
+        System.out.println("3) getVolumeOfCubiod\n" +
+                "6) to_binary\n"+
+                "9) makeNegative\n"+
+                "12) addPerson\n"+
+                "15) show\n"+
+                "18) opposite\n"+
+                "21) addSalaryAndBonuses\n"+
+                "24) operations\n"+
+                "29) enough \n"+
+                "33) humanYearsCatYearsDogYears\n"+
+                "37) reverse\n"+
+                "41) fixTheMeerkat" );
 
         while (true){
             System.out.println("Enter task's number");
