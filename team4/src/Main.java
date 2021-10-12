@@ -52,6 +52,21 @@ public class Main {
                     task29.enough();
                 }
                 break;
+                case "33": {
+                    Task33 task339 = new Task33();
+                    task339.humanYearsCatYearsDogYears();
+                }
+                break;
+                case "37": {
+                    Task37 task37 = new Task37();
+                    task37.reverse();
+                }
+                break;
+                case "41": {
+                    Task41 task41 = new Task41();
+                    task41.fixTheMeerkat();
+                }
+                break;
             }
         }
     }
