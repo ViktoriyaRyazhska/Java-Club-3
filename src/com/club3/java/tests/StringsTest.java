@@ -1,6 +1,7 @@
 package com.club3.java.tests;
 
 import com.club3.java.impl.StringsImpl;
+import com.club3.java.utils.GrassHopper;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,6 +18,12 @@ public class StringsTest {
     @Test
     public void tripleTrouble() {
         assertEquals("ttlheoiscstk", stringsImpl.tripleTrouble("this", "test", "lock"));
-        assertEquals("abcabc", stringsImpl.tripleTrouble("aa","bb","cc"));
+        assertEquals("abcabc", stringsImpl.tripleTrouble("aa", "bb", "cc"));
+    }
+
+    @Test
+    public void grasshopperDebug() {
+        assertEquals("10.0 is above freezing temperature", GrassHopper.weatherInfo(50));
+        assertEquals("-5.0 is freezing temperature", GrassHopper.weatherInfo(23));
     }
 }
