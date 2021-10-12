@@ -34,7 +34,7 @@ public class Fraction implements Comparable<Fraction> {
         return this.bottom;
     }
 
-    private long gcd(long a, long b) {
+    public long gcd(long a, long b) {
         return b == 0 ? a : gcd(b, a % b);
     }
 

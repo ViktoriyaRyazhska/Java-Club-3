@@ -1,7 +1,5 @@
 package com.softserve.team3;
 
-import java.util.Arrays;
-
 public class GapInPrimes {
 
     public static long[] gap(int g, long m, long n) {
