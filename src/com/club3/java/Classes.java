@@ -80,6 +80,6 @@ public class Classes {
                     break;
             }
 
-        } while (choice != 2);
+        } while (choice != 4);
     }
 }

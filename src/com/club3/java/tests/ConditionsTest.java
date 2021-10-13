@@ -2,6 +2,7 @@ package com.club3.java.tests;
 
 import org.junit.Test;
 
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 public class ConditionsTest {
@@ -83,5 +84,28 @@ public class ConditionsTest {
 
     }
 
+    @Test
+    public void bonusTime() {
+        assertEquals("\u00A3" + 10000, conditions.bonusTime(1000, true));
+        assertEquals("\u00A3" + 1000, conditions.bonusTime(1000, false));
+        assertEquals("\u00A3" + 12340, conditions.bonusTime(1234, true));
+        assertEquals("\u00A3" + 0, conditions.bonusTime(0, true));
+    }
 
+    @Test
+    public void isLove() {
+        assertTrue(conditions.isLove(0, 1));
+        assertTrue(conditions.isLove(3, 0));
+        assertFalse(conditions.isLove(2, 4));
+        assertFalse(conditions.isLove(9, 7));
+        assertTrue(conditions.isLove(7, 10));
+    }
+
+    @Test
+    public void switchItUp() {
+        assertEquals("Zero", conditions.switchItUp(0));
+        assertEquals("Five", conditions.switchItUp(5));
+        assertEquals("Seven", conditions.switchItUp(7));
+        assertEquals("Three", conditions.switchItUp(3));
+    }
 }

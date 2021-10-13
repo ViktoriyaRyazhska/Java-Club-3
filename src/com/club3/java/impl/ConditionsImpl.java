@@ -3,7 +3,6 @@ package com.club3.java.impl;
 public class ConditionsImpl {
 
     public String divinity19(int n, int x, int y) {
-
         if (n % x == 0 && n % y == 0) {
             return "n = " + n + " is divisible on " + "x = " + x + " y = " + y;
         } else if (n % x == 0 && n % y != 0) {
@@ -14,7 +13,6 @@ public class ConditionsImpl {
             return "n = " + n + " not divisible on " + "x = " + x + " y = " + y;
         }
         return "Some problems";
-
     }
 
     public String rps23(String p1, String p2) {
@@ -32,10 +30,7 @@ public class ConditionsImpl {
     }
 
     public int enough27(int cap, int on, int wait) {
-
-        int sum = 0;
-        sum = on + wait;
-
+        int sum = on + wait;
         if (cap >= sum) {
             System.out.print("Enoughth plase empty : ");
             return cap - sum;
@@ -128,6 +123,6 @@ public class ConditionsImpl {
     }
 
     public String switchItUp(int number) {
-        return new String[] {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"}[number];
+        return new String[]{"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"}[number];
     }
 }

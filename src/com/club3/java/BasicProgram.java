@@ -164,7 +164,7 @@ public class BasicProgram {
                     break;
             }
 
-        } while (choice != 7);
+        } while (choice != 10);
     }
 
 }

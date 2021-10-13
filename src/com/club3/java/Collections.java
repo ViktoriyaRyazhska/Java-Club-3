@@ -82,6 +82,6 @@ public class Collections {
                     System.out.println("There are not number like this");
                     break;
             }
-        } while (choice != 3);
+        } while (choice != 4);
     }
 }

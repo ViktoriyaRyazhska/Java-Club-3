@@ -252,7 +252,7 @@ public class Conditions {
                     System.out.println("There are not number like this");
                     break;
             }
-        } while (choice != 9);
+        } while (choice != 12);
     }
 
 }
