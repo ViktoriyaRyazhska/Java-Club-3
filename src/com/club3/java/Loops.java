@@ -52,7 +52,7 @@ public class Loops {
         System.out.println("Enter number");
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
-        return (int) Math.pow(Math.round(Math.sqrt(num)), 2);
+        return loopsImp.findNearestSquare43(num);
 
     }
 
