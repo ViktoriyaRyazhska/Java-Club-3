@@ -15,7 +15,7 @@ public class BasicProgram {
         double lengs = scanner.nextDouble();
         double width = scanner.nextDouble();
         double height = scanner.nextDouble();
-        return lengs * width * height ;
+        return basicProgramImpl.getVolumeOfCuboid3(lengs,width,height) ;
     }
 
     private int past7() {
