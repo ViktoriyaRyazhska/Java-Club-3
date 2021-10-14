@@ -36,6 +36,8 @@ public abstract class BaseKata implements Kata {
                     result = scanner.nextDouble();
                 } else if (InputType.BOOLEAN.equals(inputType)) {
                     result = scanner.nextBoolean();
+                } else if (InputType.CHARACTER.equals(inputType)) {
+                    result = scanner.next().charAt(0);
                 } else {
                     System.out.printf("Unknown input type: %s \n", inputType);
                 }

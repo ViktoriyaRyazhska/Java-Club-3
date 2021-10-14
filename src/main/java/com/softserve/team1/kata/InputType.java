@@ -1,5 +1,5 @@
 package com.softserve.team1.kata;
 
 public enum InputType {
-    STRING, INT, DOUBLE, BOOLEAN;
+    STRING, INT, DOUBLE, BOOLEAN, CHARACTER;
 }
