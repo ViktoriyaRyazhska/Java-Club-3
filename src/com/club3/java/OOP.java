@@ -89,7 +89,6 @@ public class OOP {
     public class God {
 
         public Human[] create() {
-
             Human[] people = new Human[2];
             people[0] = new Man();
             people[1] = new Woman();
@@ -117,7 +116,7 @@ public class OOP {
     }
 
 
-    private void godmenu() {
+    public void godmenu() {
         System.out.println("\n You have to do God's job. The creation method must return an array of length 2 containing objects 0 for Man adn 1 for Woman\n" +
                 "who you wonna to create?\n" +
                 "0. Man\n" +
@@ -128,6 +127,7 @@ public class OOP {
         God god = new God();
         Human[] paradise = god.create();
         int choice;
+
         do {
             choice = scanner.nextInt();
             switch (choice) {

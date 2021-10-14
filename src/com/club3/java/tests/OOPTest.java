@@ -1,12 +1,18 @@
 package com.club3.java.tests;
 
+import com.club3.java.OOP;
 import com.club3.java.utils.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class OOPTest {
+    OOP oop = new OOP();
     private Calculator sut = new Calculator();
+    @Test
+    public void godmenu() {
+
+    }
     @Test
     public void areaOfATriangleIsBaseMultipliedByHeight() {
         double triangleBase = 6;
