@@ -10,14 +10,14 @@ public class Avarage {
         int size = sc.nextInt();
         int [] marks = new int[size];
         //
-        System.out.print("Input array elements: ");   //Вводимо елементи массиву
-        for(int i = 0; i<size;i++){
-            marks[i] = sc.nextInt();
+        System.out.print("Input marks: ");   //Вводимо елементи массиву
+        for(int k = 0; k<size;k++){
+            marks[k] = sc.nextInt();
         }
         //
         System.out.println("Your array is: ");     //Виводимо на екран массив
-        for (int i = 0; i<marks.length;i++){
-            System.out.print(" " + marks[i]);
+        for (int j = 0; j<marks.length;j++){
+            System.out.print(" " + marks[j]);
         }
         //
         int sum =0;
