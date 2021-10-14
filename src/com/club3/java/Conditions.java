@@ -152,6 +152,39 @@ public class Conditions {
         return conditionsImpl.trafficLight(s);
     }
 
+    private String bonusTime() {
+        System.out.println("It's bonus time in the big city! The fatcats are rubbing their paws in anticipation... but who is going to make the most money?\n" +
+                "\n" +
+                "Build a function that takes in two arguments (salary, bonus). Salary will be an integer, and bonus a boolean.\n" +
+                "\n" +
+                "If bonus is true, the salary should be multiplied by 10. If bonus is false, the fatcat did not make enough money and must receive only his stated salary.");
+        System.out.println("Enter salary and bonus status: ");
+        Scanner scanner = new Scanner(System.in);
+        int salary = scanner.nextInt();
+        boolean bonus = scanner.nextBoolean();
+        return conditionsImpl.bonusTime(salary, bonus);
+    }
+
+    private boolean isLove() {
+        System.out.println("Timmy & Sarah think they are in love, but around where they live, they will only know once they pick a flower each. +" +
+                "\nIf one of the flowers has an even number of petals and the other has an odd number of petals it means they are in love.\n" +
+                "\n" +
+                "Write a function that will take the number of petals of each flower and return true if they are in love and false if they aren't.");
+        System.out.println("Enter amount of petals for each flower: ");
+        Scanner scanner = new Scanner(System.in);
+        int flower1 = scanner.nextInt();
+        int flower2 = scanner.nextInt();
+        return conditionsImpl.isLove(flower1, flower2);
+    }
+
+    private String switchItUp() {
+        System.out.println("When provided with a number between 0-9, return it in words.");
+        System.out.println("\n Enter number from 0 to 9:");
+        Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+        return conditionsImpl.switchItUp(number);
+    }
+
     private void displayMenu() {
         System.out.println("\n Please, choose a task:" +
                 "\n " +
@@ -163,7 +196,10 @@ public class Conditions {
                 "\n 6. Rock Paper Scissors" +
                 "\n 7. Is enough space" +
                 "\n 8. Rental car cost" +
-                "\n 9. Return to main menu");
+                "\n 9. Do I get a bonus?" +
+                "\n 10. Opposites Attract" +
+                "\n 11. Switch it Up" +
+                "\n 12. Return to main menu");
     }
 
 
@@ -199,6 +235,15 @@ public class Conditions {
                     System.out.println(rentalCarCost31());
                     break;
                 case 9:
+                    System.out.println(bonusTime());
+                    break;
+                case 10:
+                    System.out.println(isLove());
+                    break;
+                case 11:
+                    System.out.println(switchItUp());
+                    break;
+                case 12:
                     System.out.println("\n Welcome to main menu \n __________________________");
                     Menu menu = new Menu();
                     menu.runApplication();
@@ -207,7 +252,7 @@ public class Conditions {
                     System.out.println("There are not number like this");
                     break;
             }
-        } while (choice != 9);
+        } while (choice != 12);
     }
 
 }

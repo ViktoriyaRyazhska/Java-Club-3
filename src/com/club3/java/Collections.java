@@ -1,6 +1,7 @@
 package com.club3.java;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,12 +36,25 @@ public class Collections {
                 "  }");
     }
 
+    public List<Integer> filterOddNumber() {
+        List<Integer> listOfNumbers = new LinkedList<>();
+        System.out.println("The method is supposed to remove even numbers from the list and return a list that contains the odd numbers.");
+        System.out.println("Enter list of integers: ");
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextInt()) {
+            listOfNumbers.add(scanner.nextInt());
+        }
+        listOfNumbers.removeIf(i -> i % 2 == 0);
+        return listOfNumbers;
+    }
+
     private void displayMenu() {
         System.out.println("\n Please, choose a task:" +
                 "\n " +
                 "\n 1. Unfinished Loop - Bug Fixing" +
                 "\n 2. Filter of odd numbers" +
-                "\n 3. Return to main menu");
+                "\n 3. Filtering even numbers " +
+                "\n 4. Return to main menu");
     }
 
     public void runCollections() {
@@ -57,6 +71,9 @@ public class Collections {
                     System.out.println(filterOddNumber71());
                     break;
                 case 3:
+                    System.out.println(filterOddNumber());
+                    break;
+                case 4:
                     System.out.println("\n Welcome to main menu \n __________________________");
                     Menu menu = new Menu();
                     menu.runApplication();
@@ -65,6 +82,6 @@ public class Collections {
                     System.out.println("There are not number like this");
                     break;
             }
-        } while (choice != 3);
+        } while (choice != 4);
     }
 }

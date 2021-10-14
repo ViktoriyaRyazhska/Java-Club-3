@@ -1,15 +1,12 @@
 package com.club3.java.impl;
 
-import java.util.Scanner;
-
 public class BasicProgramImpl {
 
-    public double getVolumeOfCuboid3(double lengs,double width,double height) {
-        return lengs * width * height ;
+    public double getVolumeOfCuboid3(double lengs, double width, double height) {
+        return lengs * width * height;
     }
 
-    public int past7(int hours,int min,int sec) {
-
+    public int past7(int hours, int min, int sec) {
         int res = 0;
         if (hours <= 23 && hours >= 0) {
             if (min <= 59 && min >= 0) {
@@ -22,7 +19,6 @@ public class BasicProgramImpl {
     }
 
     public String weatherInfo11(int far) {
-
         double cels = 0;
         cels = ((far - 32) * (5.0 / 9.0));
         if (cels > 0) {
@@ -52,5 +48,23 @@ public class BasicProgramImpl {
             max = (age - 7) * 2;
         }
         return min + "-" + max;
+    }
+
+    public int doubleInteger(int i) {
+        return i * 2;
+    }
+
+    public String greet(String name) {
+        if (!name.isEmpty()) {
+            if (name.equals("Johnny"))
+                return "Hello, my love!";
+            else
+                return String.format("Hello, %s!", name);
+        }
+        return "name is null";
+    }
+
+    public int makeNegative(final int x) {
+        return (x < 0) ? x : -x;
     }
 }
