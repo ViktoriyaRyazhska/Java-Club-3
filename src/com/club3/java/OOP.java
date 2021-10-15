@@ -84,7 +84,7 @@ public class OOP {
             }
         } while (choice != 5);
     }
-    
+
     public void godmenu() {
         System.out.println("\n You have to do God's job. The creation method must return an array of length 2 containing objects 0 for Man adn 1 for Woman\n" +
                 "who you wonna to create?\n" +
