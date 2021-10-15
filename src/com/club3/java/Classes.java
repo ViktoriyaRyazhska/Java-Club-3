@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Classes {
 
-    private Fraction fractionsClass() {
+    public Fraction fractionsClass() {
         System.out.println("\n You are provided with a skeleton of the class 'Fraction', which accepts two arguments (numerator, denominator)." +
                 "\n Your task is to make this class string representable, and addable while keeping the result in the minimum representation possible.\n" +
                 "\n");

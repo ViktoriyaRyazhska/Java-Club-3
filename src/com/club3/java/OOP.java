@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class OOP {
 
-    private double areaOfRectangle() {
+    public double areaOfRectangle() {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
         System.out.println("Enter height:");
@@ -16,7 +16,7 @@ public class OOP {
         return calculator.getTotalArea(new Rectangle(height, weigh));
     }
 
-    private double areaOfSquare() {
+    public double areaOfSquare() {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
         System.out.println("Enter side:");
@@ -24,7 +24,7 @@ public class OOP {
         return calculator.getTotalArea(new Square(side));
     }
 
-    private double areaOfTriangle() {
+    public double areaOfTriangle() {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
         System.out.println("Enter triangle height:");
@@ -34,7 +34,7 @@ public class OOP {
         return calculator.getTotalArea(new Triangle(base, height));
     }
 
-    private double areaOfCircle() {
+    public double areaOfCircle() {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
         System.out.println("Enter the radius:");

@@ -38,7 +38,7 @@ public class BasicProgram {
     }
 
 
-    private int multiplyTwoNumbers() {
+    public int multiplyTwoNumbers() {
         System.out.println("\n Implement a function which multiplies two numbers.");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter first number:");
@@ -48,7 +48,7 @@ public class BasicProgram {
         return basicProgramImpl.multiplyTwoNumbers(one, two);
     }
 
-    private int integerToBinary() {
+    public int integerToBinary() {
         System.out.println("\n Given a non-negative integer n, write a function to_binary/ToBinary which returns that number in a binary format.");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter integer number: ");
@@ -56,7 +56,7 @@ public class BasicProgram {
         return basicProgramImpl.integerToBinary(n);
     }
 
-    private String ageRangeCompatibilityEquation() {
+    public String ageRangeCompatibilityEquation() {
         System.out.println("\n Given an integer (1 <= n <= 100) representing a person's age, return their minimum and maximum age range." +
                 "\n Return your answer in the form [min]-[max]");
         Scanner scanner = new Scanner(System.in);

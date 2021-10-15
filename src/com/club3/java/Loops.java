@@ -100,7 +100,7 @@ public class Loops {
         }
     }
 
-    private int twiceAsOld() {
+    public int twiceAsOld() {
         System.out.println("\n Your function takes two arguments:" +
                 "\n current father's age (years)" +
                 "\n current age of his son (years)" +

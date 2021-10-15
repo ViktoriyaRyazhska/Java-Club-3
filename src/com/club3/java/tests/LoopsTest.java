@@ -41,18 +41,24 @@ public class LoopsTest {
     }
 
     @Test
-    public void getTheMeanOfAnArray() {
+    public void scannerInput_getTheMeanOfAnArray() {
         systemInMock.provideLines("4", "4", "4", "4", "4");
         assertEquals(4, loops1.getTheMeanOfAnArray());
     }
 
     @Test
-    public void howGoodAreYouReally() {
+    public void scannerInput_howGoodAreYouReally() {
         systemInMock.provideLines("80", "6", "80", "100", "75", "82", "63", "88");
         assertEquals("False", loops1.howGoodAreYouReally());
 
         systemInMock.provideLines("85", "6", "80", "100", "75", "82", "63", "88");
         assertEquals("True", loops1.howGoodAreYouReally());
+    }
+
+    @Test
+    public void scannerInput_twiceAsOld() {
+        systemInMock.provideLines("30", "7");
+        assertEquals(16, loops1.twiceAsOld());
     }
 
 }

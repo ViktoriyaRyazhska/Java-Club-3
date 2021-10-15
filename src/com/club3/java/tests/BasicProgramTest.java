@@ -1,11 +1,20 @@
 package com.club3.java.tests;
 
+import com.club3.java.BasicProgram;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
 
 public class BasicProgramTest {
-    com.club3.java.impl.BasicProgramImpl basicProgram = new com.club3.java.impl.BasicProgramImpl();
+    private com.club3.java.impl.BasicProgramImpl basicProgram = new com.club3.java.impl.BasicProgramImpl();
+    private BasicProgram basicProgram1 = new BasicProgram();
+
+    @Rule
+    public final TextFromStandardInputStream systemInMock
+            = emptyStandardInputStream();
 
     @Test
     public void getVolumeOfCuboid3() {
@@ -72,5 +81,23 @@ public class BasicProgramTest {
         assertEquals(-42, basicProgram.makeNegative(42));
         assertEquals(-1, basicProgram.makeNegative(-1));
         assertEquals(-1, basicProgram.makeNegative(1));
+    }
+
+    @Test
+    public void scannerInput_multiplyTwoNumbers() {
+        systemInMock.provideLines("3", "4");
+        assertEquals(12, basicProgram1.multiplyTwoNumbers());
+    }
+
+    @Test
+    public void scannerInput_integerToBinary() {
+        systemInMock.provideLines("100");
+        assertEquals(1100100, basicProgram1.integerToBinary());
+    }
+
+    @Test
+    public void scannerInput_ageRangeCompatibilityEquation() {
+        systemInMock.provideLines("35");
+        assertEquals("24-56", basicProgram1.ageRangeCompatibilityEquation());
     }
 }

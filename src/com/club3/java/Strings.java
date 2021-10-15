@@ -45,7 +45,7 @@ public class Strings {
         return stringsImpl.toAlternativeString67(string);
     }
 
-    private String grasshopperDebug() {
+    public String grasshopperDebug() {
         System.out.println("\nYour friend is traveling abroad to the United States so he wrote a program to convert fahrenheit to celsius. Unfortunately his code has some bugs." +
                 "\n Find the errors in the code to get the celsius converter working properly.");
         Scanner scanner = new Scanner(System.in);
@@ -54,7 +54,7 @@ public class Strings {
         return GrassHopper.weatherInfo(temp);
     }
 
-    private String correctMistakesOfCharacter() {
+    public String correctMistakesOfCharacter() {
         System.out.println("\n When documents (especially pretty old ones written with a typewriter), are digitised character recognition softwares often make mistakes." +
                 "\n Your task is correct the errors in the digitised text. You only have to handle the following mistakes:" +
                 "\n S is misinterpreted as 5\n" +
@@ -66,7 +66,7 @@ public class Strings {
         return stringsImpl.correctMistakesOfCharacter(string);
     }
 
-    private String tripleTrouble() {
+    public String tripleTrouble() {
         System.out.println("\n Create a function that will return a string that combines all of the letters of the three inputed strings in groups. " +
                 "\n Taking the first letter of all of the inputs and grouping them next to each other.");
         Scanner scanner = new Scanner(System.in);
