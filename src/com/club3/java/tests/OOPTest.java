@@ -7,12 +7,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class OOPTest {
-    OOP oop = new OOP();
     private Calculator sut = new Calculator();
-    @Test
-    public void godmenu() {
 
-    }
     @Test
     public void areaOfATriangleIsBaseMultipliedByHeight() {
         double triangleBase = 6;

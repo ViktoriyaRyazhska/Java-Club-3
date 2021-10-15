@@ -56,16 +56,25 @@ public class Loops {
 
     }
 
-    private int getTheMeanOfAnArray() {
+    public int getTheMeanOfAnArray() {
         System.out.println("\n It's the academic year's end, fateful moment of your school report. " +
                 "\n The averages must be calculated. All the students come to you and entreat you to calculate their average for them.");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the size of array:");
         int size = scanner.nextInt();
-        return loopsImp.getTheMeanOfAnArray(size, scanner);
+        int[] marks = new int[size];
+        int averageMark = 0;
+        int sum = 0;
+        for (int i = 0; i < size; i++) {
+            System.out.println("Enter the element: " + i);
+            marks[i] = scanner.nextInt();
+            sum += marks[i];
+            averageMark = sum / size;
+        }
+        return averageMark;
     }
 
-    private String howGoodAreYouReally() {
+    public String howGoodAreYouReally() {
         System.out.println("\n There was a test in your class and you passed it. Congratulations!" +
                 "\n But you're an ambitious person. You want to know if you're better than the average student in your class." +
                 "\n You receive an array with your peers' test scores. Now calculate the average and compare your score!" +
@@ -75,7 +84,20 @@ public class Loops {
         int yourMark = scanner.nextInt();
         System.out.println("Enter the size of array:");
         int arraySize = scanner.nextInt();
-        return loopsImp.howGoodAreYouReally(yourMark, arraySize, scanner);
+        int[] classPoints = new int[arraySize];
+        int averageClassPoint = 0;
+        int sum = 0;
+        for (int i = 0; i < arraySize; i++) {
+            System.out.println("Enter the element: " + i);
+            classPoints[i] = scanner.nextInt();
+            sum += classPoints[i];
+            averageClassPoint = sum / arraySize;
+        }
+        if (averageClassPoint < yourMark) {
+            return "True";
+        } else {
+            return "False";
+        }
     }
 
     private int twiceAsOld() {
@@ -93,8 +115,7 @@ public class Loops {
 
     private String twentyOneStick() {
         System.out.println("\n In this game, there are 21 sticks lying in a pile. Players take turns taking 1, 2, or 3 sticks. The last person to take a stick wins.");
-        Scanner scanner = new Scanner(System.in);
-        return loopsImp.twentyOneStick(scanner);
+        return loopsImp.twentyOneStick();
     }
 
     private void displayMenu() {

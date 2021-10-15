@@ -25,41 +25,12 @@ public class LoopsImpl {
 
     }
 
-    public int getTheMeanOfAnArray(int size, Scanner scanner) {
-        int[] marks = new int[size];
-        int averageMark = 0;
-        int sum = 0;
-        for (int i = 0; i < size; i++) {
-            System.out.println("Enter the element: " + i);
-            marks[i] = scanner.nextInt();
-            sum += marks[i];
-            averageMark = sum / size;
-        }
-        return averageMark;
-    }
-
-    public String howGoodAreYouReally(int yourMark, int arraySize, Scanner scanner) {
-        int[] classPoints = new int[arraySize];
-        int averageClassPoint = 0;
-        int sum = 0;
-        for (int i = 0; i < arraySize; i++) {
-            System.out.println("Enter the element: " + i);
-            classPoints[i] = scanner.nextInt();
-            sum += classPoints[i];
-            averageClassPoint = sum / arraySize;
-        }
-        if (averageClassPoint < yourMark) {
-            return "True";
-        } else {
-            return "False";
-        }
-    }
-
     public int twiceAsOld(int dadYears, int sonYears) {
         return Math.abs((sonYears * 2) - dadYears);
     }
 
-    public String twentyOneStick(Scanner scanner) {
+    public String twentyOneStick() {
+        Scanner scanner = new Scanner(System.in);
         int firstPlayer;
         int secondPlayer;
         int sticks = 21;
