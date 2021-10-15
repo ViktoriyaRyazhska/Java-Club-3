@@ -19,8 +19,13 @@ public class OOPTest {
             = emptyStandardInputStream();
     @Test
     public void god() {
-        systemInMock.provideLines("1");
-        assertEquals(new Woman(), oop.godmenu());
+        Human[] paradise = God.create();
+        assertEquals("Adam are a man", true ,paradise[0] instanceof Man);
+    }
+    @Test
+    public void god1() {
+        Human[] paradise = God.create();
+        assertEquals("Eva is woman", true ,paradise[1] instanceof Woman);
     }
 
     @Test

@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Collections {
 
-    private List<Integer> filterOddNumber71() {
+    public List<Integer> filterOddNumber71() {
         List<Integer> listOfNumbers = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Fill the ArrayList after press any char");

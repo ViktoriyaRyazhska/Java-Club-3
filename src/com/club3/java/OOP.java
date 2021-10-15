@@ -102,11 +102,9 @@ public class OOP {
             choice = scanner.nextInt();
             switch (choice) {
                 case 0:
-                    //System.out.println("man");
                     return paradise[0];
 
                 case 1:
-                   // System.out.println("wom");
                     return paradise[1];
 
                 case 2:
@@ -121,7 +119,6 @@ public class OOP {
         } while (choice != 2);
         return paradise[1];
     }
-
 
 
     private void displayMenu() {
