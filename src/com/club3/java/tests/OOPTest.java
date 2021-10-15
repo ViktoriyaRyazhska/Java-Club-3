@@ -2,12 +2,26 @@ package com.club3.java.tests;
 
 import com.club3.java.OOP;
 import com.club3.java.utils.*;
+import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
 
 public class OOPTest {
     private Calculator sut = new Calculator();
+    private OOP oop = new OOP();
+
+    @Rule
+    public final TextFromStandardInputStream systemInMock
+            = emptyStandardInputStream();
+    @Test
+    public void god() {
+        systemInMock.provideLines("1");
+        assertEquals(new Woman(), oop.godmenu());
+    }
 
     @Test
     public void areaOfATriangleIsBaseMultipliedByHeight() {
@@ -52,5 +66,29 @@ public class OOPTest {
     @Test
     public void totalAreaIs0WhenThereAreNoShapes() {
         assertEquals(0, sut.getTotalArea(), .0001);
+    }
+
+    @Test
+    public void scannerInput_areaOfRectangle() {
+        systemInMock.provideLines("4", "8");
+        assertEquals(32, oop.areaOfRectangle(), .0001);
+    }
+
+    @Test
+    public void scannerInput_areaOfSquare() {
+        systemInMock.provideLines("6");
+        assertEquals(36, oop.areaOfSquare(), .0001);
+    }
+
+    @Test
+    public void scannerInput_areaOfTriangle() {
+        systemInMock.provideLines("6", "4");
+        assertEquals(12, oop.areaOfTriangle(), .0001);
+    }
+
+    @Test
+    public void scannerInput_areaOfCircle() {
+        systemInMock.provideLines("3");
+        assertEquals(28.27, oop.areaOfCircle(), .0001);
     }
 }

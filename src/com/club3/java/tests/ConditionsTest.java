@@ -1,12 +1,20 @@
 package com.club3.java.tests;
 
+import com.club3.java.Conditions;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
 
 public class ConditionsTest {
-    com.club3.java.impl.ConditionsImpl conditions = new com.club3.java.impl.ConditionsImpl();
+    private com.club3.java.impl.ConditionsImpl conditions = new com.club3.java.impl.ConditionsImpl();
+    private Conditions conditions1 = new Conditions();
+    @Rule
+    public final TextFromStandardInputStream systemInMock
+            = emptyStandardInputStream();
 
     @Test
     public void divinity19() {
@@ -107,5 +115,35 @@ public class ConditionsTest {
         assertEquals("Five", conditions.switchItUp(5));
         assertEquals("Seven", conditions.switchItUp(7));
         assertEquals("Three", conditions.switchItUp(3));
+    }
+
+    @Test
+    public void scannerInput_oppositeNumber() {
+        systemInMock.provideLines("4");
+        assertEquals(-4, conditions1.oppositeNumber());
+    }
+
+    @Test
+    public void scannerInput_howOldWillIBeIn2099() {
+        systemInMock.provideLines("2012", "2016");
+        assertEquals("You are 4 years old.", conditions1.howOldWillIBeIn2099());
+    }
+
+    @Test
+    public void scannerInput_convertBooleanValuesToStrings() {
+        systemInMock.provideLines("true");
+        assertEquals("Yes", conditions1.convertBooleanValuesToStrings());
+        systemInMock.provideLines("false");
+        assertEquals("No", conditions1.convertBooleanValuesToStrings());
+    }
+
+    @Test
+    public void scannerInput_trafficLight() {
+        systemInMock.provideLines("green");
+        assertEquals("yellow", conditions1.trafficLight());
+        systemInMock.provideLines("yellow");
+        assertEquals("red", conditions1.trafficLight());
+        systemInMock.provideLines("red");
+        assertEquals("green", conditions1.trafficLight());
     }
 }

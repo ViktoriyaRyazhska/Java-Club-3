@@ -49,7 +49,7 @@ public class Conditions {
         return conditionsImpl.rentalCarCost31(d);
     }
 
-    private int oppositeNumber() {
+    public int oppositeNumber() {
         System.out.println("\n Very simple, given a number, find its opposite.");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter number:");
@@ -57,7 +57,7 @@ public class Conditions {
         return conditionsImpl.oppositeNumber(number);
     }
 
-    private String howOldWillIBeIn2099() {
+    public String howOldWillIBeIn2099() {
         System.out.println("\n Your task is to write a function that takes two parameters: the year of birth and the year to count years in relation to. " +
                 "\n As Philip is getting more curious every day he may soon want to know how many years it was until he would be born, so your function needs to work with both dates in the future and in the past.");
         Scanner scanner = new Scanner(System.in);
@@ -68,7 +68,7 @@ public class Conditions {
         return conditionsImpl.howOldWillIBeIn2099(birth, yearIn);
     }
 
-    private String convertBooleanValuesToStrings() {
+    public String convertBooleanValuesToStrings() {
         System.out.println("\n Complete the method that takes a boolean value and return a \"Yes\" string for true, or a \"No\" string for false.");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your string:");
@@ -76,7 +76,7 @@ public class Conditions {
         return conditionsImpl.convertBooleanValuesToStrings(s);
     }
 
-    private String trafficLight() {
+    public String trafficLight() {
         System.out.println("\n You're writing code to control your town's traffic lights. You need a function to handle each change from green, to yellow, to red, and then to green again." +
                 "\n Complete the function that takes a string as an argument representing the current state of the light and returns a string representing the state the light should change to.");
         Scanner scanner = new Scanner(System.in);

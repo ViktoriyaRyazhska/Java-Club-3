@@ -1,13 +1,22 @@
 package com.club3.java.tests;
 
+import com.club3.java.Classes;
 import com.club3.java.utils.Fraction;
 import com.club3.java.utils.Dinglemouse;
 import com.club3.java.utils.Block;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
 
 public class ClassesTest {
+    private Classes classes = new Classes();
+
+    @Rule
+    public final TextFromStandardInputStream systemInMock
+            = emptyStandardInputStream();
 
     @Test
     public void add() {
@@ -37,5 +46,11 @@ public class ClassesTest {
             assertEquals(i * i * i, block.getVolume());
             assertEquals(6 * (i * i), block.getSurfaceArea());
         }
+    }
+
+    @Test
+    public void scannerInput_fractionsClass() {
+        systemInMock.provideLines("1", "8", "4", "5");
+        assertEquals("37/40", String.valueOf(classes.fractionsClass()));
     }
 }

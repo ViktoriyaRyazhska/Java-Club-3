@@ -1,7 +1,5 @@
 package com.club3.java.utils;
 
-import com.club3.java.OOP;
-
 public class God {
     public Human[] create() {
         Human[] people = new Human[2];

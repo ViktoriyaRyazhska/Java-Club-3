@@ -2,11 +2,12 @@ package com.club3.java;
 
 import com.club3.java.utils.*;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class OOP {
 
-    private double areaOfRectangle() {
+    public double areaOfRectangle() {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
         System.out.println("Enter height:");
@@ -16,7 +17,7 @@ public class OOP {
         return calculator.getTotalArea(new Rectangle(height, weigh));
     }
 
-    private double areaOfSquare() {
+    public double areaOfSquare() {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
         System.out.println("Enter side:");
@@ -24,7 +25,7 @@ public class OOP {
         return calculator.getTotalArea(new Square(side));
     }
 
-    private double areaOfTriangle() {
+    public double areaOfTriangle() {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
         System.out.println("Enter triangle height:");
@@ -34,7 +35,7 @@ public class OOP {
         return calculator.getTotalArea(new Triangle(base, height));
     }
 
-    private double areaOfCircle() {
+    public double areaOfCircle() {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
         System.out.println("Enter the radius:");
@@ -85,7 +86,7 @@ public class OOP {
         } while (choice != 5);
     }
 
-    public void godmenu() {
+    public Human godmenu() {
         System.out.println("\n You have to do God's job. The creation method must return an array of length 2 containing objects 0 for Man adn 1 for Woman\n" +
                 "who you wonna to create?\n" +
                 "0. Man\n" +
@@ -101,11 +102,13 @@ public class OOP {
             choice = scanner.nextInt();
             switch (choice) {
                 case 0:
-                    System.out.println(paradise[0]);
-                    break;
+                    //System.out.println("man");
+                    return paradise[0];
+
                 case 1:
-                    System.out.println(paradise[1]);
-                    break;
+                   // System.out.println("wom");
+                    return paradise[1];
+
                 case 2:
                     System.out.println("Welcome to OOP" + "\n ___________________");
                     OOP oop = new OOP();
@@ -116,6 +119,7 @@ public class OOP {
                     break;
             }
         } while (choice != 2);
+        return paradise[1];
     }
 
 
