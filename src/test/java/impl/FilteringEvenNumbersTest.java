@@ -1,5 +1,7 @@
-package com.softserve.team1.kata.impl;
+package impl;
 
+import com.softserve.team1.kata.impl.FilteringEvenNumbers;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -11,7 +13,7 @@ class FilteringEvenNumbersTest {
     public void firstTest() {
         List<Integer> listOfNumbers = new LinkedList<>(Arrays.asList(1, 2, 2, 2, 4, 3, 4, 5, 6, 7));
         List<Integer> expectedResult = new LinkedList<>(Arrays.asList(1, 3, 5, 7));
-        assertEquals(expectedResult,FilteringEvenNumbers.filterOddNumber(listOfNumbers));
+        Assertions.assertEquals(expectedResult, FilteringEvenNumbers.filterOddNumber(listOfNumbers));
     }
 
     @Test

@@ -1,5 +1,7 @@
-package com.softserve.team1.kata.impl;
+package impl;
 
+import com.softserve.team1.kata.impl.RockPaperScissors;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,7 +10,7 @@ class RockPaperScissorsTest {
     @Test
     public void test1() {
 //        System.out.println("Fixed Tests Player 1 won!");
-        assertEquals("Player 1 won!", RockPaperScissors.rps("rock", "scissors"));
+        Assertions.assertEquals("Player 1 won!", RockPaperScissors.rps("rock", "scissors"));
         assertEquals("Player 1 won!", RockPaperScissors.rps("scissors", "paper"));
         assertEquals("Player 1 won!", RockPaperScissors.rps("paper", "rock"));
     }

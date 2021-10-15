@@ -1,5 +1,7 @@
-package com.softserve.team1.kata.impl;
+package impl;
 
+import com.softserve.team1.kata.impl.AlternatingCase;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AlternatingCaseTest {
     @Test
     public void fixedTests() {
-        assertEquals("HELLO WORLD", AlternatingCase.toAlternativeString("hello world"));
+        Assertions.assertEquals("HELLO WORLD", AlternatingCase.toAlternativeString("hello world"));
         assertEquals("hello world", AlternatingCase.toAlternativeString("HELLO WORLD"));
         assertEquals("HELLO world", AlternatingCase.toAlternativeString("hello WORLD"));
         assertEquals("hEllO wOrld", AlternatingCase.toAlternativeString("HeLLo WoRLD"));

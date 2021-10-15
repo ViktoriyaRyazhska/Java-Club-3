@@ -1,5 +1,7 @@
-package com.softserve.team1.kata.impl;
+package impl;
 
+import com.softserve.team1.kata.impl.TransportationOnVacation;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TransportationOnVacationTest {
     @Test
     public void under3Tests() {
-        assertEquals(40, TransportationOnVacation.rentalCarCost(1));
+        Assertions.assertEquals(40, TransportationOnVacation.rentalCarCost(1));
         assertEquals(80, TransportationOnVacation.rentalCarCost(2));
     }
 

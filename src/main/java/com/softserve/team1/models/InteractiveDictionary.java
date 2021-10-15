@@ -1,8 +1,8 @@
-package com.softserve.team1.kata.impl;
+package com.softserve.team1.models;
 
 import java.util.HashMap;
 
-public class InteractiveDictionary extends BaseKata{
+public class InteractiveDictionary{
 
     private HashMap<String, String> map;
     public InteractiveDictionary() {
@@ -13,10 +13,5 @@ public class InteractiveDictionary extends BaseKata{
     }
     public String look(String key) {
         return map.getOrDefault(key, "Cant find entry for " + key);
-    }
-
-    @Override
-    public void test() {
-        System.out.println("Kata Not working NOW... Please cheking for release");
     }
 }
