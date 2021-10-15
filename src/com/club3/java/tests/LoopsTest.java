@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
 
 public class LoopsTest {
+
     @Rule
     public final TextFromStandardInputStream systemInMock
             = emptyStandardInputStream();
@@ -18,19 +19,23 @@ public class LoopsTest {
     private com.club3.java.impl.LoopsImpl loops = new com.club3.java.impl.LoopsImpl();
     private Loops loops1 = new Loops();
 
+
     @Test
     public void map35() {
-        assertArrayEquals(new int[]{2, 4, 6}, loops.map35(new int[]{1, 2, 3}));
+        systemInMock.provideLines("3", "1", "2", "3");
+       assertEquals("[2, 4, 6]",loops1.map35());
     }
 
     @Test
     public void grow39() {
-        assertEquals(6, loops.grow39(new int[]{1, 2, 3}));
+        systemInMock.provideLines("3", "1", "2", "3");
+        assertEquals(6,loops1.grow39());
     }
 
     @Test
     public void findNearestSquare43() {
-        assertEquals(4, loops.findNearestSquare43(5));
+        systemInMock.provideLines("3");
+        assertEquals(4,loops1.findNearestSquare43());
     }
 
     @Test

@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Loops {
     private LoopsImpl loopsImp = new LoopsImpl();
 
-    private String map35() {
+    public String map35() {
         System.out.println(" Given an array of integers, return a new array with each value doubled.");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter length of array ");
@@ -27,7 +27,7 @@ public class Loops {
 
     }
 
-    private int grow39() {
+    public int grow39() {
         System.out.println(" Given a non-empty array of integers, return the result of multiplying the values together in order. Example:");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter length of array ");
@@ -46,13 +46,13 @@ public class Loops {
         return mult;
     }
 
-    private int findNearestSquare43() {
+    public int findNearestSquare43() {
 
         System.out.println(" Find the nearest square number, nearest_sq(n), of a positive integer n.");
         System.out.println("Enter number");
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
-        return loopsImp.findNearestSquare43(num);
+        return (int) Math.pow(Math.round(Math.sqrt(num)), 2);
 
     }
 

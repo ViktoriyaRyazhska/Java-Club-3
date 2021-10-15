@@ -4,27 +4,6 @@ import java.util.Scanner;
 
 public class LoopsImpl {
 
-    public int[] map35(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] *= 2;
-        }
-        return arr;
-    }
-
-    public int grow39(int[] x) {
-        int mult = 1;
-        for (int i = 0; i < x.length; i++) {
-            mult *= x[i];
-        }
-        return mult;
-
-    }
-
-    public int findNearestSquare43(int num) {
-        return (int) Math.pow(Math.round(Math.sqrt(num)), 2);
-
-    }
-
     public int twiceAsOld(int dadYears, int sonYears) {
         return Math.abs((sonYears * 2) - dadYears);
     }
