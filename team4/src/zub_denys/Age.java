@@ -29,13 +29,5 @@ public class Age {
         }
     }
 
-    public static void main(String[] args) {
-////        Scanner sc = new Scanner(System.in);
-////        System.out.println("Enter year to: ");
-////        int yearTo = sc.nextInt();
-////        System.out.println("Enter your birth: ");
-////        int birth = sc.nextInt();
-//
-       System.out.println(new Age().CalculateAge());
-   }
+
 }
