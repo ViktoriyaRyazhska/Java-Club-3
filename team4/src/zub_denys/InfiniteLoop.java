@@ -8,6 +8,7 @@ public class InfiniteLoop {
     public static List createList(int number) {
 //        Scanner sc = new Scanner(System.in);
 //        int number = sc.nextInt();
+
         List list = new ArrayList();
 
         for(int count = 1; count <= number;count ++)

@@ -7,6 +7,7 @@ public class OppositeNumber {
 //        Scanner sc = new Scanner(System.in);
 //        System.out.print("Enter number: ");
 //        int number = sc.nextInt();
+
         System.out.print("Opposite number: ");
         return number *(-1);
     }

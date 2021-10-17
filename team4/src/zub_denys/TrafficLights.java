@@ -11,6 +11,7 @@ public class TrafficLights {
 //        String color = sc.next();
 //        color = color.toLowerCase(Locale.ROOT);
 //        String current = color;
+
         String next = "";
         switch (current) {
             case "green":

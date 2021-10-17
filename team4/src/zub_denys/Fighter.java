@@ -26,7 +26,6 @@ public class Fighter {
 
 
     public void declareWinner() {
-
         System.out.println("Enter first fighter (1/2):");
         Scanner myObj = new Scanner(System.in);
         int res = myObj.nextInt();

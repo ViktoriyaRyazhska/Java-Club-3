@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Age {
     public static String CalculateAge(int yearTo, int birth) {
-
         int age = yearTo - birth;
         if (age > 1) {
             //System.out.println("You are " + age + " years old.");

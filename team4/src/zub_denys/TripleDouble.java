@@ -11,6 +11,7 @@ public class TripleDouble {
 //        String two = sc.next();
 //        System.out.print("\nEnter third string: ");
 //        String three = sc.next();
+
         StringBuffer x = new StringBuffer();
         String[] allStrings = new String[]{one, two, three};
 

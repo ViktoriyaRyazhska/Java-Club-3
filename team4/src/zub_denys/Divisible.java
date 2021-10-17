@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Divisible {
     public static boolean isDivisible(long n, long x,long y) {
-//        Scanner sc = new Scanner(System.in);
+        //        Scanner sc = new Scanner(System.in);
 //
 //        System.out.println("Enter n: ");
 //        long n = sc.nextLong();

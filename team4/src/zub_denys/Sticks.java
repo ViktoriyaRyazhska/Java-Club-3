@@ -8,6 +8,7 @@ public class Sticks {
 //        Scanner sc = new Scanner(System.in);
 //        System.out.print("Enter count of sticks: ");
 //        int sticks = sc.nextInt();
+
         System.out.print("\nResult is ");
         return  sticks % 4;
     }

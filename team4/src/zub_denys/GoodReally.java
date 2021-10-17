@@ -18,7 +18,7 @@ public class GoodReally {
 //        for(int j = 0; j< classPoints.length;j++){
 //            System.out.println(" " + classPoints[j]);
 //        }
-        // Your code here
+
         int sum = 0;
         int avarage = 0;
        for(int i = 0;i< classPoints.length;i++){

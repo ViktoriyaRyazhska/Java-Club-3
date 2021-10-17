@@ -19,7 +19,7 @@ public class Avarage {
 //        for (int j = 0; j<marks.length;j++){
 //            System.out.print(" " + marks[j]);
 //        }
-        //
+
         int sum =0;
         int avarage = 0;
         for (int i = 0; i< marks.length;i++){

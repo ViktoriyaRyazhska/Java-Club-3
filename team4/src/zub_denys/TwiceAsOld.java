@@ -11,6 +11,7 @@ public class TwiceAsOld {
 //        System.out.println("Enter age of son: ");
 //        int sonYears = sc.nextInt();
 
+
         int twice = dadYears - sonYears * 2;
         if (twice > 0){
             System.out.println("Dad will be twice as old in " );
