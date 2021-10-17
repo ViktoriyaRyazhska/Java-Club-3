@@ -8,7 +8,7 @@ public class StringsImpl {
         return String.valueOf(num);
     }
 
-   public String replaceDots55(String s1) {
+    public String replaceDots55(String s1) {
         return s1.replaceAll("\\.", "-");
     }
 
@@ -25,7 +25,7 @@ public class StringsImpl {
         return "Ups!";
     }
 
-   public String abbrevName63(String name) {
+    public String abbrevName63(String name) {
         String upper = name.toUpperCase();
         if (name.contains(" ")) {
             return String.valueOf(upper.charAt(0)) + "." + String.valueOf(upper.charAt(upper.indexOf(' ') + 1));
@@ -45,6 +45,7 @@ public class StringsImpl {
         }
         return string2;
     }
+
     public String correctMistakesOfCharacter(String s) {
         return s.replace("5", "S").replace("0", "O").replace("1", "I");
     }

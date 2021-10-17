@@ -40,7 +40,7 @@ public class Block {
                 ", length =" + length +
                 ", height =" + height +
                 ", volume =" + getVolume()+
-                ", surface area =" + surface_area +
+                ", surface area =" + getSurfaceArea() +
                 '}';
     }
 }

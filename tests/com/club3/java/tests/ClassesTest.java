@@ -53,4 +53,23 @@ public class ClassesTest {
         systemInMock.provideLines("1", "8", "4", "5");
         assertEquals("37/40", String.valueOf(classes.fractionsClass()));
     }
+
+    @Test
+    public void scannerInput_dinglemouseClass(){
+        systemInMock.provideLines("7");
+        assertEquals(107,classes.dinglemouseClass());
+        systemInMock.provideLines("23");
+        assertEquals(123,classes.dinglemouseClass());
+    }
+
+    @Test
+    public void scannerInput_blockClass(){
+        systemInMock.provideLines("1", "2", "3");
+        assertEquals("Block{" +
+                "width =" + 1 +
+                ", length =" + 2 +
+                ", height =" + 3 +
+                ", volume =" + 6+
+                ", surface area =" + 22 + '}',classes.blockClass());
+    }
 }

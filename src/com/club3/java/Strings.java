@@ -8,35 +8,35 @@ import java.util.Scanner;
 public class Strings {
     private StringsImpl stringsImpl = new StringsImpl();
 
-    private String numberToString51() {
+    public String numberToString51() {
         System.out.println("Int to String \nEnter Int");
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
         return stringsImpl.numberToString51(num);
     }
 
-    private String replaceDots55() {
+    public String replaceDots55() {
         System.out.println("Enter some String with .");
         Scanner scanner = new Scanner(System.in);
         String s1 = scanner.nextLine();
         return stringsImpl.replaceDots55(s1);
     }
 
-    private String position59() {
+    public String position59() {
         System.out.println("Enter some char");
         Scanner scanner = new Scanner(System.in);
         char alphabet = scanner.next().charAt(0);
         return stringsImpl.position59(alphabet);
     }
 
-    private String abbrevName63() {
+    public String abbrevName63() {
         System.out.println("Enter name and subname");
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
         return stringsImpl.abbrevName63(name);
     }
 
-    private String toAlternativeString67() {
+    public String toAlternativeString67() {
         System.out.println(" Define String.prototype.toAlternatingCase (or a similar function/method such as to_alternating_case/ \n" +
                 " toAlternatingCase/ToAlternatingCase in your selected language; see the initial solution for details)");
         System.out.println("Enter any string with Upper and Lower");
@@ -77,14 +77,6 @@ public class Strings {
         System.out.println("Enter string three:");
         String three = scanner.nextLine();
         return stringsImpl.tripleTrouble(one, two, three);
-    }
-
-    private String numberToString() {
-        System.out.println("We need a function that can transform a number into a string.");
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter number: ");
-        int num = scanner.nextInt();
-        return String.valueOf(num);
     }
 
     public String toAlternativeString() {

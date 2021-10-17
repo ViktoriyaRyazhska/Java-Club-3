@@ -27,7 +27,7 @@ public class Classes {
         return fraction.add(new Fraction(newTop, newBottom));
     }
 
-    private int dinglemouseClass() {
+    public int dinglemouseClass() {
         System.out.println("The code provided has a method plus100 which is supposed to return the number of the parameter incremented by 100.\n" +
                 "Fix the code so we can all go home early.");
         System.out.println("Enter Integer number: ");
@@ -38,7 +38,7 @@ public class Classes {
     }
 
 
-    private String blockClass() {
+    public String blockClass() {
         System.out.println("Enter Integer parameters to see volume and surface area of a block: ");
         Scanner scanner = new Scanner(System.in);
         int[] arr = new int[]{scanner.nextInt(), scanner.nextInt(), scanner.nextInt()};

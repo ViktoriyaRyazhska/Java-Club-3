@@ -8,7 +8,7 @@ public class BasicProgram {
 
     private BasicProgramImpl basicProgramImpl = new BasicProgramImpl();
 
-    private double getVolumeOfCuboid3() {
+    public double getVolumeOfCuboid3() {
         System.out.println(" Volume of a Cuboid");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter length,width,height ");
@@ -16,10 +16,9 @@ public class BasicProgram {
         double width = scanner.nextDouble();
         double height = scanner.nextDouble();
         return basicProgramImpl.getVolumeOfCuboid3(lengs,width,height) ;
-
     }
 
-    private int past7() {
+    public int past7() {
         System.out.println(" write a function which returns the time since midnight in milliseconds.");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter h,m,s ");
@@ -29,7 +28,7 @@ public class BasicProgram {
         return basicProgramImpl.past7(hours,min,sec);
     }
 
-    private String weatherInfo11() {
+    public String weatherInfo11() {
         System.out.println(" convert fahrenheit to celsius");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter farenheit");
@@ -65,7 +64,7 @@ public class BasicProgram {
         return basicProgramImpl.ageRangeCompatibilityEquation(age);
     }
 
-    private int doubleInteger() {
+    public int doubleInteger() {
         System.out.println("You need to double the integer and return it.");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Integer number: ");

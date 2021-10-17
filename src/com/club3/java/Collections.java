@@ -7,23 +7,6 @@ import java.util.Scanner;
 
 public class Collections {
 
-    public List<Integer> filterOddNumber71() {
-        List<Integer> listOfNumbers = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Fill the ArrayList after press any char");
-        while (scanner.hasNextInt()) {
-            listOfNumbers.add(scanner.nextInt());
-        }
-        System.out.println(listOfNumbers);
-        List<Integer> odds = new ArrayList<>();
-        for (int i = 0; i < listOfNumbers.size(); i++) {
-            if (listOfNumbers.get(i) % 2 != 0) {
-                odds.add(listOfNumbers.get(i));
-            }
-        }
-        return odds;
-    }
-
     private void unfinishedLoopBugFixing() {
         System.out.println("  public static List CreateList(int number) {\n" +
                 "  \n" +
@@ -53,8 +36,7 @@ public class Collections {
                 "\n " +
                 "\n 1. Unfinished Loop - Bug Fixing" +
                 "\n 2. Filter of odd numbers" +
-                "\n 3. Filtering even numbers " +
-                "\n 4. Return to main menu");
+                "\n 3. Return to main menu");
     }
 
     public void runCollections() {
@@ -66,9 +48,6 @@ public class Collections {
             switch (choice) {
                 case 1:
                     unfinishedLoopBugFixing();
-                    break;
-                case 2:
-                    System.out.println(filterOddNumber71());
                     break;
                 case 3:
                     System.out.println(filterOddNumber());
@@ -82,6 +61,6 @@ public class Collections {
                     System.out.println("There are not number like this");
                     break;
             }
-        } while (choice != 4);
+        } while (choice != 3);
     }
 }

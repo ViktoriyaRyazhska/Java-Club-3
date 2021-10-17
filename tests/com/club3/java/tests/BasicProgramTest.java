@@ -100,4 +100,31 @@ public class BasicProgramTest {
         systemInMock.provideLines("35");
         assertEquals("24-56", basicProgram1.ageRangeCompatibilityEquation());
     }
+
+    @Test
+    public void scannerInput_getVolumeOfCuboid3() {
+        systemInMock.provideLines("1", "2", "3");
+        assertEquals(6.0, basicProgram1.getVolumeOfCuboid3(), 0.0);
+        systemInMock.provideLines("3", "3", "3");
+        assertEquals(27.0, basicProgram1.getVolumeOfCuboid3(), 0.0);
+    }
+
+    @Test
+    public void scannerInput_past7() {
+        systemInMock.provideLines("0", "1", "1");
+        assertEquals(61000, basicProgram1.past7());
+    }
+
+    @Test
+    public void scannerInput_weatherInfo11() {
+        systemInMock.provideLines("10");
+        assertEquals("-12.222222222222223 is freezing temperature", basicProgram1.weatherInfo11());
+    }
+
+    @Test
+    public void scannerInput_doubleInteger() {
+        systemInMock.provideLines("4");
+        assertEquals(8, basicProgram1.doubleInteger());
+    }
+
 }

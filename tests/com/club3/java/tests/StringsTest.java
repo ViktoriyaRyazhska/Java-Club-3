@@ -85,4 +85,36 @@ public class StringsTest {
         systemInMock.provideLines("StringUtils.toAlternatingCase");
         assertEquals("sTRINGuTILS.TOaLTERNATINGcASE", strings1.toAlternativeString());
     }
+
+    @Test
+    public void scannerInput_numberToString51() {
+        systemInMock.provideLines("5");
+        assertEquals(String.valueOf(5), strings1.numberToString51());
+    }
+
+    @Test
+    public void scannerInput_replaceDots55() {
+        systemInMock.provideLines("one.two.three");
+        assertEquals("one-two-three", strings1.replaceDots55());
+    }
+
+    @Test
+    public void scannerInput_position59() {
+        systemInMock.provideLines("a");
+        assertEquals("Position of alphabet: " + 1, strings1.position59());
+        systemInMock.provideLines("b");
+        assertEquals("Position of alphabet: " + 2, strings1.position59());
+    }
+
+    @Test
+    public void scannerInput_abbrevName63() {
+        systemInMock.provideLines("Sam Harris");
+        assertEquals("S.H", strings1.abbrevName63());
+    }
+
+    @Test
+    public void scannerInput_toAlternativeString67() {
+        systemInMock.provideLines("AB cd");
+        assertEquals("ab CD", strings1.toAlternativeString67());
+    }
 }

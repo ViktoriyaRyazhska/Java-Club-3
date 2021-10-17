@@ -24,6 +24,6 @@ public class CollectionsTest {
     public void getVolumeOfCuboid3() {
         systemInMock.provideLines("1","2","3");
         List<Integer> expectedResult = new LinkedList<>(Arrays.asList(1, 3));
-        assertEquals(expectedResult, collections.filterOddNumber71());
+        assertEquals(expectedResult, collections.filterOddNumber());
     }
 }
