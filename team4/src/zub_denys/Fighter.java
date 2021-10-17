@@ -35,6 +35,7 @@ public class Fighter {
         Fighter fighter2 = new Fighter("23", 578, 67);
         fighter2.GetInfo();
         String firstAttacker = fighter1.name;
+
         if (res == 2) {
             firstAttacker = fighter2.name;
         }

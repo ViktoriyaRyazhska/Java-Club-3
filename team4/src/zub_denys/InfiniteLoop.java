@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InfiniteLoop {
-    public static List createList() {
-        Scanner sc = new Scanner(System.in);
-        int number = sc.nextInt();
+    public static List createList(int number) {
+//        Scanner sc = new Scanner(System.in);
+//        int number = sc.nextInt();
         List list = new ArrayList();
 
         for(int count = 1; count <= number;count ++)
