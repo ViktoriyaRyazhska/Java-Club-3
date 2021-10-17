@@ -21,8 +21,4 @@ public class TripleDouble {
         }
         return x.toString();
     }
-
-    public static void main(String[] args) {
-        System.out.println(tripleTrouble());
-    }
 }

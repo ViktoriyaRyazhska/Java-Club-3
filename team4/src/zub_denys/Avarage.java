@@ -28,9 +28,4 @@ public class Avarage {
         System.out.println("\nAvarage of marks is: " );
         return avarage = sum/marks.length;
     }
-
-    public static void main(String[] args) {
-        Avarage avarage = new Avarage();
-        System.out.println(avarage.getAvarage());
-    }
 }

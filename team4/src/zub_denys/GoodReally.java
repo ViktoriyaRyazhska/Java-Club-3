@@ -31,8 +31,4 @@ public class GoodReally {
         int yourPoints = sc.nextInt();
        return avarage < yourPoints ? true : false;
     }
-
-    public static void main(String[] args) {
-        System.out.println(betterThanAverage());
-    }
 }

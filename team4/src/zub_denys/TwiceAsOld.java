@@ -20,8 +20,4 @@ public class TwiceAsOld {
         }
         return twice < 0 ?  twice * (-1) : twice;
     }
-
-    public static void main(String[] args) {
-        System.out.println(TwiceAsOlds());
-    }
 }

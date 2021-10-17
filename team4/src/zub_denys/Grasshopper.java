@@ -13,9 +13,5 @@ public class Grasshopper {
         else
             return (c + " is above freezing temperature");
     }
-
-    public static void main(String[] args) {
-        System.out.println(weatherInfo());
-    }
 }
 

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Age {
     public static String CalculateAge() {
-        // TODO: your code here
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter year to: ");
         int yearTo = sc.nextInt();
@@ -29,13 +29,13 @@ public class Age {
         }
     }
 
-//    public static void main(String[] args) {
+    public static void main(String[] args) {
 ////        Scanner sc = new Scanner(System.in);
 ////        System.out.println("Enter year to: ");
 ////        int yearTo = sc.nextInt();
 ////        System.out.println("Enter your birth: ");
 ////        int birth = sc.nextInt();
 //
-//        System.out.println(new Age().CalculateAge());
-//    }
+       System.out.println(new Age().CalculateAge());
+   }
 }

@@ -53,7 +53,7 @@ public class Fighter {
                     System.out.println(fighter2.name);
                     break;
                 }
-                //return fighter2.name;
+
             }
             check = !check;
         }
