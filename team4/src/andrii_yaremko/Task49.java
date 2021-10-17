@@ -3,10 +3,7 @@ package andrii_yaremko;
 import java.util.Scanner;
 
 public class Task49 {
-    public void encode() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter source");
-        String source = scanner.next();
+    public String encode(String source) {
         if (source == null || source == "") {
             System.out.println(" ");
         }
@@ -17,6 +14,7 @@ public class Task49 {
         source = source.replaceAll("(?i)o", "0");
         source = source.replaceAll("(?i)u", "(_)");
         System.out.println(source);
+        return source;
     }
 
 }

@@ -1,21 +1,22 @@
 package andrii_yaremko;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Task73 {
-    public void filterOddNumber() {
-        Scanner scanner = new Scanner(System.in);
+    public String filterOddNumber(int a,int b,int c,int d,int e) {
         List<Integer> listOfNumbers = new ArrayList<>();
-        System.out.println("Enter 5 numbers");
-        listOfNumbers.add(scanner.nextInt());
-        listOfNumbers.add(scanner.nextInt());
-        listOfNumbers.add(scanner.nextInt());
-        listOfNumbers.add(scanner.nextInt());
-        listOfNumbers.add(scanner.nextInt());
+        listOfNumbers.add(a);
+        listOfNumbers.add(b);
+        listOfNumbers.add(c);
+        listOfNumbers.add(d);
+        listOfNumbers.add(e);
         listOfNumbers.removeIf(i -> i%2 == 0);
 
-        System.out.println(listOfNumbers);;
+        String arr = Arrays.deepToString(new List[]{listOfNumbers});
+        System.out.println(listOfNumbers);
+        return arr;
     }
 }
