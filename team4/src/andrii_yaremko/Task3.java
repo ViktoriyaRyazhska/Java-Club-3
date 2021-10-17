@@ -1,5 +1,6 @@
 package andrii_yaremko;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Task3 {
