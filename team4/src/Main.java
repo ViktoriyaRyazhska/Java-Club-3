@@ -17,7 +17,15 @@ public class Main {
                 "29) enough \n"+
                 "33) humanYearsCatYearsDogYears\n"+
                 "37) reverse\n"+
-                "41) fixTheMeerkat" );
+                "41) fixTheMeerkat\n"+
+                "45) gap\n"+
+                "49) encode\n"+
+                "53) sayHello\n"+
+                "57) noSpace\n"+
+                "61) position\n"+
+                "65) abbrevName\n"+
+                "69) toAlternativeString\n"+
+                "73) filterOddNumber");
 
         while (true){
             System.out.println("Enter task's number");
@@ -78,6 +86,46 @@ public class Main {
                 case "41": {
                     Task41 task41 = new Task41();
                     task41.fixTheMeerkat();
+                }
+                break;
+                case "45": {
+                    Task45 task45 = new Task45();
+                    task45.gap();
+                }
+                break;
+                case "49": {
+                    Task49 task49 = new Task49();
+                    task49.encode();
+                }
+                break;
+                case "53": {
+                    Task53 task53 = new Task53();
+                    task53.sayHello();
+                }
+                break;
+                case "57": {
+                    Task57 task57 = new Task57();
+                    task57.noSpace();
+                }
+                break;
+                case "61": {
+                    Task61 task61 = new Task61();
+                    task61.position();
+                }
+                break;
+                case "65": {
+                    Task65 task65 = new Task65();
+                    task65.abbrevName();
+                }
+                break;
+                case "69": {
+                    Task69 task69 = new Task69();
+                    task69.toAlternativeString();
+                }
+                break;
+                case "73": {
+                    Task73 task73 = new Task73();
+                    task73.filterOddNumber();
                 }
                 break;
             }
