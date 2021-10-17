@@ -38,7 +38,10 @@ public class Main {
                 break;
                 case "6": {
                     Task6 task6 = new Task6();
-                    task6.to_binary();
+                    System.out.println("Please enter a number");
+                    Scanner scanner = new Scanner(System.in);
+                    int a = scanner.nextInt();
+                    task6.to_binary(a);
                 }
                 break;
                 case "9": {
