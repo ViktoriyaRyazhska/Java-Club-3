@@ -127,4 +127,16 @@ public class BasicProgramTest {
         assertEquals(8, basicProgram1.doubleInteger());
     }
 
+    @Test
+    public void scannerInput_greet() {
+        systemInMock.provideLines("John");
+        basicProgram1.greet();
+    }
+
+    @Test
+    public void scannerInput_makeNegative() {
+        systemInMock.provideLines("5");
+        assertEquals(-5, basicProgram1.makeNegative());
+    }
+
 }
