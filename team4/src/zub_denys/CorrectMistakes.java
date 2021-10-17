@@ -12,8 +12,4 @@ public class CorrectMistakes {
                 .replaceAll("0","O")
                 .replaceAll("1","I");
     }
-
-    public static void main(String[] args) {
-        System.out.println(correct());
-    }
 }
