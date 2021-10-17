@@ -1,8 +1,16 @@
 package zub_denys;
 
+import java.util.Scanner;
+
 public class Age {
-    public static String CalculateAge(int birth, int yearTo) {
+    public static String CalculateAge() {
         // TODO: your code here
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter year to: ");
+        int yearTo = sc.nextInt();
+        System.out.println("Enter your birth: ");
+        int birth = sc.nextInt();
         int age = yearTo - birth;
         if (age > 1) {
             return "You are " + age + " years old.";
@@ -18,6 +26,6 @@ public class Age {
     }
 
     public static void main(String[] args) {
-        System.out.println(CalculateAge(1999, 2000));
+        System.out.println(CalculateAge());
     }
 }
