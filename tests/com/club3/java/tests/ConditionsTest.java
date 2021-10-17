@@ -146,4 +146,68 @@ public class ConditionsTest {
         systemInMock.provideLines("red");
         assertEquals("green", conditions1.trafficLight());
     }
+
+    @Test
+    public void scannerInput_divinity19() {
+        systemInMock.provideLines("12", "4", "3");
+        assertEquals("n = 12 is divisible on x = 4 y = 3", conditions1.divinity19());
+        systemInMock.provideLines("5", "2", "3");
+        assertEquals("n = 5 not divisible on x = 2 y = 3", conditions1.divinity19());
+        systemInMock.provideLines("4", "4", "2");
+        assertEquals("n = 4 is divisible on x = 4 y = 2", conditions1.divinity19());
+    }
+
+    @Test
+    public void scannerInput_rps23() {
+        systemInMock.provideLines("rock", "scissors");
+        assertEquals("Player 1 won!", conditions1.rps23());
+        systemInMock.provideLines("paper", "scissors");
+        assertEquals("Player 2 won!", conditions1.rps23());
+        systemInMock.provideLines("rock", "rock");
+        assertEquals("Draw!", conditions1.rps23());
+    }
+
+    @Test
+    public void scannerInput_enough27() {
+        systemInMock.provideLines("10", "5", "5");
+        assertEquals(0, conditions1.enough27());
+        systemInMock.provideLines("100", "60", "50");
+        assertEquals(10, conditions1.enough27());
+    }
+
+    @Test
+    public void scannerInput_rentalCarCost31() {
+        systemInMock.provideLines("3");
+        assertEquals(100, conditions1.rentalCarCost31());
+        systemInMock.provideLines("9");
+        assertEquals(310, conditions1.rentalCarCost31());
+    }
+
+    @Test
+    public void scannerInput_bonusTime() {
+        systemInMock.provideLines("1000", "true");
+        assertEquals("\u00A3" + 10000, conditions1.bonusTime());
+        systemInMock.provideLines("1000", "false");
+        assertEquals("\u00A3" + 1000, conditions1.bonusTime());
+        systemInMock.provideLines("123", "true");
+        assertEquals("\u00A3" + 1230, conditions1.bonusTime());
+    }
+
+    @Test
+    public void scannerInput_isLove() {
+        systemInMock.provideLines("3", "8");
+        assertTrue(conditions1.isLove());
+        systemInMock.provideLines("5", "1");
+        assertFalse(conditions1.isLove());
+        systemInMock.provideLines("7", "10");
+        assertTrue(conditions1.isLove());
+    }
+
+    @Test
+    public void scannerInput_switchItUp() {
+        systemInMock.provideLines("1");
+        assertEquals("One", conditions1.switchItUp());
+        systemInMock.provideLines("9");
+        assertEquals("Nine", conditions1.switchItUp());
+    }
 }

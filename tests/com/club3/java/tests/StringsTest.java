@@ -80,4 +80,9 @@ public class StringsTest {
         assertEquals("abcabcabc", strings1.tripleTrouble());
     }
 
+    @Test
+    public void scannerInput_toAlternativeString() {
+        systemInMock.provideLines("StringUtils.toAlternatingCase");
+        assertEquals("sTRINGuTILS.TOaLTERNATINGcASE", strings1.toAlternativeString());
+    }
 }

@@ -117,9 +117,8 @@ public class Strings {
                 "\n 6. Plase in alphabet" +
                 "\n 7. Name.Subname" +
                 "\n 8. Upper Lower" +
-                "\n 9. Convert a Number to a String" +
-                "\n 10. altERnaTIng cAsE <=> ALTerNAtiNG CaSe" +
-                "\n 11. Return to main menu");
+                "\n 9. altERnaTIng cAsE <=> ALTerNAtiNG CaSe" +
+                "\n 10. Return to main menu");
     }
 
     public void runStings() {
@@ -154,10 +153,8 @@ public class Strings {
                     System.out.println(toAlternativeString67());
                     break;
                 case 9:
-                    System.out.println(numberToString());
-                case 10:
                     System.out.println(toAlternativeString());
-                case 11:
+                case 10:
                     System.out.println("\n Welcome to main menu \n __________________________");
                     Menu menu = new Menu();
                     menu.runApplication();
@@ -166,6 +163,6 @@ public class Strings {
                     System.out.println("There are not number like this");
                     break;
             }
-        } while (choice != 11);
+        } while (choice != 10);
     }
 }

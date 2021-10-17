@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Conditions {
     private ConditionsImpl conditionsImpl = new ConditionsImpl();
 
-    private String divinity19() {
+    public String divinity19() {
         System.out.println(" Is n divisible by x and y?");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter n,x,y");
@@ -17,7 +17,7 @@ public class Conditions {
         return conditionsImpl.divinity19(n, x, y);
     }
 
-    private String rps23() {
+    public String rps23() {
         System.out.println(" Rock Paper Scissors!");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter for 1 player paper or scissors or rock");
@@ -27,7 +27,7 @@ public class Conditions {
         return conditionsImpl.rps23(p1, p2);
     }
 
-    private int enough27() {
+    public int enough27() {
         System.out.println(" cap is the amount of people the bus can hold excluding the driver.\n" +
                 "on is the number of people on the bus excluding the driver.\n" +
                 "wait is the number of people waiting to get on to the bus excluding the driver.\n" +
@@ -40,7 +40,7 @@ public class Conditions {
         return conditionsImpl.enough27(cap, on, wait);
     }
 
-    private int rentalCarCost31() {
+    public int rentalCarCost31() {
         System.out.println(" Every day you rent the car costs $40. If you rent the car for 7 or more days, you get $50 off your total. \n" +
                 "Alternatively, if you rent the car for 3 or more days, you get $20 off your total.");
         Scanner scanner = new Scanner(System.in);
@@ -85,7 +85,7 @@ public class Conditions {
         return conditionsImpl.trafficLight(s);
     }
 
-    private String bonusTime() {
+    public String bonusTime() {
         System.out.println("It's bonus time in the big city! The fatcats are rubbing their paws in anticipation... but who is going to make the most money?\n" +
                 "\n" +
                 "Build a function that takes in two arguments (salary, bonus). Salary will be an integer, and bonus a boolean.\n" +
@@ -98,8 +98,8 @@ public class Conditions {
         return conditionsImpl.bonusTime(salary, bonus);
     }
 
-    private boolean isLove() {
-        System.out.println("Timmy & Sarah think they are in love, but around where they live, they will only know once they pick a flower each. +" +
+    public boolean isLove() {
+        System.out.println("Timmy & Sarah think they are in love, but around where they live, they will only know once they pick a flower each." +
                 "\nIf one of the flowers has an even number of petals and the other has an odd number of petals it means they are in love.\n" +
                 "\n" +
                 "Write a function that will take the number of petals of each flower and return true if they are in love and false if they aren't.");
@@ -110,7 +110,7 @@ public class Conditions {
         return conditionsImpl.isLove(flower1, flower2);
     }
 
-    private String switchItUp() {
+    public String switchItUp() {
         System.out.println("When provided with a number between 0-9, return it in words.");
         System.out.println("\n Enter number from 0 to 9:");
         Scanner scanner = new Scanner(System.in);
