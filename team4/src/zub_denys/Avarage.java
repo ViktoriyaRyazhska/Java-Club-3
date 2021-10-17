@@ -30,6 +30,7 @@ public class Avarage {
     }
 
     public static void main(String[] args) {
-        System.out.println(getAvarage());
+        Avarage avarage = new Avarage();
+        System.out.println(avarage.getAvarage());
     }
 }
