@@ -1,12 +1,7 @@
 package andrii_yaremko;
 
-import java.util.Scanner;
-
 public class Task33 {
-    public void humanYearsCatYearsDogYears(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter human year");
-        int ageHuman = scanner.nextInt();
+    public String humanYearsCatYearsDogYears(int ageHuman){
         int yearsCat = 0;
         int yearsDog = 0;
         int counter = ageHuman;
@@ -28,5 +23,6 @@ public class Task33 {
         System.out.println(ageHuman);
         System.out.println(yearsCat);
         System.out.println(yearsDog);
+        return ageHuman+""+yearsCat+""+yearsDog;
     }
 }

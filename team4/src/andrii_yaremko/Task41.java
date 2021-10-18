@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Task41 {
-    public void fixTheMeerkat(){
+    public String fixTheMeerkat(){
         Scanner scanner = new Scanner(System.in);
         String[] arr = { "body", "head" , "tail" };
         System.out.println(Arrays.deepToString(arr));
@@ -17,6 +17,8 @@ public class Task41 {
                 array[1] = arr[0];
                 array[2] = arr[2];
                 System.out.println(Arrays.deepToString(array));
+                return Arrays.deepToString(array);
         }
+        return "false";
     }
 }

@@ -3,61 +3,59 @@ package zub_denys;
 import java.util.Scanner;
 
 public class Fighter {
-    private String name;
-    private int health, damagePerAttack;
+    public String name;
+    public int health, damagePerAttack;
 
-    public Fighter() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter name of fighter: ");
-        this.name = sc.next();
-        System.out.println("Enter health of fighter: ");
-        this.health = sc.nextInt();
-        System.out.println("Enter damage per attack of fighter: ");
-        this.damagePerAttack = sc.nextInt();
+    public Fighter(String name, int health, int damagePerAttack) {
+        this.name = name;
+        this.health = health;
+        this.damagePerAttack = damagePerAttack;
     }
 
-    @Override
-    public String toString() {
-        return "Fighter{" +
-                "name='" + name + '\'' +
-                ", health=" + health +
-                ", damagePerAttack=" + damagePerAttack +
-                '}';
+    public void GetInfo() {
+        Scanner info = new Scanner(System.in);
+        System.out.println("Enter name : ");
+        name = info.nextLine();
+        System.out.println("Enter health: ");
+        health = info.nextInt();
+        System.out.println("Enter damagePerAttack: ");
+        damagePerAttack = info.nextInt();
+
     }
 
-    public static String declareWinner(Fighter fighter1, Fighter fighter2) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Who will be first attacker: ");
-        String first_attack = sc.next();
-        while (fighter1.health > 0 && fighter2.health > 0) {
-            fighter1.health -= fighter2.damagePerAttack;
-            fighter2.health -= fighter1.damagePerAttack;
+
+
+    public void declareWinner() {
+        System.out.println("Enter first fighter (1/2):");
+        Scanner myObj = new Scanner(System.in);
+        int res = myObj.nextInt();
+        Fighter fighter1 = new Fighter("20", 5, 2);
+        fighter1.GetInfo();
+        Fighter fighter2 = new Fighter("23", 578, 67);
+        fighter2.GetInfo();
+        String firstAttacker = fighter1.name;
+
+        if (res == 2) {
+            firstAttacker = fighter2.name;
         }
+        boolean check = firstAttacker.equals(fighter1.name);
+        while (true) {
+            if (check) {
+                fighter2.health -= fighter1.damagePerAttack;
+                if (fighter2.health <= 0) {
+                    System.out.println(fighter1.name);
+                    break;
+                }
+                //return fighter1.name;
+            } else {
+                fighter1.health -= fighter2.damagePerAttack;
+                if (fighter1.health <= 0) {
+                    System.out.println(fighter2.name);
+                    break;
+                }
 
-        if (fighter1.health <= 0 && fighter2.health <= 0) {
-            return first_attack;
-        } else if (fighter1.health <= 0) {
-            System.out.println("Winner of fight: ");
-            return fighter2.name;
-        } else {
-            System.out.println("Winner of fight: ");
-            return fighter1.name;
+            }
+            check = !check;
         }
-    }
-
-
-    public static void main(String[] args) {
-//        Fighter fighter = new Fighter();
-//        System.out.println(fighter);
-
-        System.out.println(Fighter.declareWinner(new Fighter(),
-                new Fighter()));
-//
-//        System.out.println(Fighter.declareWinner(new Fighter("Boyko",100,25),
-//                new Fighter("Anton",110,15),"Anton"));
-//
-//        System.out.println(Fighter.declareWinner(new Fighter("Max",120,15),
-//                new Fighter("Ant",100,20),"Ant"));
-
     }
 }
