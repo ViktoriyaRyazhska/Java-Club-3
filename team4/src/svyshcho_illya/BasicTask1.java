@@ -134,12 +134,7 @@ public class BasicTask1 {
         }
         System.out.println(hins);
     }
-    public void CalculateAge() {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter number birth:");
-        int birth = myObj.nextInt();
-        System.out.println("Enter number yearTo:");
-        int yearTo = myObj.nextInt();
+    public int CalculateAge(int birth,int yearTo) {
         int res = 0;
         if(yearTo-birth==1){
             res = yearTo-birth;
@@ -159,8 +154,10 @@ public class BasicTask1 {
         }
         else{
             System.out.println("You were born this very year!");
+            return 0;
 
         }
+        return res;
 
     }
     public void datingRange() {
@@ -297,15 +294,12 @@ public class BasicTask1 {
         System.out.println(s);
         return s;
     }
-    public int position(char alphabet)
-    {
-
-        System.out.print("Position of alphabet: "+((int)alphabet-96));
-        return alphabet;
+    public int position(char alphabet) {
+        int a = "abcdefghijklmnopqrstuvwxyz".indexOf(alphabet) + 1;
+        System.out.println("Position of alphabet: " + a);
+        return a;
     }
     public String abbrevName(String name) {
-
-
         int N=name.indexOf(" ");
         String name1=name.substring(0,1)+"."+name.substring(N+1,N+2);
         System.out.println(name1);

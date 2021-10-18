@@ -1,6 +1,7 @@
 package urban_andrii;
 import java.util.HashMap;
 public class Task72 {
+
         private HashMap<String, String> map;
         public Task72() {
             map = new HashMap<>();
