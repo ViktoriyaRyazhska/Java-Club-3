@@ -1,5 +1,6 @@
 
 import andrii_yaremko.*;
+import zub_denys.Divisible;
 
 import java.util.Scanner;
 
@@ -32,6 +33,7 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter task's number:");
             switch (sc.next()) {
+                
                 case "3": {
                     Task3 task3 = new Task3();
                     System.out.println("Enter length,width,height ");
@@ -89,6 +91,19 @@ public class Main {
                     boolean b = scanner.nextBoolean();
                     task21.addSalaryAndBonuses(a,b);
                 }
+//                case "19": {
+//                    System.out.println("Enter n: ");
+//                    long n = scanner.nextLong();
+//                    System.out.println("Enter x: ");
+//                    long x = scanner.nextLong();
+//                    System.out.println("Enter y: ");
+//                    long y = scanner.nextLong();
+//                    System.out.println(Divisible.isDivisible(n,x,y));
+//                }
+//                break;
+//                case "20":{
+//                    System.out.println(YesOrNo.boolToWord(true));
+//                }
                 break;
                 case "24": {
                     Task24 task24 = new Task24();
