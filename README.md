@@ -18,6 +18,7 @@
 2. Kishovar Danylo  
 3. Dubil Roman  
 4. Lyzunyk Taras  
+5. Horodchuk Taras  
 
 ## Team 4. TAQC
 1. Urban Andrii  
