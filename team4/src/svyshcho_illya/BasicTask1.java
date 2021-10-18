@@ -1,29 +1,59 @@
 package svyshcho_illya;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class BasicTask1 {
-    public int doubleInteger() {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter number:");
+    public int doubleInteger(double a) {
 
-        double numb = myObj.nextDouble();
-        double res = numb*2;
+        double res = a*2;
         System.out.print((int)res);
         return(int)res;
 
     }
-    public boolean isDivisible() {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter number w:");
+    public  int Past(int h, int m, int s)
+    {
+        int hins = 0;
+        if(h>0){
+            hins+=h*60*60*1000;
 
-        int wnumb = myObj.nextInt();
-        System.out.println("Enter number p:");
-        int pnumb = myObj.nextInt();
+        }
+        if(m>0){
+            hins+=m*60*1000;
+        }
+        if(s>0){
+            hins+=s*1000;
+
+        }
+        System.out.println(hins);
+        return hins;
+    }
+    public boolean isDivisible(int wnumb, int pnumb) {
+
+
         boolean res = false;
         if(wnumb % pnumb == 0){
             res = true;
         }
+        System.out.println(res);
         return res;
+    }
+    public String datingRange(int age) {
+        //return min-max
+        double min = 0.0;
+        double max = 0.0;
+        if(age>14) {
+            min +=age/2 + 7;
+            max +=(age-7)*2;
+        }
+        else {
+            min +=age-age*0.1;
+            max +=age+age*0.1;
+        }
+        int imin = (int) min;
+        int imax = (int) max;
+        System.out.println(imin +"-"+imax);
+        return imin +"-"+imax;
+
     }
     public class Fighter {
         public String name;
@@ -73,19 +103,12 @@ public class BasicTask1 {
             check = !check;
         }
     }
-    public boolean isDivisiblex() {
-
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter number n:");
-        int n = myObj.nextInt();
-        System.out.println("Enter number x:");
-        int x = myObj.nextInt();
-        System.out.println("Enter number y:");
-        int y = myObj.nextInt();
+    public boolean isDivisiblex(int n, int x, int y) {
         boolean res = false;
         if(n%x == 0 && n%y == 0){ res = true;}
         System.out.println(res);
         return res;
+
         //return n%x==0 && n%y==0;
     }
     public  void Past()
@@ -166,12 +189,8 @@ public class BasicTask1 {
     }
 
 
-    public void isLove() {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter flower one:");
-        int flower1 = myObj.nextInt();
-        System.out.println("Enter flower two:");
-        int flower2 = myObj.nextInt();
+    public boolean isLove(int flower1,int flower2) {
+
             boolean result = false;
             if(flower1 %2 == 0 && flower2 %2 != 0){
                 result = true;
@@ -180,12 +199,11 @@ public class BasicTask1 {
                 result = true;
             }
             System.out.println(result);
+            return result;
 
         }
-    public void rentalCarCost() {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter days:");
-        int d = myObj.nextInt();
+    public int rentalCarCost(int d) {
+
         int sum = 0;
         if(d>=7){
             sum = 40*d-50;
@@ -197,45 +215,36 @@ public class BasicTask1 {
             sum = d*40;
         }
         System.out.println(sum);
+        return sum;
     }
-    public void map() {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter size of array:");
-        int size = myObj.nextInt();
-        int[] arr = new int[size];
-        for(int i = 0;i<size;i++){
-            System.out.println("Enter "+ i + " element: ");
-            arr[i] = myObj.nextInt();
-        }
+    public String map(int size, int arr[]) {
+
+
 
         for(int i = 0;i<size;i++){
             arr[i] = arr[i]*2;
         }
         for(int i = 0;i<size;i++){
             System.out.println(arr[i]);
+
         }
+        return Arrays.toString(arr);
 
 
     }
-    public void sequence() {
+    public int sequence(int n) {
         Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter n:");
-        int n = myObj.nextInt();
+
         int a1=0; int a2=1; int a_next;
         if (n==1){a_next=0;}else{a_next=1;}
         for(int k=1;k<=n-2;k++){a_next=(a1+a2)%3; a1=a2; a2=a_next;}
         System.out.println(a_next);
+        return a_next;
 
     }
-    public void grow(){
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter size of array:");
-        int size = myObj.nextInt();
-        int[] x = new int[size];
-        for(int i = 0;i<size;i++){
-            System.out.println("Enter "+ i + " element: ");
-            x[i] = myObj.nextInt();
-        }
+    public int grow(int size, int x[]){
+
+
 
         int result = 1;
         for(int i = 0;i<x.length;i++){
@@ -243,12 +252,12 @@ public class BasicTask1 {
         }
 
         System.out.println(result);
+        return result;
 
     }
-    public void nearestSq(){
+    public int nearestSq(int n){
         Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter number:");
-        int n = myObj.nextInt();
+
         int n1=n;
         int n2=n;
         int nres=n;
@@ -258,23 +267,23 @@ public class BasicTask1 {
             n1=n1-1; n2=n2+1;
         }
         System.out.println(nres);
+        return nres;
     }
     public void God(){
         System.out.print("Check code in that link");
         System.out.print("https://www.codewars.com/kata/547274e24481cfc469000416/train/java");
     }
-    public void numberToString() {
+    public String numberToString(int num) {
         // Return a string of the number here!
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter number:");
-        int num = myObj.nextInt();
+
+
         String s=String.valueOf(num);
         System.out.println(s);
+        return s;
     }
-    public void replaceDots(){
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter str:");
-        String str = myObj.nextLine();
+    public String replaceDots(String str){
+
+
         char[] ch = str.toCharArray();
         int size = ch.length;
         for(int i = 0;i<size;i++){
@@ -286,27 +295,25 @@ public class BasicTask1 {
 
 
         System.out.println(s);
-        // return str.replaceAll(".", "-");
+        return s;
     }
-    public void position()
+    public int position(char alphabet)
     {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter str:");
-        char alphabet = myObj.next().charAt(0);
+
         System.out.print("Position of alphabet: "+((int)alphabet-96));
+        return alphabet;
     }
-    public void abbrevName() {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter str:");
-        String name = myObj.nextLine();
+    public String abbrevName(String name) {
+
+
         int N=name.indexOf(" ");
         String name1=name.substring(0,1)+"."+name.substring(N+1,N+2);
         System.out.println(name1);
+        return name1;
     }
-    public void toAlternativeString() {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter str:");
-        String string = myObj.nextLine();
+    public String toAlternativeString(String string) {
+
+
         char[] ch = string.toCharArray();
         int size = ch.length;
         for(int i = 0;i<size;i++){
@@ -317,6 +324,7 @@ public class BasicTask1 {
         }
         String s = new String(ch);
         System.out.println(s);
+        return s;
     }
     public  void filterOddNumber()
     {
