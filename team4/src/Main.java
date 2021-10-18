@@ -2,6 +2,8 @@
 import svyshcho_illya.BasicTask1;
 import andrii_yaremko.*;
 import zub_denys.*;
+
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -22,32 +24,42 @@ public class Main {
                                 "16) declareWinner\n" +
                 "18) opposite\n" +
                                 "19) isDivisiblex\n" +
+                                "20) convertBooleanToString\n" +
                 "21) addSalaryAndBonuses\n" +
                                 "22) CalculateAge\n" +
                 "24) operations\n" +
                                 "25) isLove\n" +
                 "28) sequence \n" +
                                 "29) enough \n" +
+                                "30) trafficLights\n"+
                 "31) rentalCarCost\n" +
                                 "33) humanYearsCatYearsDogYears\n" +
+                                "34) getTheMeanOfAnArray\n"+
                 "35) map\n" +
                                 "37) reverse\n" +
+                                "38) howGoodAreYouReally\n"+
                 "39) grow\n" +
                                 "41) fixTheMeerkat\n" +
+                                "42) twiceAsOld\n" +
                 "43) nearestSq\n" +
                                 "45) gap\n" +
+                                "46) sticks\n" +
                 "47) God\n" +
                                 "49) encode\n" +
                 "51) numberToString\n" +
                                 "53) sayHello\n" +
+                                "54) oppositeNumber\n"+
                 "55) replaceDots\n" +
                                 "57) noSpace\n" +
                 "59) position\n" +
                                 "61) position\n" +
+                                "62) grooshopperDebug\n"+
                 "63) abbrevName\n" +
                                 "65) abbrevName\n" +
+                                "66) correctTheMistakesOfTheCharacterRecognitionSoftware\n"+
                 "67) toAlternativeString\n" +
                                 "69) toAlternativeString\n" +
+                                "70) unfinishedLoopBug\n" +
                 "71) filterOddNumber\n" +
                                 "73) filterOddNumber");
 
@@ -132,6 +144,10 @@ public class Main {
 
                 }
                 break;
+                case "20": {
+                    System.out.println(YesOrNo.boolToWord(true));
+                }
+                break;
                 //22--
                 case "22": {
                     BasicTask1 task = new BasicTask1();
@@ -168,6 +184,14 @@ public class Main {
 
                 }
                 break;
+                case "30": {
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.println("Enter color: ");
+                    String color = scanner.next();
+                    color = color.toLowerCase(Locale.ROOT);
+                    System.out.println(TrafficLights.updateLight(color));
+                }
+                break;
                 //31
                 case "31": {
 
@@ -177,6 +201,25 @@ public class Main {
                     task.rentalCarCost(d);
                     System.out.println("READY");
 
+                }
+                break;
+                case "34": {
+
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.print("Enter length of array: ");   //Вводимо на екран довжину массиву
+                    int size = scanner.nextInt();
+                    int [] marks = new int[size];
+                    //
+                    System.out.print("Input marks: ");   //Вводимо елементи массиву
+                    for(int k = 0; k<size;k++){
+                        marks[k] = scanner.nextInt();
+                    }
+                    //
+                    System.out.println("Your array is: ");     //Виводимо на екран массив
+                    for (int j = 0; j<marks.length;j++){
+                        System.out.print(" " + marks[j]);
+                    }
+                    System.out.println(Avarage.getAvarage(marks));
                 }
                 break;
                 //35
@@ -195,6 +238,25 @@ public class Main {
 
                 }
                 break;
+                case "38":{
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.println("Enter a size of array: ");  //Вводимо розмір масиву
+                    int size = scanner.nextInt();
+                    int [] classPoints = new int[size];
+
+                    System.out.println("Input marks: ");            //Вводимо елементи масиву
+                    for(int k = 0;k<size;k++){
+                        classPoints[k] = scanner.nextInt();
+                    }
+                    System.out.println("All marks: ");              //Виводимо масив
+                    for(int j = 0; j< classPoints.length;j++){
+                        System.out.println(" " + classPoints[j]);
+                    }
+                    System.out.println("Enter your mark: ");
+                    int yourPoints = scanner.nextInt();
+                    System.out.println(GoodReally.betterThanAverage(classPoints,yourPoints));
+                }
+                break;
                 //39
                 case "39": {
 
@@ -211,6 +273,15 @@ public class Main {
 
                 }
                 break;
+                case "42":{
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.println("Enter age of dad: ");
+                    int dadYears = scanner.nextInt();
+                    System.out.println("Enter age of son: ");
+                    int sonYears = scanner.nextInt();
+                    System.out.println(TwiceAsOld.TwiceAsOlds(dadYears,sonYears));
+                }
+                break;
                 //43
                 case "43": {
 
@@ -220,6 +291,13 @@ public class Main {
                     task.nearestSq(n);
                     System.out.println("READY");
 
+                }
+                break;
+                case "46": {
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.print("Enter count of sticks: ");
+                    int sticks = scanner.nextInt();
+                    System.out.println(Sticks.makeMove(sticks));
                 }
                 break;
                 //47--
@@ -240,6 +318,13 @@ public class Main {
                     task.numberToString(num);
                     System.out.println("READY");
 
+                }
+                break;
+                case "54": {
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.print("Enter number: ");
+                    int number = scanner.nextInt();
+                    System.out.println(OppositeNumber.opposite(number));
                 }
                 break;
                 //55
@@ -263,6 +348,13 @@ public class Main {
 
                 }
                 break;
+                case "62":{
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.print("Enter temperature in fahrenheit: ");
+                    int temp  = scanner.nextInt();
+                    System.out.println(Grasshopper.weatherInfo(temp));
+                }
+                break;
                 //63
                 case "63": {
 
@@ -283,6 +375,12 @@ public class Main {
                     task.toAlternativeString(string);
                     System.out.println("READY");
 
+                }
+                break;
+                case "70":{
+                    Scanner scanner = new Scanner(System.in);
+                    int number = scanner.nextInt();
+                    System.out.println(InfiniteLoop.createList(number));
                 }
                 break;
                 //71--
