@@ -3,17 +3,11 @@ package zub_denys;
 import java.util.Scanner;
 
 public class Age {
-    public static String CalculateAge() {
-
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter year to: ");
-        int yearTo = sc.nextInt();
-        System.out.println("Enter your birth: ");
-        int birth = sc.nextInt();
+    public static String CalculateAge(int yearTo, int birth) {
         int age = yearTo - birth;
         if (age > 1) {
             //System.out.println("You are " + age + " years old.");
-            return  ("You are " + age + " years old.");
+            return ("You are " + age + " years old.");
         } else if (age == 1) {
             //System.out.println("You are " + age + " year old.");
             return "You are " + age + " year old.";

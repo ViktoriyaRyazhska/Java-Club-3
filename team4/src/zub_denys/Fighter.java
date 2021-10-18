@@ -26,7 +26,6 @@ public class Fighter {
 
 
     public void declareWinner() {
-
         System.out.println("Enter first fighter (1/2):");
         Scanner myObj = new Scanner(System.in);
         int res = myObj.nextInt();
@@ -35,6 +34,7 @@ public class Fighter {
         Fighter fighter2 = new Fighter("23", 578, 67);
         fighter2.GetInfo();
         String firstAttacker = fighter1.name;
+
         if (res == 2) {
             firstAttacker = fighter2.name;
         }
