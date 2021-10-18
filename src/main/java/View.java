@@ -31,7 +31,7 @@ public class View {
         }
     }
 
-    boolean getGroupOfKatas(int numberOfGroup){
+    void getGroupOfKatas(int numberOfGroup){
         boolean breakGroup = false;
         GroupOfKatas gok = groupsOfKatas.get(numberOfGroup);
         System.out.println(gok.getKatas());
@@ -54,32 +54,34 @@ public class View {
                 getKata(gok, number);
             }
         }
-        return breakGroup;
+        show();
     }
-    boolean getKata(GroupOfKatas gok, int numberOfKata){
+    void getKata(GroupOfKatas gok, int numberOfKata){
         Kata k = gok.getKata(numberOfKata);
         System.out.println(k.getDetails());
         boolean breakKata = false;
         while(!breakKata) {
             boolean flag = false;
-            String s = scan.nextLine();
+            String s = scan.next();
             if(!flag){
-                if(!s.equalsIgnoreCase("e")){
-                    if(k.isValueCorrect(s)){
+                if(s.equalsIgnoreCase("e")){
+                    breakKata = true;
+                }else{
+                    if(!s.equalsIgnoreCase("e") && k.isValueCorrect(s)){
                         flag = true;
                     }else{
-                        System.out.println("Incorrect value, try again ");
+                        if(!k.isValueCorrect(s) && !s.equalsIgnoreCase("e")){
+                            System.out.println("Incorrect value, try again ");
+                        }
                     }
-                }else{
-                    breakKata = true;
                 }
             }
             if(flag){
                String result = k.main(s);
-               System.out.println(result);
+               System.out.println("Result: " + result);
             }
         }
-        return breakKata;
+        getGroupOfKatas(numberOfKata);
     }
     String getInstruction(){
         String s = "";
@@ -107,8 +109,6 @@ public class View {
         try {
             Integer.parseInt(s);
         } catch(NumberFormatException e) {
-            return false;
-        } catch(NullPointerException e) {
             return false;
         }
         // only got here if we didn't return false

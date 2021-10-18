@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class AbbreviateTwoWordName extends Kata{
     String title = "Abbreviate a Two Word Name";
