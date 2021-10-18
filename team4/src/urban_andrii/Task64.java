@@ -1,7 +1,7 @@
 package urban_andrii;
 
 public class Task64 {
-    public void strCount(String str, char letter) {
+    public static int strCount(String str, char letter) {
 
         int count = 0;
         char[] ls = str.toCharArray();
@@ -10,7 +10,7 @@ public class Task64 {
                 count += 1;
             }
         }
-        System.out.println(count);
+        return count;
     }
 }
 

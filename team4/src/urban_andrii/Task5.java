@@ -8,7 +8,7 @@ public class Task5 {
             return "Hello, my love!";
         }
         else {
-            return "Hello,%s !" + name;
+            return String.format("Hello, %s!", name);
         }
      }
 }
