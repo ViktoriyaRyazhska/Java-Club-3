@@ -25,7 +25,7 @@ public class GoodReally {
            sum+=classPoints[i];
        }
        avarage = sum/ classPoints.length;
-//        System.out.println("Avarage mark other student: " + avarage);
+       System.out.println("Avarage mark other student: " + avarage);
           System.out.println("You better than other?");
 //        System.out.println("Enter your mark: ");
 //        int yourPoints = sc.nextInt();

@@ -30,14 +30,5 @@ public class Task17 {
         public int getSurfaceArea(){
             return 2*(width*length+length*height+width*height);
         }
-
-        public static void main(String[] args) {
-            Task17 block = new Task17(1, 2, 3);
-            System.out.println(block.getWidth());
-            System.out.println(block.getLength());
-            System.out.println(block.getHeight());
-            System.out.println(block.getVolume());
-            System.out.println(block.getSurfaceArea());
-        }
 }
 

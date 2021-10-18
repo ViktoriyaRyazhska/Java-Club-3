@@ -3,10 +3,10 @@ package urban_andrii;
 import java.util.Scanner;
 
 public class Task28 {
-    public void mod() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println( " Enter  N: ");
-        int n = scanner.nextInt();
+    public int mod(int n) {
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println( " Enter  N: ");
+//        int n = scanner.nextInt();
         int n1=0;
         int n2=1;
         int i=0;
@@ -17,7 +17,7 @@ public class Task28 {
             n2=ans;
             i=i + 1;
         }
-        System.out.println(ans);
+        return ans;
     }
 }
 

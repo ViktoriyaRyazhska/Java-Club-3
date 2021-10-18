@@ -5,7 +5,9 @@ public class Task14 {
         private int denominator;
 
         public Task14(int numerator, int denominator, boolean wantToReduce) {
+
             if(denominator == 0) throw new IllegalArgumentException("The denominator is zero.");
+
             if(numerator == 0) {
                 this.numerator = 0;
                 this.denominator = 1;
