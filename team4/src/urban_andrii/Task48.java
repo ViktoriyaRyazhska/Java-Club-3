@@ -1,6 +1,7 @@
 package urban_andrii;
 
 public class Task48 {
+
         public static final Task48 IDENTITY = new Task48(0);
         public static final Task48 ROTATE_90_ANTICLOCKWISE = new Task48(1);
         public static final Task48 ROTATE_180 = new Task48 (2);

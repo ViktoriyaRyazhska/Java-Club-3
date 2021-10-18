@@ -1,8 +1,8 @@
 package urban_andrii;
 
 public class Task60 {
-    public void fakeBin() {
-        String numberString="5345245456326";
+    public String fakeBin(String numberString) {
+//        String numberString="5345245456326";
     char [] ls = numberString.toCharArray();
     int a = 0;
     for (int i=0; i<numberString.length() ; i++){
@@ -15,7 +15,7 @@ public class Task60 {
         }
     }
     String s=String.valueOf(ls);
-        System.out.println(s);;
+        return s;
 }
 }
 

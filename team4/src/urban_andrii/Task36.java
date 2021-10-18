@@ -2,6 +2,7 @@ package urban_andrii;
 import java.util.ArrayList;
 public class Task36 {
     public int countSheeps() {
+
         ArrayList<Boolean> booleans = new ArrayList<>();
         booleans.add(true);
         booleans.add(true);
