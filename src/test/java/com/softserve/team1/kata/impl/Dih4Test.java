@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Dih4Test extends Dih4{
 
+    @Test
     public void Example_Tests() throws Exception
     {
         assertEquals( true, ROTATE_180.is_rotation() );
@@ -27,12 +28,12 @@ class Dih4Test extends Dih4{
     // The kata doesn't require codewarriors to make their Dih4 objects pretty-printable
     // (by providing a toString() override). Instead, the following code produces nice output
     // when asserts fail.
-
+    @Test
     public static void assert_Dih4_equal(Dih4 expected, Dih4 actual)
     {
         assertEquals(Dih4_to_String(expected), Dih4_to_String(actual));
     }
-
+    @Test
     public static String Dih4_to_String(Dih4 r)
     {
         return r.equals(IDENTITY)                 ? "identity transformation"
