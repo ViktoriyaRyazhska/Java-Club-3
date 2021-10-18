@@ -1,4 +1,4 @@
-package impl;
+package com.softserve.team1.kata.impl;
 
 import com.softserve.team1.kata.impl.ConvertANumberToAString;
 import org.junit.jupiter.api.Assertions;
