@@ -4,30 +4,34 @@ package com.softserve.Java_club_team_5;
 public class Conditions {
 
     //conditions kata 1
-    public void returnNegative(int in){
+    public int returnNegative(int in){
         int j=0;
         if(in<0 || in>0){
             j=in*-1;
         }
 
         System.out.println(in+":"+j);
-
+        return j;
     }
 
     //conditions kata 2
-    public void indivisible(int n,int x,int y){
+    public boolean indivisible(int n,int x,int y){
         if(n % x !=0 && n % y!=0){
             System.out.println("n="+n+"; x="+x+"; y="+y+": false because "+n+" is neither divisible by "+x+" nor "+y);
+            return false;
         }
         else if(n% x!=0  )
         {
             System.out.println("n="+n+"; x="+x+"; y="+y+": false because "+n+" is not divisible by "+x);
+            return false;
         }
         else if(n%y!=0){
             System.out.println("n="+n+"; x="+x+"; y="+y+": false because "+n+" is not divisible by "+y);
+            return false;
         }
         else{
             System.out.println("n="+n+"; x="+x+"; y="+y+": true because "+n+" is  divisible by "+x+" and "+y);
+            return true;
         }
 
     }
