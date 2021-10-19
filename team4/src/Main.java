@@ -1,6 +1,7 @@
 
 import svyshcho_illya.BasicTask1;
 import andrii_yaremko.*;
+import urban_andrii.*;
 import zub_denys.*;
 import java.util.Locale;
 import java.util.Scanner;
@@ -13,6 +14,7 @@ public class Main {
                 "1) doubleInteger\n" +
                         "3) getVolumeOfCubiod\n" +
                         "4) isDivisible\n" +
+                        "5) greet\n" +
                         "6) to_binary\n" +
                         "7) Past\n" +
                         "9) makeNegative\n" +
@@ -35,28 +37,36 @@ public class Main {
                         "33) humanYearsCatYearsDogYears\n" +
                         "34) getTheMeanOfAnArray\n" +
                         "35) map\n" +
+                        "36) countSheeps\n" +
                         "37) reverse\n" +
                         "38) howGoodAreYouReally\n" +
                         "39) grow\n" +
+                        "40) sum\n" +
                         "41) fixTheMeerkat\n" +
                         "42) twiceAsOld\n" +
                         "43) nearestSq\n" +
+                        "44) summation\n" +
                         "45) gap\n" +
                         "46) sticks\n" +
                         "47) God\n" +
                         "49) encode\n" +
                         "51) numberToString\n" +
+                        "52) solution\n" +
                         "53) sayHello\n" +
                         "54) oppositeNumber\n" +
                         "55) replaceDots\n" +
+                        "56) areYouPlayingBanjo\n" +
                         "57) noSpace\n" +
                         "59) position\n" +
+                        "60) fakeBin\n" +
                         "61) position\n" +
                         "62) grooshopperDebug\n" +
                         "63) abbrevName\n" +
+                        "64) strCount\n" +
                         "65) abbrevName\n" +
                         "66) correctTheMistakesOfTheCharacterRecognitionSoftware\n" +
                         "67) toAlternativeString\n" +
+                        "68) remove\n" +
                         "69) toAlternativeString\n" +
                         "70) unfinishedLoopBug\n" +
                         "71) filterOddNumber\n" +
@@ -88,6 +98,13 @@ public class Main {
                     task.isDivisible(wnumb, pnumb);
                     System.out.println("READY");
 
+                }
+                break;
+                case "5":{
+                    Task5 task5= new Task5();
+                    System.out.println("Enter name: ");
+                    String name = myObj.next();
+                    task5.greet(name);
                 }
                 break;
                 //7
@@ -125,8 +142,19 @@ public class Main {
                 //16--
                 case "16": {
                     BasicTask1 task = new BasicTask1();
-                    task.declareWinner();
                     System.out.println("READY");
+
+                }
+                break;
+                case "17":{
+                    System.out.println("Enter int: ");
+                    int n = myObj.nextInt();
+                    System.out.println("Enter int2: ");
+                    int y = myObj.nextInt();
+                    System.out.println("Enter int3: ");
+                    int z = myObj.nextInt();
+                    Task17 task17 = new Task17(n,y,z);
+
 
                 }
                 break;
@@ -145,7 +173,7 @@ public class Main {
                 }
                 break;
                 case "20": {
-                    System.out.println(YesOrNo.boolToWord(true));
+                    System.out.println(YesOrNo.boolToWord(false));
                 }
                 break;
                 //22--
@@ -194,7 +222,6 @@ public class Main {
                 break;
                 //31
                 case "31": {
-
                     System.out.println("Enter days:");
                     int d = myObj.nextInt();
                     BasicTask1 task = new BasicTask1();
@@ -238,6 +265,12 @@ public class Main {
 
                 }
                 break;
+                case "36":{
+                    Task36 task36 = new Task36();
+                    //boolean[] n =  new boolean[]{true,false,false,true,true,false};
+                    task36.countSheeps();
+                }
+                break;
                 case "38": {
                     Scanner scanner = new Scanner(System.in);
                     System.out.println("Enter a size of array: ");  //Вводимо розмір масиву
@@ -273,6 +306,22 @@ public class Main {
 
                 }
                 break;
+                case "40": {
+                    Task40 task40 = new Task40();
+                    int[] rrrr = new int[]{4,6,5,7,8,98,7,};
+                    task40.sum(rrrr);
+                }
+                break;
+                case "41": {
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.println("Enter 3 word");
+                    String a = scanner.next();
+                    String b = scanner.next();
+                    String c = scanner.next();
+                    Task41 task41 = new Task41();
+                    task41.fixTheMeerkat(a,b,c);
+                }
+                break;
                 case "42": {
                     Scanner scanner = new Scanner(System.in);
                     System.out.println("Enter age of dad: ");
@@ -291,6 +340,13 @@ public class Main {
                     task.nearestSq(n);
                     System.out.println("READY");
 
+                }
+                break;
+                case "44":{
+                    Task44 task44 = new Task44();
+                    System.out.println("Enter int number: ");
+                    int num = myObj.nextInt();
+                    task44.summation(num);
                 }
                 break;
                 case "46": {
@@ -320,6 +376,13 @@ public class Main {
 
                 }
                 break;
+                case "52":{
+                    Task52 task52 = new Task52();
+                    System.out.println("Enter String: ");
+                    String s = myObj.nextLine();
+                    task52.solution(s);
+                }
+                break;
                 case "54": {
                     Scanner scanner = new Scanner(System.in);
                     System.out.print("Enter number: ");
@@ -337,6 +400,13 @@ public class Main {
 
                 }
                 break;
+                case "56":{
+                    Task56 task56 = new Task56();
+                    System.out.println("Enter String: ");
+                    String s = myObj.nextLine();
+                    task56.areYouPlayingBanjo(s);
+                }
+                break;
                 //59
                 case "59": {
 
@@ -346,6 +416,13 @@ public class Main {
                     task.position(alphabet);
                     System.out.println("READY");
 
+                }
+                break;
+                case "60":{
+                    Task60 task60 = new Task60();
+                    System.out.println("Enter String[number] list: ");
+                    String s = myObj.nextLine();
+                    task60.fakeBin(s);
                 }
                 break;
                 case "62": {
@@ -366,6 +443,15 @@ public class Main {
 
                 }
                 break;
+                case "64": {
+                    Task64 task64 = new Task64();
+                    System.out.println("Enter String str: ");
+                    String str = myObj.nextLine();
+                    char letter = 'd';
+                    task64.strCount(str,letter);
+
+                }
+                break;
                 //67
                 case "67": {
 
@@ -377,13 +463,22 @@ public class Main {
 
                 }
                 break;
+                case "68":{
+                    Task68 task68 = new Task68();
+                    System.out.println("Enter str: ");
+                    String d = myObj.next();
+                    System.out.println("enter int: ");
+                    int n = myObj.nextInt();
+                    task68.remove(d,n);
+
+                }
+                break;
                 case "70": {
                     Scanner scanner = new Scanner(System.in);
                     int number = scanner.nextInt();
                     System.out.println(InfiniteLoop.createList(number));
                 }
                 break;
-                //71--
                 case "71": {
                     BasicTask1 task = new BasicTask1();
                     task.filterOddNumber();

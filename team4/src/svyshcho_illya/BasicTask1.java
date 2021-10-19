@@ -55,54 +55,54 @@ public class BasicTask1 {
         return imin +"-"+imax;
 
     }
-    public class Fighter {
-        public String name;
-        public int health, damagePerAttack;
-        public Fighter(String name, int health, int damagePerAttack) {
-            this.name = name;
-            this.health = health;
-            this.damagePerAttack = damagePerAttack;
-        }
-        public void GetInfo () { Scanner info = new Scanner(System.in);
-            System.out.println("Enter name : ");
-            name  = info.nextLine();
-            System.out.println("Enter health: ");
-            health = info.nextInt();
-            System.out.println("Enter damagePerAttack: ");
-            damagePerAttack = info.nextInt();
-
-        }
-    }
-
-    public  void declareWinner() {
-
-        System.out.println("Enter first fighter (1/2):");
-        Scanner myObj = new Scanner(System.in);
-        int res = myObj.nextInt();
-        Fighter fighter1 = new Fighter("20",5,2);
-        fighter1.GetInfo();
-        Fighter fighter2 = new Fighter("23",578, 67);
-        fighter2.GetInfo();
-        String firstAttacker = fighter1.name;
-        if(res==2){firstAttacker = fighter2.name;}
-        boolean check = firstAttacker.equals(fighter1.name);
-        while (true) {
-            if (check) {
-                fighter2.health -= fighter1.damagePerAttack;
-                if (fighter2.health <= 0)
-                {System.out.println(fighter1.name);
-                    break;}
-                    //return fighter1.name;
-            } else {
-                fighter1.health -= fighter2.damagePerAttack;
-                if (fighter1.health <= 0)
-                {System.out.println(fighter2.name);
-                    break;}
-                    //return fighter2.name;
-            }
-            check = !check;
-        }
-    }
+//    public class Fighter {
+//        public String name;
+//        public int health, damagePerAttack;
+//        public Fighter(String name, int health, int damagePerAttack) {
+//            this.name = name;
+//            this.health = health;
+//            this.damagePerAttack = damagePerAttack;
+//        }
+//        public void GetInfo () { Scanner info = new Scanner(System.in);
+//            System.out.println("Enter name : ");
+//            name  = info.nextLine();
+//            System.out.println("Enter health: ");
+//            health = info.nextInt();
+//            System.out.println("Enter damagePerAttack: ");
+//            damagePerAttack = info.nextInt();
+//
+//        }
+//    }
+//
+//    public  void declareWinner() {
+//
+//        System.out.println("Enter first fighter (1/2):");
+//        Scanner myObj = new Scanner(System.in);
+//        int res = myObj.nextInt();
+//        Fighter fighter1 = new Fighter("20",5,2);
+//        fighter1.GetInfo();
+//        Fighter fighter2 = new Fighter("23",578, 67);
+//        fighter2.GetInfo();
+//        String firstAttacker = fighter1.name;
+//        if(res==2){firstAttacker = fighter2.name;}
+//        boolean check = firstAttacker.equals(fighter1.name);
+//        while (true) {
+//            if (check) {
+//                fighter2.health -= fighter1.damagePerAttack;
+//                if (fighter2.health <= 0)
+//                {System.out.println(fighter1.name);
+//                    break;}
+//                    //return fighter1.name;
+//            } else {
+//                fighter1.health -= fighter2.damagePerAttack;
+//                if (fighter1.health <= 0)
+//                {System.out.println(fighter2.name);
+//                    break;}
+//                    //return fighter2.name;
+//            }
+//            check = !check;
+//        }
+//    }
     public boolean isDivisiblex(int n, int x, int y) {
         boolean res = false;
         if(n%x == 0 && n%y == 0){ res = true;}
@@ -110,29 +110,6 @@ public class BasicTask1 {
         return res;
 
         //return n%x==0 && n%y==0;
-    }
-    public  void Past()
-    {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter number h:");
-        int h = myObj.nextInt();
-        System.out.println("Enter number m:");
-        int m = myObj.nextInt();
-        System.out.println("Enter number s:");
-        int s = myObj.nextInt();
-        int hins = 0;
-        if(h>0){
-            hins+=h*60*60*1000;
-
-        }
-        if(m>0){
-            hins+=m*60*1000;
-        }
-        if(s>0){
-            hins+=s*1000;
-
-        }
-        System.out.println(hins);
     }
     public int CalculateAge(int birth,int yearTo) {
         int res = 0;
@@ -159,25 +136,6 @@ public class BasicTask1 {
         }
         return res;
 
-    }
-    public void datingRange() {
-        //return min-max
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter age:");
-        int age = myObj.nextInt();
-        double min = 0.0;
-        double max = 0.0;
-        if(age>14) {
-            min +=age/2 + 7;
-            max +=(age-7)*2;
-        }
-        else {
-            min +=age-age*0.1;
-            max +=age+age*0.1;
-        }
-        int imin = (int) min;
-        int imax = (int) max;
-        System.out.println(imin +"-"+imax);
     }
     public void Dinglemouse() {
         System.out.println("Check the result in that link: ");

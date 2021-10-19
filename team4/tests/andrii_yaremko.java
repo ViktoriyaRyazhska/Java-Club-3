@@ -80,8 +80,15 @@ public class andrii_yaremko {
     @Test
     public void basicTests() {
         assertEquals("One", task29.enough("1"));
+        assertEquals("Two", task29.enough("2"));
         assertEquals("Three", task29.enough("3"));
+        assertEquals("For", task29.enough("4"));
         assertEquals("Five", task29.enough("5"));
+        assertEquals("Six", task29.enough("6"));
+        assertEquals("Seven", task29.enough("7"));
+        assertEquals("Eigth", task29.enough("8"));
+        assertEquals("Nine", task29.enough("9"));
+        assertEquals("Ten", task29.enough("10"));
     }
 
 
@@ -148,6 +155,11 @@ public class andrii_yaremko {
         assertEquals("1A2B3C4D5E", task69.toAlternativeString("1a2b3c4d5e"));
         assertEquals("sTRINGuTILS.TOaLTERNATINGcASE", task69.toAlternativeString("StringUtils.toAlternatingCase"));
     }
+    @Test
+    public void fixTheMeerkat(){
+        assertEquals("[body, head, tail]",task41.fixTheMeerkat("head","body","tail"));
+    }
+
 
 
 
