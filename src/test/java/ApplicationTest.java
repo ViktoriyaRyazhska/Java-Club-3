@@ -4,6 +4,5 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ApplicationTest {
     @Test
     void main(){
-        new ViewTest().show();
     }
 }
