@@ -1,12 +1,12 @@
-package impl;
+package com.softserve.team1.kata.impl;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MyHeadIsAtTheWrongEndTest {
+class GapInPrimesTest {
 
     @Test
-    void fixTheMeerkat() {
+    void gap() {
     }
 }

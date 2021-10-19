@@ -1,4 +1,4 @@
-package impl;
+package com.softserve.team1.kata.impl;
 
 import com.softserve.team1.kata.impl.OppositesAttract;
 import org.junit.jupiter.api.Test;
@@ -17,21 +17,21 @@ class OppositesAttractTest {
     }
     @Test
     public void testOddAndEven() {
-        Assert.assertEquals(true, OppositesAttract.isLove(1, 4));
+        Assert.assertTrue(OppositesAttract.isLove(1, 4));
     }
 
     @Test
     public void testEvenAndEven() {
-        Assert.assertEquals(false, OppositesAttract.isLove(2, 2));
+        Assert.assertFalse(OppositesAttract.isLove(2, 2));
     }
 
     @Test
     public void testOddAndOdd() {
-        Assert.assertEquals(false, OppositesAttract.isLove(1, 1));
+        Assert.assertFalse(OppositesAttract.isLove(1, 1));
     }
 
     @Test
     public void testEvenAndOdd() {
-        Assert.assertEquals(true, OppositesAttract.isLove(0, 1));
+        Assert.assertTrue(OppositesAttract.isLove(0, 1));
     }
 }

@@ -1,13 +1,13 @@
-package impl;
+package com.softserve.team1.kata.impl;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WelcomeToTheCityTest {
+class FixmeStaticElectrickeryTest {
 
     @Test
-    void sayHello() {
+    void plus100() {
     }
 
     @Test
