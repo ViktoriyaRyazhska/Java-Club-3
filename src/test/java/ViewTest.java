@@ -3,7 +3,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ViewTest {
     View a = new View();
-
+    @Test
+    void show(){
+        getInstruction();
+        isInteger();
+        isNumberOfGroupCorrect();
+    }
     @Test
     void getInstruction() {
         assertEquals("Choose a group of katas: \n" +

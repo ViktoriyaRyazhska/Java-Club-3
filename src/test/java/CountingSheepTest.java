@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CountingSheepTest {
@@ -14,7 +16,7 @@ public class CountingSheepTest {
                 " Consider an list of sheep where some sheep may be missing from their place. \n" +
                 " This kata counts the number of sheep present in the array (true means present). \n" +
                 "Enter a list of true( = present) or false( = not present) values \n" +
-                "(it is forbidden to enter letters or numbers except 'e'): ", a.getDetails());
+                "(it is forbidden to enter other letters or numbers except 'e'): ", a.getDetails());
     }
     @Test
     void isValueCorrect(){
@@ -48,5 +50,12 @@ public class CountingSheepTest {
         assertFalse(a.isInteger("11saf"));
         assertFalse(a.isInteger(null));
         assertFalse(a.isInteger("1.5"));
+    }
+    @Test
+    void countSheeps(){
+        assertEquals(3,a.countSheeps(Arrays.asList(true,  true,  true,  false)));
+        assertEquals(1 ,a.countSheeps(Arrays.asList(false,  true,  false,  false)));
+        assertEquals(2 ,a.countSheeps(Arrays.asList(false,  true,  true,  false)));
+        assertEquals(4 ,a.countSheeps(Arrays.asList(true,  true,  true,  true)));
     }
 }
