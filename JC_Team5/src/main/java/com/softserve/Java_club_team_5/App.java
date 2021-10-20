@@ -2,6 +2,7 @@ package com.softserve.Java_club_team_5;
 
 
 import com.softserve.Java_club_team_5.oop.BasicSubclassesAdamAndEve;
+import com.softserve.Java_club_team_5.two_fighters_one_winner.FighterService;
 
 import java.util.Scanner;
 
@@ -12,6 +13,7 @@ public class App {
     static Encryption enc = new Encryption();
     static StringManagement stm = new StringManagement();
     static Dictionary dict = new Dictionary();
+    static FighterService fighterService = new FighterService();
 
     public static void main(String[] args) {
         int num;
