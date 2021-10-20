@@ -64,5 +64,37 @@ public class Conditions {
     }
 
     //conditions kata 5
+    public static String CalculateAge(int birth, int yearTo) {
+        if(birth == yearTo)return "You were born this very year!";
+        else if(birth > yearTo) return "You will be born in " + (birth - yearTo) +" year"+(birth - yearTo > 1? "s.":".");
+        else return "You are "+(yearTo-birth) +" year"+(yearTo-birth > 1? "s":"")+" old.";
+    }
+    //conditions kata 6
+    public static String rps(String p1, String p2) {
+        if(p1 == p2)return "Draw!";
+        else if((p1 == "rock" && p2 == "scissors") ||
+                (p1 == "scissors" && p2 == "paper") ||
+                (p1 == "paper" && p2 == "rock"))return "Player 1 won!";
+        else return "Player 2 won!";
+    }
+    //conditions kata 7
+    public static Integer basicMath(String op, int v1, int v2)
+    {
+        switch (op){
+            case "+":
+                return v1 + v2;
+            case "-":
+                return v1 - v2;
+            case "/":
+                return v1 / v2;
+            case "*":
+                return v1 * v2;
+        }
+        return 0;
+    }
+    //conditions kata 8
+    public static boolean isLove(final int flower1, final int flower2) {
+        return flower1 != flower2 && flower1 % 2 != flower2 % 2;
+    }
 
 }
