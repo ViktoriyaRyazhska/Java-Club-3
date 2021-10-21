@@ -2,12 +2,22 @@ package com.softserve.Java_club_team_5;
 
 import junit.framework.TestCase;
 import org.junit.Assert;
+import org.mockito.Mock;
 
+import static org.mockito.Mockito.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class LoopsTest extends TestCase {
+
+
     Loops lp=new Loops();
+    HowGoodAreYouReally hg=new HowGoodAreYouReally();
     public void testRepeatString() {
         Assert.assertEquals(lp.repeatString(5,"i"),"iiiii");
         Assert.assertEquals(lp.repeatString(10,"@"),"@@@@@@@@@@");
@@ -43,4 +53,16 @@ public class LoopsTest extends TestCase {
         int i []={2,1};
         Assert.assertEquals(Arrays.toString(lp.reverse(2)),"[2, 1]");
     }
+
+    public void testHowGood(){
+
+    }
+    public void testGrowth(){
+            Assert.assertEquals(BeginnerReduceButGrow.calculateGrow(10),362880);
+    }
+    public void testSum(){
+        int []i={1,1,1,1,1,1};
+        Assert.assertEquals(SumOfPositive.sum(i),6);
+    }
+
 }

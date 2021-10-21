@@ -1,7 +1,7 @@
 package com.softserve.Java_club_team_5;
 
 
-//import com.softserve.Java_club_team_5.oop.BasicSubclassesAdamAndEve;
+import com.softserve.Java_club_team_5.oop.BasicSubclassesAdamAndEve;
 import com.softserve.Java_club_team_5.two_fighters_one_winner.FighterService;
 
 import java.util.Arrays;
@@ -17,6 +17,9 @@ public class App {
     static Dictionary dict = new Dictionary();
     static Collections col=new Collections();
     static FighterService fighterService = new FighterService();
+    static HowGoodAreYouReally howgood=new HowGoodAreYouReally();
+
+
 
     public static void main(String[] args) {
         int num;
@@ -206,6 +209,18 @@ public class App {
                                 System.out.println("Enter a size of your array:");
                                 System.out.println("Your array: "+ Arrays.toString(loop.reverse(scan.nextInt())));
                             break;
+                            case 7:
+                                System.out.println("Enter your mark: ");
+                                System.out.println("Is your mark higher than average: "+howgood.checkIsYouBetter(scan.nextInt()));
+                            break;
+                            case 8:
+                                System.out.println("Enter a value to calculate Growth: ");
+                                System.out.println("Growth rate: "+BeginnerReduceButGrow.calculateGrow(scan.nextInt()));
+                            break;
+                            case 9:
+                                System.out.println("Enter an array of values: ");
+                                System.out.println("Sum of array values: "+SumOfPositive.sum(arrayInput(scan.nextInt())));
+                            break;
                         }
                     } while (num != 0);
                     break;
@@ -213,6 +228,9 @@ public class App {
                     do {
                         num = scan.nextInt();
                         switch (num) {
+                            case 1:
+                                System.out.println(Arrays.toString(BasicSubclassesAdamAndEve.createHumans()));
+                             break;
                             case 3:
                                 System.out.println(enc.encode(scan.next()));
                                 break;
@@ -225,7 +243,7 @@ public class App {
                         num = scan.nextInt();
                         switch (num) {
                             case 1:
-                                stm.strTransform(scan.nextInt());
+                                System.out.println(stm.strTransform(scan.nextInt()));
                                 break;
                             case 2:
                                 stm.strReverse(scan.next());
@@ -236,6 +254,26 @@ public class App {
                             case 4:
                                 stm.strOpposite(scan.next());
                                 break;
+                            case 5:
+                                System.out.println("Insert your String including dots: ");
+                                System.out.println("Output String: "+stm.replaceDots(scan.next()));
+                            break;
+                            case 6:
+                                System.out.println("Enter your name: ");
+                                System.out.println(stm.areYouPlayingBanjo(scan.next()));
+                            break;
+                            case 7:
+                                System.out.println("Enter String: ");
+                                System.out.println(stm.noSpace(scan.next()));
+                            break;
+                            case 8:
+                                System.out.println("Enter three strings: ");
+                                System.out.println("Result is: "+stm.tripleTrouble(scan.next(),scan.next(),scan.next()));
+                            break;
+                            case  9:
+                                System.out.println("Enter a String of numbers: ");
+                                System.out.println("Fake binary: "+FakeBinary.convert(scan.next()));
+                            break;
                         }
                     } while (num != 0);
                     break;
@@ -261,6 +299,7 @@ public class App {
                     break;
                 default:
                     System.out.println("Application stopped working");
+                    System.gc();
                 break;
             }
         } while (ch != 'q');
