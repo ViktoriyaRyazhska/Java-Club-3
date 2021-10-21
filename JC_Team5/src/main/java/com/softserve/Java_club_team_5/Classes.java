@@ -1,6 +1,6 @@
 package com.softserve.Java_club_team_5;
 
-import Tasks1_1.Classes.Kata13;
+import Tasks1_1.Classes.Kata13;// There are no such packages in repository
 import Tasks1_1.Classes.Kata14;
 
 public class Classes {
