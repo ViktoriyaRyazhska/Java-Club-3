@@ -6,17 +6,18 @@ import java.util.Optional;
 public class Loops {
 
     //loop kata 1
-    public void repeatString(int i,String str){
+    public String repeatString(int i,String str){
+        String rep="";
         for(int j=i;j>0;j--){
-                System.out.println(str);
+            rep=rep.concat(str);
         }
+        return rep;
     }
 
     //loop kata 2
-    public void catDogYears(int hy){
+    public String catDogYears(int hy){
         int dy = 0;
         int cy=0;
-
         for(int i=hy;i>0; i--){
             if(hy-i==0){
                 dy=15;
@@ -31,11 +32,11 @@ public class Loops {
                 dy += 5;
             }
         }
-        System.out.println("Cat is "+cy+" y.o.; Dog is "+dy+" y.o.");
+        return "Cat is "+cy+" y.o.; Dog is "+dy+" y.o.";
     }
 
     //loop kata 3
-    public void mean(int a[]){
+    public float mean(int a[]){
         int m=0;
         String s="{";
         for(int i:a){
@@ -46,9 +47,10 @@ public class Loops {
         s=s.concat("}");
         float f=(float) m/a.length;
         System.out.println("Your array is: "+s+" ; Mean of this array equals to: "+f+";");
+        return f;
     }
     //loop kata 4
-    public  int[] map(int[] arr) {
+    public int[] map(int[] arr) {
         //return Arrays.stream(arr).map(x -> x * 2).toArray();
         for(int i = 0; i < arr.length; i ++)arr[i] *= 2;
         return arr;

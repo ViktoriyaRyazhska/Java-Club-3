@@ -1,9 +1,10 @@
 package com.softserve.Java_club_team_5;
 
 
-import com.softserve.Java_club_team_5.oop.BasicSubclassesAdamAndEve;
+//import com.softserve.Java_club_team_5.oop.BasicSubclassesAdamAndEve;
 import com.softserve.Java_club_team_5.two_fighters_one_winner.FighterService;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
@@ -14,6 +15,7 @@ public class App {
     static Encryption enc = new Encryption();
     static StringManagement stm = new StringManagement();
     static Dictionary dict = new Dictionary();
+    static Collections col=new Collections();
     static FighterService fighterService = new FighterService();
 
     public static void main(String[] args) {
@@ -132,7 +134,7 @@ public class App {
                             case 6:
                                 System.out.println("Rock, Paper, Scissors! Enter player 1 choice: ");
                                 String s1=scan.next();
-                                System.out.println("Enter player 2 vhoice: ");
+                                System.out.println("Enter player 2 choice: ");
                                 String s2=scan.next();
                                 System.out.println(cond.rps(s1,s2));
                                 s1=null;
@@ -151,6 +153,21 @@ public class App {
                                 System.out.println("Enter a number of flower petals: ");
                                 System.out.println("Loves: "+cond.isLove(scan.nextInt(),scan.nextInt()));
                             break;
+                            case 9:
+                                System.out.println("Enter capacity, amount of passengers on board, passengers who`re waiting :");
+                                System.out.println(WillBeThereEnoughSpace.checkFreePlaces(scan.nextInt(),scan.nextInt(),scan.nextInt()));
+                            break;
+                            case 10:
+                                System.out.println("Enter boolean which you want to be transformed into String: ");
+                                System.out.println(BooleanValueToString.boolToWord(scan.nextBoolean()));
+                            break;
+                            case 11:
+                                System.out.println("Enter number to be switched up: ");
+                                System.out.println(SwitchItUp.convert(scan.nextInt()));
+                            break;
+                            case 12:
+                                System.out.println(TheModulo3Sequence.modulo());
+                            break;
                         }
                     } while (num != 0);
                     break;
@@ -167,24 +184,27 @@ public class App {
                         num = scan.nextInt();
                         switch (num) {
                             case 1:
-                                loop.repeatString(scan.nextInt(), scan.next());
+                                System.out.println("Enter a number of repetitions and String value: ");
+                                System.out.println(loop.repeatString(scan.nextInt(), scan.next()));
                             break;
                             case 2:
-                                loop.catDogYears(scan.nextInt());
+                                System.out.println("Enter a number of human years: ");
+                                System.out.println(loop.catDogYears(scan.nextInt()));
                             break;
                             case 3:
                                 loop.mean(arrayInput(scan.nextInt()));
                             break;
                             case 4:
                                 System.out.println("Insert and array: ");
-                                System.out.println("Your map :"+loop.map(arrayInput(scan.nextInt())));
+                                System.out.println("Your map :"+Arrays.toString(loop.map(arrayInput(scan.nextInt()))));
                             break;
                             case 5:
-                                System.out.println();
+                                System.out.println("Enter the size of your array, and true/false elements: ");
+                                System.out.println(loop.countSheeps(arrayInputBool(scan.nextInt())));
                             break;
                             case 6:
                                 System.out.println("Enter a size of your array:");
-                                System.out.println("Your array: "+loop.reverse(scan.nextInt()));
+                                System.out.println("Your array: "+ Arrays.toString(loop.reverse(scan.nextInt())));
                             break;
                         }
                     } while (num != 0);
@@ -220,24 +240,28 @@ public class App {
                     } while (num != 0);
                     break;
                 case 'g':
-                    System.out.println("Chose operation:\r\n 1)Opposite Number\n" +
-                            " 2)Is n divisible by x and y\n" +
-                            " 3)Convert boolean to string\n" +
+                    System.out.println("Chose operation:\r\n 1)...\n" +
+                            " 2)Array List Creation\n" +
+                            " 3)....\n" +
                             " 4)Dictionary\n" +
                             " 0)Back");
                     do {
                         num = scan.nextInt();
                         switch (num) {
+                            case 2:
+                                System.out.println("Enter a size of array: ");
+                                System.out.println("Output array: "+col.CreateList(scan.nextInt()));
+                            break;
                             case 4:
                                 dict.operate();
-                                break;
+                            break;
 
                         }
                     } while (num != 0);
                     break;
                 default:
                     System.out.println("Application stopped working");
-                    break;
+                break;
             }
         } while (ch != 'q');
 
@@ -260,5 +284,12 @@ public class App {
             arr[i] = scan.next();
         }
         return (arr);
+    }
+    public static Boolean[] arrayInputBool(int size) {
+        Boolean arr[] = new Boolean[size];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = scan.nextBoolean();
+        }
+        return arr;
     }
 }

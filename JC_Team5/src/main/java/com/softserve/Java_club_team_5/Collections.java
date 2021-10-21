@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Collections {
     //collection kata 2
-    public static List CreateList(int number)
+    public List CreateList(int number)
     {
         List list = new ArrayList();
 

@@ -9,7 +9,6 @@ public class Conditions {
         if(in<0 || in>0){
             j=in*-1;
         }
-
         System.out.println(in+":"+j);
         return j;
     }
@@ -37,7 +36,7 @@ public class Conditions {
     }
 
     //conditions kata 3
-    public void convertBool(int n){
+    public boolean convertBool(int n){
         boolean b;
         String str;
         if (n==1){
@@ -45,14 +44,14 @@ public class Conditions {
         }
         else{
             b=false;
-
         }
         str=String.valueOf(b);
         System.out.println(str);
+        return b;
     }
 
     //conditions kata 4
-    public void bonuses(float salary,boolean bonuses){
+    public float bonuses(float salary,boolean bonuses){
         if(bonuses){
             salary=salary*10;
             System.out.println("Fat cat recieved his bonus, total salary="+salary+"\u00A3");
@@ -60,7 +59,7 @@ public class Conditions {
         else{
             System.out.println("Unfortunatly no bonuses, total salary="+salary+"\u00A3");
         }
-
+        return salary;
     }
 
     //conditions kata 5
@@ -69,6 +68,7 @@ public class Conditions {
         else if(birth > yearTo) return "You will be born in " + (birth - yearTo) +" year"+(birth - yearTo > 1? "s.":".");
         else return "You are "+(yearTo-birth) +" year"+(yearTo-birth > 1? "s":"")+" old.";
     }
+
     //conditions kata 6
     public  String rps(String p1, String p2) {
         if(p1 == p2)return "Draw!";
@@ -77,8 +77,9 @@ public class Conditions {
                 (p1 == "paper" && p2 == "rock"))return "Player 1 won!";
         else return "Player 2 won!";
     }
+
     //conditions kata 7
-    public Integer basicMath(String op, int v1, int v2)
+    public int basicMath(String op, int v1, int v2)
     {
         switch (op){
             case "+":
@@ -86,6 +87,15 @@ public class Conditions {
             case "-":
                 return v1 - v2;
             case "/":
+                try{
+                    float i;
+                    i=v1 / v2;
+                }
+                catch (ArithmeticException e){
+                    System.out.println("Your value is NaN");
+                    return 0;
+
+                }
                 return v1 / v2;
             case "*":
                 return v1 * v2;

@@ -3,13 +3,8 @@ package com.softserve.Java_club_team_5;
 import java.util.Scanner;
 
 public class SwitchItUp {
-    public static void main(String[] args) {
-        SwitchItUp switchItUp = new SwitchItUp();
-        Scanner in = new Scanner(System.in);
-        System.out.println(switchItUp.convert(in.nextInt()));
-    }
 
-    public String convert(int number) {
+    public static String convert(int number) {
         if (number < 10 && number >= 0) {
             switch (number) {
                 case 0:
