@@ -44,4 +44,37 @@ public class StringManagement {
         }
         System.out.println(str+" : "+s);
     }
+    //string kata 5
+    public static String replaceDots(final String str) {
+        String str1 = new String();
+        for(int i = 0; i < str.length();i++)
+        {
+            if(str.charAt(i)== '.'){str1 += '-';}
+            else str1 += str.charAt(i);
+        }
+        return str1;
+    }
+    //string kata 6
+    public static String areYouPlayingBanjo(String name) {
+        if(name.toLowerCase().charAt(0) == 'r')return name + " plays banjo";
+        else return name + " does not play banjo";
+    }
+    //string kata 7
+    public static String noSpace(final String x) {
+        String xx = new String();
+        for(int i = 0; i < x.length(); i++)
+            if(x.charAt(i) != ' ')xx += x.charAt(i);
+        return xx;
+    }
+    //string kata 8
+    public static String tripleTrouble(String one, String two, String three) {
+        String result = new String();
+        for(int i = 0; i < one.length();i++)
+        {
+            result += one.charAt(i);
+            result += two.charAt(i);
+            result += three.charAt(i);
+        }
+        return result;
+    }
 }
