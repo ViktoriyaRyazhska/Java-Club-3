@@ -1,0 +1,134 @@
+package com.web.club3.model;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
+
+@Entity
+@Table(name = "users")
+public class Users {
+    @Id
+    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "user_name")
+    private String name;
+
+    @Column(name = "user_surname")
+    private String surname;
+
+    private String email;
+    private int age;
+
+    @Column(name = "user_login", nullable = false, unique = true)
+    private String login;
+
+    @Column(name = "user_password", nullable = false)
+    private String password;
+
+    @Column(name = "registration_date")
+    private Date date;
+
+    @Column(name = "user_role", nullable = false)
+    private String role;
+
+    @OneToMany(mappedBy = "users")
+    private List<BookOrder> bookOrderList;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public List<BookOrder> getBookOrderList() {
+        return bookOrderList;
+    }
+
+    public void setBookOrderList(List<BookOrder> bookOrderList) {
+        this.bookOrderList = bookOrderList;
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", date=" + date +
+                ", role='" + role + '\'' +
+                ", bookOrderList=" + bookOrderList +
+                '}';
+    }
+}
