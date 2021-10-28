@@ -1,8 +1,9 @@
-package com.project.team3.library.model;
+package org.softserve.javaclub.team3.library.model;
 
 import javax.persistence.*;
 
-@Entity(name = "author")
+@Entity
+@Table(name = "author")
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

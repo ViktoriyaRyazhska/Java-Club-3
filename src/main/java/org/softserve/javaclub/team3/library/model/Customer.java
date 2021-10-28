@@ -1,10 +1,11 @@
-package com.project.team3.library.model;
+package org.softserve.javaclub.team3.library.model;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity(name = "customer")
+@Entity
+@Table(name = "customer")
 public class Customer {
 
     @Id
@@ -18,8 +19,8 @@ public class Customer {
     private Date registerDate;
 
     @OneToMany
-    private List<BookModel> readBooks;
+    private List<Book> readBooks;
     @OneToMany
-    private List<BookModel> readingBooks;
+    private List<Book> readingBooks;
 
 }

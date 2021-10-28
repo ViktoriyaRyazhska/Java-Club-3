@@ -1,8 +1,9 @@
-package com.project.team3.library.model;
+package org.softserve.javaclub.team3.library.model;
 
 import javax.persistence.*;
 
-@Entity(name = "role")
+@Entity
+@Table(name = "role")
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

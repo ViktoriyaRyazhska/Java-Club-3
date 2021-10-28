@@ -1,18 +1,16 @@
-package com.project.team3.library.model;
-
-import org.hibernate.annotations.Table;
+package org.softserve.javaclub.team3.library.model;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Entity(name = "book")
-public class BookModel {
+@Entity
+@Table(name = "book")
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String title;
-    private boolean bookAvailable;
     private int takenCount;
     private int copies;
 
