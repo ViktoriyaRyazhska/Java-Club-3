@@ -20,26 +20,26 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(int id) {
-        return null;
+        return userDAO.findById(id);
     }
 
     @Override
     public List<User> findAll() {
-        return null;
+        return userDAO.findAll();
     }
 
     @Override
     public User create(User user) {
-        return null;
+        return userDAO.create(user);
     }
 
     @Override
     public User update(User user) {
-        return null;
+        return userDAO.update(user);
     }
 
     @Override
     public void deleteById(int id) {
-
+        userDAO.deleteById(id);
     }
 }

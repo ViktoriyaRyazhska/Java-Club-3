@@ -2,7 +2,9 @@ package com.web.club3.dao.impl;
 
 import com.web.club3.dao.UserDAO;
 import com.web.club3.model.User;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -21,26 +23,42 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User findById(int id) {
-        return null;
+        return sessionFactory.openSession().get(User.class, id);
     }
 
     @Override
     public List<User> findAll() {
-        return null;
+        Session session = sessionFactory.openSession();
+        return session.createQuery("SELECT a FROM User a", User.class).getResultList();
     }
 
     @Override
     public User create(User user) {
-        return null;
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(user);
+        transaction.commit();
+        session.close();
+        return user;
     }
 
     @Override
     public User update(User user) {
-        return null;
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(user);
+        transaction.commit();
+        session.close();
+        return user;
     }
 
     @Override
     public void deleteById(int id) {
-
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        User users = session.get(User.class, id);
+        session.delete(users);
+        transaction.commit();
+        session.close();
     }
 }
