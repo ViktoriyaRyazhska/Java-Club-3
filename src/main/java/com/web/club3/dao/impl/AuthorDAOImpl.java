@@ -1,4 +1,4 @@
 package com.web.club3.dao.impl;
 
-public class BookOrderDAO {
+public class AuthorDAOImpl {
 }

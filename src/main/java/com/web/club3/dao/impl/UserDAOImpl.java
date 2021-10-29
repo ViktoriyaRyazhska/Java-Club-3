@@ -1,42 +1,41 @@
 package com.web.club3.dao.impl;
 
-import com.web.club3.dao.DAO;
-import com.web.club3.model.Users;
-import org.hibernate.Session;
+import com.web.club3.dao.UserDAO;
+import com.web.club3.model.User;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class UsersDAO implements DAO<Users> {
+public class UserDAOImpl implements UserDAO {
 
     private SessionFactory sessionFactory;
 
     @Autowired
-    public UsersDAO(SessionFactory sessionFactory) {
+    public UserDAOImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-    @Override
-    public Users findById(int id) {
-        return sessionFactory.openSession().get(Users.class, id);
-    }
 
     @Override
-    public List<Users> findAll() {
+    public User findById(int id) {
         return null;
     }
 
     @Override
-    public Users create(Users users) {
+    public List<User> findAll() {
         return null;
     }
 
     @Override
-    public Users update(Users users) {
+    public User create(User user) {
+        return null;
+    }
+
+    @Override
+    public User update(User user) {
         return null;
     }
 
@@ -44,5 +43,4 @@ public class UsersDAO implements DAO<Users> {
     public void deleteById(int id) {
 
     }
-
 }

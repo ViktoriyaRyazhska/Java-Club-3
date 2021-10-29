@@ -1,11 +1,23 @@
 package com.web.club3.dao.impl;
 
-import com.web.club3.dao.DAO;
+import com.web.club3.dao.GenreDAO;
 import com.web.club3.model.Genre;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public class GenreDAO implements DAO<Genre> {
+@Repository
+public class GenreDAOImpl implements GenreDAO {
+
+    private SessionFactory sessionFactory;
+
+    @Autowired
+    public GenreDAOImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public Genre findById(int id) {
         return null;

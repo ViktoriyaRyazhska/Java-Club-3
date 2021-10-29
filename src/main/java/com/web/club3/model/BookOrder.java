@@ -13,7 +13,7 @@ public class BookOrder {
 
     @ManyToOne
     @PrimaryKeyJoinColumn(name = "book_order_id")
-    private Users users;
+    private User user;
 
     @ManyToOne
     @PrimaryKeyJoinColumn(name = "book_order_id")
@@ -58,19 +58,19 @@ public class BookOrder {
         this.book = book;
     }
 
-    public Users getUsers() {
-        return users;
+    public User getUsers() {
+        return user;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUsers(User user) {
+        this.user = user;
     }
 
     @Override
     public String toString() {
         return "BookOrder{" +
                 "id=" + id +
-                ", users=" + users +
+                ", user=" + user +
                 ", book=" + book +
                 ", lendingDate=" + lendingDate +
                 ", returnDate=" + returnDate +

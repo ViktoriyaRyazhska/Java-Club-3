@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class Users {
+public class User {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +33,7 @@ public class Users {
     @Column(name = "user_role", nullable = false)
     private String role;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL})
     private List<BookOrder> bookOrderList;
 
     public int getId() {
