@@ -10,9 +10,9 @@ public interface AuthorService {
 
     List<Author> findAll();
 
-    Author create(Author user);
+    Author create(Author author);
 
-    Author update(Author user);
+    Author update(Author author);
 
     void deleteById(int id);
 }

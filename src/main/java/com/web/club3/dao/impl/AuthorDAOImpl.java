@@ -54,8 +54,8 @@ public class AuthorDAOImpl implements AuthorDAO {
     public void deleteById(int id) {
         Session session = sessionFactory.openSession();
         Transaction tx1 = session.beginTransaction();
-        Author users = session.get(Author.class, id);
-        session.delete(users);
+        Author author = session.get(Author.class, id);
+        session.delete(author);
         tx1.commit();
         session.close();
     }
