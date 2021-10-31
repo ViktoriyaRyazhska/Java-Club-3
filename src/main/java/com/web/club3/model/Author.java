@@ -1,5 +1,6 @@
 package com.web.club3.model;
 
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,10 +12,10 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false)
+    @Column(name = "author_name",nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(name = "author_surname",nullable = false)
     private String surname;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
