@@ -12,11 +12,11 @@ public class BookOrder {
     private int id;
 
     @ManyToOne
-    @PrimaryKeyJoinColumn(name = "book_order_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @PrimaryKeyJoinColumn(name = "book_order_id")
+    @JoinColumn(name = "book_id")
     private Book book;
 
     @Column(name = "lending_date")

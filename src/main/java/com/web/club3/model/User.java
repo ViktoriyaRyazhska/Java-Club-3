@@ -3,6 +3,7 @@ package com.web.club3.model;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -33,7 +34,7 @@ public class User {
     @Column(name = "user_role", nullable = false)
     private String role;
 
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "user")
     private List<BookOrder> bookOrderList;
 
     public int getId() {
@@ -128,7 +129,6 @@ public class User {
                 ", password='" + password + '\'' +
                 ", date=" + date +
                 ", role='" + role + '\'' +
-                ", bookOrderList=" + bookOrderList +
                 '}';
     }
 }

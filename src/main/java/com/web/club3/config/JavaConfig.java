@@ -33,7 +33,7 @@ public class JavaConfig {
         return dataSource;
     }
 
-    private final Properties hibernateProperties() {
+    private Properties hibernateProperties() {
         Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.show_sql", "true");
         return hibernateProperties;
