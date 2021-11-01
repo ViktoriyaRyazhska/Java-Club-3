@@ -12,10 +12,10 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "author_name",nullable = false)
+    @Column(nullable = false)
     private String name;
 
-    @Column(name = "author_surname",nullable = false)
+    @Column(nullable = false)
     private String surname;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
