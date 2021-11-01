@@ -4,9 +4,10 @@ import com.web.club3.dao.impl.BookDAOImpl;
 import com.web.club3.model.Book;
 import com.web.club3.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class BookServiceImpl implements BookService {
     private BookDAOImpl bookDAO;
 

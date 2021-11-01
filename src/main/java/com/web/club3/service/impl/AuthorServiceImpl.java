@@ -4,10 +4,11 @@ import com.web.club3.dao.impl.AuthorDAOImpl;
 import com.web.club3.model.Author;
 import com.web.club3.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-
+@Service
 public class AuthorServiceImpl implements AuthorService {
     private AuthorDAOImpl authorDAO;
 

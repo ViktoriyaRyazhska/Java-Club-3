@@ -6,9 +6,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public class BookDAOImpl implements BookDAO {
     private SessionFactory sessionFactory;
 
@@ -25,7 +26,7 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public List<Book> findAll() {
-        List<Book> book = (List<Book>)  sessionFactory.openSession().createQuery("From book").list();
+        List<Book> book = (List<Book>)  sessionFactory.openSession().createQuery("From Book").list();
         return book;
     }
 

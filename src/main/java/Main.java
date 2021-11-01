@@ -1,5 +1,6 @@
 import com.web.club3.config.JavaConfig;
 import com.web.club3.model.User;
+import com.web.club3.service.impl.BookServiceImpl;
 import com.web.club3.service.impl.UserServiceImpl;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -9,9 +10,10 @@ public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
         UserServiceImpl userServiceImpl = context.getBean(UserServiceImpl.class);
-        userServiceImpl.findAll();
+        BookServiceImpl bookServiceImpl = context.getBean(BookServiceImpl.class);
+        bookServiceImpl.findAll();
 
-        System.out.println(userServiceImpl.findAll());
+        System.out.println(bookServiceImpl.findAll());
 
       /*  User user = new User();
         user.setName("Ivan");
@@ -23,7 +25,6 @@ public class Main {
         user.setRole("user");*/
 
        // userServiceImpl.create(user);
-
 
         context.close();
     }
