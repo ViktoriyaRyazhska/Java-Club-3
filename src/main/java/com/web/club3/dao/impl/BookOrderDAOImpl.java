@@ -21,12 +21,13 @@ public class BookOrderDAOImpl implements BookOrderDAO {
 
     @Override
     public BookOrder findById(int id) {
-        return null;
+        return sessionFactory.openSession().get(BookOrder.class, id);
     }
 
     @Override
     public List<BookOrder> findAll() {
-        return null;
+        Session session = sessionFactory.openSession();
+        return session.createQuery("SELECT a FROM BookOrder a", BookOrder.class).getResultList();
     }
 
     @Override
@@ -36,17 +37,26 @@ public class BookOrderDAOImpl implements BookOrderDAO {
         session.save(bookOrder);
         transaction.commit();
         session.close();
-
         return bookOrder;
     }
 
     @Override
     public BookOrder update(BookOrder bookOrder) {
-        return null;
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(bookOrder);
+        transaction.commit();
+        session.close();
+        return bookOrder;
     }
 
     @Override
     public void deleteById(int id) {
-
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        BookOrder bookOrder = session.get(BookOrder.class, id);
+        session.delete(bookOrder);
+        transaction.commit();
+        session.close();
     }
 }

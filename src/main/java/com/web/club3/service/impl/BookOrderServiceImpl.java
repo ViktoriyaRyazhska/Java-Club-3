@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class BookOrderServiceImpl implements BookOrderService {
 
-    BookOrderDAOImpl bookOrderDAO;
+    private BookOrderDAOImpl bookOrderDAO;
 
     @Autowired
     public BookOrderServiceImpl(BookOrderDAOImpl bookOrderDAO) {
@@ -19,12 +19,12 @@ public class BookOrderServiceImpl implements BookOrderService {
 
     @Override
     public BookOrder findById(int id) {
-        return null;
+        return bookOrderDAO.findById(id);
     }
 
     @Override
     public List<BookOrder> findAll() {
-        return null;
+        return bookOrderDAO.findAll();
     }
 
     @Override
@@ -34,11 +34,11 @@ public class BookOrderServiceImpl implements BookOrderService {
 
     @Override
     public BookOrder update(BookOrder bookOrder) {
-        return null;
+        return bookOrderDAO.update(bookOrder);
     }
 
     @Override
     public void deleteById(int id) {
-
+        bookOrderDAO.deleteById(id);
     }
 }

@@ -4,9 +4,10 @@ import com.web.club3.dao.impl.GenreDAOImpl;
 import com.web.club3.model.Genre;
 import com.web.club3.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class GenreServiceImpl implements GenreService {
 
     private GenreDAOImpl genreDAO;

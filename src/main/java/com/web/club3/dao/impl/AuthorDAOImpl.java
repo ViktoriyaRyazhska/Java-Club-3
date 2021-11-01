@@ -7,9 +7,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public class AuthorDAOImpl implements AuthorDAO {
     private SessionFactory sessionFactory;
 
@@ -26,7 +27,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 
     @Override
     public List<Author> findAll() {
-        List<Author> authors = (List<Author>)  sessionFactory.openSession().createQuery("From author").list();
+        List<Author> authors = (List<Author>)  sessionFactory.openSession().createQuery("From Author").list();
         return authors;
     }
 
@@ -54,8 +55,8 @@ public class AuthorDAOImpl implements AuthorDAO {
     public void deleteById(int id) {
         Session session = sessionFactory.openSession();
         Transaction tx1 = session.beginTransaction();
-        Author users = session.get(Author.class, id);
-        session.delete(users);
+        Author author = session.get(Author.class, id);
+        session.delete(author);
         tx1.commit();
         session.close();
     }

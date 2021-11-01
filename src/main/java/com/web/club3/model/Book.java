@@ -18,10 +18,10 @@ public class Book {
     private int copies;
 
     @ManyToOne
-    @PrimaryKeyJoinColumn(name = "book_id")
+    @JoinColumn(name = "genre_id")
     private Genre genre;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToMany(targetEntity = Author.class, cascade = {CascadeType.ALL})
     @JoinTable(name = "book_author",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
@@ -81,6 +81,7 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
+                "id=" + id +
                 ", title='" + title + '\'' +
                 ", copies=" + copies +
                 ", genre=" + genre +
