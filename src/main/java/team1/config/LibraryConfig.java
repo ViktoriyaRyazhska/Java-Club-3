@@ -33,8 +33,8 @@ public class LibraryConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://127.0.01:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
-        dataSource.setUsername("root");
-        dataSource.setPassword("pass");
+        dataSource.setUsername("Anastasiia");
+        dataSource.setPassword("Vilino05");
         return dataSource;
     }
 
