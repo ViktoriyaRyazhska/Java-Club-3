@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="team1.entity.Request" table="request" schema="library">
+        <composite-id mapped="true" class="team1.entity.RequestEntityPK">
+            <key-property name="id">
+                <column name="id" sql-type="int unsigned"/>
+            </key-property>
+            <key-property name="userId">
+                <column name="user_id" sql-type="int unsigned"/>
+            </key-property>
+            <key-property name="bookId">
+                <column name="book_id" sql-type="int unsigned"/>
+            </key-property>
+        </composite-id>
+        <property name="requestStatus">
+            <column name="request_status" sql-type="varchar(45)" length="45" not-null="true"/>
+        </property>
+        <property name="requestDate">
+            <column name="request_date" sql-type="date" not-null="true"/>
+        </property>
+        <property name="expiredDate">
+            <column name="expired_date" sql-type="date" not-null="true"/>
+        </property>
+        <property name="actualReturnDate">
+            <column name="actual_return_date" sql-type="date" not-null="true"/>
+        </property>
+        <many-to-one name="userByUserId" class="team1.entity.User">
+            <column name="user_id"/>
+        </many-to-one>
+        <many-to-one name="bookByBookId" class="team1.entity.Book">
+            <column name="book_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

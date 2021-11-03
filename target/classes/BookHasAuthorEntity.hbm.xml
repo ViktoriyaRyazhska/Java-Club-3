@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="team1.entity.BookHasAuthorEntity" table="book_has_author" schema="library">
+        <composite-id mapped="true" class="team1.entity.BookHasAuthorEntityPK">
+            <key-property name="bookId">
+                <column name="book_id" sql-type="int unsigned"/>
+            </key-property>
+            <key-property name="authorId">
+                <column name="author_id" sql-type="int unsigned"/>
+            </key-property>
+        </composite-id>
+        <property name="authorStatus">
+            <column name="author_status" sql-type="varchar(45)" length="45" not-null="true"/>
+        </property>
+        <many-to-one name="bookByBookId" class="team1.entity.Book">
+            <column name="book_id"/>
+        </many-to-one>
+        <many-to-one name="authorByAuthorId" class="team1.entity.Author">
+            <column name="author_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

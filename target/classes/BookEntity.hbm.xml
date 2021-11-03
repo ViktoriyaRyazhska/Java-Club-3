@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="team1.entity.Book" table="book" schema="library">
+        <id name="id">
+            <column name="id" sql-type="int unsigned"/>
+        </id>
+        <property name="title">
+            <column name="title" sql-type="varchar(45)" length="45" not-null="true"/>
+        </property>
+        <property name="totalPages">
+            <column name="total_pages" sql-type="int" not-null="true"/>
+        </property>
+        <property name="publishedDate">
+            <column name="published_date" sql-type="date" not-null="true"/>
+        </property>
+        <property name="countOfCopies">
+            <column name="count_of_copies" sql-type="int" not-null="true"/>
+        </property>
+        <set name="bookHasAuthorsById" inverse="true">
+            <key>
+                <column name="book_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="team1.entity.BookHasAuthorEntity"/>
+        </set>
+        <set name="requestsById" inverse="true">
+            <key>
+                <column name="book_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="team1.entity.Request"/>
+        </set>
+    </class>
+</hibernate-mapping>
