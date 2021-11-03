@@ -1,7 +1,6 @@
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import team1.config.LibraryConfig;
 import team1.entity.Author;
-import team1.entity.Book;
 import team1.service.imp.AuthorServiceImp;
 
 public class Application {
