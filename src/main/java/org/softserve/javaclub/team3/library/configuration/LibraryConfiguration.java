@@ -45,7 +45,7 @@ public class LibraryConfiguration {
         return viewResolver;
     }
 
-    @Bean
+    @Bean(name = "sessionFactory")
     public LocalSessionFactoryBean hibernate4AnnotatedSessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());

@@ -1,5 +1,7 @@
 package org.softserve.javaclub.team3.library.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -7,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "customer")
+@Data
 public class Customer implements Serializable {
 
     @Id
