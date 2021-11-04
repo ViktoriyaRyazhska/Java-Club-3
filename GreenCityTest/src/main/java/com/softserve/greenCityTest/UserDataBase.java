@@ -8,12 +8,14 @@ public class UserDataBase {
         u.setLoginName("12");
         u.setName("123");
         u.setPassword("123");
+        u.setconfirmPass("123");
         return u;
     }
     public static User invalidUser(){
         User u =new User();
         u.setEmail("testaccontgs@gmail.com");
         u.setPassword("123456789");
+        u.setconfirmPass("123456789");
         u.setName("testAccGC");
         u.setLoginName("testAccGC");
         return u;
@@ -27,4 +29,15 @@ public class UserDataBase {
         u.setLoginName("testAccGC");
         return u;
     }
+
+    public static User validUserSignUp(){
+        User u = new User();
+        u.setEmail("testaccontgs1@gmail.com");
+        u.setPassword("TestPass23");
+        u.setconfirmPass("TestPass23");
+        u.setName("testAccGC1");
+        u.setLoginName("testAccGC1");
+        return u;
+    }
+
 }

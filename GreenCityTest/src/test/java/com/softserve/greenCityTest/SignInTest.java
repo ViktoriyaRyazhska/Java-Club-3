@@ -1,4 +1,4 @@
-package com.softserve.greenCityTest;
+package java.com.softserve.greenCityTest;
 
 import static org.junit.Assert.assertTrue;
 
