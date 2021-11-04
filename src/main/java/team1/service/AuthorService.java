@@ -2,7 +2,6 @@ package team1.service;
 
 import org.springframework.stereotype.Service;
 import team1.entity.Author;
-import team1.entity.BookHasAuthorEntity;
 
 import java.util.List;
 
@@ -18,5 +17,4 @@ public interface AuthorService {
 
     List<Author> getAll();
 
-    void addAuthorToBook(BookHasAuthorEntity bookHasAuthor);
 }

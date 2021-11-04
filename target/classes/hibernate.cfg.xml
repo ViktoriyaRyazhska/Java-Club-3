@@ -15,7 +15,6 @@
 
         <mapping class="team1.entity.Author"/>
         <mapping class="team1.entity.Book"/>
-        <mapping class="team1.entity.BookHasAuthorEntity"/>
         <mapping class="team1.entity.Request"/>
         <mapping class="team1.entity.Role"/>
         <mapping class="team1.entity.User"/>

@@ -6,8 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import team1.entity.Author;
-import team1.entity.Book;
+import team1.entity.*;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -21,9 +20,7 @@ public class LibraryConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setAnnotatedClasses(Author.class);
-        //sessionFactory.setAnnotatedClasses(Book.class);
-        //sessionFactory.setPackagesToScan("team1.entity");
+        sessionFactory.setPackagesToScan("team1.entity");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

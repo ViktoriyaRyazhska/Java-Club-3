@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import team1.dao.AuthorDAO;
 import team1.entity.Author;
-import team1.entity.BookHasAuthorEntity;
 import team1.service.AuthorService;
 
 import java.util.List;
@@ -40,8 +39,4 @@ public class AuthorServiceImp implements AuthorService {
         return authorDao.getAll();
     }
 
-    @Override
-    public void addAuthorToBook(BookHasAuthorEntity bookHasAuthor) {
-
-    }
 }
