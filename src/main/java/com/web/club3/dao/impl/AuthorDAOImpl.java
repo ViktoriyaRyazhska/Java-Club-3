@@ -28,7 +28,7 @@ public class AuthorDAOImpl implements DAO<Author> {
 
     @Override
     public List<Author> findAll() {
-        List<Author> authors = (List<Author>) sessionFactory.openSession().createQuery("From Author").list();
+        List<Author> authors = (List<Author>) sessionFactory.openSession().createQuery("From Author",Author.class).list();
         return authors;
     }
 

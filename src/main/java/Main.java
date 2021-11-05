@@ -1,5 +1,6 @@
 import com.web.club3.config.JavaConfig;
 
+import com.web.club3.service.impl.AuthorServiceImpl;
 import com.web.club3.service.impl.BookOrderServiceImpl;
 import com.web.club3.service.impl.BookServiceImpl;
 import com.web.club3.service.impl.UserServiceImpl;
@@ -14,9 +15,10 @@ public class Main {
         UserServiceImpl userServiceImpl = context.getBean(UserServiceImpl.class);
         BookServiceImpl bookServiceImpl = context.getBean(BookServiceImpl.class);
         BookOrderServiceImpl bookOrderServiceImpl = context.getBean(BookOrderServiceImpl.class);
+        AuthorServiceImpl authorService = context.getBean(AuthorServiceImpl.class);
 
         System.out.println(userServiceImpl.howLongUserWorkWithLibrary(userServiceImpl.findById(4).getDate(), DateUtil.localDate));
-
+        System.out.println(bookServiceImpl.findByAuthor(authorService.findById(1)));
         context.close();
     }
 }
