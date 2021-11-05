@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import team1.entity.*;
 
 import javax.sql.DataSource;
+import java.awt.print.Book;
 import java.util.Properties;
 
 @ComponentScan("team1")
@@ -29,9 +30,9 @@ public class LibraryConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
-        dataSource.setUsername("Anastasiia");
-        dataSource.setPassword("Vilino05");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/library1.2?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+        dataSource.setUsername("root");
+        dataSource.setPassword("");
         return dataSource;
     }
 
@@ -40,4 +41,5 @@ public class LibraryConfig {
         hibernateProperties.setProperty("hibernate.show_sql", "true");
         return hibernateProperties;
     }
+
 }
