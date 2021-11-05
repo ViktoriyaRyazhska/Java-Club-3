@@ -6,11 +6,11 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import team1.dao.BookDAO;
-import team1.entity.Author;
 import team1.entity.Book;
 
 import java.util.List;
 
+@Repository
 public class BookDAOImp implements BookDAO {
 
     private SessionFactory sessionFactory;
