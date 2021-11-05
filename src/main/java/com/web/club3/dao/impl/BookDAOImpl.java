@@ -1,6 +1,6 @@
 package com.web.club3.dao.impl;
 
-import com.web.club3.dao.BookDAO;
+import com.web.club3.dao.DAO;
 import com.web.club3.model.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public class BookDAOImpl implements BookDAO {
+public class BookDAOImpl implements DAO<Book> {
     private SessionFactory sessionFactory;
 
     @Autowired

@@ -1,17 +1,9 @@
 package com.web.club3.service;
 
-import com.web.club3.model.User;
-
-import java.util.List;
+import java.time.LocalDate;
 
 public interface UserService {
-    User findById(int id);
+    int avgUserAge();
 
-    List<User> findAll();
-
-    User create(User user);
-
-    User update(User user);
-
-    void deleteById(int id);
+    String howLongUserWorkWithLibrary(LocalDate registrationDate, LocalDate localDate);
 }

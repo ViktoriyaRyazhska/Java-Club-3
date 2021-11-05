@@ -1,5 +1,6 @@
 package com.web.club3.dao.impl;
 
+import com.web.club3.dao.DAO;
 import com.web.club3.dao.UserDAO;
 import com.web.club3.model.User;
 import org.hibernate.Session;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class UserDAOImpl implements UserDAO {
+public class UserDAOImpl implements DAO<User>, UserDAO {
 
     private SessionFactory sessionFactory;
 
@@ -60,5 +61,12 @@ public class UserDAOImpl implements UserDAO {
         session.delete(users);
         transaction.commit();
         session.close();
+    }
+
+    @Override
+    public int avgUserAge() {
+        Session session = sessionFactory.openSession();
+        double avgAge = (double) session.createQuery("select avg (age) from User ").getSingleResult();
+        return (int) avgAge;
     }
 }

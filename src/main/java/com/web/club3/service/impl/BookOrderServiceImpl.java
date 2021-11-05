@@ -3,12 +3,13 @@ package com.web.club3.service.impl;
 import com.web.club3.dao.impl.BookOrderDAOImpl;
 import com.web.club3.model.BookOrder;
 import com.web.club3.service.BookOrderService;
+import com.web.club3.service.CRUDService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class BookOrderServiceImpl implements BookOrderService {
+public class BookOrderServiceImpl implements CRUDService<BookOrder> {
 
     private BookOrderDAOImpl bookOrderDAO;
 

@@ -2,14 +2,17 @@ package com.web.club3.service.impl;
 
 import com.web.club3.dao.impl.UserDAOImpl;
 import com.web.club3.model.User;
+import com.web.club3.service.CRUDService;
 import com.web.club3.service.UserService;
+import com.web.club3.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements CRUDService<User>, UserService {
 
     private UserDAOImpl userDAO;
 
@@ -41,5 +44,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(int id) {
         userDAO.deleteById(id);
+    }
+
+    @Override
+    public int avgUserAge() {
+        return userDAO.avgUserAge();
+    }
+
+    @Override
+    public String howLongUserWorkWithLibrary(LocalDate registrationDate, LocalDate localDate) {
+        return DateUtil.differenceBetweenTwoDates(registrationDate, DateUtil.localDate);
     }
 }
