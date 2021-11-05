@@ -7,23 +7,23 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class AppTest extends TestCase {
 
-    private WebDriver driver;
     private App page;
 
     public void setUp() throws Exception {
-        System.setProperty("webdriver.gecko.driver", "E:/Progs/GreenCityTes/GreenCityTest/geckodriver.exe");
-        driver=new FirefoxDriver();
-        page =new App(driver);
+        page =new App();
         super.setUp();
     }
     public void tearDown(){
-        driver.quit();
+        page.closeDriver();
     }
     public void testMain(){
+        page.setUp();
+        page.setButtons();
         Assert.assertTrue(page.signXPath.isDisplayed());
         System.out.println("Sign in button is displayed");
         Assert.assertTrue(page.signupXPath.isDisplayed());
         System.out.println("Sign up button is displayed");
+
         page.selectSignIn();
         Assert.assertTrue(page.wrapper.isDisplayed());
         System.out.println("Sign In Wrapper is displayed");

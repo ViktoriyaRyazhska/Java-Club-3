@@ -6,7 +6,6 @@ public class User {
     private String loginName;
     private String email;
     private String password;
-    private String confirmPass;
 
     public void setName(String name){
         this.name=name;
@@ -31,12 +30,6 @@ public class User {
     }
     public String getPassword(){
         return password;
-    }
-    public void setconfirmPass(String confirmPass){
-        this.confirmPass=confirmPass;
-    }
-    public String getconfirmPass(){
-        return confirmPass;
     }
 
 }

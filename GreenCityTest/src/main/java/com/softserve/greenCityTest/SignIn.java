@@ -1,127 +1,80 @@
-
 package com.softserve.greenCityTest;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
+
+import java.util.ArrayList;
+
+import java.util.List;
+
 
 public class SignIn extends App {
-    private WebDriver driver;
-    private String url="https://ita-social-projects.github.io/GreenCityClient/#/";
+    WebDriver driver=super.sendDriver();
     private WebElement mail;
-    private WebElement signXPath;
     public WebElement errEmail;
     public WebElement errPass;
     private WebElement pass;
     private WebElement submit;
     private WebElement google;
+    public WebElement badErr;
 
 
-    public SignIn(WebDriver driver){
-        driver.get(url);
-        this.driver=driver;
-        signXPath=driver.findElement(By.xpath("//a[@role='link']"));
+    public SignIn(){
     }
 
-    private void errors(){
-      errEmail= driver.findElement(By.id("email-err-msg"));
-      errPass=driver.findElement(By.id("pass-err-msg"));
+    @Override
+    public WebDriver sendDriver(){
+        return this.driver;
     }
-    private void connect(){
-        driver.manage().timeouts().implicitlyWait(10 , TimeUnit.SECONDS);
-
-   }
-   private void setId(){
-       pass=driver.findElement(By.id("password"));
-       mail=driver.findElement(By.id("email"));
-       submit=driver.findElement(By.xpath("//button[@type='submit']"));
-       google=driver.findElement(By.xpath("//button[@type='button']"));
-   }
-    public void setLogin(){
-        connect();
-        signXPath.click();
-        setId();
+    public void emailClick(){
         mail.click();
-        mail.clear();
-        mail.sendKeys(UserDataBase.validUser().getEmail());
+    }
+    public void passClick(){
         pass.click();
-        pass.clear();
-        pass.sendKeys(UserDataBase.validUser().getPassword());
+    }
+    public void submitClick(){
         submit.click();
     }
-    public void loginWithGoogle() throws Exception{
-        connect();
-        signXPath.click();
+    public void enterEmail(User u){
+        mail.click();
+        mail.clear();
+        mail.sendKeys(u.getEmail());
+    }
+    public void enterPass(User u){
+        pass.click();
+        pass.clear();
+        pass.sendKeys(u.getPassword());
+    }
+    public List<WebElement> elementsSet(){
         setId();
+        List<WebElement> list=new ArrayList<>();
+        list.add(mail);
+        list.add(pass);
+        list.add(submit);
+        list.add(errEmail);
+        list.add(errPass);
+        list.add(google);
+        return list;
+    }
+
+    // Id setters
+    public void errors(){
+      errEmail=this.driver.findElement(By.id("email-err-msg"));
+      errPass=this.driver.findElement(By.id("pass-err-msg"));
+         }
+    public void setBadErr(){
+      badErr=this.driver.findElement(By.cssSelector("div.alert-general-error"));
+    }
+
+   public void setId(){
+       pass=this.driver.findElement(By.id("password"));
+       mail=this.driver.findElement(By.id("email"));
+       submit=this.driver.findElement(By.xpath("//button[@type='submit']"));
+       google=this.driver.findElement(By.xpath("//button[@type='button']"));
+   }
+   public void clickGoogle(){
         google.click();
-        Thread.sleep(2000);
-        String winHand =driver.getWindowHandle();
-        nextWindow();
-
-        WebElement gmail=driver.findElement(By.id("identifierId"));
-        gmail.click();
-        gmail.clear();
-        gmail.sendKeys(UserDataBase.googleUser().getEmail());
-        WebElement next=driver.findElement(By.xpath("//button[@jsname='LgbsSe']"));
-        next.click();
-        Thread.sleep(2000);
-
-        WebElement gpass=driver.findElement(By.xpath("//input[@type='password']"));
-        gpass.click();
-        gpass.clear();
-        gpass.sendKeys(UserDataBase.googleUser().getPassword());
-        next=driver.findElement(By.xpath("//button[@jsname='LgbsSe']"));
-        next.click();
-        Thread.sleep(2000);
-
-        previousWindow(winHand);
-    }
-    private void nextWindow(){
-        String popup="";
-        Set<String> windList=driver.getWindowHandles();
-        System.out.println(windList);
-
-        Iterator<String> it=windList.iterator();
-        while(it.hasNext()){
-            popup=it.next();
-            driver.switchTo().window(popup);
-        }
-    }
-    private void previousWindow(String s){
-        driver.switchTo().window(s);
-    }
-    public void emptyFieldCheck(){
-        connect();
-        signXPath.click();
-        setId();
-        mail.click();
-        pass.click();
-        mail.click();
-        errors();
-    }
-    public void errorCheck(){
-        mail.click();
-        mail.clear();
-        mail.sendKeys(UserDataBase.errorUser().getEmail());
-        pass.click();
-        pass.clear();
-        pass.sendKeys(UserDataBase.errorUser().getPassword());
-        errors();
-    }
-    public void badEmailOrPass(){
-        connect();
-        signXPath.click();
-        setId();
-        mail.click();
-        mail.clear();
-        mail.sendKeys(UserDataBase.invalidUser().getEmail());
-        pass.click();
-        pass.clear();
-        pass.sendKeys(UserDataBase.invalidUser().getPassword());
-        submit.click();
-    }
+   }
 }

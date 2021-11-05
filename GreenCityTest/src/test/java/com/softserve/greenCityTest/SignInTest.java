@@ -1,7 +1,8 @@
-package java.com.softserve.greenCityTest;
+package com.softserve.greenCityTest;
 
 import static org.junit.Assert.assertTrue;
 
+import com.softserve.greenCityTest.workflow.SignInWF;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,69 +20,55 @@ import java.util.concurrent.TimeUnit;
 public class SignInTest extends TestCase
 {
 
-    private WebDriver driver;
-    private SignIn signIn;
+    private SignInWF signIn;
 
     public void setUp() throws Exception {
-        System.setProperty("webdriver.gecko.driver", "E:/Progs/GreenCityTes/GreenCityTest/geckodriver.exe");
-        driver=new FirefoxDriver();
-        signIn =new SignIn(driver);
+        signIn=new SignInWF();
         super.setUp();
+
     }
     public void tearDown(){
-        driver.quit();
+        signIn.closeDriver();
     }
 
 ////Login error field check
-   public void testEmailErr(){
-        signIn.emptyFieldCheck();
-        Assert.assertTrue(signIn.errEmail.getText().contains("Email is required"));
-        System.out.println(signIn.errEmail.getText()+" :: Checked");
+   public void testEmptyErr() {
+       signIn.emptyFieldsError();
+       Assert.assertTrue(signIn.errEmail.isDisplayed());
+       Assert.assertTrue(signIn.errPass.isDisplayed());
 
-        signIn.errorCheck();
-
-        String expect="Please check that your e-mail address is indicated correctly";
-        Assert.assertTrue(signIn.errEmail.getText().contains(expect));
-        System.out.println(signIn.errEmail.getText()+" :: Checked");
+       Assert.assertTrue(signIn.errEmail.getText().contains("Email is required"));
+       Assert.assertTrue(signIn.errPass.getText().contains("Password is required"));
    }
 
 ////Password error field check
-
-   public void testPassErr(){
-       signIn.emptyFieldCheck();
-
-       Assert.assertTrue(signIn.errPass.getText().contains("Password is required"));
-       System.out.println(signIn.errPass.getText()+" :: Checked");
-
-       signIn.errorCheck();
-
-       String expect="Password must be at least 8 characters long";
-       Assert.assertTrue(signIn.errPass.getText().contains(expect));
-       System.out.println(signIn.errPass.getText()+" :: Checked");
+   public void testEmailPassErr(){
+       signIn.loginError();
+       Assert.assertTrue(signIn.errEmail.isDisplayed());
+       Assert.assertTrue(signIn.errPass.isDisplayed());
     }
 
+    ////Sign in check
     public void testSignIn() throws InterruptedException {
 
-        signIn.setLogin();
-
+        signIn.signIn();
         Thread.sleep(2000);
-        System.out.println(driver.getCurrentUrl());
-        Assert.assertTrue(driver.getCurrentUrl().contains("/profile/"));
+        System.out.println(signIn.getUrl());
+        Assert.assertTrue(signIn.getUrl().contains("/profile/"));
         System.out.println("User page :: Checked");
-        //driver.findElement(By.cssSelector("name"));
     }
+
+    ////Google sign in check
     public void testGoogleSign() throws Exception {
-
         signIn.loginWithGoogle();
-        System.out.println(driver.getCurrentUrl());
-
-        Assert.assertTrue(driver.getCurrentUrl().contains("/profile/"));
+        Assert.assertTrue(signIn.getUrl().contains("/profile/"));
         System.out.println("Google login :: Checked");
     }
+
+    ////Bad pass or email verification
     public void testBadPassOrEmail(){
-        signIn.badEmailOrPass();
-        WebElement err=driver.findElement(By.cssSelector("div.alert-general-error"));
-        Assert.assertTrue(err.isDisplayed());
+        signIn.badEmail();
+        Assert.assertTrue(signIn.badErr.isDisplayed());
         System.out.println("Bad email or password is displayed");
 
     }
