@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- JDBC Database connection settings -->
+        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/library?useSSL=false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.datasource">java:comp/env/jdbc/webApplication</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">pass</property>
+        <property name="cache.provider_class">org.hibernate.cache.internal.NoCachingRegionFactory</property>
+
+        <mapping class="team1.entity.Author"/>
+        <mapping class="team1.entity.Book"/>
+        <mapping class="team1.entity.Request"/>
+        <mapping class="team1.entity.Role"/>
+        <mapping class="team1.entity.User"/>
+
+    </session-factory>
+</hibernate-configuration>
