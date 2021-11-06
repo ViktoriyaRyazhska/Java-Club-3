@@ -91,4 +91,9 @@ public class BookDAOImpl implements DAO<Book>, BookDAO {
         sessionFactory.openSession().createQuery("UPDATE Book set copies = "+copies+" WHERE book_id ="+ id).executeUpdate();
     }
 
+    @Override
+    public int getCopies(Book book)
+    {
+        return book.getCopies();
+    }
 }

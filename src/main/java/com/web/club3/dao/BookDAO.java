@@ -13,4 +13,6 @@ public interface BookDAO {
     Book findByTitle(String title);
 
     void updateCopiesById(int id,int copies);
+
+    int getCopies(Book book);
 }
