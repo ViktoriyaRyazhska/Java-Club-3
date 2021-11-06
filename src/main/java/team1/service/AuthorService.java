@@ -13,7 +13,7 @@ public interface AuthorService {
 
     Author update(Author t);
 
-    Author getById(Integer id);
+    Author getById(long id);
 
     List<Author> getAll();
 

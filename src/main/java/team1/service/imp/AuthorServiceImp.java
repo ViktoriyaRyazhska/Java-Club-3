@@ -30,7 +30,7 @@ public class AuthorServiceImp implements AuthorService {
     }
 
     @Override
-    public Author getById(Integer id) {
+    public Author getById(long id) {
         return authorDao.getById(id);
     }
 

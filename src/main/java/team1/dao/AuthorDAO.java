@@ -11,7 +11,7 @@ public interface AuthorDAO{
 
     Author update(Author author);
 
-    Author getById(Integer id);
+    Author getById(long id);
 
     List<Author> getAll();
 }
