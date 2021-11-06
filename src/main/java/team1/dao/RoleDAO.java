@@ -1,6 +1,5 @@
 package team1.dao;
 
-import team1.entity.Book;
 import team1.entity.Role;
 
 import java.util.List;

@@ -10,13 +10,13 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "request")
+@Table(name = "request", schema = "library")
 
 public class Request {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)

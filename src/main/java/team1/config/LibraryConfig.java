@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import team1.entity.*;
 
 import javax.sql.DataSource;
-import java.awt.print.Book;
+
 import java.util.Properties;
 
 @ComponentScan("team1")
