@@ -14,5 +14,5 @@ public interface BookDAO {
 
     void updateCopiesById(int id,int copies);
 
-    int getCopies(Book book);
+    int getCopiesById(int id);
 }
