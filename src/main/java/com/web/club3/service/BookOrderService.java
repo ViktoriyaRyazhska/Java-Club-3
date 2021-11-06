@@ -14,4 +14,6 @@ public interface BookOrderService {
     BookOrder update(BookOrder bookOrder);
 
     void deleteById(int id);
+
+    void returnBook(int bookId,int bookOrderId);
 }

@@ -2,6 +2,7 @@ package com.web.club3.dao.impl;
 
 import com.web.club3.dao.BookOrderDAO;
 import com.web.club3.model.BookOrder;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -59,4 +60,19 @@ public class BookOrderDAOImpl implements BookOrderDAO {
         transaction.commit();
         session.close();
     }
+/*
+    @Override
+    public void returnBook(int bookId) {
+        Session session = sessionFactory.openSession();
+        Query q  = session.createQuery("update book_order set return_date = '20211024' where book_order_id = 8;" +
+                "update book set copies = 4 where book_id = :bookId");
+        session.delete(bookOrder);
+        transaction.commit();
+        session.close();
+    }
+
+ */
+
+
+
 }
