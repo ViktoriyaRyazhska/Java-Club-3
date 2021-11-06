@@ -6,7 +6,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import team1.dao.UserDAO;
-import team1.entity.Author;
 import team1.entity.User;
 
 import java.util.List;
@@ -51,7 +50,7 @@ public class UserDAOImp implements UserDAO {
     }
 
     @Override
-    public User getById(Integer id) {
+    public User getById(long id) {
         return sessionFactory.openSession().get(User.class, id);
     }
 

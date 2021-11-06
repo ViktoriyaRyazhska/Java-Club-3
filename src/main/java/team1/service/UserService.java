@@ -1,9 +1,11 @@
-package team1.dao;
+package team1.service;
+
 
 import team1.entity.User;
+
 import java.util.List;
 
-public interface UserDAO {
+public interface UserService {
     User add(User user);
 
     void delete(long id);
