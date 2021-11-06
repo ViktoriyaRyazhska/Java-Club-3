@@ -67,7 +67,8 @@ public class BookDAOImpl implements DAO<Book>, BookDAO {
     @Override
     public boolean available(int id)
     {
-        return  null != sessionFactory.openSession().createQuery("FROM Book WHERE book_id ="+ id).getSingleResult();
+        Book book = (Book) sessionFactory.openSession().createQuery("FROM Book WHERE book_id ="+ id).getSingleResult();
+        return  null != book && book.getCopies() > 0;
     }
 
     @Override
@@ -83,4 +84,11 @@ public class BookDAOImpl implements DAO<Book>, BookDAO {
     {
         return sessionFactory.openSession().createQuery("From Book where title = '" + title + "'",Book.class).getSingleResult();
     }
+
+    @Override
+    public void updateCopiesById(int id,int copies)
+    {
+        sessionFactory.openSession().createQuery("UPDATE Book set copies = "+copies+" WHERE book_id ="+ id).executeUpdate();
+    }
+
 }

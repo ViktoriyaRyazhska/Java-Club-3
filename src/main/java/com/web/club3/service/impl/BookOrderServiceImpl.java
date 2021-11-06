@@ -42,4 +42,5 @@ public class BookOrderServiceImpl implements CRUDService<BookOrder> {
     public void deleteById(int id) {
         bookOrderDAO.deleteById(id);
     }
+
 }

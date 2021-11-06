@@ -11,4 +11,6 @@ public interface BookDAO {
     List<Book> findByAuthor(Author author);
 
     Book findByTitle(String title);
+
+    void updateCopiesById(int id,int copies);
 }
