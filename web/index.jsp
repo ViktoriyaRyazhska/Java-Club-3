@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>Library</title>
   </head>
   <body>
-  <div>Library Web Application</div>
+
+  <%@include file="/WEB-INF/view/header.jsp" %>
+
   </body>
 </html>
