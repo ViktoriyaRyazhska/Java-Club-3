@@ -20,7 +20,7 @@ public class App//Sign in
      private WebElement crossBtn;
 
     public void setUp(){
-        System.setProperty("webdriver.gecko.driver", "E:/Progs/GreenCityTes/GreenCityTest/geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", "GreenCityTest/geckodriver.exe");
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(10,TimeUnit.SECONDS);
         String url = "https://ita-social-projects.github.io/GreenCityClient/#/";
