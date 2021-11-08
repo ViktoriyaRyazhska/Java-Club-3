@@ -1,5 +1,6 @@
 import com.web.club3.config.JavaConfig;
 
+import com.web.club3.config.WebAppInitializer;
 import com.web.club3.service.impl.AuthorServiceImpl;
 import com.web.club3.service.impl.BookOrderServiceImpl;
 import com.web.club3.service.impl.BookServiceImpl;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
+
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
 
         UserServiceImpl userServiceImpl = context.getBean(UserServiceImpl.class);
