@@ -32,8 +32,8 @@
     <div class="menu">
         <div class="left">
             <a href="" > Головна</a>
-            <a href="/book" >Книги</a>
-            <a href="/authors">Автори</a>
+            <a href="/book" >Книги </a>
+            <a href="/authors">Автори </a>
         </div>
 
         <div class="right">
