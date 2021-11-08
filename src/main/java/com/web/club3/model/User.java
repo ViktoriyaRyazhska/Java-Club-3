@@ -1,7 +1,9 @@
 package com.web.club3.model;
 
+import com.web.club3.util.LocalDatePersistenceConverter;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -28,7 +30,8 @@ public class User {
     private String password;
 
     @Column(name = "registration_date")
-    private Date date;
+    @Convert(converter = LocalDatePersistenceConverter.class)
+    private LocalDate date;
 
     @Column(name = "user_role", nullable = false)
     private String role;
@@ -92,11 +95,11 @@ public class User {
         this.password = password;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

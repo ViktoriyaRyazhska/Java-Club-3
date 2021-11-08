@@ -1,6 +1,6 @@
 package com.web.club3.dao.impl;
 
-import com.web.club3.dao.GenreDAO;
+import com.web.club3.dao.DAO;
 import com.web.club3.model.Genre;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class GenreDAOImpl implements GenreDAO {
+public class GenreDAOImpl implements DAO<Genre> {
 
     private SessionFactory sessionFactory;
 

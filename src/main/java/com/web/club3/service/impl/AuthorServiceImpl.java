@@ -2,14 +2,14 @@ package com.web.club3.service.impl;
 
 import com.web.club3.dao.impl.AuthorDAOImpl;
 import com.web.club3.model.Author;
-import com.web.club3.service.AuthorService;
+import com.web.club3.service.CRUDService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 @Service
-public class AuthorServiceImpl implements AuthorService {
+public class AuthorServiceImpl implements CRUDService<Author> {
     private AuthorDAOImpl authorDAO;
 
     @Autowired

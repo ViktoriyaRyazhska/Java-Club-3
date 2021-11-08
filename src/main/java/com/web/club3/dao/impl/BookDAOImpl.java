@@ -1,6 +1,8 @@
 package com.web.club3.dao.impl;
 
 import com.web.club3.dao.BookDAO;
+import com.web.club3.dao.DAO;
+import com.web.club3.model.Author;
 import com.web.club3.model.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Repository
-public class BookDAOImpl implements BookDAO {
+public class BookDAOImpl implements DAO<Book>, BookDAO {
     private SessionFactory sessionFactory;
 
     @Autowired
@@ -26,7 +30,7 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public List<Book> findAll() {
-        List<Book> book = (List<Book>)  sessionFactory.openSession().createQuery("From Book").list();
+        List<Book> book = (List<Book>)  sessionFactory.openSession().createQuery("From Book",Book.class).list();
         return book;
     }
 
@@ -58,5 +62,25 @@ public class BookDAOImpl implements BookDAO {
         session.delete(book);
         tx1.commit();
         session.close();
+    }
+
+    @Override
+    public boolean available(int id)
+    {
+        return  null != sessionFactory.openSession().createQuery("FROM Book WHERE book_id ="+ id).getSingleResult();
+    }
+
+    @Override
+    public List<Book> findByAuthor(Author author)
+    {
+        return sessionFactory.openSession().createQuery(
+                "From Book",Book.class).getResultList().stream()
+                .filter(x -> x.getAuthor().stream().anyMatch(y->y.getId() == author.getId())).collect(Collectors.toList());
+    }
+
+    @Override
+    public Book findByTitle(String title)
+    {
+        return sessionFactory.openSession().createQuery("From Book where title = '" + title + "'",Book.class).getSingleResult();
     }
 }

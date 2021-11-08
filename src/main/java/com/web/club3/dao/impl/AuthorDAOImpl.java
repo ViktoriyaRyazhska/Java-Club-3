@@ -1,7 +1,7 @@
 package com.web.club3.dao.impl;
 
 
-import com.web.club3.dao.AuthorDAO;
+import com.web.club3.dao.DAO;
 import com.web.club3.model.Author;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,8 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Repository
-public class AuthorDAOImpl implements AuthorDAO {
+public class AuthorDAOImpl implements DAO<Author> {
     private SessionFactory sessionFactory;
 
     @Autowired
@@ -27,7 +28,7 @@ public class AuthorDAOImpl implements AuthorDAO {
 
     @Override
     public List<Author> findAll() {
-        List<Author> authors = (List<Author>)  sessionFactory.openSession().createQuery("From Author").list();
+        List<Author> authors = (List<Author>) sessionFactory.openSession().createQuery("From Author",Author.class).list();
         return authors;
     }
 

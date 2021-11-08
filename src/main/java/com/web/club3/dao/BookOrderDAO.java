@@ -2,16 +2,15 @@ package com.web.club3.dao;
 
 import com.web.club3.model.BookOrder;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface BookOrderDAO {
-    BookOrder findById(int id);
 
-    List<BookOrder> findAll();
+    List<BookOrder> test(LocalDate localDate1, LocalDate localDate2);
 
-    BookOrder create(BookOrder bookOrder);
+    BookOrder test2(int id);
 
-    BookOrder update(BookOrder bookOrder);
+    Long theMostPopular(LocalDate localDate1, LocalDate localDate2);
 
-    void deleteById(int id);
 }

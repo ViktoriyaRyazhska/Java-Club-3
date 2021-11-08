@@ -2,13 +2,13 @@ package com.web.club3.service.impl;
 
 import com.web.club3.dao.impl.GenreDAOImpl;
 import com.web.club3.model.Genre;
-import com.web.club3.service.GenreService;
+import com.web.club3.service.CRUDService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class GenreServiceImpl implements GenreService {
+public class GenreServiceImpl implements CRUDService<Genre> {
 
     private GenreDAOImpl genreDAO;
 
