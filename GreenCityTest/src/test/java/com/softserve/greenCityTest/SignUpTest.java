@@ -41,19 +41,17 @@ public class SignUpTest extends TestCase {
         Assert.assertTrue(signUp.errConfirmPass.isDisplayed());
     }
 
-    /*
-
+    //Already exist user error check
     public void testAlreadyExist() throws InterruptedException {
-        signUp.signUp();
+        signUp.signUpExist();
         Thread.sleep(2000);
-        System.out.println(signUp.getUrl());
-        Assert.assertTrue(signUp.getUrl().contains("/profile/"));
-        System.out.println("User page :: Checked");
+       signUp.setAlreadyExistUser();
+       Assert.assertTrue(signUp.alreadyExistUser.getText().contains("The user already exists by this email"));
     }
-     */
 
-    /*
 
+/*
+    //Sign up test
     public void testSignUp() throws InterruptedException {
         signUp.signUp();
         Thread.sleep(2000);
@@ -61,10 +59,13 @@ public class SignUpTest extends TestCase {
 
     }
 
-     */
-
-    //Create SignUpWithGoogle TEST
-
+    //SignUpWithGoogle TEST
+    public void testGoogleLogUp() throws Exception {
+        signUp.logUpWithGoogle();
+        Assert.assertTrue(signUp.getUrl().contains("/profile/"));
+        System.out.println("Google login :: Checked");
+    }
+ */
 
 
 }

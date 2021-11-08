@@ -33,8 +33,8 @@ public class UserDataBase {
         User u = new User();
         u.setEmail("testaccontgs1@gmail.com");
         u.setName("testAccGC1");
-        u.setPassword("TestPass23~");
-        u.setconfirmPass("TestPass23~");
+        u.setPassword("TestPass23`");
+        u.setconfirmPass("TestPass23`");
         return u;
     }
 

@@ -20,7 +20,8 @@ public class SignUp extends App {
     private WebElement submit;
     private WebElement googleSignUp;
     public WebElement badErr;
-    //public WebElement congrats;
+    public WebElement alreadyExistUser;
+    public WebElement congrats;
 
     public SignUp() {
     }
@@ -83,7 +84,14 @@ public class SignUp extends App {
         userName = this.driver.findElement(By.id("firstName"));
         submit =  this.driver.findElement(By.xpath("//button[@type='submit']"));
         googleSignUp =  this.driver.findElement(By.xpath("//button[@type='button']"));
-        //congrats= this.driver.findElement(By.className("mat-simple-snackbar ng-star-inserted"));
+    }
+
+    public void setCongratsMsg(){
+        congrats = this.driver.findElement(By.xpath("//div[@class = 'mat-simple-snackbar ng-star-inserted']"));
+    }
+
+    public void setAlreadyExistUser(){
+        alreadyExistUser = this.driver.findElement(By.xpath("//div[@class = 'error-message error-message-show ng-star-inserted']"));
     }
 
     public void setBadErr(){ badErr=this.driver.findElement(By.cssSelector("div.alert-general-error"));
@@ -96,13 +104,11 @@ public class SignUp extends App {
         errConfirmPass = driver.findElement(By.id("confirm-err-msg"));
     }
 
+    public void clickGoogle(){
+        googleSignUp.click();
+    }
+
 }
 
-/*   public SignUp(WebDriver driver){
-        driver.get(url);
-        this.driver=driver;
-        signupXPath=driver.findElement(By.xpath("//li[@role='link']"));
-    }
- */
 
 
