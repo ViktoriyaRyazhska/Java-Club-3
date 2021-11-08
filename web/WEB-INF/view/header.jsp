@@ -1,5 +1,5 @@
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Title</title>
@@ -29,17 +29,15 @@
     </style>
 </head>
 <body>
-
     <div class="menu">
         <div class="left">
-            <a href="/auth" > Головна</a></li>
-            <a href="/auth" >Книги</a>
-            <a href="/auth">Автори</a>
+            <a href="" > Головна</a>
+            <a href="/book" >Книги</a>
+            <a href="/authors">Автори</a>
         </div>
 
         <div class="right">
-            <a href="/auth">Особистий кабінет</a>
-            <a href="/auth">Увійти</a>
+            <a href="/login">Увійти</a>
             <a href="/auth">Зареєструватись</a>
 
         </div>
