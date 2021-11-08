@@ -27,7 +27,9 @@ public class App//Sign in
         driver.get(url);
     }
 
-    public App(){}
+    public App(){
+
+    }
 
     public WebDriver sendDriver() {
         return this.driver;
@@ -57,6 +59,7 @@ public class App//Sign in
         signupXPath.click();
 
     }
+
     public void closeWrapper(){
         crossBtn.click();
     }
