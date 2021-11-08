@@ -3,9 +3,11 @@ package com.web.club3.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import javax.sql.*;
 import java.util.Properties;
@@ -28,14 +30,15 @@ public class JavaConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
-        dataSource.setUsername("");
-        dataSource.setPassword("");
+        dataSource.setUsername("natalia");
+        dataSource.setPassword("Koz@k98N");
         return dataSource;
     }
 
     private Properties hibernateProperties() {
         Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.show_sql", "true");
+        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         return hibernateProperties;
     }
 }
