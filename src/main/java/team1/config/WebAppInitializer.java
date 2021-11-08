@@ -1,7 +1,11 @@
 package team1.config;
 
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+@EnableWebMvc
+@Configuration
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
@@ -17,6 +21,5 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};
-
     }
 }

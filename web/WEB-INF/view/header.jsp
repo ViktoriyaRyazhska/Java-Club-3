@@ -19,9 +19,10 @@
             color: black;
         }
 
-        .left a , .right a{
+        .left a, .right a {
             margin-right: 30px;
         }
+
         .left a:hover, .right a:hover {
             color: black;
             font-weight: 700;
@@ -29,18 +30,24 @@
     </style>
 </head>
 <body>
-    <div class="menu">
-        <div class="left">
-            <a href="" > Головна</a>
-            <a href="/book" >Книги </a>
-            <a href="/authors">Автори </a>
-        </div>
+<div class="menu">
 
-        <div class="right">
-            <a href="/login">Увійти</a>
-            <a href="/auth">Зареєструватись</a>
+    <div class="left">
+        <a href="/index.jsp">
+            <form action="/index.jsp">Автори</form></a>
+        <a href="/books">Книги </a>
+       <a href="/authors/all">
+           <form action="/authors/all">Автори</form>
+       </a>
 
-        </div>
+
     </div>
+
+    <div class="right">
+        <a href="/login">Увійти</a>
+        <a href="/auth">Зареєструватись</a>
+
+    </div>
+</div>
 </body>
 </html>
