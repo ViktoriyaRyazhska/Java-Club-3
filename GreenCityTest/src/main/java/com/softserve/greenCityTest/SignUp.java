@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SignUp extends App {
 
-    WebDriver driver=super.sendDriver();
+    WebDriver driver=super.driver;
     private WebElement mail;
     private WebElement userName;
     public WebElement errEmail;
@@ -26,7 +26,6 @@ public class SignUp extends App {
     public SignUp() {
     }
 
-    @Override
     public WebDriver sendDriver() {
         return this.driver;
     }
@@ -72,7 +71,7 @@ public class SignUp extends App {
     public void enterConfirmPass(User u) {
         confirmPass.click();
         confirmPass.clear();
-        confirmPass.sendKeys(u.getconfirmPass());
+        confirmPass.sendKeys(u.getConfirmPass());
     }
 
     //

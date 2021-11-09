@@ -2,12 +2,15 @@ package com.softserve.greenCityTest.workflow;
 
 import com.softserve.greenCityTest.SignIn;
 import com.softserve.greenCityTest.UserDataBase;
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -37,6 +40,8 @@ public class SignInWF extends SignIn {
         enterEmail(UserDataBase.validUser());
         enterPass(UserDataBase.validUser());
         submitClick();
+        WebDriverWait wait=new WebDriverWait(driver,5);
+        wait.until(ExpectedConditions.urlContains("/profile/"));
     }
     public void badEmail(){
         enterEmail(UserDataBase.invalidUser());
@@ -49,9 +54,12 @@ public class SignInWF extends SignIn {
     }
 
     //Google login sequence
+
     public void loginWithGoogle() throws Exception{
         clickGoogle();
         Thread.sleep(2000);
+
+
         String winHand =driver.getWindowHandle();
         nextWindow();
         System.out.println(driver.getCurrentUrl());
@@ -68,8 +76,8 @@ public class SignInWF extends SignIn {
 
         System.out.println(driver.getCurrentUrl());
         WebDriverWait ww=new WebDriverWait(driver,20);
-        ww.until(ExpectedConditions.invisibilityOf(gmail));
-
+        ww.until(ExpectedConditions.stalenessOf(gmail));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         WebElement gpass=driver.findElement(By.xpath("//input[@jsname='YPqjbf']"));
         gpass.click();

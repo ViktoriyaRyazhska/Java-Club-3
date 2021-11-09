@@ -8,7 +8,7 @@ public class UserDataBase {
         u.setLoginName("12");
         u.setName("123");
         u.setPassword("123");
-        u.setconfirmPass("1234");
+        u.setConfirmPass("1234");
         return u;
     }
     public static User invalidUser(){
@@ -28,22 +28,20 @@ public class UserDataBase {
         u.setLoginName("testAccGC");
         return u;
     }
-
-    public static User validUserSignUp(){
-        User u = new User();
-        u.setEmail("testaccontgs1@gmail.com");
-        u.setName("testAccGC1");
-        u.setPassword("TestPass23`");
-        u.setconfirmPass("TestPass23`");
-        return u;
-    }
-
     public static User googleUser(){
         User u =new User();
         u.setEmail("testaccontgs@gmail.com");
         u.setPassword("TestPass22");
         u.setName("testAccGC");
         u.setLoginName("testAccGC");
+        return u;
+    }
+    public static User validUserSignUp(){
+        User u = new User();
+        u.setEmail("testaccontgs1@gmail.com");
+        u.setName("testAccGC1");
+        u.setPassword("TestPass23`");
+        u.setConfirmPass("TestPass23`");
         return u;
     }
 }

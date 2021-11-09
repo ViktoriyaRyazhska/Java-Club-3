@@ -36,7 +36,7 @@ public class GMailPage {
         email.sendKeys(UserDataBase.googleUser().getEmail());
         next=driver.findElement(By.xpath("//button[@jsname='LgbsSe']"));
         next.click();
-        Thread.sleep(2000);
+        Thread.sleep(2000);//??//
         WebDriverWait wait=new WebDriverWait(driver,5);
         wait.until(ExpectedConditions.invisibilityOf(email));
         pass=driver.findElement(By.xpath("//input[@type='password']"));
@@ -53,16 +53,13 @@ public class GMailPage {
             }
         }
         catch (Exception e){
-            System.out.println("No such element ::"+e);
-        }
-        finally {
-
+            System.out.println("No such element :: "+e);
         }
     }
     public void selectEmail(){
-        List<WebElement> mail=driver.findElements(By.xpath("//span[contains(text(), 'mailgreencity1')]"));
-
-        mail.get(1).click();
+        //List<WebElement> mailSender=driver.findElements(By.xpath("//span[contains(text(), 'mailgreencity1')]"));
+        List<WebElement> mailTheme=driver.findElements(By.xpath("//span[contains(text(), 'Confirm restoring password')]"));
+        mailTheme.get(1).click();
 
         WebElement butn=driver.findElement(By.xpath("//a[contains(text(),'Change password')]"));
         butn.click();

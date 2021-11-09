@@ -5,13 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
+import java.time.*;
+import java.time.Month;
 import java.util.ArrayList;
+
 
 import java.util.List;
 
 
 public class SignIn extends App {
-    WebDriver driver=super.sendDriver();
+    WebDriver driver=super.driver;
     private WebElement mail;
     public WebElement errEmail;
     public WebElement errPass;
@@ -24,7 +27,7 @@ public class SignIn extends App {
     public SignIn(){
     }
 
-    @Override
+
     public WebDriver sendDriver(){
         return this.driver;
     }
@@ -68,7 +71,7 @@ public class SignIn extends App {
       badErr=this.driver.findElement(By.cssSelector("div.alert-general-error"));
     }
 
-   public void setId(){
+   protected void setId(){
        pass=this.driver.findElement(By.id("password"));
        mail=this.driver.findElement(By.id("email"));
        submit=this.driver.findElement(By.xpath("//button[@type='submit']"));

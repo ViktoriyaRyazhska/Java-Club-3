@@ -17,8 +17,6 @@ public class AppTest extends TestCase {
         page.closeDriver();
     }
     public void testMain(){
-        page.setUp();
-        page.setButtons();
         Assert.assertTrue(page.signXPath.isDisplayed());
         System.out.println("Sign in button is displayed");
         Assert.assertTrue(page.signupXPath.isDisplayed());

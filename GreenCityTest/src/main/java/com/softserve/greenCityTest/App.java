@@ -15,12 +15,13 @@ public class App//Sign in
 
 
     public WebElement signXPath;
+    public WebElement forgotPass;
      public WebElement signupXPath;
      public WebElement wrapper;
      private WebElement crossBtn;
 
     public void setUp(){
-        System.setProperty("webdriver.gecko.driver", "GreenCityTest/geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", "./geckodriver.exe");
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(10,TimeUnit.SECONDS);
         String url = "https://ita-social-projects.github.io/GreenCityClient/#/";
@@ -28,12 +29,10 @@ public class App//Sign in
     }
 
     public App(){
-
+        setUp();
+        setButtons();
     }
 
-    public WebDriver sendDriver() {
-        return this.driver;
-    }
 
     public void setButtons(){
         signXPath=driver.findElement(By.xpath("//a[@role='link']"));
@@ -57,7 +56,15 @@ public class App//Sign in
     }
     public void clickSignUp(){
         signupXPath.click();
-
+    }
+    private void setForgotPassId(){
+        signXPath.click();
+        forgotPass=driver.findElement(By.cssSelector("a.forgot-password"));
+    }
+    public void clickForgotPass(){
+        setForgotPassId();
+        forgotPass.click();
+        setWrapper();
     }
 
     public void closeWrapper(){

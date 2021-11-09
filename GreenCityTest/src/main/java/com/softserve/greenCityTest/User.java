@@ -32,12 +32,7 @@ public class User {
     public String getPassword(){
         return password;
     }
-    public void setconfirmPass(String confirmPass){
-        this.confirmPass=confirmPass;
-    }
-    public String getconfirmPass() {
-        return confirmPass;
-    }
-
+    public void setConfirmPass(String confirmPass){this.confirmPass=confirmPass;}
+    public String getConfirmPass() {return confirmPass;}
 
 }

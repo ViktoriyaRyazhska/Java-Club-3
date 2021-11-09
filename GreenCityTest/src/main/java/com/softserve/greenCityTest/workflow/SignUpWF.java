@@ -85,7 +85,7 @@ public class SignUpWF extends SignUp {
 
         System.out.println(driver.getCurrentUrl());
         WebDriverWait ww = new WebDriverWait(driver, 20);
-        ww.until(ExpectedConditions.invisibilityOf(gmail));
+        ww.until(ExpectedConditions.stalenessOf(gmail));
 
 
         WebElement gpass = driver.findElement(By.xpath("//input[@jsname='YPqjbf']"));
@@ -94,6 +94,10 @@ public class SignUpWF extends SignUp {
         gpass.sendKeys(UserDataBase.googleUser().getPassword());
         next = driver.findElement(By.xpath("//button[@jsname='LgbsSe']"));
         next.click();
+
+        previousWindow(winHand);
+        WebDriverWait pw=new WebDriverWait(driver,10);
+        pw.until(ExpectedConditions.urlContains("/profile/"));
     }
 
     private void nextWindow(){
@@ -110,5 +114,9 @@ public class SignUpWF extends SignUp {
 
     public String getUrl(){
         return driver.getCurrentUrl();
+    }
+
+    private void previousWindow(String s){
+        driver.switchTo().window(s);
     }
 }

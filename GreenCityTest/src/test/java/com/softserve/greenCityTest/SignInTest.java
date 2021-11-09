@@ -12,6 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -52,7 +53,7 @@ public class SignInTest extends TestCase
     public void testSignIn() throws InterruptedException {
 
         signIn.signIn();
-        Thread.sleep(2000);
+
         System.out.println(signIn.getUrl());
         Assert.assertTrue(signIn.getUrl().contains("/profile/"));
         System.out.println("User page :: Checked");
@@ -70,6 +71,5 @@ public class SignInTest extends TestCase
         signIn.badEmail();
         Assert.assertTrue(signIn.badErr.isDisplayed());
         System.out.println("Bad email or password is displayed");
-
     }
 }

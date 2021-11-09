@@ -1,31 +1,46 @@
 package com.softserve.greenCityTest;
 
+import com.softserve.greenCityTest.workflow.ForgotPasswordWF;
 import junit.framework.TestCase;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class ForgotPasswordTest extends TestCase {
-    private WebDriver driver;
-    private ForgotPassword forgotPassword;
+
+    private ForgotPasswordWF forgotPassword;
 
     public void setUp() throws Exception{
-        driver=new FirefoxDriver();
-        forgotPassword=new ForgotPassword(driver);
+        forgotPassword=new ForgotPasswordWF();
         super.setUp();
     }
     public void tearDown(){
-        driver.quit();
+        forgotPassword.closeDriver();
     }
     public void testError(){
-        WebElement error=forgotPassword.errorCheck();
-        Assert.assertTrue(error.isDisplayed());
-        Assert.assertTrue(error.getText().contains("Email is required"));
+        forgotPassword.emptyMailField();
+        Assert.assertTrue(forgotPassword.error.isDisplayed());
+        Assert.assertTrue(forgotPassword.error.getText().contains("Email is required"));
     }
     public void testForgotPass() throws Exception{
-        forgotPassword.forgotPass();
-        forgotPassword.enterMail();
         forgotPassword.changePass();
+        Assert.assertTrue(forgotPassword.verificationSignIn().contains("/profile/"));
+    }
+    public void testWrongEmail(){
+        forgotPassword.wrongEmail();
+        Assert.assertTrue(forgotPassword.error.isDisplayed());
+    }
+    public void testEmptyPassFields() throws Exception{
+        forgotPassword.emptyFields();
+        Assert.assertTrue(forgotPassword.errors.get(0).isDisplayed());
+        Assert.assertTrue(forgotPassword.errors.get(0).getText().contains("Password is required"));
+        Assert.assertTrue(forgotPassword.errors.get(1).isDisplayed());
+        Assert.assertTrue(forgotPassword.errors.get(1).getText().contains("Password is required"));
+
+    }
+    public void testPassError() throws Exception{
+        forgotPassword.invalidPasswords();
+        Assert.assertTrue(forgotPassword.errors.get(0).isDisplayed());
+        Assert.assertTrue(forgotPassword.errors.get(0).getText().contains("Password must be at least 8 characters long"));
+        Assert.assertTrue(forgotPassword.errors.get(1).isDisplayed());
+        Assert.assertTrue(forgotPassword.errors.get(1).getText().contains("Passwords do not match"));
     }
 }
