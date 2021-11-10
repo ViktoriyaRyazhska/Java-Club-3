@@ -8,6 +8,9 @@ import com.web.club3.service.impl.UserServiceImpl;
 import com.web.club3.util.DateUtil;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -19,8 +22,8 @@ public class Main {
         BookOrderServiceImpl bookOrderServiceImpl = context.getBean(BookOrderServiceImpl.class);
         AuthorServiceImpl authorService = context.getBean(AuthorServiceImpl.class);
 
-        System.out.println(userServiceImpl.howLongUserWorkWithLibrary(userServiceImpl.findById(4).getDate(), DateUtil.localDate));
-        System.out.println(bookServiceImpl.findByAuthor(authorService.findById(1)));
+       bookOrderServiceImpl.getCountInPeriod(LocalDate.of(2021,6,3),LocalDate.of(2021,10,21));
+        bookOrderServiceImpl.averageTimeOfReadingBook(7);
         context.close();
     }
 }

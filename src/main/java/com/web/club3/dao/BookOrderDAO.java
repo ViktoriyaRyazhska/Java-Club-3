@@ -1,15 +1,11 @@
-package com.web.club3.service;
+package com.web.club3.dao;
 
 import com.web.club3.model.BookOrder;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public interface BookOrderService {
-
-    void deleteById(int id);
-
-    void returnBook(int bookId,int bookOrderId);
+public interface BookOrderDAO {
 
     List<BookOrder> theMostPopular(LocalDate localDate1, LocalDate localDate2);
 
