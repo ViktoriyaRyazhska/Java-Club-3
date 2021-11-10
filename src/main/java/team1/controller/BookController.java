@@ -2,31 +2,22 @@ package team1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import team1.entity.Author;
-import team1.service.AuthorService;
+import team1.entity.Book;
+import team1.service.BookService;
 
 @Controller
-//@RequestMapping("/authors")
-public class AuthorController {
+public class BookController {
     @Autowired
-    AuthorService authorService;
-
-//    @GetMapping("/all")
-//    public String showAllAuthors(Model model) {
-//        model.addAttribute("authors", authorService.getAll());
-//        return "authors";
-//    }
+    BookService bookService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView main() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("author", new Author());
-        modelAndView.setViewName("index");
+        modelAndView.addObject("books", new Book());
+        modelAndView.setViewName("books");
         return modelAndView;
     }
 }
