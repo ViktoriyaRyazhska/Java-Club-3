@@ -22,9 +22,8 @@ public class Main {
         BookOrderServiceImpl bookOrderServiceImpl = context.getBean(BookOrderServiceImpl.class);
         AuthorServiceImpl authorService = context.getBean(AuthorServiceImpl.class);
 
-       // System.out.println(bookOrderServiceImpl.theMostPopular(LocalDate.of(2021,06,03),LocalDate.of(2021,10,21)));
-       // System.out.println(bookOrderServiceImpl.test2(4));
-     System.out.println(bookOrderServiceImpl.test(LocalDate.of(2021,06,03),LocalDate.of(2021,10,21)));
+       bookOrderServiceImpl.getCountInPeriod(LocalDate.of(2021,6,3),LocalDate.of(2021,10,21));
+        bookOrderServiceImpl.averageTimeOfReadingBook(7);
         context.close();
     }
 }

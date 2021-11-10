@@ -58,13 +58,18 @@ public class BookOrderServiceImpl implements CRUDService<BookOrder>, BookOrderSe
     }
 
     @Override
-    public List<BookOrder> test(LocalDate localDate1, LocalDate localDate2) {
-        return bookOrderDAO.test(localDate1, localDate2);
+    public List<BookOrder> theMostPopular(LocalDate localDate1, LocalDate localDate2) {
+        return bookOrderDAO.theMostPopular(localDate1, localDate2);
+    }
+    @Override
+    public void getCountInPeriod(LocalDate localDate1, LocalDate localDate2)
+    {
+        bookOrderDAO.getCountInPeriod(localDate1 , localDate2);
     }
 
     @Override
-    public Long theMostPopular(LocalDate localDate1, LocalDate localDate2) {
-        return bookOrderDAO.theMostPopular(localDate1, localDate2);
+    public void averageTimeOfReadingBook(int id) {
+        bookOrderDAO.averageTimeOfReadingBook(id);
     }
 
     @Override

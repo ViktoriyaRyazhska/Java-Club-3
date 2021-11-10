@@ -2,8 +2,6 @@ package com.web.club3.dao.impl;
 
 import com.web.club3.dao.DAO;
 import org.hibernate.SQLQuery;
-import org.hibernate.query.Query;
-import com.web.club3.model.Book;
 import com.web.club3.model.BookOrder;
 import com.web.club3.dao.BookOrderDAO;
 import org.hibernate.Session;
@@ -13,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
 
 @Repository
 public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
@@ -69,22 +65,22 @@ public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
     }
 
     @Override
-    public Long theMostPopular(LocalDate localDate1, LocalDate localDate2) {
+    public List<BookOrder> theMostPopular(LocalDate localDate1, LocalDate localDate2) {
         Session session = sessionFactory.openSession();
+// підзапит,парсити BOOK "SELECT fname,lname,isbn from author inner join books on author.AUTHORID = books.AUTHORID"
 
-        long avgAge = (long) session.createQuery("Select COUNT (book_id) as from_most_to_less_popular FROM BookOrder b  where lending_date " +
-                "BETWEEN '"+localDate1+ "' AND '"+localDate2+"' GROUP BY book_id ORDER BY from_most_to_less_popular DESC").getSingleResult();
-        return  avgAge;
-    }
-    @Override
-    public List<BookOrder> test(LocalDate localDate1, LocalDate localDate2) {
-        Session session = sessionFactory.openSession();
-
-        SQLQuery query = session.createSQLQuery("Select  COUNT(*) as from_most_to_less_popular FROM book_order where lending_date " +
+        SQLQuery query = session.createSQLQuery("Select  COUNT(book_id) as from_most_to_less_popular  FROM book_order where lending_date " +
                 "BETWEEN '"+localDate1+ "' AND '"+localDate2+"' GROUP BY book_id ORDER BY from_most_to_less_popular DESC");
-       // query.addEntity("b", BookOrder.class);
-        List<BookOrder> results = query.list();
-        return results;
+        SQLQuery query1 = session.createSQLQuery("Select book_id as from_most_to_less_popular FROM book_order where lending_date " +
+                "BETWEEN '"+localDate1+ "' AND '"+localDate2+"' GROUP BY book_id ORDER BY from_most_to_less_popular DESC");
+
+        List results1 = query1.list();
+        List results = query.list();
+        System.out.println(results1);
+        System.out.println(results);
+
+        return results1 ;
+
 /*
        Query query =  sessionFactory.openSession().createQuery("Select :book_id,COUNT (book_id) as from_most_to_less_popular FROM BookOrder b where lending_date " +
                 "BETWEEN '"+localDate1+ "' AND '"+localDate2+"' GROUP BY book_id ORDER BY from_most_to_less_popular DESC");
@@ -101,22 +97,38 @@ public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
     }
     @Override
     public BookOrder test2(int id) {
-
-        return sessionFactory.openSession().createQuery("From BookOrder where book_order_id = " + id ,BookOrder.class).getSingleResult();
-    }
-/*
-    @Override
-    public void returnBook(int bookId) {
         Session session = sessionFactory.openSession();
-        Query q  = session.createQuery("update book_order set return_date = '20211024' where book_order_id = 8;" +
-                "update book set copies = 4 where book_id = :bookId");
-        session.delete(bookOrder);
-        transaction.commit();
-        session.close();
+        SQLQuery query = session.createSQLQuery("SELECT user_id, COUNT(user_id) AS how_many_books_are_read \n" +
+                "FROM book_order\n" +
+                "where return_date is not null \n" +
+                "GROUP BY user_id\n" +
+                "ORDER BY how_many_books_are_read DESC;");
+
+
+        List results = query.list();
+        System.out.println(results);
+        return null;
+    }
+    @Override
+    public void getCountInPeriod(LocalDate localDate1,LocalDate localDate2)
+    {
+        Session session = sessionFactory.openSession();
+        SQLQuery query1 = session.createSQLQuery("select count(book_id) from book_order where lending_date BETWEEN '"+localDate1+ "' AND '"+localDate2+"'");
+        List results1 = query1.list();
+        System.out.println(results1);
     }
 
- */
+    @Override
+    public void averageTimeOfReadingBook(int id) {
 
+        Session session = sessionFactory.openSession();
+        SQLQuery query1 = session.createSQLQuery("SELECT avg (DATEDIFF(return_date, lending_date)) AS 'AVG_Days'\n" +
+                "FROM book_order\n" +
+                "WHERE book_id = " + id +
+                " group by 'AVG_Days';");
+        List results1 = query1.list();
+        System.out.println(results1);
+    }
 
 
 }

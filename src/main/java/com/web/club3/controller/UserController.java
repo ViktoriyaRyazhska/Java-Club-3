@@ -8,11 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "/")
 public class UserController {
-    @GetMapping("/sample")
-    public String showForm() {
-        return "sample";
-    }
-
     @RequestMapping (value = "/home", method= RequestMethod.GET)
     public String greeting(){
         return "home";
