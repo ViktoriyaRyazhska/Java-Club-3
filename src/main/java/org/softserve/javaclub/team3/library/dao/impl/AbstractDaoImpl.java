@@ -5,21 +5,29 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.softserve.javaclub.team3.library.dao.AbstractDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.sql.DataSource;
 import java.io.Serializable;
 import java.util.List;
 
 @Repository
 @Transactional
-public abstract class AbstractDao<T extends Serializable> {
+public abstract class AbstractDaoImpl<T extends Serializable>  extends JdbcDaoSupport implements AbstractDao<T> {
 
-    private static final Logger logger = LoggerFactory.getLogger(AbstractDao.class);
+    private static final Logger logger = LoggerFactory.getLogger(AbstractDaoImpl.class);
 
     @Autowired
     protected SessionFactory sessionFactory;
+
+    @Autowired
+    public void setDs(DataSource dataSource) {
+        setDataSource(dataSource);
+    }
 
     private Class<T> clazz;
 
@@ -65,5 +73,4 @@ public abstract class AbstractDao<T extends Serializable> {
     protected Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
-
 }

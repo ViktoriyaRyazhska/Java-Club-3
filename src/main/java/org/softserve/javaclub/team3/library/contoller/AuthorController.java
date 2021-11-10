@@ -13,19 +13,19 @@ import org.springframework.web.servlet.ModelAndView;
 public class AuthorController {
 
     @Autowired
-    private AuthorService authorService;
+    private AuthorService authorServiceImpl;
 
     @RequestMapping(value = "/authors", method = RequestMethod.GET)
     public ModelAndView getAllAuthors() {
         ModelAndView modelAndView = new ModelAndView("authors");
-        modelAndView.addObject("authors", authorService.findAll());
+        modelAndView.addObject("authors", authorServiceImpl.findAll());
         return modelAndView;
     }
 
     @RequestMapping(value = "/authors/{authorId}", method = RequestMethod.GET)
     public ModelAndView getAuthorById(@PathVariable int authorId) {
         ModelAndView modelAndView = new ModelAndView("author");
-        modelAndView.addObject("author", authorService.findById(authorId));
+        modelAndView.addObject("author", authorServiceImpl.findById(authorId));
         return modelAndView;
     }
 
@@ -38,11 +38,11 @@ public class AuthorController {
     @ResponseBody
     @RequestMapping(path = "/addAuthor", method = RequestMethod.POST)
     public void processAddAuthor(@ModelAttribute("authorDto") AuthorDto authorDto, BindingResult bindingResult) {
-        authorService.addAuthor(authorDto);
+        authorServiceImpl.addAuthor(authorDto);
     }
     @ResponseBody
     @RequestMapping(value = "authors/delete/{authorId}", method = RequestMethod.GET)
     public void deleteAuthor(@PathVariable int authorId) {
-        authorService.removeAuthorById(authorId);
+        authorServiceImpl.removeAuthorById(authorId);
     }
 }

@@ -8,6 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public class AuthorDaoImpl extends AbstractDao<Author> implements AuthorDao {
+public class AuthorDaoImpl extends AbstractDaoImpl<Author> implements AuthorDao {
 
 }

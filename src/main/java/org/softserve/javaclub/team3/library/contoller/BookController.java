@@ -13,19 +13,19 @@ import org.springframework.web.servlet.ModelAndView;
 public class BookController {
 
     @Autowired
-    private BookService bookService;
+    private BookService bookServiceImpl;
 
     @RequestMapping(value = "/books", method = RequestMethod.GET)
     public ModelAndView getAllBooks() {
         ModelAndView modelAndView = new ModelAndView("books");
-        modelAndView.addObject("books", bookService.findAll());
+        modelAndView.addObject("books", bookServiceImpl.findAll());
         return modelAndView;
     }
 
     @RequestMapping(value = "/books/{bookId}", method = RequestMethod.GET)
     public ModelAndView getBookById(@PathVariable int bookId) {
         ModelAndView modelAndView = new ModelAndView("book");
-        modelAndView.addObject("book", bookService.findById(bookId));
+        modelAndView.addObject("book", bookServiceImpl.findById(bookId));
         return modelAndView;
     }
 
@@ -38,12 +38,12 @@ public class BookController {
     @ResponseBody
     @RequestMapping(path = "/addBook", method = RequestMethod.POST)
     public void processAddBook(@ModelAttribute("bookDto") BookDto bookDto, BindingResult bindingResult) {
-        bookService.addBook(bookDto);
+        bookServiceImpl.addBook(bookDto);
     }
 
     @ResponseBody
     @RequestMapping(value = "books/delete/{bookId}", method = RequestMethod.GET)
     public void deleteBook(@PathVariable int bookId) {
-        bookService.removeBookById(bookId);
+        bookServiceImpl.removeBookById(bookId);
     }
 }

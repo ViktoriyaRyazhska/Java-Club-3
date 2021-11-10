@@ -45,6 +45,7 @@ public class LibraryConfiguration {
         return viewResolver;
     }
 
+
     @Bean(name = "sessionFactory")
     public LocalSessionFactoryBean hibernate4AnnotatedSessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
@@ -55,7 +56,7 @@ public class LibraryConfiguration {
         return sessionFactory;
     }
 
-    @Bean
+    @Bean(name = "dataSource")
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(environment.getRequiredProperty(PROPERTY_NAME_DATABASE_DRIVER));

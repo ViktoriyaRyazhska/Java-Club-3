@@ -1,9 +1,7 @@
 package org.softserve.javaclub.team3.library.service.impl;
 
-import org.softserve.javaclub.team3.library.dao.impl.BookDaoImpl;
-import org.softserve.javaclub.team3.library.dto.AuthorDto;
+import org.softserve.javaclub.team3.library.dao.BookDao;
 import org.softserve.javaclub.team3.library.dto.BookDto;
-import org.softserve.javaclub.team3.library.model.Author;
 import org.softserve.javaclub.team3.library.model.Book;
 import org.softserve.javaclub.team3.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,25 +12,25 @@ import java.util.List;
 @Service
 public class BookServiceImpl implements BookService {
 
-    private BookDaoImpl bookDao;
+    private BookDao bookDaoImpl;
 
     @Autowired
     private AuthorServiceImpl authorService;
 
     @Autowired
-    public void setBookDao(BookDaoImpl bookDao) {
-        this.bookDao = bookDao;
-        this.bookDao.setClazz(Book.class);
+    public void setBookDaoImpl(BookDao bookDaoImpl) {
+        this.bookDaoImpl = bookDaoImpl;
+        this.bookDaoImpl.setClazz(Book.class);
     }
 
     @Override
     public Book findById(int bookId) {
-        return bookDao.findById(bookId);
+        return bookDaoImpl.findById(bookId);
     }
 
     @Override
     public List<Book> findAll() {
-        return bookDao.findAll();
+        return bookDaoImpl.findAll();
     }
 
     @Override
@@ -42,21 +40,21 @@ public class BookServiceImpl implements BookService {
         book.setTakenCount(bookdto.getTakenCount());
         book.setCopies(bookdto.getCopies());
         book.setAuthor(authorService.findById(bookdto.getAuthorId()));
-        bookDao.save(book);
+        bookDaoImpl.save(book);
     }
 
     @Override
     public void updateBook(Book book) {
-        bookDao.update(book);
+        bookDaoImpl.update(book);
     }
 
     @Override
     public void removeBook(Book book) {
-        bookDao.remove(book);
+        bookDaoImpl.remove(book);
     }
 
     @Override
     public void removeBookById(int bookId) {
-        bookDao.removeById(bookId);
+        bookDaoImpl.removeById(bookId);
     }
 }
