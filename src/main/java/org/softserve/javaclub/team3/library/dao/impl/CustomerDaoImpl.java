@@ -12,7 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CustomerDaoImpl extends AbstractDaoImpl<Customer> implements CustomerDao {
 
-    private static final String FIND_CUSTOMER_BY_USERNAME_QUERY = "SELECT * FROM Customer WHERE username = ?";
+    private static final String FIND_CUSTOMER_BY_USERNAME_QUERY = "SELECT * FROM Customer AS c " +
+            "JOIN customer_role cr on c.id = cr.Customer_id " +
+            "JOIN role r on r.id = cr.role_id WHERE username =  ?";
 
     private final RowMapper<Customer> customerRowMapper;
 
@@ -22,12 +24,7 @@ public class CustomerDaoImpl extends AbstractDaoImpl<Customer> implements Custom
 
     @Override
     public Customer findByUsername(String username) {
-        Object[] args = {username};
-        try {
-            return this.getJdbcTemplate().queryForObject(FIND_CUSTOMER_BY_USERNAME_QUERY, args, customerRowMapper);
-        } catch (EmptyResultDataAccessException e) {
-            return null;
-        }
+        return findByParam(customerRowMapper, FIND_CUSTOMER_BY_USERNAME_QUERY, username);
     }
 
 }

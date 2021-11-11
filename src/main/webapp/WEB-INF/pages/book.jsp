@@ -15,5 +15,6 @@
     Author details: <i>${book.author}</i><br>
     <br>
 </div>
+<a href="${pageContext.request.contextPath}/">Home</a>
 </body>
 </html>

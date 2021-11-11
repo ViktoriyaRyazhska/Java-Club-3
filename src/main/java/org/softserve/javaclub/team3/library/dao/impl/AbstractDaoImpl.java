@@ -6,7 +6,10 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.softserve.javaclub.team3.library.dao.AbstractDao;
+import org.softserve.javaclub.team3.library.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -68,6 +71,15 @@ public abstract class AbstractDaoImpl<T extends Serializable>  extends JdbcDaoSu
         Preconditions.checkState(entity != null);
         remove(entity);
         logger.info("Delete successful: Details: " + entity);
+    }
+
+    public T findByParam(RowMapper<T> rowMapper, String query, String param) {
+        Object[] args = {param};
+        try {
+            return this.getJdbcTemplate().queryForObject(query, args, rowMapper);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     protected Session getCurrentSession() {

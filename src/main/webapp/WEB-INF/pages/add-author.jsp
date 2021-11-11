@@ -7,21 +7,22 @@
     <title>Add Author</title>
 </head>
 <body>
-<c:url var="actionUrl" value="/addAuthor" />
+<c:url var="actionUrl" value="/addAuthor"/>
+<div>
+    <form:form action="${actionUrl}" method="POST" modelAttribute="authorDto">
+        <h3>Add Author</h3>
 
-<form:form action="${actionUrl}" method="POST" modelAttribute="authorDto">
-    <h3>Add Author</h3>
-
-    Name:
-    <form:input type="text" path="name"></form:input>
-    <form:errors path="name" /><br>
-    Surname:
-    <form:input type="text" path="surname"></form:input>
-    <form:errors path="surname" /><br>
+        Name:
+        <form:input type="text" path="name"></form:input>
+        <form:errors path="name"/><br>
+        Surname:
+        <form:input type="text" path="surname"></form:input>
+        <form:errors path="surname"/><br>
 
 
-    <form:button id="add-author">Add Author</form:button>
-</form:form>
-
+        <form:button id="add-author">Add Author</form:button>
+    </form:form>
+</div>
+<a href="${pageContext.request.contextPath}/">Home</a>
 </body>
 </html>

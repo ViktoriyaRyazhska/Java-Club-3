@@ -12,6 +12,7 @@ import java.util.List;
 public class Author implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "author_id")
     private int id;
     private String name;
     private String surname;

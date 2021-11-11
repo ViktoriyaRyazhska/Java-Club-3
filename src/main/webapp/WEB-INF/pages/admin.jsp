@@ -11,8 +11,8 @@
 
 <body>
 <div>
-    <table>
-        <thead>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
         <th>ID</th>
         <th>UserName</th>
         <th>Password</th>
@@ -36,7 +36,7 @@
             </tr>
         </c:forEach>
     </table>
-    <a href="${pageContext.request.contextPath}/">Главная</a>
+    <a href="${pageContext.request.contextPath}/">Home</a>
 </div>
 </body>
 </html>

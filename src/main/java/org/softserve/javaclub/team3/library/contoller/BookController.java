@@ -22,12 +22,18 @@ public class BookController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/books/{bookId}", method = RequestMethod.GET)
-    public ModelAndView getBookById(@PathVariable int bookId) {
-        ModelAndView modelAndView = new ModelAndView("book");
-        modelAndView.addObject("book", bookServiceImpl.findById(bookId));
-        return modelAndView;
+    @RequestMapping(value = "/books/id/{id}", method = RequestMethod.GET)
+    public String getBookById(@PathVariable int id, Model model) {
+        model.addAttribute("book", bookServiceImpl.findById(id));
+        return "book";
     }
+
+    @RequestMapping(value = "/books/title/{title}", method = RequestMethod.GET)
+    public String getBookByTitle(@PathVariable String title , Model model) {
+        model.addAttribute("book", bookServiceImpl.findByTitle(title));
+        return "book";
+    }
+
 
     @RequestMapping(value = "/addBook", method = RequestMethod.GET)
     public String addBook(Model model) {

@@ -28,9 +28,9 @@
             <form:errors path="password"></form:errors>
                 ${passwordError}
         </div>
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit">Register</button>
     </form:form>
-    <a href="${pageContext.request.contextPath}/">Главная</a>
+    <a href="${pageContext.request.contextPath}/">Home</a>
 </div>
 </body>
 </html>

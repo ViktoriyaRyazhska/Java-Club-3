@@ -4,4 +4,5 @@ import org.softserve.javaclub.team3.library.model.Book;
 import org.springframework.stereotype.Repository;
 
 public interface BookDao extends AbstractDao<Book> {
+    Book findByTitle(String title);
 }

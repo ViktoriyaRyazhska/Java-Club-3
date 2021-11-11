@@ -3,6 +3,7 @@ package org.softserve.javaclub.team3.library.service.impl;
 import org.softserve.javaclub.team3.library.dao.BookDao;
 import org.softserve.javaclub.team3.library.dto.BookDto;
 import org.softserve.javaclub.team3.library.model.Book;
+import org.softserve.javaclub.team3.library.service.AuthorService;
 import org.softserve.javaclub.team3.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class BookServiceImpl implements BookService {
     private BookDao bookDaoImpl;
 
     @Autowired
-    private AuthorServiceImpl authorService;
+    private AuthorService authorServiceImpl;
 
     @Autowired
     public void setBookDaoImpl(BookDao bookDaoImpl) {
@@ -34,12 +35,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public Book findByTitle(String title) {
+        return bookDaoImpl.findByTitle(title);
+    }
+
+    @Override
     public void addBook(BookDto bookdto) {
         Book book = new Book();
         book.setTitle(bookdto.getTitle());
         book.setTakenCount(bookdto.getTakenCount());
         book.setCopies(bookdto.getCopies());
-        book.setAuthor(authorService.findById(bookdto.getAuthorId()));
+        book.setAuthor(authorServiceImpl.findById(bookdto.getAuthorId()));
         bookDaoImpl.save(book);
     }
 

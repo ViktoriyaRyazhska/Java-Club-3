@@ -14,13 +14,13 @@
 </sec:authorize>
 <div>
     <form method="POST" action="${pageContext.request.contextPath}/login">
-        <h2>Вход в систему</h2>
+        <h2>Login to Library</h2>
         <div>
             <input name="username" type="text" placeholder="Username"
                    autofocus="true"/>
             <input name="password" type="password" placeholder="Password"/>
             <button type="submit">Log In</button>
-            <h4><a href="${pageContext.request.contextPath}/registration">Зарегистрироваться</a></h4>
+            <h4><a href="${pageContext.request.contextPath}/registration">Register</a></h4>
         </div>
     </form>
 </div>

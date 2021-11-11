@@ -11,6 +11,7 @@ import java.util.Set;
 @Table(name = "role")
 @Data
 public class Role implements Serializable, GrantedAuthority {
+
     @Id
     private int id;
     private String name;
@@ -27,4 +28,5 @@ public class Role implements Serializable, GrantedAuthority {
         this.id = id;
         this.name = name;
     }
+    public Role(){}
 }

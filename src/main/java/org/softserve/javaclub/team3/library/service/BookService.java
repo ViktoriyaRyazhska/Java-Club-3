@@ -10,6 +10,8 @@ public interface BookService {
 
     Book findById(int bookId);
     List<Book> findAll();
+    Book findByTitle(String title);
+
     void addBook(BookDto bookDto);
     void updateBook(Book book);
     void removeBook(Book book);

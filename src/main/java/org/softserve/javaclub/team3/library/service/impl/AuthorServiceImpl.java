@@ -1,7 +1,6 @@
 package org.softserve.javaclub.team3.library.service.impl;
 
 import org.softserve.javaclub.team3.library.dao.AuthorDao;
-import org.softserve.javaclub.team3.library.dao.impl.AuthorDaoImpl;
 import org.softserve.javaclub.team3.library.dto.AuthorDto;
 import org.softserve.javaclub.team3.library.model.Author;
 import org.softserve.javaclub.team3.library.service.AuthorService;
@@ -20,7 +19,6 @@ public class AuthorServiceImpl implements AuthorService {
         this.authorDaoImpl = authorDaoImpl;
         this.authorDaoImpl.setClazz(Author.class);
     }
-
 
     @Override
     public Author findById(int authorId) {

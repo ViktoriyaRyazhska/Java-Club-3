@@ -23,5 +23,6 @@
         </c:forEach>
     </ul>
 </div>
+<a href="${pageContext.request.contextPath}/">Home</a>
 </body>
 </html>
