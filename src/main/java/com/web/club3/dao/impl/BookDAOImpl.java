@@ -94,6 +94,6 @@ public class BookDAOImpl implements DAO<Book>, BookDAO {
     @Override
     public int getCopiesById(int id)
     {
-        return sessionFactory.openSession().createQuery("Ftom Book WHERE book_id ="+ id,Book.class).getSingleResult().getCopies();
+        return sessionFactory.openSession().createQuery("From Book WHERE book_id ="+ id,Book.class).getSingleResult().getCopies();
     }
 }
