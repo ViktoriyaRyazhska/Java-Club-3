@@ -7,6 +7,7 @@ import com.web.club3.model.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -88,12 +89,17 @@ public class BookDAOImpl implements DAO<Book>, BookDAO {
     @Override
     public void updateCopiesById(int id,int copies)
     {
-        sessionFactory.openSession().createQuery("UPDATE Book set copies = "+copies+" WHERE book_id ="+ id).executeUpdate();
+        Session session= sessionFactory.openSession();
+        Transaction txn = session.beginTransaction();
+        Query updateQuery =
+                session.createQuery("UPDATE Book SET copies ="+copies+" WHERE book_id ="+id);
+        updateQuery.executeUpdate();
+        txn.commit();
     }
 
     @Override
     public int getCopiesById(int id)
     {
-        return sessionFactory.openSession().createQuery("Ftom Book WHERE book_id ="+ id,Book.class).getSingleResult().getCopies();
+        return sessionFactory.openSession().createQuery("From Book WHERE book_id ="+ id,Book.class).getSingleResult().getCopies();
     }
 }
