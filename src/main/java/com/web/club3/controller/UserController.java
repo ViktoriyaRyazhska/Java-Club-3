@@ -12,4 +12,9 @@ public class UserController {
     public String greeting(){
         return "home";
     }
+
+    @RequestMapping(method = RequestMethod.POST )
+    public void login(){
+
+    }
 }

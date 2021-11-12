@@ -23,8 +23,8 @@ public class JavaConfig {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
-        mailSender.setUsername("hhranger23@gmail.com");
-        mailSender.setPassword("Hgrt56&43kiu");
+        mailSender.setUsername("");
+        mailSender.setPassword("");
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
@@ -50,8 +50,8 @@ public class JavaConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
-        dataSource.setUsername("natalia");
-        dataSource.setPassword("Koz@k98N");
+        dataSource.setUsername("");
+        dataSource.setPassword("");
         return dataSource;
     }
 
