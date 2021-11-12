@@ -6,6 +6,7 @@ import com.web.club3.service.CRUDService;
 import com.web.club3.service.UserService;
 import com.web.club3.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -15,10 +16,12 @@ import java.util.List;
 public class UserServiceImpl implements CRUDService<User>, UserService {
 
     private UserDAOImpl userDAO;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserDAOImpl userDAO) {
+    public UserServiceImpl(UserDAOImpl userDAO, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userDAO = userDAO;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
@@ -33,6 +36,7 @@ public class UserServiceImpl implements CRUDService<User>, UserService {
 
     @Override
     public User create(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return userDAO.create(user);
     }
 
