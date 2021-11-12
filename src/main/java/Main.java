@@ -22,8 +22,6 @@ public class Main {
         BookOrderServiceImpl bookOrderServiceImpl = context.getBean(BookOrderServiceImpl.class);
         AuthorServiceImpl authorService = context.getBean(AuthorServiceImpl.class);
 
-       bookOrderServiceImpl.getCountInPeriod(LocalDate.of(2021,6,3),LocalDate.of(2021,10,21));
-        bookOrderServiceImpl.averageTimeOfReadingBook(7);
         context.close();
     }
 }

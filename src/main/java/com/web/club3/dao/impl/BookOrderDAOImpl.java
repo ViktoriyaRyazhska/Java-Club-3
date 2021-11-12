@@ -7,10 +7,14 @@ import com.web.club3.dao.BookOrderDAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.TypedQuery;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -65,69 +69,122 @@ public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
     }
 
     @Override
-    public List<BookOrder> theMostPopular(LocalDate localDate1, LocalDate localDate2) {
-        Session session = sessionFactory.openSession();
-// підзапит,парсити BOOK "SELECT fname,lname,isbn from author inner join books on author.AUTHORID = books.AUTHORID"
-
-        SQLQuery query = session.createSQLQuery("Select  COUNT(book_id) as from_most_to_less_popular  FROM book_order where lending_date " +
-                "BETWEEN '"+localDate1+ "' AND '"+localDate2+"' GROUP BY book_id ORDER BY from_most_to_less_popular DESC");
-        SQLQuery query1 = session.createSQLQuery("Select book_id as from_most_to_less_popular FROM book_order where lending_date " +
-                "BETWEEN '"+localDate1+ "' AND '"+localDate2+"' GROUP BY book_id ORDER BY from_most_to_less_popular DESC");
-
-        List results1 = query1.list();
-        List results = query.list();
-        System.out.println(results1);
-        System.out.println(results);
-
-        return results1 ;
-
-/*
-       Query query =  sessionFactory.openSession().createQuery("Select :book_id,COUNT (book_id) as from_most_to_less_popular FROM BookOrder b where lending_date " +
-                "BETWEEN '"+localDate1+ "' AND '"+localDate2+"' GROUP BY book_id ORDER BY from_most_to_less_popular DESC");
-        List<BookOrder> users = query.list();
-        return users;
- */
-
-/*
-        Query query = sessionFactory.openSession().createQuery("FROM BookOrder");
-       // query.setParameter("book_order_id", "book_order_id");
-        List users = query.list();
-        return users;
- */
-    }
-    @Override
-    public BookOrder test2(int id) {
-        Session session = sessionFactory.openSession();
-        SQLQuery query = session.createSQLQuery("SELECT user_id, COUNT(user_id) AS how_many_books_are_read \n" +
-                "FROM book_order\n" +
-                "where return_date is not null \n" +
-                "GROUP BY user_id\n" +
-                "ORDER BY how_many_books_are_read DESC;");
-
-
-        List results = query.list();
-        System.out.println(results);
-        return null;
-    }
-    @Override
-    public void getCountInPeriod(LocalDate localDate1,LocalDate localDate2)
+    public Long getCountInPeriod(LocalDate startDate, LocalDate endDate)
     {
         Session session = sessionFactory.openSession();
-        SQLQuery query1 = session.createSQLQuery("select count(book_id) from book_order where lending_date BETWEEN '"+localDate1+ "' AND '"+localDate2+"'");
-        List results1 = query1.list();
-        System.out.println(results1);
+        TypedQuery<Long> query = session.createQuery("select count(book.id) from BookOrder where lendingDate BETWEEN :startDate and :endDate ", Long.class);
+        query.setParameter("startDate", startDate);
+        query.setParameter("endDate", endDate);
+        Long result = query.getSingleResult();
+        session.close();
+        return result;
     }
 
     @Override
-    public void averageTimeOfReadingBook(int id) {
-
+    public String averageTimeOfUserReadSingleBook(int userId) {
         Session session = sessionFactory.openSession();
-        SQLQuery query1 = session.createSQLQuery("SELECT avg (DATEDIFF(return_date, lending_date)) AS 'AVG_Days'\n" +
-                "FROM book_order\n" +
-                "WHERE book_id = " + id +
-                " group by 'AVG_Days';");
-        List results1 = query1.list();
-        System.out.println(results1);
+
+        TypedQuery<LocalDate> lendingDate = session.createQuery( "SELECT lendingDate" +
+                " FROM BookOrder\n" +
+                " WHERE user.id = :userId");
+        TypedQuery<LocalDate> returnDate = session.createQuery( "SELECT returnDate" +
+                " FROM BookOrder\n" +
+                " WHERE user.id = :userId and returnDate is not null");
+
+        lendingDate.setParameter("userId", userId);
+        returnDate.setParameter("userId", userId);
+
+        List<LocalDate> lendinglist = ((Query<LocalDate>) lendingDate).list();
+        List<LocalDate> returnlist = ((Query<LocalDate>) returnDate).list();
+
+        int sizeofreturnlist = returnlist.size();
+
+        String result = "";
+        System.out.println("lending_date | return_date | diff");
+        for(int i = 0; i < sizeofreturnlist; i++)
+        {
+            Long sum = ChronoUnit.DAYS.between(lendinglist.get(i), returnlist.get(i));
+            result += lendinglist.get(i) + "     " +returnlist.get(i)+"     "+sum +"\n";
+        }
+
+        session.close();
+        return result;
+    }
+
+    @Override
+    public Double averageTimeOfReadingBook(int bookId ) {
+        Session session = sessionFactory.openSession();
+
+        TypedQuery<LocalDate> lendingDate = session.createQuery( "SELECT lendingDate" +
+                " FROM BookOrder\n" +
+                " WHERE book.id = :bookId");
+        TypedQuery<LocalDate> returnDate = session.createQuery( "SELECT returnDate" +
+                " FROM BookOrder\n" +
+                " WHERE book.id = :bookId and returnDate is not null");
+
+        lendingDate.setParameter("bookId", bookId);
+        returnDate.setParameter("bookId", bookId);
+
+        List<LocalDate> lendinglist = ((Query<LocalDate>) lendingDate).list();
+        List<LocalDate> returnlist = ((Query<LocalDate>) returnDate).list();
+
+        Long sum = 0L;
+        int sizeofreturnlist = returnlist.size();
+
+        for(int i = 0; i < sizeofreturnlist; i++)
+        {
+            sum += ChronoUnit.DAYS.between(lendinglist.get(i), returnlist.get(i));
+            System.out.println(lendinglist.get(i) + " " +returnlist.get(i) );
+        }
+
+        Double result = (double) sum/sizeofreturnlist;
+        session.close();
+        return result;
+    }
+
+
+
+    public Long howManyBooksUserRead(int userId) {
+        Session session = sessionFactory.openSession();
+        TypedQuery<Long> query = session.createQuery("select count(user.id) as numberOfBooks from BookOrder where returnDate is not null AND user.id = :userId group by user.id", Long.class);
+        query.setParameter("userId", userId);
+        Long result = query.getSingleResult();
+        session.close();
+        return result;
+    }
+
+    public Long howManyBooksAreReading(int userId) {
+        Session session = sessionFactory.openSession();
+        TypedQuery<Long> query = session.createQuery("select count(user.id) as numberOfReadingBooks from BookOrder where returnDate is null and user.id = :userId group by user.id", Long.class);
+        query.setParameter("userId", userId);
+        Long result = query.getSingleResult();
+        session.close();
+        return result;
+    }
+
+    public Long howManyRequestUserDidToLibrary(int userId, LocalDate startDate, LocalDate endDate) {
+        Session session = sessionFactory.openSession();
+        TypedQuery<Long> query = session.createQuery("select count(user.id) as numberOfRequests from BookOrder where user.id = :userId and lendingDate BETWEEN :startDate and :endDate group by user.id", Long.class);
+        query.setParameter("userId", userId);
+        query.setParameter("startDate", startDate);
+        query.setParameter("endDate", endDate);
+        Long result = query.getSingleResult();
+        session.close();
+        return result;
+    }
+
+    public String fromTheMostPopularToTheLessPopularBook(LocalDate startDate, LocalDate endDate) {
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("select book.id, count(book.id) as rating from BookOrder where lendingDate between :startDate and :endDate group by book.id order by rating desc");
+        query.setParameter("startDate", startDate);
+        query.setParameter("endDate", endDate);
+        List<Object[]> resultList = query.list();
+        StringBuilder resultString = new StringBuilder();
+        for (Object[] row : resultList) {
+            resultString.append(Arrays.toString(row));
+        }
+        session.close();
+        return resultString.toString();
     }
 
 

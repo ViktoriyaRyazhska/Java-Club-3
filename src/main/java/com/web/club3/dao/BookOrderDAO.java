@@ -1,18 +1,21 @@
 package com.web.club3.dao;
 
 import com.web.club3.model.BookOrder;
-
 import java.time.LocalDate;
-import java.util.List;
 
 public interface BookOrderDAO {
+    String averageTimeOfUserReadSingleBook(int userId);
 
-    List<BookOrder> theMostPopular(LocalDate localDate1, LocalDate localDate2);
+    Long getCountInPeriod(LocalDate startDate, LocalDate endDate);
 
-    BookOrder test2(int id);
+    Double averageTimeOfReadingBook(int bookId);
 
-    void getCountInPeriod(LocalDate localDate1,LocalDate localDate2);
+    Long howManyBooksUserRead(int userId);
 
-    void averageTimeOfReadingBook(int id);
+    Long howManyBooksAreReading(int userId);
+
+    Long howManyRequestUserDidToLibrary(int userId, LocalDate startDate, LocalDate endDate);
+
+    String fromTheMostPopularToTheLessPopularBook(LocalDate startDate, LocalDate endDate);
 
 }

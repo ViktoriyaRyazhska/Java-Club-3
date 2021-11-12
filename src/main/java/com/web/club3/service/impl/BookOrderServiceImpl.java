@@ -7,6 +7,7 @@ import com.web.club3.model.BookOrder;
 import com.web.club3.service.BookOrderService;
 import com.web.club3.service.BookService;
 import com.web.club3.service.CRUDService;
+import com.web.club3.util.DateUtil;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,13 +20,11 @@ import java.util.List;
 public class BookOrderServiceImpl implements CRUDService<BookOrder>, BookOrderService {
 
     private BookOrderDAOImpl bookOrderDAO;
-    private BookDAOImpl bookDAO;
 
 
     @Autowired
-    public BookOrderServiceImpl(BookOrderDAOImpl bookOrderDAO, BookDAOImpl bookDAO) {
+    public BookOrderServiceImpl(BookOrderDAOImpl bookOrderDAO) {
         this.bookOrderDAO = bookOrderDAO;
-        this.bookDAO = bookDAO;
     }
 
     @Override
@@ -52,28 +51,43 @@ public class BookOrderServiceImpl implements CRUDService<BookOrder>, BookOrderSe
     public void deleteById(int id) {
         bookOrderDAO.deleteById(id);
     }
-    @Override
-    public void returnBook(int bookId, int bookOrderId) {
-
-    }
 
     @Override
-    public List<BookOrder> theMostPopular(LocalDate localDate1, LocalDate localDate2) {
-        return bookOrderDAO.theMostPopular(localDate1, localDate2);
+    public String averageTimeOfUserReadSingleBook(int userId) {
+        return bookOrderDAO.averageTimeOfUserReadSingleBook(userId);
     }
+
+
     @Override
-    public void getCountInPeriod(LocalDate localDate1, LocalDate localDate2)
+    public Long getCountInPeriod(LocalDate startDate, LocalDate endDate)
     {
-        bookOrderDAO.getCountInPeriod(localDate1 , localDate2);
+        return bookOrderDAO.getCountInPeriod(startDate , endDate);
     }
 
     @Override
-    public void averageTimeOfReadingBook(int id) {
-        bookOrderDAO.averageTimeOfReadingBook(id);
+    public Double averageTimeOfReadingBook(int id) {
+        return bookOrderDAO.averageTimeOfReadingBook(id);
     }
 
     @Override
-    public BookOrder test2(int id) {
-        return bookOrderDAO.test2(id);
+    public Long howManyBooksUserRead(int userId) {
+        return bookOrderDAO.howManyBooksUserRead(userId);
     }
+
+    @Override
+    public Long howManyBooksAreReading(int userId) {
+        return bookOrderDAO.howManyBooksAreReading(userId);
+    }
+
+    @Override
+    public Long howManyRequestUserDidToLibrary(int userId, LocalDate startDate, LocalDate endDate) {
+        return bookOrderDAO.howManyRequestUserDidToLibrary(userId,startDate,endDate);
+    }
+
+    @Override
+    public String fromTheMostPopularToTheLessPopularBook(LocalDate startDate, LocalDate endDate) {
+        return bookOrderDAO.fromTheMostPopularToTheLessPopularBook(startDate,endDate);
+    }
+
+
 }
