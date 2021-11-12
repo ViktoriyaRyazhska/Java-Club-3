@@ -23,7 +23,7 @@ public class Customer implements Serializable, UserDetails {
     @Transient
     private String passwordConfirm;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Role> role;
 
     // private int age;

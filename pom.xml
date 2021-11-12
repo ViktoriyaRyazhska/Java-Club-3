@@ -164,6 +164,13 @@
             <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>3.3.4</version>
+        </dependency>
+
     </dependencies>
 
 

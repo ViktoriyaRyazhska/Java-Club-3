@@ -1,7 +1,9 @@
 package org.softserve.javaclub.team3.library.service.impl;
 
+import org.softserve.javaclub.team3.library.dao.AuthorDao;
 import org.softserve.javaclub.team3.library.dao.CustomerDao;
 import org.softserve.javaclub.team3.library.dao.RoleDao;
+import org.softserve.javaclub.team3.library.model.Author;
 import org.softserve.javaclub.team3.library.model.Customer;
 import org.softserve.javaclub.team3.library.model.Role;
 import org.softserve.javaclub.team3.library.service.CustomerService;
@@ -19,12 +21,17 @@ import java.util.*;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    @Autowired
     private CustomerDao customerDaoImpl;
     @Autowired
     private RoleDao roleDaoImpl;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    public void setCustomerDaoImpl(CustomerDao customerDaoImpl) {
+        this.customerDaoImpl = customerDaoImpl;
+        this.customerDaoImpl.setClazz(Customer.class);
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
