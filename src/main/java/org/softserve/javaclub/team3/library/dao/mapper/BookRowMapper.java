@@ -17,14 +17,14 @@ public class BookRowMapper implements RowMapper<Book> {
     public Book mapRow(ResultSet resultSet, int i) throws SQLException {
 
         final Book book = new Book();
-        book.setId(resultSet.getInt("book_id"));
+        book.setId(resultSet.getString("book_id"));
         book.setTitle(resultSet.getString("title"));
         book.setCopies(resultSet.getInt("copies"));
         book.setTakenCount(resultSet.getInt("takenCount"));
         final Author author = new Author();
         author.setName(resultSet.getString("name"));
         author.setSurname(resultSet.getString("surname"));
-        author.setId(resultSet.getInt("author_id"));
+        author.setId(resultSet.getString("author_id"));
         book.setAuthor(author);
         return book;
     }

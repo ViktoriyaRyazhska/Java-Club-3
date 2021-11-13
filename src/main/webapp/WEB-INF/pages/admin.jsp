@@ -34,6 +34,7 @@
         </tbody>
     </table>
     <a href="${pageContext.request.contextPath}/">Home</a>
+    <a href="${pageContext.request.contextPath}/books/customer/${pageContext.request.userPrincipal.name}">Profile</a>
 </div>
 
 <spring:url value="${pageContext.request.contextPath}/WEB-INF/pages/js/bootstrap.min.js" var="bootstrapJs"/>

@@ -8,13 +8,13 @@ import java.util.List;
 
 public interface BookService {
 
-    Book findById(int bookId);
+    Book findById(String bookId);
     List<Book> findAll();
     Book findByTitle(String title);
 
     void addBook(BookDto bookDto);
     void updateBook(Book book);
     void removeBook(Book book);
-    void removeBookById(int bookId);
+    void removeBookById(String bookId);
 
 }

@@ -5,15 +5,17 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "author")
 @Data
 public class Author implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "author_id")
-    private int id;
+    private String id = UUID.randomUUID().toString();
+
     private String name;
     private String surname;
 }

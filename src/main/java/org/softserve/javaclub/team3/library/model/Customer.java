@@ -6,8 +6,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "customer")
@@ -15,8 +18,7 @@ import java.util.Set;
 public class Customer implements Serializable, UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private String id = UUID.randomUUID().toString();
 
     private String username;
     private String password;
@@ -26,12 +28,8 @@ public class Customer implements Serializable, UserDetails {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Role> role;
 
-    // private int age;
-    // private LocalDateTime registerDate;
-    // @OneToMany
-    // private List<Book> readBooks;
-    // @OneToMany
-    // private List<Book> readingBooks;
+    private int age;
+    private Date registerDate;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -7,9 +7,8 @@
     <title>Add Book</title>
 </head>
 <body>
-<c:url var="actionUrl" value="/addBook"/>
 <div>
-    <form:form action="${actionUrl}" method="POST" modelAttribute="bookDto">
+    <form:form action="${pageContext.request.contextPath}/books/addBook" method="POST" modelAttribute="bookDto">
         <h3>Add Book to Library</h3>
 
         Title:

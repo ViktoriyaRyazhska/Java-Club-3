@@ -7,9 +7,8 @@
     <title>Add Author</title>
 </head>
 <body>
-<c:url var="actionUrl" value="/addAuthor"/>
 <div>
-    <form:form action="${actionUrl}" method="POST" modelAttribute="authorDto">
+    <form:form action="${pageContext.request.contextPath}/authors/addAuthor" method="POST" modelAttribute="authorDto">
         <h3>Add Author</h3>
 
         Name:

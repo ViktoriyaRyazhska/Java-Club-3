@@ -17,10 +17,13 @@
         <h4><a href="${pageContext.request.contextPath}/login">Login</a></h4>
         <h4><a href="${pageContext.request.contextPath}/registration">Register</a></h4>
     </sec:authorize>
+
     <sec:authorize access="isAuthenticated()">
         <h4><a href="${pageContext.request.contextPath}/books">All Books</a></h4>
+        <a href="${pageContext.request.contextPath}/books/customer/${pageContext.request.userPrincipal.name}">Profile</a>
         <h4><a href="${pageContext.request.contextPath}/logout">Logout</a></h4>
     </sec:authorize>
+
     <sec:authorize access="hasRole('ADMIN')">
     <h4><a href="${pageContext.request.contextPath}/admin">Users (only admin)</a></h4>
     </sec:authorize>

@@ -20,5 +20,6 @@
     <br>
 </div>
 <a href="${pageContext.request.contextPath}/">Home</a>
+<a href="${pageContext.request.contextPath}/books/customer/${pageContext.request.userPrincipal.name}">Profile</a>
 </body>
 </html>

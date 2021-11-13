@@ -10,25 +10,26 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping(value = "/books")
 public class BookController {
 
     @Autowired
     private BookService bookServiceImpl;
 
-    @RequestMapping(value = "/books", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getAllBooks() {
         ModelAndView modelAndView = new ModelAndView("books");
         modelAndView.addObject("books", bookServiceImpl.findAll());
         return modelAndView;
     }
 
-    @RequestMapping(value = "/books/id/{id}", method = RequestMethod.GET)
-    public String getBookById(@PathVariable int id, Model model) {
+    @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
+    public String getBookById(@PathVariable String id, Model model) {
         model.addAttribute("book", bookServiceImpl.findById(id));
         return "book";
     }
 
-    @RequestMapping(value = "/books/title/{title}", method = RequestMethod.GET)
+    @RequestMapping(value = "/title/{title}", method = RequestMethod.GET)
     public String getBookByTitle(@PathVariable String title , Model model) {
         model.addAttribute("book", bookServiceImpl.findByTitle(title));
         return "book";
@@ -48,8 +49,8 @@ public class BookController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "books/delete/{bookId}", method = RequestMethod.GET)
-    public void deleteBook(@PathVariable int bookId) {
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    public void deleteBook(@RequestParam String bookId) {
         bookServiceImpl.removeBookById(bookId);
     }
 }

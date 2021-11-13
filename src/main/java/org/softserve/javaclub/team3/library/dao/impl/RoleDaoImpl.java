@@ -8,5 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class RoleDaoImpl extends AbstractDaoImpl<Role> implements RoleDao {
-
+    @Override
+    public Role findById(String id){
+        return getCurrentSession().get(Role.class, Integer.valueOf(id));
+    }
 }

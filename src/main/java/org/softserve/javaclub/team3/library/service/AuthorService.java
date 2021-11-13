@@ -7,10 +7,10 @@ import org.softserve.javaclub.team3.library.model.Book;
 import java.util.List;
 
 public interface AuthorService {
-    Author findById(int authorId);
+    Author findById(String authorId);
     List<Author> findAll();
     void addAuthor(AuthorDto authorDto);
     void updateAuthor(Author author);
     void removeAuthor(Author author);
-    void removeAuthorById(int authorId);
+    void removeAuthorById(String authorId);
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.UUID;
 
 @Entity
 @Table(name = "book")
@@ -11,9 +12,8 @@ import java.io.Serializable;
 public class Book implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "book_id")
-    private int id;
+    private String id = UUID.randomUUID().toString();
 
     private String title;
     private int takenCount;

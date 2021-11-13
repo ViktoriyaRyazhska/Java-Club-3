@@ -21,7 +21,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author findById(int authorId) {
+    public Author findById(String authorId) {
         return authorDaoImpl.findById(authorId);
     }
 
@@ -49,7 +49,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public void removeAuthorById(int authorId) {
+    public void removeAuthorById(String authorId) {
         authorDaoImpl.removeById(authorId);
     }
 }

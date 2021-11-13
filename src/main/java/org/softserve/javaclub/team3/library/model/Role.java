@@ -14,6 +14,7 @@ public class Role implements Serializable, GrantedAuthority {
 
     @Id
     private int id;
+
     private String name;
     @Transient
     @ManyToMany(mappedBy = "roles")

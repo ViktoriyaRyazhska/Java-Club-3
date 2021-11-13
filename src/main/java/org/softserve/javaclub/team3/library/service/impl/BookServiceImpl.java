@@ -25,7 +25,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book findById(int bookId) {
+    public Book findById(String bookId) {
         return bookDaoImpl.findById(bookId);
     }
 
@@ -60,7 +60,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void removeBookById(int bookId) {
+    public void removeBookById(String bookId) {
         bookDaoImpl.removeById(bookId);
     }
 }

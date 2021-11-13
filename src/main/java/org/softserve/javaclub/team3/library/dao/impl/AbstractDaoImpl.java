@@ -6,9 +6,9 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.softserve.javaclub.team3.library.dao.AbstractDao;
-import org.softserve.javaclub.team3.library.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -20,7 +20,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public abstract class AbstractDaoImpl<T extends Serializable>  extends JdbcDaoSupport implements AbstractDao<T> {
+public abstract class AbstractDaoImpl<T extends Serializable> extends JdbcDaoSupport implements AbstractDao<T> {
 
     private static final Logger logger = LoggerFactory.getLogger(AbstractDaoImpl.class);
 
@@ -40,11 +40,11 @@ public abstract class AbstractDaoImpl<T extends Serializable>  extends JdbcDaoSu
 
     //TODO: Convert everything to Optional.
 
-    public T findById(int id) {
+    public T findById(String id) {
         return getCurrentSession().get(clazz, id);
     }
 
-    public List<T> findAll(){
+    public List<T> findAll() {
         return getCurrentSession().createQuery("from " + clazz.getName()).list();
     }
 
@@ -66,7 +66,7 @@ public abstract class AbstractDaoImpl<T extends Serializable>  extends JdbcDaoSu
         logger.info("Delete successful: Details: " + entity);
     }
 
-    public void removeById(int entityId) {
+    public void removeById(String entityId) {
         T entity = findById(entityId);
         Preconditions.checkState(entity != null);
         remove(entity);
@@ -77,6 +77,15 @@ public abstract class AbstractDaoImpl<T extends Serializable>  extends JdbcDaoSu
         Object[] args = {param};
         try {
             return this.getJdbcTemplate().queryForObject(query, args, rowMapper);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+
+    public List<T> findListByParam(String query, String param, RowMapper<T> rowMapper) {
+        Object[] args = {param};
+        try {
+            return this.getJdbcTemplate().query(query, args, rowMapper);
         } catch (EmptyResultDataAccessException e) {
             return null;
         }
