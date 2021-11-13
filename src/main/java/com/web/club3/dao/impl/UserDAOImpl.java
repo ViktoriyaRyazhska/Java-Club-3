@@ -69,4 +69,9 @@ public class UserDAOImpl implements DAO<User>, UserDAO {
         double avgAge = (double) session.createQuery("select avg (age) from User ").getSingleResult();
         return (int) avgAge;
     }
+
+    @Override
+    public User findByEmail(String email) {
+        return (User) sessionFactory.openSession().createQuery("from User where email = :email").setParameter("email", email).getSingleResult();
+    }
 }

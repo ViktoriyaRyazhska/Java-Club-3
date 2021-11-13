@@ -12,7 +12,11 @@ public interface BookDAO {
 
     Book findByTitle(String title);
 
-    void updateCopiesById(int id,int copies);
+    void updateCopiesById(int id, int copies);
+
+    void deleteOneCopy(int bookId);
+
+    void addOneCopy(int bookId);
 
     int getCopiesById(int id);
 }

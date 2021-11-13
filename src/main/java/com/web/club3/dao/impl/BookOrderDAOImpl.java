@@ -185,5 +185,20 @@ public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
         return resultString.toString();
     }
 
+    public void returnBook(int bookId, int bookOrderId) {
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("UPDATE BookOrder SET returnDate = current_date() WHERE id = :bookOrderId ");
+        query.setParameter("bookOrderId", bookOrderId);
+        Query query1 = session.createQuery(" UPDATE Book SET copies =  copies + 1 WHERE id =:bookId");
+        query1.setParameter("bookId", bookId);
+        query.executeUpdate();
+        query1.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+    }
 
+    public List<BookOrder> readedBooksInCertainDays(int days){
+        Session session = sessionFactory.openSession();
+        return session.createQuery("select b FROM BookOrder b INNER JOIN b.user where datediff(b.returnDate,b.lendingDate)>= "+days).getResultList();
+    }
 }

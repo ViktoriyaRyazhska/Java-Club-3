@@ -12,7 +12,13 @@ public interface BookService {
 
     Book findByTitle(String title);
 
-    void updateCopiesById(int id,int copies);
+    void updateCopiesById(int id, int copies);
+
+    void deleteOneCopy(int bookId);
+
+    void addOneCopy(int bookId);
 
     int getCopiesById(int id);
+
+    void deleteOneCopyById(int id);
 }
