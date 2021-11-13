@@ -69,4 +69,9 @@ public class BookServiceImpl implements CRUDService<Book>, BookService {
     {
         return bookDAO.getCopiesById(id);
     }
+
+    @Override
+    public void deleteOneCopyById(int id){
+        bookDAO.updateCopiesById(id, bookDAO.getCopiesById(id) - 1);
+    }
 }

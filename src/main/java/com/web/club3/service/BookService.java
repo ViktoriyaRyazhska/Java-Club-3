@@ -15,4 +15,6 @@ public interface BookService {
     void updateCopiesById(int id,int copies);
 
     int getCopiesById(int id);
+
+    void deleteOneCopyById(int id);
 }

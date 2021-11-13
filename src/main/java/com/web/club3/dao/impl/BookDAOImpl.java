@@ -102,4 +102,5 @@ public class BookDAOImpl implements DAO<Book>, BookDAO {
     {
         return sessionFactory.openSession().createQuery("From Book WHERE book_id ="+ id,Book.class).getSingleResult().getCopies();
     }
+
 }
