@@ -4,6 +4,7 @@ import com.web.club3.model.BookOrder;
 import java.time.LocalDate;
 
 public interface BookOrderDAO {
+
     String averageTimeOfUserReadSingleBook(int userId);
 
     Long getCountInPeriod(LocalDate startDate, LocalDate endDate);
