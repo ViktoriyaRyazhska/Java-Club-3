@@ -26,4 +26,6 @@ public interface BookOrderService {
     void returnBook(int bookId,int bookOrderId);
 
     void lendBook(int bookId,BookOrder bookOrder);
+
+    List<BookOrder> readedBooksInCertainDays(int days);
 }

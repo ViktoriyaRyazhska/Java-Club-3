@@ -199,4 +199,8 @@ public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
         session.close();
     }
 
+    public List<BookOrder> readedBooksInCertainDays(int days){
+        Session session = sessionFactory.openSession();
+        return session.createQuery("select b FROM BookOrder b INNER JOIN b.user where datediff(b.returnDate,b.lendingDate)>= "+days).getResultList();
+    }
 }

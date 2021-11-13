@@ -100,4 +100,9 @@ public class BookOrderServiceImpl implements CRUDService<BookOrder>, BookOrderSe
         bookOrderDAO.create(bookOrder);
 
     }
+
+    @Override
+    public List<BookOrder> readedBooksInCertainDays(int days){
+        return bookOrderDAO.readedBooksInCertainDays(days);
+    }
 }

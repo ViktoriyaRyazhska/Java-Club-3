@@ -23,6 +23,7 @@ public class Main {
         BookOrderServiceImpl bookOrderServiceImpl = context.getBean(BookOrderServiceImpl.class);
         AuthorServiceImpl authorService = context.getBean(AuthorServiceImpl.class);
 
+        //System.out.println(bookOrderServiceImpl.readedBooksInCertainDays(30));
         context.close();
     }
 }
