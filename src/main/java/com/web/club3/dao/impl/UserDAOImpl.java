@@ -9,6 +9,8 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.management.Query;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -37,6 +39,7 @@ public class UserDAOImpl implements DAO<User>, UserDAO {
     public User create(User user) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
+        user.setDate(LocalDate.now());
         session.save(user);
         transaction.commit();
         session.close();
@@ -68,5 +71,10 @@ public class UserDAOImpl implements DAO<User>, UserDAO {
         Session session = sessionFactory.openSession();
         double avgAge = (double) session.createQuery("select avg (age) from User ").getSingleResult();
         return (int) avgAge;
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return (User) sessionFactory.openSession().createQuery("from User where email = :email").setParameter("email", email).getSingleResult();
     }
 }

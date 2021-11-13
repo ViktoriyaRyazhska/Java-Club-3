@@ -59,4 +59,9 @@ public class UserServiceImpl implements CRUDService<User>, UserService {
     public String howLongUserWorkWithLibrary(LocalDate registrationDate, LocalDate localDate) {
         return DateUtil.differenceBetweenTwoDates(registrationDate, DateUtil.localDate);
     }
+
+    @Override
+    public User findByEmail(String email) {
+        return userDAO.findByEmail(email);
+    }
 }
