@@ -18,4 +18,5 @@ public interface BookOrderDAO {
 
     String fromTheMostPopularToTheLessPopularBook(LocalDate startDate, LocalDate endDate);
 
+    void returnBook(int bookId,int bookOrderId);
 }

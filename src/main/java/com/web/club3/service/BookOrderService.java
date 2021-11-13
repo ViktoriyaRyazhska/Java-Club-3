@@ -23,5 +23,7 @@ public interface BookOrderService {
 
     String fromTheMostPopularToTheLessPopularBook(LocalDate startDate, LocalDate endDate);
 
+    void returnBook(int bookId,int bookOrderId);
 
+    void lendBook(int bookId,BookOrder bookOrder);
 }

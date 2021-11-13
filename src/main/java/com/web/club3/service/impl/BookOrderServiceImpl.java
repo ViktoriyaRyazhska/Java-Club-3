@@ -19,12 +19,13 @@ import java.util.List;
 @Service
 public class BookOrderServiceImpl implements CRUDService<BookOrder>, BookOrderService {
 
+    private BookDAOImpl bookDAO;
     private BookOrderDAOImpl bookOrderDAO;
 
-
     @Autowired
-    public BookOrderServiceImpl(BookOrderDAOImpl bookOrderDAO) {
+    public BookOrderServiceImpl(BookOrderDAOImpl bookOrderDAO, BookDAOImpl bookDAO) {
         this.bookOrderDAO = bookOrderDAO;
+        this.bookDAO = bookDAO;
     }
 
     @Override
@@ -59,9 +60,8 @@ public class BookOrderServiceImpl implements CRUDService<BookOrder>, BookOrderSe
 
 
     @Override
-    public Long getCountInPeriod(LocalDate startDate, LocalDate endDate)
-    {
-        return bookOrderDAO.getCountInPeriod(startDate , endDate);
+    public Long getCountInPeriod(LocalDate startDate, LocalDate endDate) {
+        return bookOrderDAO.getCountInPeriod(startDate, endDate);
     }
 
     @Override
@@ -81,13 +81,23 @@ public class BookOrderServiceImpl implements CRUDService<BookOrder>, BookOrderSe
 
     @Override
     public Long howManyRequestUserDidToLibrary(int userId, LocalDate startDate, LocalDate endDate) {
-        return bookOrderDAO.howManyRequestUserDidToLibrary(userId,startDate,endDate);
+        return bookOrderDAO.howManyRequestUserDidToLibrary(userId, startDate, endDate);
     }
 
     @Override
     public String fromTheMostPopularToTheLessPopularBook(LocalDate startDate, LocalDate endDate) {
-        return bookOrderDAO.fromTheMostPopularToTheLessPopularBook(startDate,endDate);
+        return bookOrderDAO.fromTheMostPopularToTheLessPopularBook(startDate, endDate);
     }
 
+    @Override
+    public void returnBook(int bookId, int bookOrderId) {
+        bookOrderDAO.returnBook(bookId, bookOrderId);
+    }
 
+    @Override
+    public void lendBook(int bookId, BookOrder bookOrder) {
+        bookDAO.updateCopiesById(bookId, bookDAO.getCopiesById(bookId) - 1);
+        bookOrderDAO.create(bookOrder);
+
+    }
 }
