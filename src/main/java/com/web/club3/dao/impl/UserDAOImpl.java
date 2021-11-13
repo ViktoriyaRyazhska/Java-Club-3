@@ -9,8 +9,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.management.Query;
-import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -39,7 +37,6 @@ public class UserDAOImpl implements DAO<User>, UserDAO {
     public User create(User user) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        user.setDate(LocalDate.now());
         session.save(user);
         transaction.commit();
         session.close();

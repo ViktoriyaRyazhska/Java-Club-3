@@ -37,6 +37,7 @@ public class UserServiceImpl implements CRUDService<User>, UserService {
     @Override
     public User create(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setDate(LocalDate.now());
         return userDAO.create(user);
     }
 
@@ -57,7 +58,7 @@ public class UserServiceImpl implements CRUDService<User>, UserService {
 
     @Override
     public String howLongUserWorkWithLibrary(LocalDate registrationDate, LocalDate localDate) {
-        return DateUtil.differenceBetweenTwoDates(registrationDate, DateUtil.localDate);
+        return DateUtil.differenceBetweenTwoDates(registrationDate, localDate);
     }
 
     @Override

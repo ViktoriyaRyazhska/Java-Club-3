@@ -31,7 +31,7 @@ public class BookDAOImpl implements DAO<Book>, BookDAO {
 
     @Override
     public List<Book> findAll() {
-        List<Book> book = (List<Book>)  sessionFactory.openSession().createQuery("From Book",Book.class).list();
+        List<Book> book = (List<Book>) sessionFactory.openSession().createQuery("From Book", Book.class).list();
         return book;
     }
 
@@ -66,40 +66,57 @@ public class BookDAOImpl implements DAO<Book>, BookDAO {
     }
 
     @Override
-    public boolean available(int id)
-    {
-        Book book = (Book) sessionFactory.openSession().createQuery("FROM Book WHERE book_id ="+ id).getSingleResult();
-        return  null != book && book.getCopies() > 0;
+    public boolean available(int id) {
+        Book book = (Book) sessionFactory.openSession().createQuery("FROM Book WHERE book_id =" + id).getSingleResult();
+        return null != book && book.getCopies() > 0;
     }
 
     @Override
-    public List<Book> findByAuthor(Author author)
-    {
+    public List<Book> findByAuthor(Author author) {
         return sessionFactory.openSession().createQuery(
-                "From Book",Book.class).getResultList().stream()
-                .filter(x -> x.getAuthor().stream().anyMatch(y->y.getId() == author.getId())).collect(Collectors.toList());
+                        "From Book", Book.class).getResultList().stream()
+                .filter(x -> x.getAuthor().stream().anyMatch(y -> y.getId() == author.getId())).collect(Collectors.toList());
     }
 
     @Override
-    public Book findByTitle(String title)
-    {
-        return sessionFactory.openSession().createQuery("From Book where title = '" + title + "'",Book.class).getSingleResult();
+    public Book findByTitle(String title) {
+        return sessionFactory.openSession().createQuery("From Book where title = '" + title + "'", Book.class).getSingleResult();
     }
 
     @Override
-    public void updateCopiesById(int id,int copies)
-    {
-        Session session= sessionFactory.openSession();
+    public void updateCopiesById(int id, int copies) {
+        Session session = sessionFactory.openSession();
         Transaction txn = session.beginTransaction();
         Query updateQuery =
-                session.createQuery("UPDATE Book SET copies ="+copies+" WHERE book_id ="+id);
+                session.createQuery("UPDATE Book SET copies =" + copies + " WHERE book_id =" + id);
         updateQuery.executeUpdate();
         txn.commit();
     }
 
     @Override
-    public int getCopiesById(int id)
-    {
-        return sessionFactory.openSession().createQuery("From Book WHERE book_id ="+ id,Book.class).getSingleResult().getCopies();
+    public void deleteOneCopy(int bookId) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Query q = session.createQuery("Update Book set copies = copies - 1 where id = :bookId");
+        q.setParameter("bookId", bookId);
+        q.executeUpdate();
+        transaction.commit();
+        session.close();
+    }
+
+    @Override
+    public void addOneCopy(int bookId) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Query q = session.createQuery("Update Book set copies = copies + 1 where id = :bookId");
+        q.setParameter("bookId", bookId);
+        q.executeUpdate();
+        transaction.commit();
+        session.close();
+    }
+
+    @Override
+    public int getCopiesById(int id) {
+        return sessionFactory.openSession().createQuery("From Book WHERE book_id =" + id, Book.class).getSingleResult().getCopies();
     }
 }
