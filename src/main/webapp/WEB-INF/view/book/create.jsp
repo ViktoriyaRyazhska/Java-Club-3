@@ -16,23 +16,27 @@
             <form:input type="text" placeholder="Введіть назву" path="title"/>
         </div>
         <br>
+        <div>
+            <label for="author">Обери автора:</label>
+            <form:select path="author">
+                <c:forEach items="${authors}" var="author">
+                    <form:option value="${author.id}">${author.id}:${author.name} ${author.surname}</form:option>
+                </c:forEach>
+            </form:select>
 
-        <label for="author">Обери автора:</label>
-        <form:select path="author">
-            <c:forEach items="${authors}" var="author">
-                <form:option value="${author.id}">${author.name} ${author.surname}</form:option>
-            </c:forEach>
-        </form:select>
-        <input type="submit" value="Підтвердити">
+        </div>
         <br>
+
         <br>
-        <label for="author">Обери жанр:</label>
-        <form:select path="genre">
-            <c:forEach items="${genre}" var="genre">
-                <form:option value="${genre.id}">${genre.name}</form:option>
-            </c:forEach>
-        </form:select>
-        <input type="submit" value="Підтвердити">
+        <div>
+            <label for="author">Обери жанр:</label>
+            <form:select path="genre">
+                <c:forEach items="${genre}" var="genre">
+                    <form:option value="${genre.id}">${genre.id}:${genre.name}</form:option>
+                </c:forEach>
+            </form:select>
+
+        </div>
         <br>
         <br>
         <div>
