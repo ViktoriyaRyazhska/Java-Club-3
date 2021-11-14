@@ -1,5 +1,6 @@
 package com.web.club3.controller;
 
+import com.web.club3.dto.BookDto;
 import com.web.club3.model.Author;
 import com.web.club3.model.Book;
 import com.web.club3.model.Genre;
@@ -37,14 +38,14 @@ public class BookController {
 
     @GetMapping("/all")
     public String showAllBooks(Model model) {
-        List<Book> books = bookService.findAll();
+        List<BookDto> books = bookService.findAll();
         model.addAttribute("bookModel", books);
         return "/book/all";
     }
 
     @GetMapping("/{id}")
     public String getBook(@PathVariable int id, Model model) {
-        Book book = bookService.findById(id);
+        BookDto book = bookService.findById(id);
         if (book == null) return "redirect:/book/all";
         model.addAttribute("bookModel", bookService.findById(id));
         return "/book/book";
@@ -52,34 +53,19 @@ public class BookController {
 
     @GetMapping("/create")
     public String createBook(Model model) {
-        model.addAttribute("createBook", new Book());
-        model.addAttribute("createAuthorInBook", new Author());
-        model.addAttribute("createGenreInBook", new Genre());
+        model.addAttribute("createBook", new BookDto());
         model.addAttribute("authors", authorService.findAll());
         model.addAttribute("genre", genreService.findAll());
         return "/book/create";
     }
 
     @PostMapping("/create")
-    public String createBook(@ModelAttribute("createBook") @Valid Book bookRequest,@Valid Author authorRequest,@Valid Genre genreRequest, BindingResult result) {
+    public String createBook(@ModelAttribute("createBook") @Valid BookDto bookRequest, @Valid Author authorRequest, @Valid Genre genreRequest, BindingResult result) {
         if (result.hasErrors()) {
             return "/book/create";
         }
-        Book book = new Book();
-        book.setTitle(bookRequest.getTitle());
-        //have to replase with /author/create /genre/create
-        Set<Author> authors= new HashSet<>();
-        Author author = new Author();
-        author.setName(authorRequest.getName());
-        author.setSurname(authorRequest.getSurname());
-        authors.add(author);
-        book.setAuthor(authors);
-        Genre genre =new Genre();
-        genre.setName(genreRequest.getName());
-        book.setGenre(genre);
-        book.setCopies(bookRequest.getCopies());
-        bookService.create(book);
-        return "redirect:/book/" + book.getId();
+        bookService.create(bookRequest);
+        return "redirect:/book/" + bookRequest.getId();
     }
 
 }

@@ -1,5 +1,6 @@
 package com.web.club3.config;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,11 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan("com.web.club3")
 public class JavaConfig {
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 
     @Bean
     public JavaMailSender getJavaMailSender() {
