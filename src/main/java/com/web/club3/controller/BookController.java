@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -66,16 +67,19 @@ public class BookController {
         }
         Book book = new Book();
         book.setTitle(bookRequest.getTitle());
-        Set<Author> authors= null;
+        //have to replase with /author/create /genre/create
+        Set<Author> authors= new HashSet<>();
         Author author = new Author();
         author.setName(authorRequest.getName());
         author.setSurname(authorRequest.getSurname());
         authors.add(author);
         book.setAuthor(authors);
-        Genre genre = genreService.findById(genreRequest.getId());
+        Genre genre =new Genre();
+        genre.setName(genreRequest.getName());
         book.setGenre(genre);
         book.setCopies(bookRequest.getCopies());
         bookService.create(book);
         return "redirect:/book/" + book.getId();
     }
+
 }
