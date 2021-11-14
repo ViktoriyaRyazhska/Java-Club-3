@@ -1,6 +1,8 @@
 package com.web.club3.controller;
 
+import com.web.club3.dto.AuthorDto;
 import com.web.club3.dto.BookDto;
+import com.web.club3.dto.GenreDto;
 import com.web.club3.model.Author;
 import com.web.club3.model.Book;
 import com.web.club3.model.Genre;
@@ -60,7 +62,7 @@ public class BookController {
     }
 
     @PostMapping("/create")
-    public String createBook(@ModelAttribute("createBook") @Valid BookDto bookRequest, @Valid Author authorRequest, @Valid Genre genreRequest, BindingResult result) {
+    public String createBook(@ModelAttribute("createBook") @Valid BookDto bookRequest, @Valid AuthorDto authorRequest, @Valid GenreDto genreRequest, BindingResult result) {
         if (result.hasErrors()) {
             return "/book/create";
         }

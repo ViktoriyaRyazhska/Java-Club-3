@@ -1,11 +1,13 @@
 package com.web.club3.service.impl;
 
 import com.web.club3.dao.impl.UserDAOImpl;
+import com.web.club3.dto.UserDto;
 import com.web.club3.model.Role;
 import com.web.club3.model.User;
 import com.web.club3.service.CRUDService;
 import com.web.club3.service.UserService;
 import com.web.club3.util.DateUtil;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,39 +15,47 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
-@Service
-public class UserServiceImpl implements CRUDService<User>, UserService {
+import static java.util.stream.Collectors.toList;
 
-    private UserDAOImpl userDAO;
+@Service
+public class UserServiceImpl implements CRUDService<UserDto>, UserService {
+
+    private final UserDAOImpl userDAO;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public UserServiceImpl(UserDAOImpl userDAO, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserServiceImpl(UserDAOImpl userDAO, BCryptPasswordEncoder bCryptPasswordEncoder, ModelMapper modelMapper) {
         this.userDAO = userDAO;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.modelMapper = modelMapper;
     }
 
     @Override
-    public User findById(int id) {
-        return userDAO.findById(id);
+    public UserDto findById(int id) {
+        User user = userDAO.findById(id);
+        return modelMapper.map(user, UserDto.class);
     }
 
     @Override
-    public List<User> findAll() {
-        return userDAO.findAll();
+    public List<UserDto> findAll() {
+        List<User> users = userDAO.findAll();
+        return users.stream().map(u -> modelMapper.map(u, UserDto.class)).collect(toList());
     }
 
     @Override
-    public User create(User user) {
+    public UserDto create(UserDto userDto) {
+        User user = modelMapper.map(userDto, User.class);
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setDate(LocalDate.now());
         user.setRole(Role.ROLE_USER);
-        return userDAO.create(user);
+        return modelMapper.map(userDAO.create(user), UserDto.class);
     }
 
     @Override
-    public User update(User user) {
-        return userDAO.update(user);
+    public UserDto update(UserDto userDto) {
+        User user = modelMapper.map(userDto, User.class);
+        return modelMapper.map(userDAO.update(user), UserDto.class);
     }
 
     @Override
@@ -64,7 +74,8 @@ public class UserServiceImpl implements CRUDService<User>, UserService {
     }
 
     @Override
-    public User findByEmail(String email) {
-        return userDAO.findByEmail(email);
+    public UserDto findByEmail(String email) {
+        User user = userDAO.findByEmail(email);
+        return modelMapper.map(user, UserDto.class);
     }
 }

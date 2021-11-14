@@ -1,5 +1,6 @@
 package com.web.club3.controller;
 
+import com.web.club3.dto.AuthorDto;
 import com.web.club3.model.Author;
 import com.web.club3.service.impl.AuthorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class AuthorController {
 
     @GetMapping("/all")
     public String showAllAuthors(Model model) {
-        List<Author> authors = authorService.findAll();
+        List<AuthorDto> authors = authorService.findAll();
         model.addAttribute("authorModel", authors);
         return "author/all";
     }
