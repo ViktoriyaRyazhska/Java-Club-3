@@ -22,6 +22,13 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     }
 
     protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/", "/book", "/genre", "/author", "/auth").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .defaultSuccessUrl("/user")
+                .permitAll().and().logout().logoutSuccessUrl("/").permitAll();
 
     }
 
