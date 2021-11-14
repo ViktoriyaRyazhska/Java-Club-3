@@ -1,6 +1,7 @@
 package com.web.club3.service.impl;
 
 import com.web.club3.dao.impl.UserDAOImpl;
+import com.web.club3.model.Role;
 import com.web.club3.model.User;
 import com.web.club3.service.CRUDService;
 import com.web.club3.service.UserService;
@@ -38,6 +39,7 @@ public class UserServiceImpl implements CRUDService<User>, UserService {
     public User create(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setDate(LocalDate.now());
+        user.setRole(Role.ROLE_USER);
         return userDAO.create(user);
     }
 

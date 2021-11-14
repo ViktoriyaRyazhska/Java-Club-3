@@ -23,9 +23,6 @@ public class User {
     private String email;
     private int age;
 
-    @Column(name = "user_login", nullable = false, unique = true)
-    private String login;
-
     @Column(name = "user_password", nullable = false)
     private String password;
 
@@ -80,14 +77,6 @@ public class User {
         this.age = age;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -128,7 +117,6 @@ public class User {
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", age=" + age +
-                ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", date=" + date +
                 ", role='" + role + '\'' +
