@@ -50,8 +50,8 @@ public class JavaConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
-        dataSource.setUsername("");
-        dataSource.setPassword("");
+        dataSource.setUsername("Anastasiia");
+        dataSource.setPassword("Vilino05");
         return dataSource;
     }
 

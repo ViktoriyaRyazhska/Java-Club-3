@@ -2,6 +2,7 @@ package com.web.club3.controller;
 
 import com.web.club3.model.Author;
 import com.web.club3.model.Book;
+import com.web.club3.model.Genre;
 import com.web.club3.service.impl.AuthorServiceImpl;
 import com.web.club3.service.impl.BookServiceImpl;
 import com.web.club3.service.impl.GenreServiceImpl;
@@ -51,21 +52,29 @@ public class BookController {
     @GetMapping("/create")
     public String createBook(Model model) {
         model.addAttribute("createBook", new Book());
+        model.addAttribute("createAuthorInBook", new Author());
+        model.addAttribute("createGenreInBook", new Genre());
         model.addAttribute("authors", authorService.findAll());
         model.addAttribute("genre", genreService.findAll());
         return "/book/create";
     }
 
     @PostMapping("/create")
-    public String createBook(@ModelAttribute("createBook") @Valid Book request, BindingResult result) {
+    public String createBook(@ModelAttribute("createBook") @Valid Book bookRequest,@Valid Author authorRequest,@Valid Genre genreRequest, BindingResult result) {
         if (result.hasErrors()) {
             return "/book/create";
         }
         Book book = new Book();
-        book.setTitle(request.getTitle());
-        book.setAuthor(request.getAuthor());
-        book.setGenre(request.getGenre());
-        book.setCopies(request.getCopies());
+        book.setTitle(bookRequest.getTitle());
+        Set<Author> authors= null;
+        Author author = new Author();
+        author.setName(authorRequest.getName());
+        author.setSurname(authorRequest.getSurname());
+        authors.add(author);
+        book.setAuthor(authors);
+        Genre genre = genreService.findById(genreRequest.getId());
+        book.setGenre(genre);
+        book.setCopies(bookRequest.getCopies());
         bookService.create(book);
         return "redirect:/book/" + book.getId();
     }
