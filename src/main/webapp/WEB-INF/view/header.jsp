@@ -36,6 +36,7 @@
     <a href="/">Головна</a>
     <a href="/book/all">Книжки </a>
     <a href="authors.jsp">Автори </a>
+    <a href="/genre/all"> Жанри </a>
 
   </div>
 
