@@ -34,7 +34,8 @@ public class User {
     private LocalDate date;
 
     @Column(name = "user_role", nullable = false)
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @OneToMany(mappedBy = "user")
     private List<BookOrder> bookOrderList;
@@ -103,11 +104,11 @@ public class User {
         this.date = date;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

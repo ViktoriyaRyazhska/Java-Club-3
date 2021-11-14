@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,8 +33,8 @@
 <div class="menu">
 
   <div class="left">
-    <a href="home.jsp">Головна</a>
-    <a href="books.jsp">Книжки </a>
+    <a href="/">Головна</a>
+    <a href="/book/all">Книжки </a>
     <a href="authors.jsp">Автори </a>
 
   </div>
