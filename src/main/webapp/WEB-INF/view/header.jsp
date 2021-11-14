@@ -41,7 +41,6 @@
   </div>
 
   <div class="right">
-    <a href="/mail">Надіслати повідомлення</a>
     <a href="/login">Увійти</a>
     <a href="/auth">Зареєструватись</a>
 
