@@ -1,41 +1,52 @@
 package com.web.club3.service.impl;
 
 import com.web.club3.dao.impl.BookDAOImpl;
+import com.web.club3.dto.BookDto;
 import com.web.club3.model.Author;
 import com.web.club3.model.Book;
 import com.web.club3.service.BookService;
 import com.web.club3.service.CRUDService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
+
 @Service
-public class BookServiceImpl implements CRUDService<Book>, BookService {
-    private BookDAOImpl bookDAO;
+public class BookServiceImpl implements CRUDService<BookDto>, BookService {
+    private final BookDAOImpl bookDAO;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public BookServiceImpl(BookDAOImpl bookDAO) {
+    public BookServiceImpl(BookDAOImpl bookDAO, ModelMapper modelMapper) {
         this.bookDAO = bookDAO;
+        this.modelMapper = modelMapper;
     }
 
     @Override
-    public Book findById(int id) {
-        return bookDAO.findById(id);
+    public BookDto findById(int id) {
+        Book book = bookDAO.findById(id);
+        return modelMapper.map(book, BookDto.class);
     }
 
     @Override
-    public List<Book> findAll() {
-        return bookDAO.findAll();
+    public List<BookDto> findAll() {
+        List<Book> books = bookDAO.findAll();
+        return books.stream().map(b -> modelMapper.map(b, BookDto.class)).collect(toList());
     }
 
     @Override
-    public Book create(Book book) {
-        return bookDAO.create(book);
+    public BookDto create(BookDto bookDto) {
+        Book book = modelMapper.map(bookDto, Book.class);
+        return modelMapper.map(bookDAO.create(book), BookDto.class);
     }
 
     @Override
-    public Book update(Book book) {
-        return bookDAO.update(book);
+    public BookDto update(BookDto bookDto) {
+        Book book = modelMapper.map(bookDto, Book.class);
+        return modelMapper.map(bookDAO.update(book), BookDto.class);
     }
 
     @Override

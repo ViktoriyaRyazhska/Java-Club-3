@@ -1,5 +1,6 @@
 package com.web.club3.config;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,11 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan("com.web.club3")
 public class JavaConfig {
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 
     @Bean
     public JavaMailSender getJavaMailSender() {
@@ -50,7 +56,7 @@ public class JavaConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
-        dataSource.setUsername("");
+        dataSource.setUsername("root");
         dataSource.setPassword("");
         return dataSource;
     }

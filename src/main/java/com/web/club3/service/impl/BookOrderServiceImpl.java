@@ -3,12 +3,15 @@ package com.web.club3.service.impl;
 import com.web.club3.dao.impl.BookDAOImpl;
 import com.web.club3.dao.impl.BookOrderDAOImpl;
 import com.web.club3.dao.impl.UserDAOImpl;
+import com.web.club3.dto.BookOrderDto;
+import com.web.club3.model.Book;
 import com.web.club3.model.BookOrder;
 import com.web.club3.service.BookOrderService;
 import com.web.club3.service.BookService;
 import com.web.club3.service.CRUDService;
 import com.web.club3.util.DateUtil;
 import org.hibernate.query.Query;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,36 +19,44 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Service
-public class BookOrderServiceImpl implements CRUDService<BookOrder>, BookOrderService {
+import static java.util.stream.Collectors.toList;
 
-    private BookDAOImpl bookDAO;
-    private BookOrderDAOImpl bookOrderDAO;
+@Service
+public class BookOrderServiceImpl implements CRUDService<BookOrderDto>, BookOrderService {
+
+    private final BookDAOImpl bookDAO;
+    private final BookOrderDAOImpl bookOrderDAO;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public BookOrderServiceImpl(BookOrderDAOImpl bookOrderDAO, BookDAOImpl bookDAO) {
+    public BookOrderServiceImpl(BookOrderDAOImpl bookOrderDAO, BookDAOImpl bookDAO, ModelMapper modelMapper) {
         this.bookOrderDAO = bookOrderDAO;
         this.bookDAO = bookDAO;
+        this.modelMapper = modelMapper;
     }
 
     @Override
-    public BookOrder findById(int id) {
-        return bookOrderDAO.findById(id);
+    public BookOrderDto findById(int id) {
+        BookOrder bookOrder = bookOrderDAO.findById(id);
+        return modelMapper.map(bookOrder, BookOrderDto.class);
     }
 
     @Override
-    public List<BookOrder> findAll() {
-        return bookOrderDAO.findAll();
+    public List<BookOrderDto> findAll() {
+        List<BookOrder> bookOrderList = bookOrderDAO.findAll();
+        return bookOrderList.stream().map(bo -> modelMapper.map(bo, BookOrderDto.class)).collect(toList());
     }
 
     @Override
-    public BookOrder create(BookOrder bookOrder) {
-        return bookOrderDAO.create(bookOrder);
+    public BookOrderDto create(BookOrderDto bookOrderDto) {
+        BookOrder bookOrder = modelMapper.map(bookOrderDto, BookOrder.class);
+        return modelMapper.map(bookOrderDAO.create(bookOrder), BookOrderDto.class);
     }
 
     @Override
-    public BookOrder update(BookOrder bookOrder) {
-        return bookOrderDAO.update(bookOrder);
+    public BookOrderDto update(BookOrderDto bookOrderDto) {
+        BookOrder bookOrder = modelMapper.map(bookOrderDto, BookOrder.class);
+        return modelMapper.map(bookOrderDAO.update(bookOrder), BookOrderDto.class);
     }
 
     @Override
@@ -102,7 +113,7 @@ public class BookOrderServiceImpl implements CRUDService<BookOrder>, BookOrderSe
     }
 
     @Override
-    public List<BookOrder> readedBooksInCertainDays(int days){
+    public List<BookOrder> readedBooksInCertainDays(int days) {
         return bookOrderDAO.readedBooksInCertainDays(days);
     }
 }

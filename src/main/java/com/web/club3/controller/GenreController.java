@@ -1,5 +1,6 @@
 package com.web.club3.controller;
 
+import com.web.club3.dto.GenreDto;
 import com.web.club3.model.Book;
 import com.web.club3.model.Genre;
 import com.web.club3.service.impl.GenreServiceImpl;
@@ -30,7 +31,7 @@ public class GenreController {
 
     @GetMapping("/all")
     public String showAllGenres(Model model) {
-        List<Genre> genres = genreService.findAll();
+        List<GenreDto> genres = genreService.findAll();
         model.addAttribute("genreModel", genres);
         return "genre/all";
     }

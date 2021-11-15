@@ -16,24 +16,6 @@
             <form:input type="text" placeholder="Введіть назву" path="title"/>
         </div>
         <br>
-
-        <label for="author">Обери автора:</label>
-        <form:select path="author">
-            <c:forEach items="${authors}" var="author">
-                <form:option value="${author.id}">${author.name} ${author.surname}</form:option>
-            </c:forEach>
-        </form:select>
-        <input type="submit" value="Підтвердити">
-        <br>
-        <br>
-        <label for="author">Обери жанр:</label>
-        <form:select path="genre">
-            <c:forEach items="${genre}" var="genre">
-                <form:option value="${genre.id}">${genre.name}</form:option>
-            </c:forEach>
-        </form:select>
-        <input type="submit" value="Підтвердити">
-        <br>
         <br>
         <div>
             <span id="inputGroup-sizing-small">Кількість копій</span>
@@ -42,6 +24,23 @@
         <br>
         <br>
         <button class="btn btn-outline-success">Створити</button>
+        <form:form method="POST" action="/book/create/"
+                   modelAttribute="authors">
+            <select name="author">
+                <c:forEach items="${authors}" var="author">
+                    <option value="${author.id}">${author.name}${author.surname}</option>
+                </c:forEach>
+            </select>
+        </form:form>
+        <form:form method="POST" action="/book/create/"
+                   modelAttribute="genre">
+            <select name="genre">
+                <c:forEach items="${genre}" var="genre">
+                    <option value="${genre.id}">${genre.name}</option>
+                </c:forEach>
+            </select>
+        </form:form>
+        <br/><br/>
     </form:form>
 </div>
 </body>
