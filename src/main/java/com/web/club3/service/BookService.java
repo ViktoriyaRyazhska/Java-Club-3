@@ -7,6 +7,8 @@ import com.web.club3.model.Book;
 import java.util.List;
 
 public interface BookService {
+    public BookDto createBook(BookDto bookDto);
+
     boolean available(int id);
 
     List<Book> findByAuthor(Author author);

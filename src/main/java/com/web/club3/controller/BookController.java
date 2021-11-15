@@ -3,9 +3,6 @@ package com.web.club3.controller;
 import com.web.club3.dto.AuthorDto;
 import com.web.club3.dto.BookDto;
 import com.web.club3.dto.GenreDto;
-import com.web.club3.model.Author;
-import com.web.club3.model.Book;
-import com.web.club3.model.Genre;
 import com.web.club3.service.impl.AuthorServiceImpl;
 import com.web.club3.service.impl.BookServiceImpl;
 import com.web.club3.service.impl.GenreServiceImpl;
@@ -15,9 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/book")
@@ -66,7 +61,6 @@ public class BookController {
         if (result.hasErrors()) {
             return "/book/create";
         }
-        bookService.create(bookRequest);
         return "redirect:/book/" + bookRequest.getId();
     }
 
