@@ -23,7 +23,6 @@
                     <h2><a href="/author/${author.id}"> ${author.name} ${author.surname} </a></h2>
                 </fieldset>
             </td>
-
         </tr>
     </c:forEach>
 </table>

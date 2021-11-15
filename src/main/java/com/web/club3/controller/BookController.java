@@ -69,5 +69,4 @@ public class BookController {
         bookService.create(bookRequest);
         return "redirect:/book/" + bookRequest.getId();
     }
-
 }
