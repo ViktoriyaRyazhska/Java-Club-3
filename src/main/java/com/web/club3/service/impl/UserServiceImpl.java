@@ -15,10 +15,9 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
 
 @Service
-public class UserServiceImpl implements CRUDService<UserDto>, UserService {
+public class UserServiceImpl implements CRUDService<User>, UserService {
 
     private final UserDAOImpl userDAO;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -32,30 +31,26 @@ public class UserServiceImpl implements CRUDService<UserDto>, UserService {
     }
 
     @Override
-    public UserDto findById(int id) {
-        User user = userDAO.findById(id);
-        return modelMapper.map(user, UserDto.class);
+    public User findById(int id) {
+        return userDAO.findById(id);
     }
 
     @Override
-    public List<UserDto> findAll() {
-        List<User> users = userDAO.findAll();
-        return users.stream().map(u -> modelMapper.map(u, UserDto.class)).collect(toList());
+    public List<User> findAll() {
+        return userDAO.findAll();
     }
 
     @Override
-    public UserDto create(UserDto userDto) {
-        User user = modelMapper.map(userDto, User.class);
+    public User create(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setDate(LocalDate.now());
         user.setRole(Role.ROLE_USER);
-        return modelMapper.map(userDAO.create(user), UserDto.class);
+        return userDAO.create(user);
     }
 
     @Override
-    public UserDto update(UserDto userDto) {
-        User user = modelMapper.map(userDto, User.class);
-        return modelMapper.map(userDAO.update(user), UserDto.class);
+    public User update(User user) {
+        return userDAO.update(user);
     }
 
     @Override

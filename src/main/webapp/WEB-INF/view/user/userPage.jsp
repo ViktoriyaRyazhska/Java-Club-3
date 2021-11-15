@@ -41,6 +41,7 @@
     </div>
 
     <div class="right">
+        <a href="order/all">Замовлення</a>
         <a href="/mail">Надіслати повідомлення</a>
         <a href="<c:url value="/logout" />">Вийти</a>
     </div>

@@ -1,8 +1,8 @@
 package com.web.club3.controller;
 
-import com.web.club3.dto.AuthorDto;
-import com.web.club3.dto.BookDto;
-import com.web.club3.dto.GenreDto;
+import com.web.club3.model.Author;
+import com.web.club3.model.Book;
+import com.web.club3.model.Genre;
 import com.web.club3.service.impl.AuthorServiceImpl;
 import com.web.club3.service.impl.BookServiceImpl;
 import com.web.club3.service.impl.GenreServiceImpl;
@@ -35,14 +35,14 @@ public class BookController {
 
     @GetMapping("/all")
     public String showAllBooks(Model model) {
-        List<BookDto> books = bookService.findAll();
+        List<Book> books = bookService.findAll();
         model.addAttribute("bookModel", books);
         return "/book/all";
     }
 
     @GetMapping("/{id}")
     public String getBook(@PathVariable int id, Model model) {
-        BookDto book = bookService.findById(id);
+        Book book = bookService.findById(id);
         if (book == null) return "redirect:/book/all";
         model.addAttribute("bookModel", bookService.findById(id));
         return "/book/book";
@@ -50,14 +50,14 @@ public class BookController {
 
     @GetMapping("/create")
     public String createBook(Model model) {
-        model.addAttribute("createBook", new BookDto());
+        model.addAttribute("createBook", new Book());
         model.addAttribute("authors", authorService.findAll());
         model.addAttribute("genre", genreService.findAll());
         return "/book/create";
     }
 
     @PostMapping("/create")
-    public String createBook(@ModelAttribute("createBook") @Valid BookDto bookRequest, @Valid AuthorDto authorRequest, @Valid GenreDto genreRequest, BindingResult result) {
+    public String createBook(@ModelAttribute("createBook") @Valid Book bookRequest, @Valid Author authorRequest, @Valid Genre genreRequest, BindingResult result) {
         if (result.hasErrors()) {
             return "/book/create";
         }

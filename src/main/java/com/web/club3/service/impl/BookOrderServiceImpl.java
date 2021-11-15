@@ -14,10 +14,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
 @Service
-public class BookOrderServiceImpl implements CRUDService<BookOrderDto>, BookOrderService {
+public class BookOrderServiceImpl implements CRUDService<BookOrder>, BookOrderService {
 
     private final BookDAOImpl bookDAO;
     private final BookOrderDAOImpl bookOrderDAO;
@@ -33,36 +31,31 @@ public class BookOrderServiceImpl implements CRUDService<BookOrderDto>, BookOrde
     }
 
     @Override
-    public BookOrderDto findById(int id) {
-        BookOrder bookOrder = bookOrderDAO.findById(id);
-        return modelMapper.map(bookOrder, BookOrderDto.class);
+    public BookOrder findById(int id) {
+        return bookOrderDAO.findById(id);
     }
 
     @Override
-    public List<BookOrderDto> findAll() {
-        List<BookOrder> bookOrderList = bookOrderDAO.findAll();
-        return bookOrderList.stream().map(bo -> modelMapper.map(bo, BookOrderDto.class)).collect(toList());
+    public List<BookOrder> findAll() {
+        return bookOrderDAO.findAll();
     }
 
     @Override
-    public BookOrderDto create(BookOrderDto bookOrderDto) {
-        BookOrder bookOrder = modelMapper.map(bookOrderDto, BookOrder.class);
-        return modelMapper.map(bookOrderDAO.create(bookOrder), BookOrderDto.class);
+    public BookOrder create(BookOrder bookOrder) {
+        return bookOrderDAO.create(bookOrder);
     }
 
     @Override
-    public BookOrderDto update(BookOrderDto bookOrderDto) {
-        BookOrder bookOrder = modelMapper.map(bookOrderDto, BookOrder.class);
-        return modelMapper.map(bookOrderDAO.update(bookOrder), BookOrderDto.class);
+    public BookOrder update(BookOrder bookOrder) {
+        return bookOrderDAO.update(bookOrder);
     }
 
     @Override
-    public BookOrderDto createOrder(int userId, int bookId, BookOrderDto bookOrderDto) {
-        BookOrder bookOrder = modelMapper.map(bookOrderDto, BookOrder.class);
+    public BookOrder createOrder(int userId, int bookId, BookOrder bookOrder) {
         bookOrder.setLendingDate(LocalDate.now());
         bookOrder.setUsers(userDAO.findById(userId));
         bookOrder.setBook(bookDAO.findById(bookId));
-        return modelMapper.map(bookOrderDAO.create(bookOrder), BookOrderDto.class);
+        return bookOrderDAO.create(bookOrder);
     }
 
     @Override
@@ -112,9 +105,9 @@ public class BookOrderServiceImpl implements CRUDService<BookOrderDto>, BookOrde
     }
 
     @Override
-    public BookOrderDto lendBook(int userId, int bookId, BookOrderDto bookOrderDto) {
+    public BookOrder lendBook(int userId, int bookId, BookOrder bookOrder) {
         bookDAO.deleteOneCopy(bookId);
-        return createOrder(userId, bookId, bookOrderDto);
+        return createOrder(userId, bookId, bookOrder);
     }
 
     @Override
