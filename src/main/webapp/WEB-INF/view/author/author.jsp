@@ -2,16 +2,16 @@
 <html>
 <head>
     <title>Authors</title>
+    <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
-<%@include file="../header.jsp" %>
-<div>
-    <div class="container">
-        Name: ${authorModel.name} <br>
-        Surname: ${authorModel.surname} <br>
-        <br>
-        <br>
+<div class="blockmain">
+    <div class="content">
+        <p class="text2" style="width: 650px"> Name: ${authorModel.name} </p>
+        <p class="text2" style="width: 650px"> Surname: ${authorModel.surname} </p>
+
     </div>
 </div>
+
 </body>
 </html>

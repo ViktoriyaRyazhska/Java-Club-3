@@ -4,47 +4,26 @@
 <html>
 <head>
     <title>User Account</title>
-    <style>
-        .menu {
-            width: 100%;
-            height: 60px;
-            display: flex;
-        }
 
-        .left, .right {
-            width: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 30px;
-            color: black;
-        }
-
-        .left a, .right a {
-            margin-right: 30px;
-        }
-
-        .left a:hover, .right a:hover {
-            color: black;
-            font-weight: 700;
-        }
-    </style>
+    <style><%@include file="../css/header.css"%></style>
 </head>
 <body>
-<div class="menu">
+<div class="header">
 
-    <div class="left">
-        <a href="/user/lending">Видати книгу</a>
-        <a href="">Повернути книгу </a>
-        <a href="">Статистика </a>
+
+    <div class="headerleft">
+
+        <a href="/user/lending" class="bottomhead onthis" >Видати книгу</a>
+        <a href="" class="bottomhead" style="text-align: center" >Повернути книгу</a>
+        <a href="" class="bottomhead">Статистика</a>
 
     </div>
-
-    <div class="right">
-        <a href="order/all">Замовлення</a>
-        <a href="/mail">Надіслати повідомлення</a>
-        <a href="<c:url value="/logout" />">Вийти</a>
+    <div class="headerright">
+        <a href="order/all" class="bottomhead-resgister " >Жанри</a>
+        <a href="/mail" class="bottomhead-resgister" >Надіслати повідомлення</a>
+        <a class="bottomhead-resgister" href="<c:url value="/logout" />">Вийти</a>
     </div>
 </div>
+
 </body>
 </html>

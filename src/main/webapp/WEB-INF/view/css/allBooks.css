@@ -1,4 +1,4 @@
-@import url(reset.css);
+
 body {
     margin: 0px;
 }
@@ -106,6 +106,12 @@ a
     margin-left: 40px;
     margin-right: 40px;
     width: 6px;
+}
+.text1
+{
+
+    margin-right: 15px;
+
 }
 hr
 {

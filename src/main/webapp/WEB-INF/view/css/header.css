@@ -1,4 +1,3 @@
-@import url(reset.css);
 
 .header
 {
@@ -55,6 +54,7 @@ box-shadow: 24px 6px 17px 4px rgba(34, 60, 80, 0.22);
     color: white;
     transition-duration: 0.7s;
     display: flex;
+
     justify-content: center;
     align-items: center;
 }
@@ -74,11 +74,7 @@ box-shadow: 24px 6px 17px 4px rgba(34, 60, 80, 0.22);
 {
     font-size: 25px;
 }
-.onthis
-{
-    
-    color: rgb(3, 45, 58);
-}
+
 .bottomhead-resgister:hover{
     color: rgb(2, 62, 77);
     transform: scale(1.1);

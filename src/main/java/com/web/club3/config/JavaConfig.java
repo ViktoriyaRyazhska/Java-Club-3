@@ -30,7 +30,7 @@ public class JavaConfig {
         mailSender.setPort(587);
 
         mailSender.setUsername("root");
-        mailSender.setPassword("Nahfc2015");
+        mailSender.setPassword("");
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
@@ -57,7 +57,7 @@ public class JavaConfig {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
         dataSource.setUsername("root");
-        dataSource.setPassword("Nahfc2015");
+        dataSource.setPassword("");
         return dataSource;
     }
 
