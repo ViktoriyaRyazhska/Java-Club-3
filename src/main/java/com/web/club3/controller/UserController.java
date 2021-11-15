@@ -56,4 +56,16 @@ public class UserController {
         bookOrderService.lendBook(userId, bookId, bookOrder);
         return "redirect:/user";
     }
+
+    @GetMapping("/statistic")
+    public String statistic(){
+        return "user/statistic";
+    }
+
+    @GetMapping("/statistic/average")
+    public String averageAge(Model model){
+        model.addAttribute("averageAgeModel", userService.avgUserAge());
+        return "statistic/averageAge";
+    }
+
 }

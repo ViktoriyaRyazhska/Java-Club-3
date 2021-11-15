@@ -15,7 +15,7 @@
 
         <a href="/user/lending" class="bottomhead onthis" >Видати книгу</a>
         <a href="" class="bottomhead" style="text-align: center" >Повернути книгу</a>
-        <a href="" class="bottomhead">Статистика</a>
+        <a href="/user/statistic" class="bottomhead">Статистика</a>
 
     </div>
     <div class="headerright">
