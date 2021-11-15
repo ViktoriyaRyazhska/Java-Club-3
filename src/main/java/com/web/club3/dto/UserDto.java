@@ -18,5 +18,5 @@ public class UserDto {
     private String password;
     private LocalDate date;
     private Role role;
-    private List<BookOrder> bookOrderList = new ArrayList<>();
+    private List<BookOrderDto> bookOrderList = new ArrayList<>();
 }
