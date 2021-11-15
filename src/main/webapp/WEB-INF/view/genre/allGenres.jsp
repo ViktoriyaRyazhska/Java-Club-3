@@ -3,29 +3,41 @@
 <html>
 <head>
     <title>All genres</title>
+
+    <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<h2>Список жанрів:</h2>
-<form action="/genre/create">
-    <input type="submit" value="Додати новий жанр">
-</form>
-<form action="/genre/delete">
-    <input type="submit" value="Видалити жанр">
-</form>
-<table class="table table-hover table-bordered">
+    <div class="blockmain">
+        <div class="content">
+            <div class="info-buttons" style="margin-left: 320px">
+                <h3>Список жанрів:</h3>
+                <form action="/genre/create">
+                    <input type="submit" value="Додати новий жанр" class="book-buttons">
+                </form>
+                <form action="/genre/delete">
+                    <input type="submit" value="Видалити жанр" class="book-buttons">
+                </form>
+            </div>
+           <hr>
+
+        <div class="tablbox1">
+                    <p class="idclass">ID</p>
+                    <p >Name</p>
+            </div>
+            <hr>
 
     <c:forEach items="${genreModel}" var="genre">
-        <tr>
-            <td>
-                <fieldset>
-                    <legend>${genre.id}</legend>
-                    <h2><a href="/genre/${genre.id}"> ${genre.name} </a></h2>
-                </fieldset>
-            </td>
+        <div class="tablbox2">
 
-        </tr>
+            <p class="text2">${genre.id}</p>
+            <a href="/genre/${genre.id}" class="text1">${genre.name}  </a>
+
+
+        </div>
     </c:forEach>
+        </div>
+    </div>
 </table>
 </body>
 </html>

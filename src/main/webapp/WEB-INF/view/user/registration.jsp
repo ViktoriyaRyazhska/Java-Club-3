@@ -6,9 +6,12 @@
 <head>
     <meta charset="utf-8">
     <title>Registration</title>
+
+    <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
-<div>
+<div class="blockmain">
+    <div class="content">
     <form:form method="POST" modelAttribute="userForm">
         <h2>Registration</h2>
         <div>
@@ -29,6 +32,7 @@
         <button type="submit">Register</button>
     </form:form>
     <a href="${pageContext.request.contextPath}/">Головна</a>
+    </div>
 </div>
 </body>
 </html>

@@ -1,0 +1,92 @@
+@import url(reset.css);
+
+.header
+{
+    -webkit-box-shadow: 24px 6px 17px 4px rgba(34, 60, 80, 0.22);
+-moz-box-shadow: 24px 6px 17px 4px rgba(34, 60, 80, 0.22);
+box-shadow: 24px 6px 17px 4px rgba(34, 60, 80, 0.22);
+    margin-top: 40px;
+    margin-left: 100px;
+    width: 90%;
+    height: 100px;
+    background: rgb(231, 233, 238);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headersvg
+{
+    width: 90px;
+    height: 90px;
+   margin-left: 20px;
+}
+.headerleft
+{
+
+    margin-left: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.headerright
+{
+
+    margin-left: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottomhead {
+    width: 140px;
+    height:50px;
+    border-radius: 10px ;
+    background-color: rgb(9, 72, 247);
+    font-size: 24px;
+    margin: 0px 50px;
+    text-decoration: none;
+    color: white;
+    transition-duration: 0.7s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bottomhead-resgister
+{
+    text-decoration: none;
+    height:50px;
+    font-size: 21px;
+    margin-left: 50px;
+    color: rgb(22, 116, 145);
+    transition-duration: 0.7s;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.send-messege
+{
+    font-size: 25px;
+}
+.onthis
+{
+    
+    color: rgb(3, 45, 58);
+}
+.bottomhead-resgister:hover{
+    color: rgb(2, 62, 77);
+    transform: scale(1.1);
+}
+.bottomhead:hover{
+    -webkit-box-shadow: 11px 12px 10px -3px rgba(34, 60, 80, 0.22);
+    -moz-box-shadow: 11px 12px 10px -3px rgba(34, 60, 80, 0.22);
+    box-shadow: 11px 12px 10px -3px rgba(34, 60, 80, 0.22);
+    color: rgb(2, 62, 77);
+    transform: scale(1.1);
+}

@@ -4,11 +4,15 @@
 <html>
 <head>
     <title>Create book</title>
+
+    <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<h3>Додайте нову книжку:</h3>
-<div>
+
+<div class="blockmain">
+    <div class="content">
+        <h3>Додайте нову книжку:</h3>
     <form:form method="POST" action="/book/create/"
                modelAttribute="createBook">
         <div>
@@ -42,6 +46,7 @@
         </form:form>
         <br/><br/>
     </form:form>
+    </div>
 </div>
 </body>
 </html>
