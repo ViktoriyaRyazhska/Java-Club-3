@@ -44,7 +44,7 @@ public class UserServiceImpl implements CRUDService<User>, UserService {
     public User create(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setDate(LocalDate.now());
-        user.setRole(Role.ROLE_USER);
+        user.setRole(Role.USER);
         return userDAO.create(user);
     }
 
