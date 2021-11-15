@@ -31,10 +31,10 @@
         <div class="tablbox2">
 
             <p class="text2">${author.id}</p>
-            <a href="/genre/${author.id}" class="text1">${author.name} ${author.surname}  </a>
-
+            <a href="/author/${author.id}" class="text1">${author.name} ${author.surname}   </a>
 
         </div>
+
     </c:forEach>
 
     </div>

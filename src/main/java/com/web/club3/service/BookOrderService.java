@@ -1,11 +1,14 @@
 package com.web.club3.service;
 
+import com.web.club3.dto.BookOrderDto;
 import com.web.club3.model.BookOrder;
 
 import java.time.LocalDate;
 import java.util.List;
 
 public interface BookOrderService {
+
+    BookOrder createOrder(int userId, int bookId, BookOrder bookOrder);
 
     void deleteById(int id);
 
@@ -25,7 +28,7 @@ public interface BookOrderService {
 
     void returnBook(int bookId,int bookOrderId);
 
-    void lendBook(int bookId,BookOrder bookOrder);
+    BookOrder lendBook(int bookId,int userId, BookOrder bookOrder);
 
-    List<BookOrder> readedBooksInCertainDays(int days);
+    List<BookOrder> readBooksInCertainDays(int days);
 }

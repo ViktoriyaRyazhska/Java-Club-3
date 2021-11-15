@@ -13,7 +13,7 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 @Service
-public class GenreServiceImpl implements CRUDService<GenreDto> {
+public class GenreServiceImpl implements CRUDService<Genre> {
 
     private final GenreDAOImpl genreDAO;
     private final ModelMapper modelMapper;
@@ -25,27 +25,23 @@ public class GenreServiceImpl implements CRUDService<GenreDto> {
     }
 
     @Override
-    public GenreDto findById(int id) {
-        Genre genre = genreDAO.findById(id);
-        return modelMapper.map(genre, GenreDto.class);
+    public Genre findById(int id) {
+        return genreDAO.findById(id);
     }
 
     @Override
-    public List<GenreDto> findAll() {
-        List<Genre> genres = genreDAO.findAll();
-        return genres.stream().map(g -> modelMapper.map(g, GenreDto.class)).collect(toList());
+    public List<Genre> findAll() {
+        return genreDAO.findAll();
     }
 
     @Override
-    public GenreDto create(GenreDto genreDto) {
-        Genre genre = modelMapper.map(genreDto, Genre.class);
-        return modelMapper.map(genreDAO.create(genre), GenreDto.class);
+    public Genre create(Genre genre) {
+        return genreDAO.create(genre);
     }
 
     @Override
-    public GenreDto update(GenreDto genreDto) {
-        Genre genre = modelMapper.map(genreDto, Genre.class);
-        return modelMapper.map(genreDAO.update(genre), GenreDto.class);
+    public Genre update(Genre genre) {
+        return genreDAO.update(genre);
     }
 
     @Override

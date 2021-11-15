@@ -1,6 +1,5 @@
 @import url(reset.css);
 body {
-
     margin: 0px;
 }
 a
@@ -10,7 +9,6 @@ a
 }
 .blockmain
 {
-
     width: 100%;
     min-height: 937px;
     margin: 0px auto;

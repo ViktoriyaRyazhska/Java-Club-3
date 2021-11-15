@@ -34,13 +34,14 @@
 <div class="menu">
 
     <div class="left">
-        <a href="">Взяти книгу</a>
+        <a href="/user/lending">Видати книгу</a>
         <a href="">Повернути книгу </a>
         <a href="">Статистика </a>
 
     </div>
 
     <div class="right">
+        <a href="order/all">Замовлення</a>
         <a href="/mail">Надіслати повідомлення</a>
         <a href="<c:url value="/logout" />">Вийти</a>
     </div>
