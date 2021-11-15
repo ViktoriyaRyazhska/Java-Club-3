@@ -41,7 +41,7 @@ public class EmailController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String showEmailsPage() {
-        return "emails";
+        return "mail/emails";
     }
     @RequestMapping(value = {"/send"}, method = RequestMethod.GET)
     public String createMail(Model model,
@@ -71,6 +71,6 @@ public class EmailController {
         emailService.sendSimpleMessage(mailObject.getTo(),
                 mailObject.getSubject(), mailObject.getText());
 
-        return "emails";
+        return "mail/emails";
     }
 }
