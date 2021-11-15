@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BookOrderService {
 
-    BookOrderDto createOrder(int userId, int bookId, BookOrderDto bookOrderDto);
+    BookOrder createOrder(int userId, int bookId, BookOrder bookOrder);
 
     void deleteById(int id);
 
@@ -28,7 +28,7 @@ public interface BookOrderService {
 
     void returnBook(int bookId,int bookOrderId);
 
-    BookOrderDto lendBook(int bookId,int userId, BookOrderDto bookOrderDto);
+    BookOrder lendBook(int bookId,int userId, BookOrder bookOrder);
 
     List<BookOrder> readBooksInCertainDays(int days);
 }

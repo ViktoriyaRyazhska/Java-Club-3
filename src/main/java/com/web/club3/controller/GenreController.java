@@ -1,6 +1,6 @@
 package com.web.club3.controller;
 
-import com.web.club3.dto.GenreDto;
+import com.web.club3.model.Genre;
 import com.web.club3.service.impl.GenreServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,20 +27,20 @@ public class GenreController {
 
     @GetMapping("/all")
     public String showAllGenres(Model model) {
-        List<GenreDto> genres = genreService.findAll();
+        List<Genre> genres = genreService.findAll();
         model.addAttribute("genreModel", genres);
         return "genre/allGenres";
     }
 
     @GetMapping("/create")
     public String create(Model model){
-        model.addAttribute("genreModel", new GenreDto());
+        model.addAttribute("genreModel", new Genre());
         return "genre/createGenre";
     }
 
     @PostMapping("/create")
-    public String createGenre(@ModelAttribute("genreModel") GenreDto genreDto){
-        genreService.create(genreDto);
+    public String createGenre(@ModelAttribute("genreModel") Genre genre){
+        genreService.create(genre);
         return "redirect:/genre/all";
     }
 

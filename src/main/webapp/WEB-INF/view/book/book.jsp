@@ -8,7 +8,7 @@
 <div>
     <div class="container">
         Назва книги: ${bookModel.title} <br>
-        Автор: ${bookModel.authorSet} <br>
+        Автор: ${bookModel.author} <br>
         Жанр: ${bookModel.genre} <br>
         Кількість копій: ${bookModel.copies} <br>
 

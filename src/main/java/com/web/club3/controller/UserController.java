@@ -1,12 +1,7 @@
 package com.web.club3.controller;
 
-import com.web.club3.dto.BookDto;
-import com.web.club3.dto.BookOrderDto;
-import com.web.club3.dto.GenreDto;
-import com.web.club3.dto.UserDto;
-import com.web.club3.model.Book;
-import com.web.club3.service.BookService;
-import com.web.club3.service.UserService;
+import com.web.club3.model.BookOrder;
+import com.web.club3.model.User;
 import com.web.club3.service.impl.BookOrderServiceImpl;
 import com.web.club3.service.impl.BookServiceImpl;
 import com.web.club3.service.impl.UserServiceImpl;
@@ -41,8 +36,8 @@ public class UserController {
 
     @GetMapping("/all")
     public String showAllUsers(Model model) {
-        List<UserDto> userDto = userService.findAll();
-        model.addAttribute("userModel", userDto);
+        List<User> user = userService.findAll();
+        model.addAttribute("userModel", user);
         return "user/allUsers";
     }
 
@@ -50,15 +45,15 @@ public class UserController {
     public String giveBook(Model model) {
         model.addAttribute("users", userService.findAll());
         model.addAttribute("books", bookService.findAll());
-        model.addAttribute("lendingModel", new BookOrderDto());
+        model.addAttribute("lendingModel", new BookOrder());
         return "user/lendingBook";
     }
 
     @PostMapping("/lending")
     public String giveBookToUser(@ModelAttribute("lendingModel") @RequestParam("bookId") int bookId,
                                  @RequestParam("userId") int userId,
-                                 @Valid BookOrderDto bookOrderDto) {
-        bookOrderService.lendBook(bookService.findById(bookId).getId(), userService.findById(userId).getId(), bookOrderDto);
+                                 @Valid BookOrder bookOrder) {
+        bookOrderService.lendBook(userId, bookId, bookOrder);
         return "redirect:/user";
     }
 }

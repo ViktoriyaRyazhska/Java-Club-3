@@ -23,7 +23,7 @@
             <form:form method="post" modelAttribute="books">
                 <select name="books">
                     <c:forEach items="${books}" var="book">
-                        <option value="${book.id}">${book.title}${book.authorSet}</option>
+                        <option value="${book.id}">${book.title}${book.author}</option>
                     </c:forEach>
                 </select>
             </form:form>

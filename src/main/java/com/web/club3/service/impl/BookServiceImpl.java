@@ -1,7 +1,6 @@
 package com.web.club3.service.impl;
 
 import com.web.club3.dao.impl.BookDAOImpl;
-import com.web.club3.dto.BookDto;
 import com.web.club3.model.Author;
 import com.web.club3.model.Book;
 import com.web.club3.service.BookService;
@@ -12,10 +11,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
 
 @Service
-public class BookServiceImpl implements CRUDService<BookDto>, BookService {
+public class BookServiceImpl implements CRUDService<Book>, BookService {
     private final BookDAOImpl bookDAO;
     private final ModelMapper modelMapper;
 
@@ -26,27 +24,23 @@ public class BookServiceImpl implements CRUDService<BookDto>, BookService {
     }
 
     @Override
-    public BookDto findById(int id) {
-        Book book = bookDAO.findById(id);
-        return modelMapper.map(book, BookDto.class);
+    public Book findById(int id) {
+        return bookDAO.findById(id);
     }
 
     @Override
-    public List<BookDto> findAll() {
-        List<Book> books = bookDAO.findAll();
-        return books.stream().map(b -> modelMapper.map(b, BookDto.class)).collect(toList());
+    public List<Book> findAll() {
+        return bookDAO.findAll();
     }
 
     @Override
-    public BookDto create(BookDto bookDto) {
-        Book book = modelMapper.map(bookDto, Book.class);
-        return modelMapper.map(bookDAO.create(book), BookDto.class);
+    public Book create(Book book) {
+        return bookDAO.create(book);
     }
 
     @Override
-    public BookDto update(BookDto bookDto) {
-        Book book = modelMapper.map(bookDto, Book.class);
-        return modelMapper.map(bookDAO.update(book), BookDto.class);
+    public Book update(Book book) {
+        return bookDAO.update(book);
     }
 
     @Override
