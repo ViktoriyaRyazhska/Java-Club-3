@@ -15,7 +15,7 @@ public class BookDto {
     private  int id;
     private String title;
     private int copies;
-    private Genre genre;
-    private Set<Author> authorSet = new HashSet<>();
-    private List<BookOrder> bookOrderList = new ArrayList<>();
+    private GenreDto genre;
+    private Set<AuthorDto> authorSet = new HashSet<>();
+    private List<BookOrderDto> bookOrderList = new ArrayList<>();
 }

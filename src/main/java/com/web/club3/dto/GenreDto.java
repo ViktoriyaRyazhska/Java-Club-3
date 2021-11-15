@@ -10,5 +10,5 @@ import java.util.List;
 public class GenreDto {
     private int id;
     private String name;
-    private List<Book> book = new ArrayList<>();
+    private List<BookDto> book = new ArrayList<>();
 }
