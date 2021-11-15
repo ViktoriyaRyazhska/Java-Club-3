@@ -19,7 +19,7 @@
 
     </div>
     <div class="headerright">
-        <a href="order/all" class="bottomhead-resgister " >Жанри</a>
+        <a href="order/all" class="bottomhead-resgister " >Замовлення</a>
         <a href="/mail" class="bottomhead-resgister" >Надіслати повідомлення</a>
         <a class="bottomhead-resgister" href="<c:url value="/logout" />">Вийти</a>
     </div>
