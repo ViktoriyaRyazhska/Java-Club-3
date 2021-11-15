@@ -4,9 +4,12 @@
 <html>
 <head>
     <title>Delete Genre</title>
+    <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
-<div>
+<%@include file="../header.jsp" %>
+<div class="blockmain">
+    <div class="content">
     <span id="inputGroup-sizing-small">Choose genre</span>
     <br>
     <form:form method="DELETE" modelAttribute="genreModel">
@@ -21,6 +24,7 @@
     <br>
     <a href="${pageContext.request.contextPath}/genre/all">Back to genre page</a>
     </br>
+    </div>
 </div>
 </body>
 </html>

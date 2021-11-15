@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface BookOrderDAO {
+
     String averageTimeOfUserReadSingleBook(int userId);
 
     Long getCountInPeriod(LocalDate startDate, LocalDate endDate);

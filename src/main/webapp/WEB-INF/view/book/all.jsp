@@ -3,31 +3,37 @@
 <html>
 <head>
     <title>All books</title>
+
+    <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<h2>Список книг:</h2>
-<form action="/book/create">
-    <input type="submit" value="Створити">
-</form>
-<table class="table table-hover table-bordered">
+<div class="blockmain">
+    <div class="content">
+        <div class="info-buttons">
+            <h3 >Список книг:</h3>
+            <form action="/book/create">
+                <input type="submit" value="Створити" class="book-buttons">
+            </form>
+        </div>
+
+        <hr>
+        <div class="tablbox1">
+            <p class="idclass">ID</p>
+            <p >Title</p>
+        </div>
+        <hr>
 
     <c:forEach items="${bookModel}" var="book">
+        <div class="tablbox2">
 
-        <tr>
-            <td>
-                <!-- <div style="margin-left: 60px;">
-                    <a href="/book/${book.id}">	${book.title} </a>
-                </div>-->
+        <p class="text2">${book.id}</p>
+        <a href="/book/${book.id}" class="text1">	${book.title} </a>
 
-                <fieldset>
-                    <legend>${book.id}</legend>
-                    <h2><a href="/book/${book.id}">	${book.title} </a></h2>
-                </fieldset>
-            </td>
-
-        </tr>
+        </div>
     </c:forEach>
-</table>
+
+    </div>
+</div>
 </body>
 </html>

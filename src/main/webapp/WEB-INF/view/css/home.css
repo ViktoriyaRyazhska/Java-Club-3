@@ -1,0 +1,39 @@
+@import url(reset.css);
+
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+.blockmain
+{
+    background: -webkit-linear-gradient(180deg, rgb(240, 240, 240), rgb(60, 8, 191));
+    background: -moz-linear-gradient(180deg, rgb(240, 240, 240), rgb(60, 8, 191));
+    background: linear-gradient(180deg, rgb(240, 240, 240), rgb(60, 8, 191));
+    -webkit-box-shadow: 24px 6px 17px 4px rgba(34, 60, 80, 0.22);
+    -moz-box-shadow: 24px 6px 17px 4px rgba(34, 60, 80, 0.22);
+    box-shadow: 24px 6px 17px 4px rgba(34, 60, 80, 0.22);
+    width: 90%;
+    min-height: 750px;
+    background-color: lightcoral;
+    margin: 0px auto;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.mainText
+{
+    font-family: 'Cookie', cursive;
+    font-size: 62px;
+    margin: 0px;
+}
+.mainText1
+{
+    font-family: 'Cookie', cursive;
+    font-size: 62px;
+    margin: 0px;
+}
+.mainText3
+{
+    font-size: 12px;
+    margin: 0px;
+}

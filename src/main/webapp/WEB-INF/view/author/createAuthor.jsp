@@ -3,11 +3,16 @@
 <html>
 <head>
     <title>Create Author</title>
+
+    <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
-<div>
+
+<%@include file="../header.jsp" %>
+<div class="blockmain">
+    <div class="content">
     <form:form method="POST" modelAttribute="authorModel">
-        <h2>Create new Author</h2>
+        <h3>Create new Author</h3>
         <div>
             <span id="inputGroup-sizing-small">Name</span>
             <form:input type="text" path="name" placeholder="Name" autofocus="true"></form:input>
@@ -17,6 +22,7 @@
         <button type="submit">Create</button>
     </form:form>
     <a href="${pageContext.request.contextPath}/author/all">Back to author page</a>
+    </div>
 </div>
 </body>
 </html>

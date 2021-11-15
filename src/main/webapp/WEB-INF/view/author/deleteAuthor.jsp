@@ -4,9 +4,13 @@
 <html>
 <head>
     <title>Delete Author</title>
+
+    <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
-<div>
+<%@include file="../header.jsp" %>
+<div class="blockmain">
+    <div class="content">
     <span id="inputGroup-sizing-small">Choose author</span>
     <br>
     <form:form method="DELETE" modelAttribute="authorModel">
@@ -21,6 +25,7 @@
     <br>
     <a href="${pageContext.request.contextPath}/author/all">Back to author page</a>
     </br>
+    </div>
 </div>
 </body>
 </html>

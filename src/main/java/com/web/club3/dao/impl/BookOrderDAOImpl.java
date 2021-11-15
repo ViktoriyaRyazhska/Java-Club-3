@@ -1,13 +1,13 @@
 package com.web.club3.dao.impl;
 
 import com.web.club3.dao.DAO;
-import org.hibernate.SQLQuery;
 import com.web.club3.model.BookOrder;
 import com.web.club3.dao.BookOrderDAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.hibernate.type.LocalDateType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -100,7 +100,6 @@ public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
         int sizeofreturnlist = returnlist.size();
 
         String result = "";
-        System.out.println("lending_date | return_date | diff");
         for(int i = 0; i < sizeofreturnlist; i++)
         {
             Long sum = ChronoUnit.DAYS.between(lendinglist.get(i), returnlist.get(i));
@@ -134,7 +133,6 @@ public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
         for(int i = 0; i < sizeofreturnlist; i++)
         {
             sum += ChronoUnit.DAYS.between(lendinglist.get(i), returnlist.get(i));
-            System.out.println(lendinglist.get(i) + " " +returnlist.get(i) );
         }
 
         Double result = (double) sum/sizeofreturnlist;

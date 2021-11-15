@@ -3,28 +3,41 @@
 <html>
 <head>
     <title>All authors</title>
+
+    <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<h2>Список авторів:</h2>
+<div class="blockmain">
+    <div class="content">
+        <div class="info-buttons" style="margin-left: 320px">
+<h3>Список авторів:</h3>
 <form action="/author/create">
-    <input type="submit" value="Додати нового автора">
+    <input type="submit" value="Додати нового автора" class="book-buttons">
 </form>
 <form action="/author/delete">
-    <input type="submit" value="Видалити автора">
+    <input type="submit" value="Видалити автора" class="book-buttons">
 </form>
-<table class="table table-hover table-bordered">
+        </div>
+
+        <hr>
+        <div class="tablbox1">
+            <p class="idclass">ID</p>
+            <p >Name</p>
+        </div>
+        <hr>
 
     <c:forEach items="${authorModel}" var="author">
-        <tr>
-            <td>
-                <fieldset>
-                    <legend>${author.id}</legend>
-                    <h2><a href="/author/${author.id}"> ${author.name} ${author.surname} </a></h2>
-                </fieldset>
-            </td>
-        </tr>
+        <div class="tablbox2">
+
+            <p class="text2">${author.id}</p>
+            <a href="/author/${author.id}" class="text1">${author.name} ${author.surname}   </a>
+
+        </div>
+
     </c:forEach>
-</table>
+
+    </div>
+</div>
 </body>
 </html>

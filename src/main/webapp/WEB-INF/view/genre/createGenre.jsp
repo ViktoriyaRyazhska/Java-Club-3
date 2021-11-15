@@ -3,9 +3,12 @@
 <html>
 <head>
     <title>Create Genre</title>
+    <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
-<div>
+<%@include file="../header.jsp" %>
+<div class="blockmain">
+    <div class="content">
     <form:form method="POST" modelAttribute="genreModel">
         <h2>Create new Genre</h2>
         <div>
@@ -15,6 +18,7 @@
         <button type="submit">Create</button>
     </form:form>
     <a href="${pageContext.request.contextPath}/genre/all">Back to genre page</a>
+    </div>
 </div>
 </body>
 </html>
