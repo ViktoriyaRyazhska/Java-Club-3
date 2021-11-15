@@ -61,4 +61,22 @@ public class UserController {
         bookOrderService.lendBook(bookService.findById(bookId).getId(), userService.findById(userId).getId(), bookOrderDto);
         return "redirect:/user";
     }
+
+    @GetMapping("/returning")
+    public String returnBook(Model model) {
+        model.addAttribute("users", new UserDto());
+        model.addAttribute("orders", new BookOrderDto());
+        model.addAttribute("returningModel", new BookOrderDto());
+        return "/user/returningBook";
+    }
+
+    @PostMapping("/returning")
+    public String returnLentBook(@ModelAttribute("returningBook") @RequestParam("bookId") int bookId,
+                                 @RequestParam("userId") int userId,
+                                 @Valid BookOrderDto bookOrderDto) {
+        bookOrderService.lendBook(bookService.findById(bookId).getId(), userService.findById(userId).getId(), bookOrderDto);
+
+        bookOrderService.returnBook(bookId,userId);
+        return "redirect:/user";
+    }
 }

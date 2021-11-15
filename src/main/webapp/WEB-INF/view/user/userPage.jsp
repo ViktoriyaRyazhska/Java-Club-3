@@ -35,7 +35,7 @@
 
     <div class="left">
         <a href="/user/lending">Видати книгу</a>
-        <a href="">Повернути книгу </a>
+        <a href="/user/returning">Повернути книгу </a>
         <a href="">Статистика </a>
 
     </div>
