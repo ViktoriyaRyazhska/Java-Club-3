@@ -8,19 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/")
-public class UserController {
+public class RegistrationController {
 
     private UserServiceImpl userService;
 
     @Autowired
-    public UserController(UserServiceImpl userService) {
+    public RegistrationController(UserServiceImpl userService) {
         this.userService = userService;
-    }
-
-    @GetMapping("/")
-    public String greeting() {
-        return "home";
     }
 
     @GetMapping("/registration")
@@ -34,5 +28,4 @@ public class UserController {
         userService.create(userDto);
         return "redirect:/";
     }
-
 }

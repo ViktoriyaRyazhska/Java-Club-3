@@ -20,7 +20,7 @@
             <td>
                 <fieldset>
                     <legend>${author.id}</legend>
-                    <h2><a href="/genre/${author.id}"> ${author.name} ${author.surname} </a></h2>
+                    <h2><a href="/author/${author.id}"> ${author.name} ${author.surname} </a></h2>
                 </fieldset>
             </td>
 
