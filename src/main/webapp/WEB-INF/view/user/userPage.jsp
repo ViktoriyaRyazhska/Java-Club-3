@@ -11,15 +11,15 @@
 <div class="header">
 
 
-    <div class="headerleft">
+    <div class="headerleft" style="margin-left: 18px">
 
-        <a href="/user/lending" class="bottomhead onthis" >Видати книгу</a>
-        <a href="" class="bottomhead" style="text-align: center" >Повернути книгу</a>
-        <a href="" class="bottomhead">Статистика</a>
+        <a href="/user/lending" class="bottomhead onthis" style="font-size: 19px" >Видати книгу</a>
+        <a href="" class="bottomhead" style="text-align: center;font-size: 19px" >Повернути книгу</a>
+        <a href="" class="bottomhead" style="font-size: 19px">Статистика</a>
 
     </div>
     <div class="headerright">
-        <a href="order/all" class="bottomhead-resgister " >Замовлення</a>
+        <a href="order/all" class="bottomhead-resgister "  >Замовлення</a>
         <a href="/mail" class="bottomhead-resgister" >Надіслати повідомлення</a>
         <a class="bottomhead-resgister" href="<c:url value="/logout" />">Вийти</a>
     </div>
