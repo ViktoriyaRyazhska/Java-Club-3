@@ -10,6 +10,9 @@
 <form action="/author/create">
     <input type="submit" value="Додати нового автора">
 </form>
+<form action="/author/delete">
+    <input type="submit" value="Видалити автора">
+</form>
 <table class="table table-hover table-bordered">
 
     <c:forEach items="${authorModel}" var="author">

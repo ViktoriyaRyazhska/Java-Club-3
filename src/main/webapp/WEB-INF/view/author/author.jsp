@@ -7,8 +7,8 @@
 <%@include file="../header.jsp" %>
 <div>
     <div class="container">
-        Ім'я: ${authorModel.name} <br>
-        Прізвище: ${authorModel.surname} <br>
+        Name: ${authorModel.name} <br>
+        Surname: ${authorModel.surname} <br>
         <br>
         <br>
     </div>

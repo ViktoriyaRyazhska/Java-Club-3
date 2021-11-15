@@ -10,6 +10,9 @@
 <form action="/genre/create">
     <input type="submit" value="Додати новий жанр">
 </form>
+<form action="/genre/delete">
+    <input type="submit" value="Видалити жанр">
+</form>
 <table class="table table-hover table-bordered">
 
     <c:forEach items="${genreModel}" var="genre">

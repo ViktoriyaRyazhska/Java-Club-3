@@ -1,16 +1,11 @@
 package com.web.club3.controller;
 
 import com.web.club3.dto.GenreDto;
-import com.web.club3.model.Book;
-import com.web.club3.model.Genre;
 import com.web.club3.service.impl.GenreServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,8 +19,9 @@ public class GenreController {
         this.genreService = genreService;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String showGenrePage() {
+    @GetMapping("/{genreId}")
+    public String getById(@PathVariable int genreId, Model model){
+        model.addAttribute("genreModel", genreService.findById(genreId));
         return "genre/genre";
     }
 
@@ -33,7 +29,30 @@ public class GenreController {
     public String showAllGenres(Model model) {
         List<GenreDto> genres = genreService.findAll();
         model.addAttribute("genreModel", genres);
-        return "genre/all";
+        return "genre/allGenres";
     }
 
+    @GetMapping("/create")
+    public String create(Model model){
+        model.addAttribute("genreModel", new GenreDto());
+        return "genre/createGenre";
+    }
+
+    @PostMapping("/create")
+    public String createGenre(@ModelAttribute("genreModel") GenreDto genreDto){
+        genreService.create(genreDto);
+        return "redirect:/genre/all";
+    }
+
+    @GetMapping("/delete")
+    public String delete(Model model){
+        model.addAttribute("genreModel", genreService.findAll());
+        return "genre/deleteGenre";
+    }
+
+    @DeleteMapping("/delete/{genreId}")
+    public String deleteGenre(@PathVariable int genreId){
+        genreService.deleteById(genreId);
+    return "redirect:/genre/all";
+    }
 }

@@ -42,7 +42,7 @@
 
   <div class="right">
     <a href="/login">Увійти</a>
-    <a href="/auth">Зареєструватись</a>
+    <a href="/registration">Зареєструватись</a>
 
   </div>
 </div>
