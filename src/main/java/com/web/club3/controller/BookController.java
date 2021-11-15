@@ -63,5 +63,4 @@ public class BookController {
         }
         return "redirect:/book/" + bookRequest.getId();
     }
-
 }

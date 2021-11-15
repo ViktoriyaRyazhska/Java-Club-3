@@ -34,7 +34,7 @@
 <div class="menu">
 
     <div class="left">
-        <a href="">Взяти книгу</a>
+        <a href="/user/lending">Видати книгу</a>
         <a href="">Повернути книгу </a>
         <a href="">Статистика </a>
 
