@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 
 @Service
 public class UserServiceImpl implements CRUDService<User>, UserService {
@@ -72,5 +74,15 @@ public class UserServiceImpl implements CRUDService<User>, UserService {
     public UserDto findByEmail(String email) {
         User user = userDAO.findByEmail(email);
         return modelMapper.map(user, UserDto.class);
+    }
+
+    public UserDto findUserById(int id){
+        User user = userDAO.findById(id);
+        return modelMapper.map(user, UserDto.class);
+    }
+
+    public List<UserDto> findAllUsers(){
+        List<User> users = (List<User>) userDAO.findAll();
+        return users.stream().map(u->modelMapper.map(u, UserDto.class)).collect(toList());
     }
 }

@@ -17,6 +17,6 @@ public class UserDto {
     private int age;
     private String password;
     private LocalDate date;
-    private Role role;
-    private List<BookOrder> bookOrderList = new ArrayList<>();
+    private Role role = Role.USER;
+    private List<BookOrder> bookOrderList;
 }

@@ -9,8 +9,8 @@ import java.time.LocalDate;
 @Data
 public class BookOrderDto {
     private int id;
-    private User user;
-    private Book book;
+    private UserDto user;
+    private BookDto book;
     private LocalDate lendingDate;
     private LocalDate returnDate;
 }

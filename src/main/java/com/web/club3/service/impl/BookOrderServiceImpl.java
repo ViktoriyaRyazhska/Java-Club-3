@@ -105,9 +105,10 @@ public class BookOrderServiceImpl implements CRUDService<BookOrder>, BookOrderSe
     }
 
     @Override
-    public BookOrder lendBook(int userId, int bookId, BookOrder bookOrder) {
+    public BookOrderDto lendBook(int userId, int bookId, BookOrderDto bookOrderDto) {
+        BookOrder bookOrder = modelMapper.map(bookOrderDto, BookOrder.class);
         bookDAO.deleteOneCopy(bookId);
-        return createOrder(userId, bookId, bookOrder);
+        return modelMapper.map(createOrder(userId, bookId, bookOrder), BookOrderDto.class);
     }
 
     @Override

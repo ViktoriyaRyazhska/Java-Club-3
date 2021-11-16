@@ -1,6 +1,7 @@
 package com.web.club3.service.impl;
 
 import com.web.club3.dao.impl.BookDAOImpl;
+import com.web.club3.dto.BookDto;
 import com.web.club3.model.Author;
 import com.web.club3.model.Book;
 import com.web.club3.service.BookService;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 
 @Service
@@ -88,5 +91,15 @@ public class BookServiceImpl implements CRUDService<Book>, BookService {
     @Override
     public void deleteOneCopyById(int id){
         bookDAO.updateCopiesById(id, bookDAO.getCopiesById(id) - 1);
+    }
+
+    public BookDto findBookById(int bookId){
+        Book book = bookDAO.findById(bookId);
+        return modelMapper.map(book, BookDto.class);
+    }
+
+    public List<BookDto> findAllBooks(){
+        List<Book> books = (List<Book>) bookDAO.findAll();
+        return books.stream().map(b-> modelMapper.map(b, BookDto.class)).collect(toList());
     }
 }

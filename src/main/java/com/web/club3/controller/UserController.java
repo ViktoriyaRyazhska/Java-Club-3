@@ -1,6 +1,8 @@
 package com.web.club3.controller;
 
-import com.web.club3.model.BookOrder;
+import com.web.club3.dto.BookDto;
+import com.web.club3.dto.BookOrderDto;
+import com.web.club3.dto.UserDto;
 import com.web.club3.model.User;
 import com.web.club3.service.impl.BookOrderServiceImpl;
 import com.web.club3.service.impl.BookServiceImpl;
@@ -45,25 +47,25 @@ public class UserController {
     public String giveBook(Model model) {
         model.addAttribute("users", userService.findAll());
         model.addAttribute("books", bookService.findAll());
-        model.addAttribute("lendingModel", new BookOrder());
+        model.addAttribute("lendingModel", new BookOrderDto());
         return "user/lendingBook";
     }
 
     @PostMapping("/lending")
-    public String giveBookToUser(@ModelAttribute("lendingModel") @RequestParam("bookId") int bookId,
-                                 @RequestParam("userId") int userId,
-                                 @Valid BookOrder bookOrder) {
-        bookOrderService.lendBook(userId, bookId, bookOrder);
+    public String giveBookToUser(@ModelAttribute("lendingModel") @Valid UserDto userDto,
+                                 @Valid BookDto bookDto,
+                                 @Valid BookOrderDto bookOrderDto) {
+        bookOrderService.lendBook(userDto.getId(), bookDto.getId(), bookOrderDto);
         return "redirect:/user";
     }
 
     @GetMapping("/statistic")
-    public String statistic(){
+    public String statistic() {
         return "user/statistic";
     }
 
     @GetMapping("/statistic/average")
-    public String averageAge(Model model){
+    public String averageAge(Model model) {
         model.addAttribute("averageAgeModel", userService.avgUserAge());
         return "statistic/averageAge";
     }
