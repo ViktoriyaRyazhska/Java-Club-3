@@ -42,6 +42,12 @@ public class BookServiceImpl implements CRUDService<Book>, BookService {
     }
 
     @Override
+    public BookDto createBook(BookDto bookDto){
+        Book book = modelMapper.map(bookDto, Book.class);
+        return modelMapper.map(bookDAO.create(book), BookDto.class);
+    }
+
+    @Override
     public Book update(Book book) {
         return bookDAO.update(book);
     }
@@ -52,25 +58,24 @@ public class BookServiceImpl implements CRUDService<Book>, BookService {
     }
 
     @Override
-    public boolean available(int id)
-    {
-        return  bookDAO.available(id);
+    public boolean available(int id) {
+        return bookDAO.available(id);
     }
 
     @Override
-    public List<Book> findByAuthor(Author author)
-    {
+    public List<Book> findByAuthor(Author author) {
         return bookDAO.findByAuthor(author);
     }
 
     @Override
-    public Book findByTitle(String title)
-    {
+    public Book findByTitle(String title) {
         return bookDAO.findByTitle(title);
     }
 
     @Override
-    public void updateCopiesById(int id,int copies){bookDAO.updateCopiesById(id, copies);}
+    public void updateCopiesById(int id, int copies) {
+        bookDAO.updateCopiesById(id, copies);
+    }
 
     @Override
     public void deleteOneCopy(int bookId) {
@@ -83,13 +88,12 @@ public class BookServiceImpl implements CRUDService<Book>, BookService {
     }
 
     @Override
-    public int getCopiesById(int id)
-    {
+    public int getCopiesById(int id) {
         return bookDAO.getCopiesById(id);
     }
 
     @Override
-    public void deleteOneCopyById(int id){
+    public void deleteOneCopyById(int id) {
         bookDAO.updateCopiesById(id, bookDAO.getCopiesById(id) - 1);
     }
 

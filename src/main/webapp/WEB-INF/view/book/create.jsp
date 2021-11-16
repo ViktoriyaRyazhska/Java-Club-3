@@ -28,22 +28,7 @@
         <br>
         <br>
         <button class="btn btn-outline-success">Створити</button>
-        <form:form method="POST" action="/book/create/"
-                   modelAttribute="authors">
-            <select name="author">
-                <c:forEach items="${authors}" var="author">
-                    <option value="${author.id}">${author.name}${author.surname}</option>
-                </c:forEach>
-            </select>
-        </form:form>
-        <form:form method="POST" action="/book/create/"
-                   modelAttribute="genre">
-            <select name="genre">
-                <c:forEach items="${genre}" var="genre">
-                    <option value="${genre.id}">${genre.name}</option>
-                </c:forEach>
-            </select>
-        </form:form>
+
         <br/><br/>
     </form:form>
     </div>
