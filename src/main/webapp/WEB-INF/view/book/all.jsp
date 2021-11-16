@@ -15,6 +15,9 @@
             <form action="/book/create">
                 <input type="submit" value="Створити" class="book-buttons">
             </form>
+            <form action="/book/bookStatistic">
+                <input type="submit" value="Рейтинг книг" class="book-buttons">
+            </form>
         </div>
 
         <hr>

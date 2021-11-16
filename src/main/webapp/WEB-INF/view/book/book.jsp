@@ -11,10 +11,10 @@
         Автор: ${bookModel.author} <br>
         Жанр: ${bookModel.genre} <br>
         Кількість копій: ${bookModel.copies} <br>
-
         <br>
-
         <br>
+        Чи доступна для видачі: ${isAvailable} <br>
+        Середній час читання: ${avgTimeOfReading} днів<br>
     </div>
 </div>
 </body>
