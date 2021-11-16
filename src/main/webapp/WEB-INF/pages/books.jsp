@@ -7,6 +7,7 @@
     <title>Books</title>
     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
           rel="stylesheet" media="screen"/>
+
 </head>
 <body>
 
@@ -49,7 +50,10 @@
                 <input name="bookId" type="hidden" value="${book.id}">
                 <input name="customerUsername" type="hidden" value="${pageContext.request.userPrincipal.name}">
                 <button type="submit" class="btn btn-info">Read</button>
+
+
             </form:form>
+
             </td>
             <sec:authorize access="hasRole('ADMIN')">
                 <td>
@@ -68,6 +72,11 @@
 <div class="form-group">
     <a href="${pageContext.request.contextPath}/">Home</a><br>
 </div>
+<script type="text/javascript">
+    function noCopies() {
+        alert("There are no copies of this book");
+    }
+</script>
 
 </body>
 </html>

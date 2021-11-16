@@ -9,6 +9,7 @@ import org.softserve.javaclub.team3.library.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,7 +37,7 @@ public class BookRequestController {
     @RequestMapping(value = "/read", method = RequestMethod.POST)
     public ModelAndView readBook(@ModelAttribute BookRequestDto bookRequestDto) throws Exception {
         ModelAndView modelAndView = new ModelAndView("index");
-        bookRequestServiceImpl.requestBook(bookRequestDto);
+            bookRequestServiceImpl.requestBook(bookRequestDto);
         return modelAndView;
     }
 

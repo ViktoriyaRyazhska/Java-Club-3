@@ -1,8 +1,8 @@
 package org.softserve.javaclub.team3.library.service.impl;
 
-import org.softserve.javaclub.team3.library.dao.BookDao;
 import org.softserve.javaclub.team3.library.dao.BookRequestDao;
 import org.softserve.javaclub.team3.library.dto.BookRequestDto;
+import org.softserve.javaclub.team3.library.exception.NoCopiesOfBookException;
 import org.softserve.javaclub.team3.library.model.Book;
 import org.softserve.javaclub.team3.library.model.BookRequest;
 import org.softserve.javaclub.team3.library.model.Customer;
@@ -33,18 +33,34 @@ public class BookRequestServiceImpl implements BookRequestService {
     @Override
     public void requestBook(BookRequestDto bookRequestDto) throws Exception {
         if (isBookAvailable(bookRequestDto)) {
+            Book book = bookServiceImpl.findById(bookRequestDto.getBookId());
+            int tc = book.getTakenCount() + 1;
+            book.setTakenCount(tc);
+
+            int copies = book.getCopies() - 1;
+            book.setCopies(copies);
+
+            bookServiceImpl.updateBook(book);
             bookRequestDaoImpl.save(createBookRequest(bookRequestDto));
         } else {
             //TODO: Create exception
-            throw new Exception();
+            throw new NoCopiesOfBookException("There are no copies of this book");
+
         }
     }
+
     @Override
-    public void returnBook(String id){
+    public void returnBook(String id) {
+        Book book = bookRequestDaoImpl.findById(id).getBook();
+        int copies = book.getCopies() + 1;
+        book.setCopies(copies);
+        bookServiceImpl.updateBook(book);
+
         bookRequestDaoImpl.removeById(id);
     }
+
     @Override
-    public void returnAllBooks(String id){
+    public void returnAllBooks(String id) {
         bookRequestDaoImpl.returnAllBooks(id);
     }
 
@@ -63,7 +79,7 @@ public class BookRequestServiceImpl implements BookRequestService {
                 .stream()
                 .filter(BookRequest::isActive).count();
         int copies = bookServiceImpl.findById(bookRequestDto.getBookId()).getCopies();
-        return copies > booksCount;
+        return copies > 0;
     }
 
     private BookRequest createBookRequest(BookRequestDto bookRequestDto) {
