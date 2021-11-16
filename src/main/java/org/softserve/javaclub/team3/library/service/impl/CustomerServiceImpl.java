@@ -5,6 +5,7 @@ import org.softserve.javaclub.team3.library.dao.RoleDao;
 import org.softserve.javaclub.team3.library.model.Book;
 import org.softserve.javaclub.team3.library.model.Customer;
 import org.softserve.javaclub.team3.library.model.Role;
+import org.softserve.javaclub.team3.library.service.BookRequestService;
 import org.softserve.javaclub.team3.library.service.BookService;
 import org.softserve.javaclub.team3.library.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class CustomerServiceImpl implements CustomerService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private BookService bookServiceImpl;
+    @Autowired
+    private BookRequestService bookRequestServiceImpl;
 
     @Autowired
     public void setCustomerDaoImpl(CustomerDao customerDaoImpl) {
@@ -62,12 +65,9 @@ public class CustomerServiceImpl implements CustomerService {
         return true;
     }
 
-    public boolean deleteUser(String id) {
-        if (customerDaoImpl.findById(id) != null) {
-            customerDaoImpl.removeById(id);
-            return true;
-        }
-        return false;
+    public void deleteUser(String id) {
+        bookRequestServiceImpl.returnAllBooks(id);
+        customerDaoImpl.removeById(id);
     }
 
     public Customer findUserByUsername(String username){

@@ -34,6 +34,7 @@ public class BookRequestDaoImpl extends AbstractDaoImpl<BookRequest> implements 
             "join customer c on c.id = br.customer_id";
     private static final String FIND_REQUESTS_BY_BOOK_QUERY = FIND_REQUESTS_QUERY + " Where b.book_id = ?";
     private static final String FIND_REQUESTS_BY_CUSTOMER_QUERY = FIND_REQUESTS_QUERY + " Where c.username = ?";
+    private static final String DELETE_ALL_REQUESTS_BY_CUSTOMER_QUERY = "delete from bookrequest where customer_id = ?";
 
     private final RowMapper<BookRequest> bookRequestRowMapper;
 
@@ -43,12 +44,17 @@ public class BookRequestDaoImpl extends AbstractDaoImpl<BookRequest> implements 
 
     @Override
     public List<BookRequest> findRequestsByBook(String id) {
-        return findListByParam(FIND_REQUESTS_BY_BOOK_QUERY, id, bookRequestRowMapper);
+        return findListByParam(bookRequestRowMapper, FIND_REQUESTS_BY_BOOK_QUERY, id);
     }
 
     @Override
     public List<BookRequest> findRequestsByCustomer(String username) {
-        return findListByParam(FIND_REQUESTS_BY_CUSTOMER_QUERY, username, bookRequestRowMapper);
+        return findListByParam(bookRequestRowMapper, FIND_REQUESTS_BY_CUSTOMER_QUERY, username);
     }
 
+    @Override
+    public void returnAllBooks(String id) {
+        deleteAllRequests(DELETE_ALL_REQUESTS_BY_CUSTOMER_QUERY, id);
+
+    }
 }

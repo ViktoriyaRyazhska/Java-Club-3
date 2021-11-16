@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>Author</title>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+          rel="stylesheet" media="screen" />
 </head>
 <body>
 <div>
@@ -16,10 +18,8 @@
 
     Name: <i>${author.name}</i><br>
     Surname: <i>${author.surname}</i><br>
-
     <br>
 </div>
 <a href="${pageContext.request.contextPath}/">Home</a>
-<a href="${pageContext.request.contextPath}/books/customer/${pageContext.request.userPrincipal.name}">Profile</a>
 </body>
 </html>

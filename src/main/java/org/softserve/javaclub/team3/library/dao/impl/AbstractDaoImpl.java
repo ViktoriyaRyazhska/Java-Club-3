@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.softserve.javaclub.team3.library.dao.AbstractDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.sql.DataSource;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 @Transactional
@@ -26,6 +27,7 @@ public abstract class AbstractDaoImpl<T extends Serializable> extends JdbcDaoSup
 
     @Autowired
     protected SessionFactory sessionFactory;
+    private DataSource dataSource;
 
     @Autowired
     public void setDs(DataSource dataSource) {
@@ -82,7 +84,7 @@ public abstract class AbstractDaoImpl<T extends Serializable> extends JdbcDaoSup
         }
     }
 
-    public List<T> findListByParam(String query, String param, RowMapper<T> rowMapper) {
+    public List<T> findListByParam(RowMapper<T> rowMapper, String query, String param) {
         Object[] args = {param};
         try {
             return this.getJdbcTemplate().query(query, args, rowMapper);
@@ -90,6 +92,12 @@ public abstract class AbstractDaoImpl<T extends Serializable> extends JdbcDaoSup
             return null;
         }
     }
+
+    public void deleteAllRequests(String query, String param) {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(Objects.requireNonNull(getDataSource()));
+        jdbcTemplate.update(query, param);
+    }
+
 
     protected Session getCurrentSession() {
         return sessionFactory.getCurrentSession();

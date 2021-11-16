@@ -1,5 +1,6 @@
 package org.softserve.javaclub.team3.library.service.impl;
 
+import org.softserve.javaclub.team3.library.dao.BookDao;
 import org.softserve.javaclub.team3.library.dao.BookRequestDao;
 import org.softserve.javaclub.team3.library.dto.BookRequestDto;
 import org.softserve.javaclub.team3.library.model.Book;
@@ -17,12 +18,17 @@ import java.util.List;
 @Service
 public class BookRequestServiceImpl implements BookRequestService {
 
-    @Autowired
     private BookRequestDao bookRequestDaoImpl;
     @Autowired
     private BookService bookServiceImpl;
     @Autowired
     private CustomerService customerServiceImpl;
+
+    @Autowired
+    public void setBookRequestDaoImpl(BookRequestDao bookRequestDaoImpl) {
+        this.bookRequestDaoImpl = bookRequestDaoImpl;
+        this.bookRequestDaoImpl.setClazz(BookRequest.class);
+    }
 
     @Override
     public void requestBook(BookRequestDto bookRequestDto) throws Exception {
@@ -32,6 +38,14 @@ public class BookRequestServiceImpl implements BookRequestService {
             //TODO: Create exception
             throw new Exception();
         }
+    }
+    @Override
+    public void returnBook(String id){
+        bookRequestDaoImpl.removeById(id);
+    }
+    @Override
+    public void returnAllBooks(String id){
+        bookRequestDaoImpl.returnAllBooks(id);
     }
 
     @Override
@@ -44,7 +58,7 @@ public class BookRequestServiceImpl implements BookRequestService {
         return bookRequestDaoImpl.findRequestsByCustomer(username);
     }
 
-    private boolean isBookAvailable(BookRequestDto bookRequestDto){
+    private boolean isBookAvailable(BookRequestDto bookRequestDto) {
         long booksCount = findRequestsByBook(bookRequestDto.getBookId())
                 .stream()
                 .filter(BookRequest::isActive).count();

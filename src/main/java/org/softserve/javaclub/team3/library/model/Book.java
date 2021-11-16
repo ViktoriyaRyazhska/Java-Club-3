@@ -19,6 +19,6 @@ public class Book implements Serializable {
     private int takenCount;
     private int copies;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     private Author author;
 }

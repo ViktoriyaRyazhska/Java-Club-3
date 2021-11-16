@@ -20,7 +20,6 @@ public class RegistrationController {
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("userForm", new Customer());
-
         return "registration";
     }
 

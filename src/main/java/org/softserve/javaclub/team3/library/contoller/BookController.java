@@ -29,10 +29,18 @@ public class BookController {
         return "book";
     }
 
-    @RequestMapping(value = "/title/{title}", method = RequestMethod.GET)
-    public String getBookByTitle(@PathVariable String title , Model model) {
-        model.addAttribute("book", bookServiceImpl.findByTitle(title));
-        return "book";
+    @RequestMapping(value = "/title/", method = RequestMethod.GET)
+    public ModelAndView getBookByTitle(@RequestParam String title) {
+        ModelAndView modelAndView = new ModelAndView("book");
+        modelAndView.addObject("book", bookServiceImpl.findByTitle(title));
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/author/", method = RequestMethod.GET)
+    public ModelAndView getAllBooksByAuthor(@RequestParam String surname) {
+        ModelAndView modelAndView = new ModelAndView("books");
+        modelAndView.addObject("books", bookServiceImpl.findAllBooksByAuthor(surname));
+        return modelAndView;
     }
 
 
@@ -44,13 +52,16 @@ public class BookController {
 
     @ResponseBody
     @RequestMapping(path = "/addBook", method = RequestMethod.POST)
-    public void processAddBook(@ModelAttribute("bookDto") BookDto bookDto, BindingResult bindingResult) {
+    public ModelAndView processAddBook(@ModelAttribute("bookDto") BookDto bookDto, BindingResult bindingResult) {
         bookServiceImpl.addBook(bookDto);
+        ModelAndView modelAndView = new ModelAndView("index");
+        return modelAndView;
     }
 
     @ResponseBody
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    public void deleteBook(@RequestParam String bookId) {
-        bookServiceImpl.removeBookById(bookId);
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+    public String deleteBook(@PathVariable String id) {
+        bookServiceImpl.removeBookById(id);
+        return "index";
     }
 }

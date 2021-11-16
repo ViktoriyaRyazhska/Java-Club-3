@@ -7,7 +7,12 @@ import java.util.List;
 
 public interface BookRequestService {
     void requestBook(BookRequestDto bookRequestDto) throws Exception;
+
+
     List<BookRequest> findRequestsByBook(String id);
     List<BookRequest> findRequestsByCustomer(String username);
+    void returnBook(String id);
+
+    void returnAllBooks(String id);
 
 }

@@ -40,6 +40,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<Book> findAllBooksByAuthor(String surname) {
+        return bookDaoImpl.findAllBooksByAuthor(surname);
+    }
+
+    @Override
     public void addBook(BookDto bookdto) {
         Book book = new Book();
         book.setTitle(bookdto.getTitle());

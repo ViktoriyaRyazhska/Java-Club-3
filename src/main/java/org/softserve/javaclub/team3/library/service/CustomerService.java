@@ -13,7 +13,7 @@ public interface CustomerService extends UserDetailsService {
 
     boolean saveUser(Customer customer);
 
-    boolean deleteUser(String id);
+    void deleteUser(String id);
 
     Customer findUserByUsername(String username);
 

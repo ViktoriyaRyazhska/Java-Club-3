@@ -7,34 +7,45 @@
 <head>
     <meta charset="utf-8">
     <title>Регистрация</title>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+          rel="stylesheet" media="screen"/>
 </head>
 
 <body>
-<div>
-    <form:form method="POST" modelAttribute="userForm">
-        <h2>Registration</h2>
-        <div>
-            <form:input type="text" path="username" placeholder="Username"
-                        autofocus="true"></form:input>
-            <form:errors path="username"></form:errors>
-                ${usernameError}
+<div class="sidenav">
+    <div class="login-main-text">
+        <h2>Register<br> your account</h2>
+    </div>
+</div>
+
+<div class="main">
+    <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+            <form:form method="POST" modelAttribute="userForm">
+
+                <div class="form-group">
+                    <label>Username</label><br>
+                    <input type="text" name="username" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label><br>
+                    <input type="text" name="password" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Confirm your password</label><br>
+                    <input type="text" name="passwordConfirm" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Your age</label><br>
+                    <input type="text" name="age" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-black">Register</button>
+            </form:form>
+            <a href="${pageContext.request.contextPath}/">Home</a>
         </div>
-        <div>
-            <form:input type="password" path="password" placeholder="Password"></form:input>
-        </div>
-        <div>
-            <form:input type="password" path="passwordConfirm"
-                        placeholder="Confirm your password"></form:input>
-            <form:errors path="password"></form:errors>
-                ${passwordError}
-        </div>
-        <div>
-            <form:input type="age" path="age" placeholder="Your age"></form:input>
-            <form:errors path="age"></form:errors>
-        </div>
-        <button type="submit">Register</button>
-    </form:form>
-    <a href="${pageContext.request.contextPath}/">Home</a>
+    </div>
 </div>
 </body>
 </html>

@@ -9,4 +9,6 @@ public interface BookRequestDao extends AbstractDao<BookRequest> {
     public List<BookRequest> findRequestsByBook(String id);
 
     public List<BookRequest> findRequestsByCustomer(String username);
+
+    public void returnAllBooks(String id);
 }

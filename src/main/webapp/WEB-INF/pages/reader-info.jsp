@@ -10,7 +10,7 @@
 <body>
 
 <div class="form-group">
-    <h4><span style="text-transform: uppercase"> ${customer.username}</span></h4>
+    <h4><span style="text-transform: uppercase">${customer.username}</span></h4>
     <p>Age: ${customer.age}</p>
     <p>Register Date: ${customer.registerDate}</p>
 </div>
@@ -32,12 +32,6 @@
                 <td>${bookRequest.book.title}</td>
                 <td>${bookRequest.creationDate}</td>
                 <td>${bookRequest.active}</td>
-                <td>
-                    <form:form method="post"
-                               action="${pageContext.request.contextPath}/books/customer/return/${bookRequest.id}">
-                        <input type="submit" value="RETURN BOOK" class="btn btn-info">
-                    </form:form>
-                </td>
             </tr>
         </c:forEach>
         </tbody>

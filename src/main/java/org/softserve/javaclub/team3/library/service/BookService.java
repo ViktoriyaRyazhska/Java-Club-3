@@ -11,6 +11,7 @@ public interface BookService {
     Book findById(String bookId);
     List<Book> findAll();
     Book findByTitle(String title);
+    List<Book> findAllBooksByAuthor(String surname);
 
     void addBook(BookDto bookDto);
     void updateBook(Book book);

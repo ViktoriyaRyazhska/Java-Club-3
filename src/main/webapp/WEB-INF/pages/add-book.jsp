@@ -5,26 +5,28 @@
 <html>
 <head>
     <title>Add Book</title>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+          rel="stylesheet" media="screen"/>
 </head>
 <body>
 <div>
     <form:form action="${pageContext.request.contextPath}/books/addBook" method="POST" modelAttribute="bookDto">
         <h3>Add Book to Library</h3>
-
-        Title:
-        <form:input type="text" path="title"></form:input>
-        <form:errors path="title"/><br>
-        Taken count:
-        <form:input type="text" path="takenCount"></form:input>
-        <form:errors path="takenCount"/><br>
-        Copies:
-        <form:input type="text" path="copies"></form:input>
-        <form:errors path="copies"/><br>
-        Author id:
-        <form:input type="text" path="authorId"></form:input>
-        <form:errors path="authorId"/><br>
-
-        <form:button id="add-book">Add Book</form:button>
+        <div class="form-group" style="padding-right: 80%">
+            Title: <input type="text" class="form-control" name="title"><br>
+        </div>
+        <div class="form-group" style="padding-right: 80%">
+            Taken count: <input type="text" class="form-control" name="takenCount"><br>
+        </div>
+        <div class="form-group" style="padding-right: 80%">
+            Copies: <input type="text" class="form-control" name="copies"><br>
+        </div>
+        <div class="form-group" style="padding-right: 80%">
+            Author id: <input type="text" class="form-control" name="authorId"><br>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-black">Add Book</button>
+        </div>
     </form:form>
 </div>
 <a href="${pageContext.request.contextPath}/">Home</a>

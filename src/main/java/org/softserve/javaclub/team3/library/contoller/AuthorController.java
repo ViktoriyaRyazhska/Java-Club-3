@@ -38,12 +38,15 @@ public class AuthorController {
 
     @ResponseBody
     @RequestMapping(path = "/addAuthor", method = RequestMethod.POST)
-    public void processAddAuthor(@ModelAttribute("authorDto") AuthorDto authorDto, BindingResult bindingResult) {
+    public ModelAndView processAddAuthor(@ModelAttribute("authorDto") AuthorDto authorDto, BindingResult bindingResult) {
         authorServiceImpl.addAuthor(authorDto);
+        return new ModelAndView("index");
     }
+    
     @ResponseBody
-    @RequestMapping(value = "/delete/{authorId}", method = RequestMethod.GET)
-    public void deleteAuthor(@PathVariable String authorId) {
+    @RequestMapping(value = "/delete/{authorId}", method = RequestMethod.POST)
+    public String deleteAuthor(@PathVariable String authorId)  {
         authorServiceImpl.removeAuthorById(authorId);
+        return "index";
     }
 }
