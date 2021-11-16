@@ -4,47 +4,33 @@
 <html>
 <head>
     <title>User Account</title>
-    <style>
-        .menu {
-            width: 100%;
-            height: 60px;
-            display: flex;
-        }
 
-        .left, .right {
-            width: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 30px;
-            color: black;
-        }
-
-        .left a, .right a {
-            margin-right: 30px;
-        }
-
-        .left a:hover, .right a:hover {
-            color: black;
-            font-weight: 700;
-        }
-    </style>
+    <style><%@include file="../css/header.css"%></style>
 </head>
 <body>
-<div class="menu">
+<div class="header">
 
+<<<<<<< HEAD
     <div class="left">
         <a href="/user/lending">Видати книгу</a>
         <a href="/user/returning">Повернути книгу </a>
         <a href="">Статистика </a>
+=======
+>>>>>>> c74bbe95507b9d57fa9052006ef121c38f0af777
+
+    <div class="headerleft" style="margin-left: 18px">
+        <a href="/user/lending" class="bottomhead onthis" style="font-size: 19px" >Видати книгу</a>
+        <a href="" class="bottomhead" style="text-align: center;font-size: 19px" >Повернути книгу</a>
+        <a href="" class="bottomhead" style="font-size: 19px">Статистика</a>
+
 
     </div>
-
-    <div class="right">
-        <a href="order/all">Замовлення</a>
-        <a href="/mail">Надіслати повідомлення</a>
-        <a href="<c:url value="/logout" />">Вийти</a>
+    <div class="headerright">
+        <a href="order/all" class="bottomhead-resgister "  >Замовлення</a>
+        <a href="/mail" class="bottomhead-resgister" >Надіслати повідомлення</a>
+        <a class="bottomhead-resgister" href="<c:url value="/logout" />">Вийти</a>
     </div>
 </div>
+
 </body>
 </html>

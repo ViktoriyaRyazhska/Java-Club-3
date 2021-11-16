@@ -22,7 +22,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     }
 
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.csrf().disable()
+                .authorizeRequests()
+               // .antMatchers("/mail").hasRole("ADMIN")
                 .antMatchers("/", "/book/all", "/book/{id}",
                         "/genre/all", "/author/all", "/registration").permitAll()
                 .anyRequest().authenticated()

@@ -2,15 +2,15 @@
 <html>
 <head>
     <title>Genres</title>
+    <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
-<%@include file="../header.jsp" %>
-<div>
-    <div class="container">
-        Жанр: ${genreModel.name} <br>
-        <br>
-        <br>
+<div class="blockmain">
+    <div class="content">
+        <p class="text2" style="width: 650px">Жанр: ${genreModel.name} </p>
+
     </div>
 </div>
+
 </body>
 </html>

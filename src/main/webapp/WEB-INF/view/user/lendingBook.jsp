@@ -4,10 +4,12 @@
 <html>
 <head>
     <title>Lending Book</title>
+
+    <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
-<%@include file="../header.jsp" %>
-<div>
+<div class="blockmain">
+    <div class="content">
     <form:form method="POST" action="/user/lending" modelAttribute="lendingModel">
         <h1>Lend book to Users</h1>
         <div>
@@ -31,6 +33,7 @@
         <button type="submit">Submit</button>
     </form:form>
     <a href="${pageContext.request.contextPath}/user">Back to user page</a>
+    </div>
 </div>
 </body>
 </html>

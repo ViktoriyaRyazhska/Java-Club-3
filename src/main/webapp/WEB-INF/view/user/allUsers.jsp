@@ -8,7 +8,6 @@
 <%@include file="../header.jsp" %>
 <h2>Список читачів:</h2>
 <table class="table table-hover table-bordered">
-
     <c:forEach items="${userModel}" var="user">
         <tr>
             <td>

@@ -3,21 +3,36 @@
 <html>
 <head>
     <title>All orders</title>
+
+    <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
+<div class="blockmain">
+    <div class="content">
+        <div class="info-buttons">
+            <h2>Orders list:</h2>
+        </div>
 
-<%@include file="../header.jsp" %>
-<h2>Orders list:</h2>
+        <hr>
+        <div class="tablbox1">
+            <p class="idclass" style="margin-right: 40px">ID</p>
+            <p >Lending/Rerurn Date</p>
+        </div>
+        <hr>
+
     <c:forEach items="${orderModel}" var="order">
-        <tr>
-            <td>
-                <fieldset>
-                    <legend>${order.id}</legend>
-                    <h4><a href="/order/${order.id}"> ${order.lendingDate}<br>${order.returnDate} </a></h4>
-                </fieldset>
-            </td>
-        </tr>
+        <div class="tablbox2">
+
+            <p class="text2">${order.id}</p>
+            <a href="/order/${order.id}" class="text1">	${order.lendingDate} </a>
+            <a href="/order/${order.id}" class="text1">	${order.returnDate} </a>
+
+        </div>
+
+
     </c:forEach>
 </table>
+    </div>
+</div>
 </body>
 </html>
