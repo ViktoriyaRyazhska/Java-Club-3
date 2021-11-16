@@ -1,5 +1,7 @@
 package com.web.club3.controller;
 
+import com.web.club3.dto.BookOrderDto;
+import com.web.club3.dto.UserDto;
 import com.web.club3.model.BookOrder;
 import com.web.club3.model.User;
 import com.web.club3.service.impl.BookOrderServiceImpl;
@@ -59,17 +61,17 @@ public class UserController {
 
     @GetMapping("/returning")
     public String returnBook(Model model) {
-        model.addAttribute("users", new UserDto());
-        model.addAttribute("orders", new BookOrderDto());
-        model.addAttribute("returningModel", new BookOrderDto());
+        model.addAttribute("users", new User());
+        model.addAttribute("orders", new BookOrder());
+        model.addAttribute("returningModel", new BookOrder());
         return "/user/returningBook";
     }
 
     @PostMapping("/returning")
     public String returnLentBook(@ModelAttribute("returningBook") @RequestParam("bookId") int bookId,
                                  @RequestParam("userId") int userId,
-                                 @Valid BookOrderDto bookOrderDto) {
-        bookOrderService.lendBook(bookService.findById(bookId).getId(), userService.findById(userId).getId(), bookOrderDto);
+                                 @Valid BookOrder bookOrder) {
+       bookOrderService.lendBook(bookService.findById(bookId).getId(), userService.findById(userId).getId(), bookOrder);
 
         bookOrderService.returnBook(bookId,userId);
         return "redirect:/user";
