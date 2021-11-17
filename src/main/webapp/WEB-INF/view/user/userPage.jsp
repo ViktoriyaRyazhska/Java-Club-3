@@ -12,7 +12,7 @@
 
     <div class="headerleft" style="margin-left: 18px">
         <a href="/user/lending" class="bottomhead onthis" style="font-size: 19px" >Видати книгу</a>
-        <a href="" class="bottomhead" style="text-align: center;font-size: 19px" >Повернути книгу</a>
+        <a href="/user/return" class="bottomhead" style="text-align: center;font-size: 19px" >Повернути книгу</a>
         <a href="/user/statistic" class="bottomhead" style="font-size: 19px">Статистика</a>
 
 

@@ -8,25 +8,23 @@
 <body>
 <%@include file="userPage.jsp" %>
 <div>
-    <form:form method="POST" action="/user" modelAttribute="returningModel">
-        <h1>Lend book to Users</h1>
+    <form:form method="POST" action="user/return" modelAttribute="returningBook">
+        <h1>Return book to Library</h1>
         <div>
-            <form:form method="post" modelAttribute="users">
-                <div>
-                    <span id="inputGroup-sizing-small">Enter your id:</span>
-                    <form:input type="text" placeholder="your id" path="id"/>
-                </div>
-            </form:form>
+            <form:select path="id">
+                <c:forEach items="${orderId}" var="order">
+                    <option value="${order.id}">${order.user} ${order.book} ${order.lendingDate}</option>
+                </c:forEach>
+            </form:select>
         </div>
         <div>
-            <form:form method="post" modelAttribute="orders">
-                <div>
-                    <span id="inputGroup-sizing-small">Enter id of your odred:</span>
-                    <form:input type="text" placeholder="your id" path="id"/>
-                </div>
-            </form:form>
+            <form:select path="book.id">
+                <c:forEach items="${bookId}" var="book">
+                    <option value="${book.id}">${book.title} ${book.author}</option>
+                </c:forEach>
+            </form:select>
         </div>
-        <button type="submit">Submit</button>
+        <input type="submit" value="Submit">
     </form:form>
 </div>
 <a href="${pageContext.request.contextPath}/user">Back to user page</a>

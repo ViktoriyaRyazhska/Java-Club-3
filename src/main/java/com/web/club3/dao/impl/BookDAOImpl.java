@@ -31,8 +31,8 @@ public class BookDAOImpl implements DAO<Book>, BookDAO {
 
     @Override
     public List<Book> findAll() {
-        List<Book> book = (List<Book>) sessionFactory.openSession().createQuery("From Book", Book.class).list();
-        return book;
+        Session session = sessionFactory.openSession();
+        return session.createQuery("Select b from Book b", Book.class).getResultList();
     }
 
     @Override
@@ -73,8 +73,7 @@ public class BookDAOImpl implements DAO<Book>, BookDAO {
 
     @Override
     public List<Book> findByAuthor(Author author) {
-        return sessionFactory.openSession().createQuery(
-                        "From Book", Book.class).getResultList().stream()
+        return sessionFactory.openSession().createQuery("From Book", Book.class).getResultList().stream()
                 .filter(x -> x.getAuthor().stream().anyMatch(y -> y.getId() == author.getId())).collect(Collectors.toList());
     }
 

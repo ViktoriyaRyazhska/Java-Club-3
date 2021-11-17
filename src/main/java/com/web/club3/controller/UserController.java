@@ -1,7 +1,7 @@
 package com.web.club3.controller;
 
-import com.web.club3.model.BookOrder;
-import com.web.club3.model.User;
+import com.web.club3.dto.BookOrderDTO;
+import com.web.club3.dto.UserDTO;
 import com.web.club3.service.impl.BookOrderServiceImpl;
 import com.web.club3.service.impl.BookServiceImpl;
 import com.web.club3.service.impl.UserServiceImpl;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -36,7 +35,7 @@ public class UserController {
 
     @GetMapping("/all")
     public String showAllUsers(Model model) {
-        List<User> user = userService.findAll();
+        List<UserDTO> user = userService.findAll();
         model.addAttribute("userModel", user);
         return "user/allUsers";
     }
@@ -44,43 +43,40 @@ public class UserController {
     @GetMapping("/lending")
     public String giveBook(Model model) {
         model.addAttribute("users", userService.findAll());
-        model.addAttribute("books", bookService.findAll());
-        model.addAttribute("lendingModel", new BookOrder());
+        model.addAttribute("books", bookService.findAllBooks());
+        model.addAttribute("lendingModel", new BookOrderDTO());
         return "user/lendingBook";
     }
 
     @PostMapping("/lending")
-    public String giveBookToUser(@ModelAttribute("lendingModel") @RequestParam("bookId") int bookId,
-                                 @RequestParam("userId") int userId,
-                                 @Valid BookOrder bookOrder) {
-        bookOrderService.lendBook(userId, bookId, bookOrder);
+    public String giveBookToUser(@ModelAttribute("lendingModel") BookOrderDTO bookOrderDTO) {
+        bookOrderService.create(bookOrderDTO);
         return "redirect:/user";
     }
 
- /*   @GetMapping("/returning")
+    @GetMapping("/return")
     public String returnBook(Model model) {
-        model.addAttribute("users", new User());
-        model.addAttribute("orders", new BookOrder());
-        model.addAttribute("returningModel", new BookOrder());
-        return "/user/returningBook";
+        model.addAttribute("orderId", bookOrderService.findAll());
+        model.addAttribute("bookId", bookService.findAll());
+        model.addAttribute("returningBook", new BookOrderDTO());
+        return "user/returningBook";
     }
 
-    @PostMapping("/returning")
-    public String returnLentBook(@ModelAttribute("returningBook") @RequestParam("bookId") int bookId,
-                                 @RequestParam("userId") int userId,
-                                 @Valid BookOrder bookOrder) {
-       bookOrderService.lendBook(bookService.findById(bookId).getId(), userService.findById(userId).getId(), bookOrder);
-
-        bookOrderService.returnBook(bookId,userId);
+    @PostMapping("/return/")
+    public String returningBook(@ModelAttribute("returningBook")
+                                @RequestParam("bookOrderId") Integer bookOrderId,
+                                @RequestParam("bookId") Integer bookId) {
+        bookOrderService.returnBookToLibrary(bookOrderId, bookId);
         return "redirect:/user";
-    }*/
+    }
+
     @GetMapping("/statistic")
-    public String statistic(){
+    public String statistic() {
         return "user/statistic";
     }
 
     @GetMapping("/statistic/average")
-    public String averageAge(Model model){
+    public String averageAge(Model model) {
         model.addAttribute("averageAgeModel", userService.avgUserAge());
         return "statistic/averageAge";
     }

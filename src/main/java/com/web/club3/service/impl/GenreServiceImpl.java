@@ -1,6 +1,7 @@
 package com.web.club3.service.impl;
 
 import com.web.club3.dao.impl.GenreDAOImpl;
+import com.web.club3.dto.GenreDTO;
 import com.web.club3.model.Genre;
 import com.web.club3.service.CRUDService;
 import org.modelmapper.ModelMapper;
@@ -8,10 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
-public class GenreServiceImpl implements CRUDService<Genre> {
+public class GenreServiceImpl implements CRUDService<GenreDTO> {
 
     private final GenreDAOImpl genreDAO;
     private final ModelMapper modelMapper;
@@ -23,23 +25,27 @@ public class GenreServiceImpl implements CRUDService<Genre> {
     }
 
     @Override
-    public Genre findById(int id) {
-        return genreDAO.findById(id);
+    public GenreDTO findById(int id) {
+        Genre genre = genreDAO.findById(id);
+        return modelMapper.map(genre, GenreDTO.class);
     }
 
     @Override
-    public List<Genre> findAll() {
-        return genreDAO.findAll();
+    public List<GenreDTO> findAll() {
+        List<Genre> genres = genreDAO.findAll();
+        return genres.stream().map(g -> modelMapper.map(g, GenreDTO.class)).collect(Collectors.toList());
     }
 
     @Override
-    public Genre create(Genre genre) {
-        return genreDAO.create(genre);
+    public GenreDTO create(GenreDTO genreDTO) {
+        Genre genre = modelMapper.map(genreDTO, Genre.class);
+        return modelMapper.map(genreDAO.create(genre), GenreDTO.class);
     }
 
     @Override
-    public Genre update(Genre genre) {
-        return genreDAO.update(genre);
+    public GenreDTO update(GenreDTO genreDTO) {
+        Genre genre = modelMapper.map(genreDTO, Genre.class);
+        return modelMapper.map(genreDAO.update(genre), GenreDTO.class);
     }
 
     @Override

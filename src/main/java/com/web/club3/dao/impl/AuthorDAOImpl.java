@@ -13,7 +13,7 @@ import java.util.List;
 
 @Repository
 public class AuthorDAOImpl implements DAO<Author> {
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     @Autowired
     public AuthorDAOImpl(SessionFactory sessionFactory) {
@@ -28,8 +28,8 @@ public class AuthorDAOImpl implements DAO<Author> {
 
     @Override
     public List<Author> findAll() {
-        List<Author> authors = (List<Author>) sessionFactory.openSession().createQuery("From Author",Author.class).list();
-        return authors;
+        Session session = sessionFactory.openSession();
+        return session.createQuery("select a from Author a", Author.class).getResultList();
     }
 
     @Override

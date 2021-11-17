@@ -1,5 +1,6 @@
 package com.web.club3.config.security;
 
+import com.web.club3.dto.UserDTO;
 import com.web.club3.model.User;
 import com.web.club3.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
-        User user = userService.findByEmail(s);
+        UserDTO user = userService.findByEmail(s);
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
                 Collections.singletonList(new SimpleGrantedAuthority(user.getRole().toString())));
     }

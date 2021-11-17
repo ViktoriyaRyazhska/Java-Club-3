@@ -1,22 +1,15 @@
 package com.web.club3.controller;
 
-import com.web.club3.model.Author;
-import com.web.club3.model.Book;
-import com.web.club3.model.Genre;
-import com.web.club3.model.User;
+import com.web.club3.dto.BookDTO;
 import com.web.club3.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/book")
@@ -43,14 +36,14 @@ public class BookController {
 
     @GetMapping("/all")
     public String showAllBooks(Model model) {
-        List<Book> books = bookService.findAll();
+        List<BookDTO> books = bookService.findAll();
         model.addAttribute("bookModel", books);
         return "/book/all";
     }
 
     @GetMapping("/{id}")
     public String getBook(@PathVariable int id, Model model) {
-        Book book = bookService.findById(id);
+        BookDTO book = bookService.findById(id);
         if (book == null) return "redirect:/book/all";
         model.addAttribute("bookModel", bookService.findById(id));
         model.addAttribute("isAvailable", bookService.available(id));
@@ -60,26 +53,16 @@ public class BookController {
 
     @GetMapping("/create")
     public String createBook(Model model) {
-        model.addAttribute("createBook", new Book());
-        model.addAttribute("authors", new Author());
-        model.addAttribute("genre", new Genre());
-        return "/book/create";
+        model.addAttribute("genre", genreService.findAll());
+        model.addAttribute("authors", authorService.findAll());
+        model.addAttribute("createBook", new BookDTO());
+        return "/book/createBook";
     }
 
     @PostMapping("/create")
-    public String createBook(@ModelAttribute("createBook") @Valid Book bookRequest,  @Valid Author author,  @Valid Genre genre, BindingResult result) {
-        if (result.hasErrors()) {
-            return "/book/create";
-        }
-        Book book = new Book();
-        book.setTitle(bookRequest.getTitle());
-        book.setCopies(bookRequest.getCopies());
-        Set<Author> authorSet = new HashSet<>();
-        authorSet.add(authorService.findById(author.getId()));
-        book.setAuthor(authorSet);
-        book.setGenre(genreService.findById(genre.getId()));
-        bookService.create(book);
-        return "redirect:/book/" + bookRequest.getId();
+    public String createBook(@ModelAttribute("createBook") BookDTO bookDTO) {
+        bookService.create(bookDTO);
+        return "redirect:/book/all";
     }
 
     @GetMapping("/bookStatistic")
@@ -92,7 +75,7 @@ public class BookController {
                 sb.append(c);
             }
         }
-        LinkedHashMap<Book, Integer> resultList = new LinkedHashMap<>();
+        LinkedHashMap<BookDTO, Integer> resultList = new LinkedHashMap<>();
         for (int i = 0; i < sb.length(); i++) {
             resultList.put(bookService.findById(Integer.parseInt(String.valueOf(sb.charAt(i)))), i++);
         }

@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public class UserDAOImpl implements DAO<User>, UserDAO {
 
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     @Autowired
     public UserDAOImpl(SessionFactory sessionFactory) {

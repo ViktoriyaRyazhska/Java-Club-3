@@ -1,5 +1,6 @@
 package com.web.club3.controller;
 
+import com.web.club3.dto.BookOrderDTO;
 import com.web.club3.model.BookOrder;
 import com.web.club3.service.impl.BookOrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class BookOrderController {
 
     @GetMapping("/all")
     public String showAllOrders(Model model) {
-        List<BookOrder> bookOrder = bookOrderService.findAll();
+        List<BookOrderDTO> bookOrder = bookOrderService.findAll();
         model.addAttribute("orderModel", bookOrder);
         return "order/allOrders";
     }

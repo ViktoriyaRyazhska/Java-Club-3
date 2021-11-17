@@ -5,34 +5,32 @@
 <head>
     <title>Lending Book</title>
 
-    <style><%@include file="../css/allBooks.css"%></style>
+    <style>
+        <%@include file="../css/allBooks.css" %>
+    </style>
 </head>
 <body>
 <div class="blockmain">
     <div class="content">
-    <form:form method="POST" action="/user/lending" modelAttribute="lendingModel">
-        <h1>Lend book to Users</h1>
-        <div>
-            <form:form method="post" modelAttribute="users">
-                <select name="authors">
+        <form:form method="POST" action="/user/lending" modelAttribute="lendingModel">
+            <h1>Lend book to Users</h1>
+            <div>
+                <form:select path="user.id">
                     <c:forEach items="${users}" var="user">
-                        <option value="${user.id}">${user.name}${user.surname}</option>
+                        <option value="${user.id}">${user.name} ${user.surname}</option>
                     </c:forEach>
-                </select>
-            </form:form>
-        </div>
-        <div>
-            <form:form method="post" modelAttribute="books">
-                <select name="books">
+                </form:select>
+            </div>
+            <div>
+                <form:select path="book.id">
                     <c:forEach items="${books}" var="book">
-                        <option value="${book.id}">${book.title}${book.author}</option>
+                        <option value="${book.id}">${book.title} ${book.author}</option>
                     </c:forEach>
-                </select>
-            </form:form>
-        </div>
-        <button type="submit">Submit</button>
-    </form:form>
-    <a href="${pageContext.request.contextPath}/user">Back to user page</a>
+                </form:select>
+            </div>
+            <input type="submit" value="Submit">
+        </form:form>
+        <a href="${pageContext.request.contextPath}/user">Back to user page</a>
     </div>
 </div>
 </body>

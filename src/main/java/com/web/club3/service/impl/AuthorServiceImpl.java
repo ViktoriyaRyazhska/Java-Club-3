@@ -1,6 +1,7 @@
 package com.web.club3.service.impl;
 
 import com.web.club3.dao.impl.AuthorDAOImpl;
+import com.web.club3.dto.AuthorDTO;
 import com.web.club3.model.Author;
 import com.web.club3.service.CRUDService;
 import org.modelmapper.ModelMapper;
@@ -9,10 +10,11 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
-public class AuthorServiceImpl implements CRUDService<Author> {
+public class AuthorServiceImpl implements CRUDService<AuthorDTO> {
     private final AuthorDAOImpl authorDAO;
     private final ModelMapper modelMapper;
 
@@ -23,23 +25,27 @@ public class AuthorServiceImpl implements CRUDService<Author> {
     }
 
     @Override
-    public Author findById(int id) {
-        return authorDAO.findById(id);
+    public AuthorDTO findById(int id) {
+        Author author = authorDAO.findById(id);
+        return modelMapper.map(author, AuthorDTO.class);
     }
 
     @Override
-    public List<Author> findAll() {
-        return authorDAO.findAll();
+    public List<AuthorDTO> findAll() {
+        List<Author> authors = authorDAO.findAll();
+        return authors.stream().map(a -> modelMapper.map(a, AuthorDTO.class)).collect(Collectors.toList());
     }
 
     @Override
-    public Author create(Author author) {
-        return authorDAO.create(author);
+    public AuthorDTO create(AuthorDTO authorDTO) {
+        Author author = modelMapper.map(authorDTO, Author.class);
+        return modelMapper.map(authorDAO.create(author), AuthorDTO.class);
     }
 
     @Override
-    public Author update(Author author) {
-        return authorDAO.update(author);
+    public AuthorDTO update(AuthorDTO authorDTO) {
+        Author author = modelMapper.map(authorDTO, Author.class);
+        return modelMapper.map(authorDAO.update(author), AuthorDTO.class);
     }
 
     @Override

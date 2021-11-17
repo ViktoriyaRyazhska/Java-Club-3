@@ -1,44 +1,52 @@
 package com.web.club3.service.impl;
 
 import com.web.club3.dao.impl.BookDAOImpl;
+import com.web.club3.dto.BookDTO;
 import com.web.club3.model.Author;
 import com.web.club3.model.Book;
 import com.web.club3.service.BookService;
 import com.web.club3.service.CRUDService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 
 @Service
-public class BookServiceImpl implements CRUDService<Book>, BookService {
+public class BookServiceImpl implements CRUDService<BookDTO>, BookService {
     private final BookDAOImpl bookDAO;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public BookServiceImpl(BookDAOImpl bookDAO) {
+    public BookServiceImpl(BookDAOImpl bookDAO, ModelMapper modelMapper) {
         this.bookDAO = bookDAO;
+        this.modelMapper = modelMapper;
     }
 
     @Override
-    public Book findById(int id) {
-        return bookDAO.findById(id);
+    public BookDTO findById(int id) {
+        Book book = bookDAO.findById(id);
+        return modelMapper.map(book, BookDTO.class);
     }
 
     @Override
-    public List<Book> findAll() {
-        return bookDAO.findAll();
+    public List<BookDTO> findAll() {
+        List<Book> books = bookDAO.findAll();
+        return books.stream().map(b -> modelMapper.map(b, BookDTO.class)).collect(Collectors.toList());
     }
 
     @Override
-    public Book create(Book book) {
-        return bookDAO.create(book);
+    public BookDTO create(BookDTO bookDTO) {
+        Book book = modelMapper.map(bookDTO, Book.class);
+        return modelMapper.map(bookDAO.create(book), BookDTO.class);
     }
 
     @Override
-    public Book update(Book book) {
-        return bookDAO.update(book);
+    public BookDTO update(BookDTO bookDTO) {
+        Book book = modelMapper.map(bookDTO, Book.class);
+        return modelMapper.map(bookDAO.update(book), BookDTO.class);
     }
 
     @Override
@@ -84,5 +92,10 @@ public class BookServiceImpl implements CRUDService<Book>, BookService {
     @Override
     public void deleteOneCopyById(int id) {
         bookDAO.updateCopiesById(id, bookDAO.getCopiesById(id) - 1);
+    }
+
+    public List<BookDTO> findAllBooks() {
+        List<Book> list = bookDAO.findAll();
+        return list.stream().map(l -> modelMapper.map(l, BookDTO.class)).collect(Collectors.toList());
     }
 }

@@ -1,6 +1,6 @@
 package com.web.club3.controller;
 
-import com.web.club3.model.Author;
+import com.web.club3.dto.AuthorDTO;
 import com.web.club3.service.impl.AuthorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,20 +28,20 @@ public class AuthorController {
 
     @GetMapping("/all")
     public String showAllAuthors(Model model) {
-        List<Author> authors = authorService.findAll();
+        List<AuthorDTO> authors = authorService.findAll();
         model.addAttribute("authorModel", authors);
         return "author/allAuthors";
     }
 
     @GetMapping("/create")
     public String create(Model model){
-        model.addAttribute("authorModel", new Author());
+        model.addAttribute("authorModel", new AuthorDTO());
         return "author/createAuthor";
     }
 
     @PostMapping("/create")
-    public String createAuthor(@ModelAttribute("authorModel") Author author){
-        authorService.create(author);
+    public String createAuthor(@ModelAttribute("authorModel") AuthorDTO authorDTO){
+        authorService.create(authorDTO);
         return "redirect:/author/all";
     }
 
