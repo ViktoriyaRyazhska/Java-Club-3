@@ -14,8 +14,8 @@
         <p class="text2" style="width: 650px">Жанр: ${bookModel.genre} </p>
         <p class="text2" style="width: 650px">Кількість копій: ${bookModel.copies} </p>
         <br>
-        Чи доступна для видачі: ${isAvailable} <br>
-        Середній час читання: ${avgTimeOfReading} днів<br>
+        <p class="text2" style="width: 650px">Чи доступна для видачі: ${isAvailable} </p>
+        <p class="text2" style="width: 650px">Середній час читання: ${avgTimeOfReading} днів </p>
     </div>
 </div>
 </body>

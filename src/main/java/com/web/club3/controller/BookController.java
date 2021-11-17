@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/book")
@@ -59,16 +61,24 @@ public class BookController {
     @GetMapping("/create")
     public String createBook(Model model) {
         model.addAttribute("createBook", new Book());
-        model.addAttribute("authors", authorService.findAll());
-        model.addAttribute("genre", genreService.findAll());
+        model.addAttribute("authors", new Author());
+        model.addAttribute("genre", new Genre());
         return "/book/create";
     }
 
     @PostMapping("/create")
-    public String createBook(@ModelAttribute("createBook") @Valid Book bookRequest, @Valid Author authorRequest, @Valid Genre genreRequest, BindingResult result) {
+    public String createBook(@ModelAttribute("createBook") @Valid Book bookRequest,  @Valid Author author,  @Valid Genre genre, BindingResult result) {
         if (result.hasErrors()) {
             return "/book/create";
         }
+        Book book = new Book();
+        book.setTitle(bookRequest.getTitle());
+        book.setCopies(bookRequest.getCopies());
+        Set<Author> authorSet = new HashSet<>();
+        authorSet.add(authorService.findById(author.getId()));
+        book.setAuthor(authorSet);
+        book.setGenre(genreService.findById(genre.getId()));
+        bookService.create(book);
         return "redirect:/book/" + bookRequest.getId();
     }
 
