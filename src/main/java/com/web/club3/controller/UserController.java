@@ -1,7 +1,5 @@
 package com.web.club3.controller;
 
-import com.web.club3.dto.BookOrderDto;
-import com.web.club3.dto.UserDto;
 import com.web.club3.model.BookOrder;
 import com.web.club3.model.User;
 import com.web.club3.service.impl.BookOrderServiceImpl;
@@ -59,7 +57,7 @@ public class UserController {
         return "redirect:/user";
     }
 
-    @GetMapping("/returning")
+ /*   @GetMapping("/returning")
     public String returnBook(Model model) {
         model.addAttribute("users", new User());
         model.addAttribute("orders", new BookOrder());
@@ -75,7 +73,7 @@ public class UserController {
 
         bookOrderService.returnBook(bookId,userId);
         return "redirect:/user";
-    }
+    }*/
     @GetMapping("/statistic")
     public String statistic(){
         return "user/statistic";

@@ -15,9 +15,6 @@
                 <form action="/genre/create">
                     <input type="submit" value="Додати новий жанр" class="book-buttons">
                 </form>
-                <form action="/genre/delete">
-                    <input type="submit" value="Видалити жанр" class="book-buttons">
-                </form>
             </div>
            <hr>
 

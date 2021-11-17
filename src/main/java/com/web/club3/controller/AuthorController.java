@@ -45,15 +45,4 @@ public class AuthorController {
         return "redirect:/author/all";
     }
 
-    @GetMapping("/delete")
-    public String delete(Model model){
-        model.addAttribute("authorModel", authorService.findAll());
-        return "author/deleteAuthor";
-    }
-
-    @DeleteMapping("/delete/{authorId}")
-    public String deleteAuthor(@PathVariable int authorId){
-        authorService.deleteById(authorId);
-        return "redirect:/author/all";
-    }
 }

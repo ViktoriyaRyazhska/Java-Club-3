@@ -1,6 +1,5 @@
 import com.web.club3.config.JavaConfig;
 
-import com.web.club3.dto.BookOrderDto;
 import com.web.club3.service.impl.AuthorServiceImpl;
 import com.web.club3.service.impl.BookOrderServiceImpl;
 import com.web.club3.service.impl.BookServiceImpl;
@@ -16,11 +15,8 @@ public class Main {
         BookServiceImpl bookServiceImpl = context.getBean(BookServiceImpl.class);
         BookOrderServiceImpl bookOrderServiceImpl = context.getBean(BookOrderServiceImpl.class);
         AuthorServiceImpl authorService = context.getBean(AuthorServiceImpl.class);
-        BookOrderDto bookOrderDto = new BookOrderDto();
 
-       // bookOrderServiceImpl.lendBook(userServiceImpl.findUserById(16).getId(), bookServiceImpl.findBookById(7).getId(), bookOrderDto);
 
-        //System.out.println(userServiceImpl.findAllUsers() + "\n");
 
         context.close();
     }

@@ -1,13 +1,11 @@
 package com.web.club3.service;
 
-import com.web.club3.dto.BookDto;
 import com.web.club3.model.Author;
 import com.web.club3.model.Book;
 
 import java.util.List;
 
 public interface BookService {
-    public BookDto createBook(BookDto bookDto);
 
     boolean available(int id);
 

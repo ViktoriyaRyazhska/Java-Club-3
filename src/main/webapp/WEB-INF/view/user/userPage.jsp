@@ -10,18 +10,10 @@
 <body>
 <div class="header">
 
-<<<<<<< HEAD
-    <div class="left">
-        <a href="/user/lending">Видати книгу</a>
-        <a href="/user/returning">Повернути книгу </a>
-        <a href="">Статистика </a>
-=======
->>>>>>> c74bbe95507b9d57fa9052006ef121c38f0af777
-
     <div class="headerleft" style="margin-left: 18px">
         <a href="/user/lending" class="bottomhead onthis" style="font-size: 19px" >Видати книгу</a>
         <a href="" class="bottomhead" style="text-align: center;font-size: 19px" >Повернути книгу</a>
-        <a href="" class="bottomhead" style="font-size: 19px">Статистика</a>
+        <a href="/user/statistic" class="bottomhead" style="font-size: 19px">Статистика</a>
 
 
     </div>

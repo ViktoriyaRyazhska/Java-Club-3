@@ -1,6 +1,5 @@
 package com.web.club3.service;
 
-import com.web.club3.dto.BookOrderDto;
 import com.web.club3.model.BookOrder;
 
 import java.time.LocalDate;
@@ -28,7 +27,7 @@ public interface BookOrderService {
 
     void returnBook(int bookId,int bookOrderId);
 
-    BookOrderDto lendBook(int bookId,int userId, BookOrderDto bookOrderDto);
+    BookOrder lendBook(int bookId,int userId, BookOrder bookOrder);
 
     List<BookOrder> readBooksInCertainDays(int days);
 }

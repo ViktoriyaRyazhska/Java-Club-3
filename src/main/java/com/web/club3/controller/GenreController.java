@@ -44,15 +44,4 @@ public class GenreController {
         return "redirect:/genre/all";
     }
 
-    @GetMapping("/delete")
-    public String delete(Model model){
-        model.addAttribute("genreModel", genreService.findAll());
-        return "genre/deleteGenre";
-    }
-
-    @DeleteMapping("/delete/{genreId}")
-    public String deleteGenre(@PathVariable int genreId){
-        genreService.deleteById(genreId);
-    return "redirect:/genre/all";
-    }
 }

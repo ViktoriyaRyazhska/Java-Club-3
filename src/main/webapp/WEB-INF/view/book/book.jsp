@@ -5,7 +5,6 @@
     <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
-<<<<<<< HEAD
 <%@include file="../header.jsp" %>
 
 <div class="blockmain">

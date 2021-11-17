@@ -3,7 +3,6 @@ package com.web.club3.service.impl;
 import com.web.club3.dao.impl.BookDAOImpl;
 import com.web.club3.dao.impl.BookOrderDAOImpl;
 import com.web.club3.dao.impl.UserDAOImpl;
-import com.web.club3.dto.BookOrderDto;
 import com.web.club3.model.BookOrder;
 import com.web.club3.service.BookOrderService;
 import com.web.club3.service.CRUDService;
@@ -105,10 +104,8 @@ public class BookOrderServiceImpl implements CRUDService<BookOrder>, BookOrderSe
     }
 
     @Override
-    public BookOrderDto lendBook(int userId, int bookId, BookOrderDto bookOrderDto) {
-        BookOrder bookOrder = modelMapper.map(bookOrderDto, BookOrder.class);
-        bookDAO.deleteOneCopy(bookId);
-        return modelMapper.map(createOrder(userId, bookId, bookOrder), BookOrderDto.class);
+    public BookOrder lendBook(int userId, int bookId, BookOrder bookOrder) {
+        return createOrder(userId, bookId, bookOrder);
     }
 
     @Override
