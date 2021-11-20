@@ -8,8 +8,6 @@ import java.util.List;
 
 public interface BookOrderService {
 
-    void deleteById(int id);
-
     String averageTimeOfUserReadSingleBook(int userId);
 
     Long getCountInPeriod(LocalDate startDate, LocalDate endDate);
@@ -24,7 +22,7 @@ public interface BookOrderService {
 
     String fromTheMostPopularToTheLessPopularBook(LocalDate startDate, LocalDate endDate);
 
-    void returnBook(int bookId,int bookOrderId);
+    BookOrderDTO returnBook(BookOrderDTO bookOrderDTO);
 
     List<BookOrder> readBooksInCertainDays(int days);
 }

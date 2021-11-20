@@ -1,3 +1,4 @@
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -8,7 +9,7 @@
 <body>
 <div class="blockmain">
     <div class="content">
-        <form:form method="POST" action="/book/create" modelAttribute="createBook">
+        <form:form action="/book/create" method="POST" modelAttribute="createBook">
             <h1>Lend book to Users</h1>
             <div>
                 <span id="inputGroup-sizing-small">Book Title</span>
@@ -26,11 +27,10 @@
             </form:select> <br>
             <div>
                 <span id="inputGroup-sizing-small">Author</span>
-                <form:select path="author">
-                    <c:forEach items="${authors}" var="author">
-                        <option value="${author.id}">${author.name} ${author.surname}</option>
-                    </c:forEach>
-                </form:select> <br>
+                <c:forEach items="${authors}" var="author">
+                    <option value="${author.id}">${author.name} ${author.surname}</option>
+                    <input type="checkbox" name="Author" value=${author.id}>
+                </c:forEach>
             </div>
             <input type="submit" value="Submit">
         </form:form>

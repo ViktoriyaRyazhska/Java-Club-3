@@ -94,8 +94,4 @@ public class BookServiceImpl implements CRUDService<BookDTO>, BookService {
         bookDAO.updateCopiesById(id, bookDAO.getCopiesById(id) - 1);
     }
 
-    public List<BookDTO> findAllBooks() {
-        List<Book> list = bookDAO.findAll();
-        return list.stream().map(l -> modelMapper.map(l, BookDTO.class)).collect(Collectors.toList());
-    }
 }

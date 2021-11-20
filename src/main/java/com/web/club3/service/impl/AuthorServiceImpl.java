@@ -3,6 +3,7 @@ package com.web.club3.service.impl;
 import com.web.club3.dao.impl.AuthorDAOImpl;
 import com.web.club3.dto.AuthorDTO;
 import com.web.club3.model.Author;
+import com.web.club3.service.AuthorService;
 import com.web.club3.service.CRUDService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class AuthorServiceImpl implements CRUDService<AuthorDTO> {
+public class AuthorServiceImpl implements CRUDService<AuthorDTO>, AuthorService {
     private final AuthorDAOImpl authorDAO;
     private final ModelMapper modelMapper;
 
@@ -51,5 +52,10 @@ public class AuthorServiceImpl implements CRUDService<AuthorDTO> {
     @Override
     public void deleteById(int id) {
         authorDAO.deleteById(id);
+    }
+
+    @Override
+    public Author findAuthorById(int id) {
+        return authorDAO.findById(id);
     }
 }

@@ -21,7 +21,8 @@ public interface BookOrderDAO {
 
     String fromTheMostPopularToTheLessPopularBook(LocalDate startDate, LocalDate endDate);
 
-    void returnBook(int bookId,int bookOrderId);
+    BookOrder returnBook(BookOrder bookOrder);
 
-    List<BookOrder> readedBooksInCertainDays(int days);
+    List<BookOrder> readBooksInCertainDays(int days);
+
 }

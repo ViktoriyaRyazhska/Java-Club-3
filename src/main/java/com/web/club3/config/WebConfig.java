@@ -1,8 +1,12 @@
 package com.web.club3.config;
 
+import com.web.club3.util.AuthorConverter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -15,6 +19,20 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan("com.web.club3.controller")
 public class WebConfig implements WebMvcConfigurer {
+
+    private final ApplicationContext context;
+
+    @Autowired
+    public WebConfig(ApplicationContext context) {
+        this.context = context;
+    }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter((AuthorConverter)
+                context.getBean("authorConverter"));
+    }
+
     @Bean
     public InternalResourceViewResolver resolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();

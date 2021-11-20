@@ -13,14 +13,11 @@
         <div>
             <form:select path="id">
                 <c:forEach items="${orderId}" var="order">
-                    <option value="${order.id}">${order.user} ${order.book} ${order.lendingDate}</option>
-                </c:forEach>
-            </form:select>
-        </div>
-        <div>
-            <form:select path="book.id">
-                <c:forEach items="${bookId}" var="book">
-                    <option value="${book.id}">${book.title} ${book.author}</option>
+                    <c:if test="${order.returnDate == null}">
+                        <option value="${order.id}">${order.user.name} ${order.user.surname}
+                                ${order.book.title} ${order.book.author}
+                                ${order.lendingDate}</option>
+                    </c:if>
                 </c:forEach>
             </form:select>
         </div>

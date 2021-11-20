@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import org.hibernate.type.LocalDateType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Repository
-public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
+public class BookOrderDAOImpl implements DAO<BookOrder>, BookOrderDAO {
 
     private SessionFactory sessionFactory;
 
@@ -69,8 +68,7 @@ public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
     }
 
     @Override
-    public Long getCountInPeriod(LocalDate startDate, LocalDate endDate)
-    {
+    public Long getCountInPeriod(LocalDate startDate, LocalDate endDate) {
         Session session = sessionFactory.openSession();
         TypedQuery<Long> query = session.createQuery("select count(book.id) from BookOrder where lendingDate BETWEEN :startDate and :endDate ", Long.class);
         query.setParameter("startDate", startDate);
@@ -84,10 +82,10 @@ public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
     public String averageTimeOfUserReadSingleBook(int userId) {
         Session session = sessionFactory.openSession();
 
-        TypedQuery<LocalDate> lendingDate = session.createQuery( "SELECT lendingDate" +
+        TypedQuery<LocalDate> lendingDate = session.createQuery("SELECT lendingDate" +
                 " FROM BookOrder\n" +
                 " WHERE user.id = :userId");
-        TypedQuery<LocalDate> returnDate = session.createQuery( "SELECT returnDate" +
+        TypedQuery<LocalDate> returnDate = session.createQuery("SELECT returnDate" +
                 " FROM BookOrder\n" +
                 " WHERE user.id = :userId and returnDate is not null");
 
@@ -100,10 +98,9 @@ public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
         int sizeofreturnlist = returnlist.size();
 
         String result = "";
-        for(int i = 0; i < sizeofreturnlist; i++)
-        {
+        for (int i = 0; i < sizeofreturnlist; i++) {
             Long sum = ChronoUnit.DAYS.between(lendinglist.get(i), returnlist.get(i));
-            result += lendinglist.get(i) + "     " +returnlist.get(i)+"     "+sum +"\n";
+            result += lendinglist.get(i) + "     " + returnlist.get(i) + "     " + sum + "\n";
         }
 
         session.close();
@@ -111,13 +108,13 @@ public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
     }
 
     @Override
-    public Double averageTimeOfReadingBook(int bookId ) {
+    public Double averageTimeOfReadingBook(int bookId) {
         Session session = sessionFactory.openSession();
 
-        TypedQuery<LocalDate> lendingDate = session.createQuery( "SELECT lendingDate" +
+        TypedQuery<LocalDate> lendingDate = session.createQuery("SELECT lendingDate" +
                 " FROM BookOrder\n" +
                 " WHERE book.id = :bookId");
-        TypedQuery<LocalDate> returnDate = session.createQuery( "SELECT returnDate" +
+        TypedQuery<LocalDate> returnDate = session.createQuery("SELECT returnDate" +
                 " FROM BookOrder\n" +
                 " WHERE book.id = :bookId and returnDate is not null");
 
@@ -130,16 +127,14 @@ public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
         Long sum = 0L;
         int sizeofreturnlist = returnlist.size();
 
-        for(int i = 0; i < sizeofreturnlist; i++)
-        {
+        for (int i = 0; i < sizeofreturnlist; i++) {
             sum += ChronoUnit.DAYS.between(lendinglist.get(i), returnlist.get(i));
         }
 
-        Double result = (double) sum/sizeofreturnlist;
+        Double result = (double) sum / sizeofreturnlist;
         session.close();
         return result;
     }
-
 
 
     public Long howManyBooksUserRead(int userId) {
@@ -185,20 +180,19 @@ public class BookOrderDAOImpl implements DAO<BookOrder>,BookOrderDAO {
         return resultString.toString();
     }
 
-    public void returnBook(int bookId, int bookOrderId) {
+    public BookOrder returnBook(BookOrder bookOrder) {
         Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
         Query query = session.createQuery("UPDATE BookOrder SET returnDate = current_date() WHERE id = :bookOrderId ");
-        query.setParameter("bookOrderId", bookOrderId);
-        Query query1 = session.createQuery(" UPDATE Book SET copies =  copies + 1 WHERE id =:bookId");
-        query1.setParameter("bookId", bookId);
+        query.setParameter("bookOrderId", bookOrder.getId());
         query.executeUpdate();
-        query1.executeUpdate();
-        session.getTransaction().commit();
+        transaction.commit();
         session.close();
+        return bookOrder;
     }
 
-    public List<BookOrder> readedBooksInCertainDays(int days){
+    public List<BookOrder> readBooksInCertainDays(int days) {
         Session session = sessionFactory.openSession();
-        return session.createQuery("select b FROM BookOrder b INNER JOIN b.user where datediff(b.returnDate,b.lendingDate)>= "+days).getResultList();
+        return session.createQuery("select b FROM BookOrder b INNER JOIN b.user where datediff(b.returnDate,b.lendingDate)>= " + days).getResultList();
     }
 }

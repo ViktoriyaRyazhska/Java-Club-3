@@ -29,10 +29,10 @@ public class BookController {
         this.userService = userService;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+  /*  @RequestMapping(method = RequestMethod.GET)
     public String showBookPage() {
         return "book/book";
-    }
+    }*/
 
     @GetMapping("/all")
     public String showAllBooks(Model model) {
@@ -60,7 +60,7 @@ public class BookController {
     }
 
     @PostMapping("/create")
-    public String createBook(@ModelAttribute("createBook") BookDTO bookDTO) {
+    public String createNewBook(@ModelAttribute("createBook") BookDTO bookDTO) {
         bookService.create(bookDTO);
         return "redirect:/book/all";
     }

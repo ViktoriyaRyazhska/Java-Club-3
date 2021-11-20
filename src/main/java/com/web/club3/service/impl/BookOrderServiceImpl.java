@@ -98,19 +98,13 @@ public class BookOrderServiceImpl implements CRUDService<BookOrderDTO>, BookOrde
     }
 
     @Override
-    public void returnBook(int bookId, int bookOrderId) {
-        bookOrderDAO.returnBook(bookId, bookOrderId);
+    public BookOrderDTO returnBook(BookOrderDTO bookOrderDTO) {
+        BookOrder bookOrder = modelMapper.map(bookOrderDTO, BookOrder.class);
+        return modelMapper.map(bookOrderDAO.returnBook(bookOrder), BookOrderDTO.class);
     }
 
     @Override
     public List<BookOrder> readBooksInCertainDays(int days) {
-        return bookOrderDAO.readedBooksInCertainDays(days);
-    }
-
-    public BookOrderDTO returnBookToLibrary(int bookOrderId, int bookId) {
-        BookOrder bookOrder = modelMapper.map(bookOrderDAO.findById(bookOrderId), BookOrder.class);
-        bookOrder.setReturnDate(LocalDate.now());
-        bookDAO.addOneCopy(bookId);
-        return modelMapper.map(bookOrderDAO.update(bookOrder), BookOrderDTO.class);
+        return bookOrderDAO.readBooksInCertainDays(days);
     }
 }

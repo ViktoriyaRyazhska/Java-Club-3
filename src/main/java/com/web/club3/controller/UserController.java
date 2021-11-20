@@ -1,5 +1,6 @@
 package com.web.club3.controller;
 
+import com.web.club3.dto.BookDTO;
 import com.web.club3.dto.BookOrderDTO;
 import com.web.club3.dto.UserDTO;
 import com.web.club3.service.impl.BookOrderServiceImpl;
@@ -43,7 +44,7 @@ public class UserController {
     @GetMapping("/lending")
     public String giveBook(Model model) {
         model.addAttribute("users", userService.findAll());
-        model.addAttribute("books", bookService.findAllBooks());
+        model.addAttribute("books", bookService.findAll());
         model.addAttribute("lendingModel", new BookOrderDTO());
         return "user/lendingBook";
     }
@@ -51,22 +52,22 @@ public class UserController {
     @PostMapping("/lending")
     public String giveBookToUser(@ModelAttribute("lendingModel") BookOrderDTO bookOrderDTO) {
         bookOrderService.create(bookOrderDTO);
+        bookService.deleteOneCopy(bookOrderDTO.getBook().getId());
         return "redirect:/user";
     }
 
     @GetMapping("/return")
     public String returnBook(Model model) {
         model.addAttribute("orderId", bookOrderService.findAll());
-        model.addAttribute("bookId", bookService.findAll());
         model.addAttribute("returningBook", new BookOrderDTO());
         return "user/returningBook";
     }
 
-    @PostMapping("/return/")
-    public String returningBook(@ModelAttribute("returningBook")
-                                @RequestParam("bookOrderId") Integer bookOrderId,
-                                @RequestParam("bookId") Integer bookId) {
-        bookOrderService.returnBookToLibrary(bookOrderId, bookId);
+    @PostMapping("/user/return")
+    public String returningBook(@ModelAttribute("returningBook") BookOrderDTO bookOrderDTO) {
+        BookDTO bookDTO = bookService.findById(bookOrderDTO.getBook().getId());
+        bookService.addOneCopy(bookDTO.getId());
+        bookOrderService.returnBook(bookOrderDTO);
         return "redirect:/user";
     }
 
