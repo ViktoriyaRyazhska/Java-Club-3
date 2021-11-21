@@ -21,6 +21,13 @@
                 </c:forEach>
             </form:select>
         </div>
+        <div>
+            <form:select path="book">
+                <c:forEach items="${bookId}" var="book">
+                    <option value="${book.id}">${book.title} ${book.author}</option>
+                </c:forEach>
+            </form:select>
+        </div>
         <input type="submit" value="Submit">
     </form:form>
 </div>

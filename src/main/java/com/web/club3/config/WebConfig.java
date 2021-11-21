@@ -1,6 +1,7 @@
 package com.web.club3.config;
 
 import com.web.club3.util.AuthorConverter;
+import com.web.club3.util.BookConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
@@ -31,6 +32,8 @@ public class WebConfig implements WebMvcConfigurer {
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter((AuthorConverter)
                 context.getBean("authorConverter"));
+        registry.addConverter((BookConverter)
+                context.getBean("bookConverter"));
     }
 
     @Bean

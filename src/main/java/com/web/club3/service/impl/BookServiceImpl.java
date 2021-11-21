@@ -94,4 +94,8 @@ public class BookServiceImpl implements CRUDService<BookDTO>, BookService {
         bookDAO.updateCopiesById(id, bookDAO.getCopiesById(id) - 1);
     }
 
+    public Book findBookById(int id) {
+        return bookDAO.findById(id);
+    }
+
 }

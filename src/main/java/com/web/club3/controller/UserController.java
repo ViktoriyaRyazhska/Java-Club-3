@@ -1,6 +1,5 @@
 package com.web.club3.controller;
 
-import com.web.club3.dto.BookDTO;
 import com.web.club3.dto.BookOrderDTO;
 import com.web.club3.dto.UserDTO;
 import com.web.club3.service.impl.BookOrderServiceImpl;
@@ -59,14 +58,14 @@ public class UserController {
     @GetMapping("/return")
     public String returnBook(Model model) {
         model.addAttribute("orderId", bookOrderService.findAll());
+        model.addAttribute("bookId", bookService.findAll());
         model.addAttribute("returningBook", new BookOrderDTO());
         return "user/returningBook";
     }
 
     @PostMapping("/user/return")
     public String returningBook(@ModelAttribute("returningBook") BookOrderDTO bookOrderDTO) {
-        BookDTO bookDTO = bookService.findById(bookOrderDTO.getBook().getId());
-        bookService.addOneCopy(bookDTO.getId());
+        bookService.addOneCopy(bookOrderDTO.getBook().getId());
         bookOrderService.returnBook(bookOrderDTO);
         return "redirect:/user";
     }
