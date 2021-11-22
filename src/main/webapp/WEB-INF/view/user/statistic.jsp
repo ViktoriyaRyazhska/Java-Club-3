@@ -2,10 +2,15 @@
 <html>
 <head>
     <title>User Statistic</title>
+    <style>
+        <%@include file="../css/allBooks.css" %>
+    </style>
 </head>
 <body>
-<div class="menu">
-    <div class="center">
+
+<%@include file="userPage.jsp" %>
+<div class="blockmain">
+    <div class="content">
         <a href="${pageContext.request.contextPath}/user/statistic/average"><h4>Average age</h4></a> <br>
         <a href=""><h4>How long user work with library</h4></a> <br>
         <a href=""><h4>Average number of requests</h4></a> <br>

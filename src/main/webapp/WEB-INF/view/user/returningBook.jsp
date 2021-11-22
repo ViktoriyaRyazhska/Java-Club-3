@@ -4,10 +4,16 @@
 <html>
 <head>
     <title>Returning Book</title>
+
+    <style>
+        <%@include file="../css/allBooks.css" %>
+    </style>
 </head>
 <body>
 <%@include file="userPage.jsp" %>
-<div>
+<div class="blockmain">
+    <div class="content">
+
     <form:form method="POST" action="user/return" modelAttribute="returningBook">
         <h1>Return book to Library</h1>
         <div>
@@ -30,7 +36,9 @@
         </div>
         <input type="submit" value="Submit">
     </form:form>
-</div>
+
 <a href="${pageContext.request.contextPath}/user">Back to user page</a>
+    </div>
+</div>
 </body>
 </html>

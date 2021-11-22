@@ -5,6 +5,8 @@
 <html>
 <head>
     <title>Create</title>
+
+    <style><%@include file="../css/allBooks.css"%></style>
 </head>
 <body>
 <div class="blockmain">
@@ -28,8 +30,10 @@
             <div>
                 <span id="inputGroup-sizing-small">Author</span>
                 <c:forEach items="${authors}" var="author">
+                <div style="display: flex">
                     <option value="${author.id}">${author.name} ${author.surname}</option>
                     <input type="checkbox" name="Author" value=${author.id}>
+                </div>
                 </c:forEach>
             </div>
             <input type="submit" value="Submit">

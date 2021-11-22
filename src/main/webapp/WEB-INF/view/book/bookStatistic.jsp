@@ -8,8 +8,12 @@
     </style>
 </head>
 <body>
+
 <%@include file="../header.jsp" %>
-<br>
-Загальна статистика книжок: <br>${statistic}
+    <div class="blockmain">
+        <div class="content">
+Загальна статистика книжок: ${statistic}
+    </div>
+</div>
 </body>
 </html>
