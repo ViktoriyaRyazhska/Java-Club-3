@@ -6,12 +6,12 @@ import org.softserve.javaclub.team3.library.model.BookRequest;
 import java.util.List;
 
 public interface BookRequestService {
-    void requestBook(BookRequestDto bookRequestDto) throws Exception;
 
-
+    boolean requestBook(BookRequestDto bookRequestDto) throws Exception;
+    List<BookRequest> findRequests();
     List<BookRequest> findRequestsByBook(String id);
     List<BookRequest> findRequestsByCustomer(String username);
-    void returnBook(String id);
+    boolean returnBook(String id);
 
     void returnAllBooks(String id);
 

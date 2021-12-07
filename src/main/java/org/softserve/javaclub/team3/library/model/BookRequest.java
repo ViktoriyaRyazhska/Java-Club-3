@@ -1,5 +1,6 @@
 package org.softserve.javaclub.team3.library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class BookRequest implements Serializable {
     @OneToOne
     private Book book;
     @OneToOne
+    @JsonIgnore
     private Customer customer;
 
     private boolean active;

@@ -3,8 +3,6 @@ package org.softserve.javaclub.team3.library.dao.impl;
 import com.google.common.base.Preconditions;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.softserve.javaclub.team3.library.dao.AbstractDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -22,8 +20,6 @@ import java.util.Objects;
 @Repository
 @Transactional
 public abstract class AbstractDaoImpl<T extends Serializable> extends JdbcDaoSupport implements AbstractDao<T> {
-
-    private static final Logger logger = LoggerFactory.getLogger(AbstractDaoImpl.class);
 
     @Autowired
     protected SessionFactory sessionFactory;
@@ -53,26 +49,22 @@ public abstract class AbstractDaoImpl<T extends Serializable> extends JdbcDaoSup
     public void save(T entity) {
         Preconditions.checkNotNull(entity);
         getCurrentSession().save(entity);
-        logger.info("Save successful. Details: " + entity);
     }
 
     public void update(T entity) {
         Preconditions.checkNotNull(entity);
         T t = (T) getCurrentSession().merge(entity);
-        logger.info("Update successful: Details: " + entity);
     }
 
     public void remove(T entity) {
         Preconditions.checkNotNull(entity);
         getCurrentSession().delete(entity);
-        logger.info("Delete successful: Details: " + entity);
     }
 
     public void removeById(String entityId) {
         T entity = findById(entityId);
         Preconditions.checkState(entity != null);
         remove(entity);
-        logger.info("Delete successful: Details: " + entity);
     }
 
     public T findByParam(RowMapper<T> rowMapper, String query, String param) {

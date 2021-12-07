@@ -1,5 +1,6 @@
 package org.softserve.javaclub.team3.library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,13 +24,17 @@ public class Customer implements Serializable, UserDetails {
     private String username;
     private String password;
     @Transient
+    @JsonIgnore
     private String passwordConfirm;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     private Set<Role> role;
 
     private int age;
     private Date registerDate;
+
+    private String token;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

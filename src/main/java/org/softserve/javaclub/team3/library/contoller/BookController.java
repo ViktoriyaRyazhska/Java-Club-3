@@ -1,67 +1,51 @@
 package org.softserve.javaclub.team3.library.contoller;
 
 import org.softserve.javaclub.team3.library.dto.BookDto;
+import org.softserve.javaclub.team3.library.model.Book;
 import org.softserve.javaclub.team3.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+import java.util.List;
+
+@RestController
 @RequestMapping(value = "/books")
 public class BookController {
 
     @Autowired
     private BookService bookServiceImpl;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView getAllBooks() {
-        ModelAndView modelAndView = new ModelAndView("books");
-        modelAndView.addObject("books", bookServiceImpl.findAll());
-        return modelAndView;
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public ResponseEntity<List<Book>> getAllBooks() {
+        return new ResponseEntity<>(bookServiceImpl.findAll(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
-    public String getBookById(@PathVariable String id, Model model) {
-        model.addAttribute("book", bookServiceImpl.findById(id));
-        return "book";
+    @RequestMapping(value = "/id", method = RequestMethod.GET)
+    public ResponseEntity<Book> getBookById(@RequestParam String id) {
+        return new ResponseEntity<>(bookServiceImpl.findById(id), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/title/", method = RequestMethod.GET)
-    public ModelAndView getBookByTitle(@RequestParam String title) {
-        ModelAndView modelAndView = new ModelAndView("book");
-        modelAndView.addObject("book", bookServiceImpl.findByTitle(title));
-        return modelAndView;
+    @RequestMapping(value = "/title", method = RequestMethod.GET)
+    public ResponseEntity<Book> getBookByTitle(@RequestParam String title) {
+        return new ResponseEntity<>(bookServiceImpl.findByTitle(title), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/author/", method = RequestMethod.GET)
-    public ModelAndView getAllBooksByAuthor(@RequestParam String surname) {
-        ModelAndView modelAndView = new ModelAndView("books");
-        modelAndView.addObject("books", bookServiceImpl.findAllBooksByAuthor(surname));
-        return modelAndView;
+    @RequestMapping(value = "/author", method = RequestMethod.GET)
+    public ResponseEntity<List<Book>> getAllBooksByAuthor(@RequestParam String surname) {
+        return new ResponseEntity<>(bookServiceImpl.findAllBooksByAuthor(surname), HttpStatus.OK);
     }
 
-
-    @RequestMapping(value = "/addBook", method = RequestMethod.GET)
-    public String addBook(Model model) {
-        model.addAttribute("bookDto", new BookDto());
-        return "add-book";
-    }
-
-    @ResponseBody
     @RequestMapping(path = "/addBook", method = RequestMethod.POST)
-    public ModelAndView processAddBook(@ModelAttribute("bookDto") BookDto bookDto, BindingResult bindingResult) {
+    public ResponseEntity<String> addBook(@RequestBody BookDto bookDto) {
         bookServiceImpl.addBook(bookDto);
-        ModelAndView modelAndView = new ModelAndView("index");
-        return modelAndView;
+        return new ResponseEntity<>("Book successfully added", HttpStatus.CREATED);
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-    public String deleteBook(@PathVariable String id) {
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteBook(@RequestParam String id) {
         bookServiceImpl.removeBookById(id);
-        return "index";
+        return new ResponseEntity<>("Book successfully removed", HttpStatus.OK);
     }
 }

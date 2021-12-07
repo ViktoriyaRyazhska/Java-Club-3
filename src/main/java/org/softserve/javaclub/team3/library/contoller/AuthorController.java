@@ -1,52 +1,41 @@
 package org.softserve.javaclub.team3.library.contoller;
 
 import org.softserve.javaclub.team3.library.dto.AuthorDto;
+import org.softserve.javaclub.team3.library.model.Author;
 import org.softserve.javaclub.team3.library.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+import java.util.List;
+
+@RestController
 @RequestMapping(value = "/authors")
 public class AuthorController {
 
     @Autowired
     private AuthorService authorServiceImpl;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView getAllAuthors() {
-        ModelAndView modelAndView = new ModelAndView("authors");
-        modelAndView.addObject("authors", authorServiceImpl.findAll());
-        return modelAndView;
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public ResponseEntity<List<Author>> getAllAuthors() {
+        return new ResponseEntity<>(authorServiceImpl.findAll(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/id/{authorId}", method = RequestMethod.GET)
-    public ModelAndView getAuthorById(@PathVariable String authorId) {
-        ModelAndView modelAndView = new ModelAndView("author");
-        modelAndView.addObject("author", authorServiceImpl.findById(authorId));
-        return modelAndView;
+    @RequestMapping(value = "/id", method = RequestMethod.GET)
+    public ResponseEntity<Author> getAuthorById(@RequestParam String id) {
+        return new ResponseEntity<>(authorServiceImpl.findById(id), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/addAuthor", method = RequestMethod.GET)
-    public String addAuthor(Model model) {
-        model.addAttribute("authorDto", new AuthorDto());
-        return "add-author";
-    }
-
-    @ResponseBody
     @RequestMapping(path = "/addAuthor", method = RequestMethod.POST)
-    public ModelAndView processAddAuthor(@ModelAttribute("authorDto") AuthorDto authorDto, BindingResult bindingResult) {
+    public ResponseEntity<String> addAuthor(@RequestBody AuthorDto authorDto) {
         authorServiceImpl.addAuthor(authorDto);
-        return new ModelAndView("index");
+        return new ResponseEntity<>("Author successfully added", HttpStatus.CREATED);
     }
-    
-    @ResponseBody
-    @RequestMapping(value = "/delete/{authorId}", method = RequestMethod.POST)
-    public String deleteAuthor(@PathVariable String authorId)  {
-        authorServiceImpl.removeAuthorById(authorId);
-        return "index";
+
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteAuthor(@RequestParam String id) {
+        authorServiceImpl.removeAuthorById(id);
+        return new ResponseEntity<>("Author successfully removed", HttpStatus.OK);
     }
 }

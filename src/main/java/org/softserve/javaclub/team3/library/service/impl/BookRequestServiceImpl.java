@@ -2,7 +2,6 @@ package org.softserve.javaclub.team3.library.service.impl;
 
 import org.softserve.javaclub.team3.library.dao.BookRequestDao;
 import org.softserve.javaclub.team3.library.dto.BookRequestDto;
-import org.softserve.javaclub.team3.library.exception.NoCopiesOfBookException;
 import org.softserve.javaclub.team3.library.model.Book;
 import org.softserve.javaclub.team3.library.model.BookRequest;
 import org.softserve.javaclub.team3.library.model.Customer;
@@ -10,6 +9,7 @@ import org.softserve.javaclub.team3.library.service.BookRequestService;
 import org.softserve.javaclub.team3.library.service.BookService;
 import org.softserve.javaclub.team3.library.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -31,7 +31,7 @@ public class BookRequestServiceImpl implements BookRequestService {
     }
 
     @Override
-    public void requestBook(BookRequestDto bookRequestDto) throws Exception {
+    public boolean requestBook(BookRequestDto bookRequestDto) throws Exception {
         if (isBookAvailable(bookRequestDto)) {
             Book book = bookServiceImpl.findById(bookRequestDto.getBookId());
             int tc = book.getTakenCount() + 1;
@@ -42,26 +42,42 @@ public class BookRequestServiceImpl implements BookRequestService {
 
             bookServiceImpl.updateBook(book);
             bookRequestDaoImpl.save(createBookRequest(bookRequestDto));
+            return true;
         } else {
-            //TODO: Create exception
-            throw new NoCopiesOfBookException("There are no copies of this book");
-
+            return false;
         }
     }
 
     @Override
-    public void returnBook(String id) {
-        Book book = bookRequestDaoImpl.findById(id).getBook();
-        int copies = book.getCopies() + 1;
-        book.setCopies(copies);
-        bookServiceImpl.updateBook(book);
+    public boolean returnBook(String id) {
+        Customer correctCustomer = customerServiceImpl.findUserById(bookRequestDaoImpl.findById(id).getCustomer().getId());
 
-        bookRequestDaoImpl.removeById(id);
+        if (correctCustomer.getId().equals(getCurrentCustomer().getId())) {
+            BookRequest bookRequest = bookRequestDaoImpl.findById(id);
+            Book book = bookRequestDaoImpl.findById(id).getBook();
+            if (bookRequest.isActive()) {
+                int copies = book.getCopies() + 1;
+                book.setCopies(copies);
+                bookServiceImpl.updateBook(book);
+
+                bookRequest.setActive(false);
+                bookRequestDaoImpl.update(bookRequest);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     @Override
     public void returnAllBooks(String id) {
         bookRequestDaoImpl.returnAllBooks(id);
+    }
+    @Override
+    public List<BookRequest> findRequests(){
+        return bookRequestDaoImpl.findRequestsByCustomer(getCurrentCustomer().getUsername());
     }
 
     @Override
@@ -85,7 +101,7 @@ public class BookRequestServiceImpl implements BookRequestService {
     private BookRequest createBookRequest(BookRequestDto bookRequestDto) {
         final BookRequest bookRequest = new BookRequest();
         final Book book = bookServiceImpl.findById(bookRequestDto.getBookId());
-        final Customer customer = customerServiceImpl.findUserByUsername(bookRequestDto.getCustomerUsername());
+        final Customer customer = getCurrentCustomer();
 
         bookRequest.setBook(book);
         bookRequest.setCustomer(customer);
@@ -93,6 +109,11 @@ public class BookRequestServiceImpl implements BookRequestService {
         bookRequest.setCreationDate(new Date(System.currentTimeMillis()));
 
         return bookRequest;
+    }
+
+    private Customer getCurrentCustomer(){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return customerServiceImpl.findUserByUsername((String) principal);
     }
 
 }
